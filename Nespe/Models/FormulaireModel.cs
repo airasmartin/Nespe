@@ -30,11 +30,11 @@ namespace Nespe.Models
         [Column]
         public string Description { get; set; }
         //public static implicit operator Nespe.RequestInfoTypeEntity(RequestTypeInfo v){
-        //    var r = new Nespe.RequestInfoTypeEntity { };
-        //    r.Id = v.Id;
-        //    r.Name = v.Name;
-        //    r.Description = v.Description;
-        //    return r;
+        //    var dst = new Nespe.RequestInfoTypeEntity { };
+        //    dst.Id = v.Id;
+        //    dst.Name = v.Name;
+        //    dst.Description = v.Description;
+        //    return dst;
         //}
 
     }
@@ -232,9 +232,9 @@ namespace Nespe.Models
         public IQueryable<Request> RequestSet { get; set; }
         public IQueryable<Request> CompletionRequestSet { get { return (from t in RequestSet where t.Id > 0 select t); } }
         public IQueryable<Request> AdministrationRequestSet { get { return (from t in RequestSet where t.Id > 0 select t); } }
-        public IQueryable<Request> ArrivalRequestSet { get { return (from t in RequestSet where t.kind == RequestKindEnum.Arrival select t); } }
-        public IQueryable<Request> DepartureRequestSet { get { return (from t in RequestSet where t.kind == RequestKindEnum.Departure select t); } }
-        public IQueryable<Request> TransfertRequestSet { get { return (from t in RequestSet where t.kind == RequestKindEnum.Transfert select t); } }
+        public IQueryable<Request> ArrivalRequestSet { get { return (from t in RequestSet where t.Kind == RequestKindEnum.Arrival select t); } }
+        public IQueryable<Request> DepartureRequestSet { get { return (from t in RequestSet where t.Kind == RequestKindEnum.Departure select t); } }
+        public IQueryable<Request> TransfertRequestSet { get { return (from t in RequestSet where t.Kind == RequestKindEnum.Transfert select t); } }
 
     }
     public class ArrivalEditFormulaireModel : AbstractEditFormulaireModel<ArrivalNewRequestModel>

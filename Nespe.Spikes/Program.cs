@@ -52,9 +52,10 @@ namespace Nespe.Spikes
             {
                 using (var db = new Nespe.Context.NespeDbContext(cnn, true)) {
                     db.Database.CreateIfNotExists();
+                    db.Database.Initialize(true);
                     var q = (from t in db.RequestSet select t);
                     foreach (var dr in q) {
-                        Console.WriteLine("{0}", dr.NameNC);
+                        Console.WriteLine("{0}", dr.Person.FirstName);
                     }
                 }
 

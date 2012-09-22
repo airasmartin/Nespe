@@ -25,10 +25,24 @@ namespace Nespe.Models
         public long? Person_Id { get; set; }
         [Column(Name = "Role_Id")]
         public PersonDepartmentRoleEnum Role_Id { get; set; }
+
+
+
+
+        [Required(ErrorMessage = "Veuillez sélectionner un département")]
+        [Display(Name = "Département")]
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("Department_Id")]
+        public Department Department { get; set; }
+
+        [Required(ErrorMessage = "Veuillez sélectionner une personne")]
+        [Display(Name = "Personne")]
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("Person_Id")]
+        public Person Person { get; set; }
+
     }
 
     public enum PersonDepartmentRoleEnum
     {
-        Assistant, Backup, Head, Manager
+        Undefined, Assistant, Backup, Head, Manager
     }
 }

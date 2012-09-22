@@ -19,7 +19,6 @@ namespace Nespe.Context
         public NespeDbContext(DbConnection existingConnection, bool contextOwnsConnection)
             :base(existingConnection, contextOwnsConnection)
         {
-
         }
         public DbSet<Request> RequestSet { get; set; }
         public DbSet<RequestTypeInfo> RequestInfoSet { get; set; }

@@ -22,12 +22,12 @@ namespace Nespe.Controllers
         //[HttpGet]
         //public ActionResult Completer(long Id, FormCollection formCollection)
         //{
-        //    var model = new CompleterFormulaireModel { Id = Id };
+        //    var dst = new CompleterFormulaireModel { Id = Id };
         //    return View("Completer");
         //}
         //// GET: /Formulaire/
         //[HttpPost]
-        //public ActionResult Completer(CompleterFormulaireModel model, FormCollection formCollection)
+        //public ActionResult Completer(CompleterFormulaireModel dst, FormCollection formCollection)
         //{
         //    return View("Completer");
         //}

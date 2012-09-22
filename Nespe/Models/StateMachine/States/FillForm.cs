@@ -1,4 +1,5 @@
-﻿namespace Nespe
+﻿using Nespe.Models;
+namespace Nespe
 {
     public class FillForm : State
     {
@@ -24,7 +25,7 @@
 
             //        WebMail.Send("martin.airas@rdor.nestle.com", "[NESPE] Demande New comer",
             //                     " Bonjour, "+
-            //                     "Le "+ StartDateNC + "nous accueillerons "+ NameNC + " " +SurnameNC +
+            //                     "Le "+ StartDate + "nous accueillerons "+ LastName + " " +FirstName +
             //                     " au local " + localNC+ "."+
             //                     "Pour cette date, nous aurons besoin de"+
             //                     (fixPhone == true) ? " - un téléphone fixe " : "" + 

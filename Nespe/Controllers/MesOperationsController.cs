@@ -27,7 +27,7 @@ namespace Nespe.Controllers
         {
             ViewBag.Message = "Mes Opérations";
             UpdateRequestList(RequestSet);
-            //var model = new CurrentStatusModel { RequestSet = RequestSet.AsQueryable() };
+            //var dst = new CurrentStatusModel { RequestSet = RequestSet.AsQueryable() };
             var requestData=( from t in RequestSet where t.Id==id select t).FirstOrDefault();
             var model = new ArrivalCompleterFormulaireModel
             {
@@ -72,11 +72,11 @@ namespace Nespe.Controllers
             if (ModelState.IsValid)
             {
                 //TO DO : Email guestResponse to ther part organizer
-                //Request request = model;
+                //Request request = dst;
 
-                //SaveToDb(model);
+                //SaveToDb(dst);
                 //RequestSet.Add(request);
-                //return View("Confirmation", model);
+                //return View("Confirmation", dst);
                 return this.RedirectToAction("Index");
                 //return Index();
             }
@@ -96,7 +96,7 @@ namespace Nespe.Controllers
         {
             ViewBag.Message = "Mes Opérations";
             UpdateRequestList(RequestSet);
-            //var model = new CurrentStatusModel { RequestSet = RequestSet.AsQueryable() };
+            //var dst = new CurrentStatusModel { RequestSet = RequestSet.AsQueryable() };
             var requestData = (from t in RequestSet where t.Id == id select t).FirstOrDefault();
 
             var model = new ArrivalEditFormulaireModel

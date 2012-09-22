@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace Nespe.Models
 {
-    [Table]
+    [Table(Name = "tbl_department")]
     public class Department
     {
         [Key, Column(IsPrimaryKey = true, IsDbGenerated = true)]

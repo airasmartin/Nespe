@@ -1,5 +1,6 @@
 ﻿
 
+using Nespe.Models;
 namespace Nespe
 {
     public class StateMachine

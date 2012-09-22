@@ -5,9 +5,10 @@ using System.Data.Linq;
 //using System.Data.Linq.Mapping;
 using System.Linq;
 using System.ComponentModel.DataAnnotations.Schema;
+using Nespe.Models;
 
 
-namespace Nespe
+namespace Nespe.Models
 {
     [Table("tbl_request")]
     public class Request
@@ -18,64 +19,61 @@ namespace Nespe
         }
         [Key, Column]
         public long Id { get; set; }
+        [Column]
+        public long? PersonDepartment_Id { get; set; }
 
         [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public StateMachine StateMachine { get; private set; }
 
-        [Required(ErrorMessage="Veuillez entrer le nom")]
-        [Display(Name="Prénom")]
-        public string SurnameNC { get; set; }
 
-        [Required(ErrorMessage = "Veuillez entrer le prénom")]
-        [Display(Name = "Nom")]
-        public string NameNC { get; set; }
+        [Display(Name = "PersonDepartment"), ForeignKey("PersonDepartment_Id")]
+        public PersonDepartment PersonDepartment { get; set; }
+        private PersonDepartment _PersonDepartment() { return PersonDepartment != null ? PersonDepartment : PersonDepartment = new PersonDepartment { }; }
+        [Display(Name = "Person"), NotMapped]
+        public Person Person { get { return _PersonDepartment().Person; } set { _PersonDepartment().Person = value; } }
+        [Display(Name = "Department_Id"), NotMapped]
+        public Department Department { get { return _PersonDepartment().Department; } set { _PersonDepartment().Department = value; } }
 
-        [Required(ErrorMessage = "Veuillez sélectionner un département")]
-        [Display(Name = "Département")]
-        public string DepartmentNC { get; set; }
 
         [Display(Name = "Fonction")]
-        public string FunctionNC { get; set; }
+        public string Function { get; set; }
         
-        public string SuperiorNC { get; set; }
+        public string Superior { get; set; }
         
-        public string BusinessStreamNC { get; set; }
+        public string BusinessStream { get; set; }
 
         [Required(ErrorMessage = "Veuillez entrer la date d'arrivée du nouveau collaborateur")]
-        public DateTime StartDateNC { get; set; }
+        public DateTime StartDate { get; set; }
 
         [Required(ErrorMessage = "Veuillez entrer le numéro d'employé, s'il n'a pas de compte SAP, cochez la case 'Non-SAP'")]
-        public string EmployeeNumberNC { get; set; }
+        public string EmployeeNumber { get; set; }
         
-        public bool nonSAPNC { get; set; }
+        [Display(Name="A un code SAP")]
+        public bool nonSAP { get; set; }
         
-        public string LocalNC { get; set; }
-        
-        public string PhoneNC { get; set; }
-        
-        public string initialsNC { get; set; }
+        public string Local { get; set; }
         
         public string TransFrom { get; set; }
 
-        public RequestKindEnum kind { get; set; }
+        public RequestKindEnum Kind { get; set; }
 
         public string Parrain { get; set; }
 
-        public bool formCompleted { get; set; }
+        public bool Completed { get; set; }
 
 
 
-        [Required(AllowEmptyStrings=true), Display(Name = "Active Directory Id:")]
+        [Required(AllowEmptyStrings=true), Display(Name = "Active Directory Id")]
         public string ActiveDirectoryId { get; set; }
 
         public bool HaveActiveDirectoryId { get { return !string.IsNullOrWhiteSpace(ActiveDirectoryId); } }
 
         // Jour depassé ?
-        public TimeSpan ElapsedTime { get { return DateTime.Now.Subtract(StartDateNC); } }
+        public TimeSpan ElapsedTime { get { return DateTime.Now.Subtract(StartDate); } }
         // Jour depassé ?
         public bool IsOverTime { get { return ElapsedTime.Ticks>0; } }
         // Jour disponibles ?
-        public TimeSpan RemainingTime { get { return StartDateNC.Subtract(DateTime.Now); } }
+        public TimeSpan RemainingTime { get { return StartDate.Subtract(DateTime.Now); } }
 
       
 
@@ -87,59 +85,59 @@ namespace Nespe
 
 
 
-        //public static implicit operator RequestEntity(Request model)
+        //public static implicit operator RequestEntity(Request dst)
         //{
-        //    RequestEntity r = null;
+        //    RequestEntity dst = null;
         //    using (var db = new NespeEntityContainer()) {
-        //        r = (from t in db.Requests where t.Id == model.Id select t).FirstOrDefault();
-        //        if (r == null) {
-        //            r = db.Requests.CreateObject();
+        //        dst = (from t in db.Requests where t.Id == dst.Id select t).FirstOrDefault();
+        //        if (dst == null) {
+        //            dst = db.Requests.CreateObject();
         //        }
         //    }
         //    //public:b+{[^:b]+}:b+{[^:b]+}:b+.+
-        //    //r.\2=model.\2;
-        //    r.Id = model.Id;
-        //    r.SurnameNC = model.SurnameNC;
-        //    r.NameNC = model.NameNC;
-        //    r.DepartmentNC = model.DepartmentNC;
-        //    r.FunctionNC = model.FunctionNC;
-        //    r.SuperiorNC = model.SuperiorNC;
-        //    r.BusinessStreamNC = model.BusinessStreamNC;
-        //    r.StartDateNC = model.StartDateNC;
-        //    r.EmployeeNumberNC = model.EmployeeNumberNC;
-        //    r.nonSAPNC = model.nonSAPNC;
-        //    r.LocalNC = model.LocalNC;
-        //    r.PhoneNC = model.PhoneNC;
-        //    r.initialsNC = model.initialsNC;
-        //    r.TransFrom = model.TransFrom;
-        //    r.Kind = (short)model.kind;
-        //    r.Parrain = model.Parrain;
+        //    //dst.\2=dst.\2;
+        //    dst.Id = dst.Id;
+        //    dst.FirstName = dst.FirstName;
+        //    dst.LastName = dst.LastName;
+        //    dst.Department_Id = dst.Department_Id;
+        //    dst.Function = dst.Function;
+        //    dst.SuperiorNC = dst.SuperiorNC;
+        //    dst.BusinessStreamNC = dst.BusinessStreamNC;
+        //    dst.StartDate = dst.StartDate;
+        //    dst.EmployeeNumberNC = dst.EmployeeNumberNC;
+        //    dst.nonSAPNC = dst.nonSAPNC;
+        //    dst.Local = dst.Local;
+        //    dst.Phone = dst.Phone;
+        //    dst.Initials = dst.Initials;
+        //    dst.TransFrom = dst.TransFrom;
+        //    dst.Kind = (short)dst.Kind;
+        //    dst.Parrain = dst.Parrain;
 
             
-        //    return r;
+        //    return dst;
         //}
-        //public static implicit operator Request(RequestEntity model)
+        //public static implicit operator Request(RequestEntity dst)
         //{
-        //    Request r = new Request();
-        //    r.Id = model.Id;
-        //    r.SurnameNC = model.SurnameNC;
-        //    r.NameNC = model.NameNC;
-        //    r.DepartmentNC = model.DepartmentNC;
-        //    r.FunctionNC = model.FunctionNC;
-        //    r.SuperiorNC = model.SuperiorNC;
-        //    r.BusinessStreamNC = model.BusinessStreamNC;
-        //    r.StartDateNC = model.StartDateNC == null ? DateTime.Now : model.StartDateNC.Value;
-        //    r.EmployeeNumberNC = model.EmployeeNumberNC;
-        //    r.nonSAPNC = model.nonSAPNC == null ? true : model.nonSAPNC.Value;
-        //    r.LocalNC = model.LocalNC;
-        //    r.PhoneNC = model.PhoneNC;
-        //    r.initialsNC = model.initialsNC;
-        //    r.TransFrom = model.TransFrom;
-        //    r.kind = (RequestKindEnum)(model.Kind == null ? 0 : model.Kind);
-        //    r.Parrain = model.Parrain;
+        //    Request dst = new Request();
+        //    dst.Id = dst.Id;
+        //    dst.FirstName = dst.FirstName;
+        //    dst.LastName = dst.LastName;
+        //    dst.Department_Id = dst.Department_Id;
+        //    dst.Function = dst.Function;
+        //    dst.SuperiorNC = dst.SuperiorNC;
+        //    dst.BusinessStreamNC = dst.BusinessStreamNC;
+        //    dst.StartDate = dst.StartDate == null ? DateTime.Now : dst.StartDate.Value;
+        //    dst.EmployeeNumberNC = dst.EmployeeNumberNC;
+        //    dst.nonSAPNC = dst.nonSAPNC == null ? true : dst.nonSAPNC.Value;
+        //    dst.Local = dst.Local;
+        //    dst.Phone = dst.Phone;
+        //    dst.Initials = dst.Initials;
+        //    dst.TransFrom = dst.TransFrom;
+        //    dst.Kind = (RequestKindEnum)(dst.Kind == null ? 0 : dst.Kind);
+        //    dst.Parrain = dst.Parrain;
 
 
-        //    return r;
+        //    return dst;
         //}
     }
 

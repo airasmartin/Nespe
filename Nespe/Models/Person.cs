@@ -20,13 +20,19 @@ namespace Nespe.Models
         [Column]
         public string SID { get; set; }
         [Column]
+        [Required(ErrorMessage = "Veuillez entrer le prénom")]
+        [Display(Name = "Prénom")]
         public string FirstName { get; set; }
         [Column]
+        [Required(ErrorMessage = "Veuillez entrer le nom")]
+        [Display(Name = "Nom")]
         public string LastName { get; set; }
         [Column]
         public string EMail { get; set; }
         [Column]
         public string Phone { get; set; }
+
+        public string Initials { get; set; }
     }
 	
 }

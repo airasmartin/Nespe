@@ -35,8 +35,8 @@ namespace StateMachineNC
         static void Spike2(string[] args)
         {
             var model = new Nespe.Models.TransfertNewRequestModel { 
-                SurnameNC="Martin",
-                NameNC = "Airas",
+                FirstName="Martin",
+                LastName = "Airas",
                 LocalNC="Vaud1",
                 SuperiorNC="Pinolo"
             };
@@ -45,8 +45,8 @@ namespace StateMachineNC
             Console.WriteLine(req);
             var model1 = new Nespe.Models.DepartureNewRequestModel
             {
-                SurnameNC = "Martin",
-                NameNC = "Airas",
+                FirstName = "Martin",
+                LastName = "Airas",
             };
             req = model1;
             Console.WriteLine(model);

@@ -11,52 +11,89 @@ namespace Nespe.Models
         public long Id { get; set; }
         [Required(ErrorMessage = "Veuillez entrer le nom")]
         [Display(Name = "Prénom")]
-        public string SurnameNC { get; set; }
+        public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Veuillez entrer le prénom")]
         [Display(Name = "Nom")]
-        public string NameNC { get; set; }
+        public string LastName { get; set; }
 
         [Required(ErrorMessage = "Veuillez entrer la date d'arrivée du nouveau collaborateur")]
         [Display(Name = "Date d'arrivée")]
-        public DateTime StartDateNC { get; set; }
+        public DateTime StartDate { get; set; }
 
         [Required(ErrorMessage = "Veuillez sélectionner un département")]
         [Display(Name = "Département")]
-        public string DepartmentNC { get; set; }
+        public long Department_Id { get; set; }
 
         public RequestKindEnum kind { get; set; }
 
-        public virtual Request Copy(Request model)
+        public virtual Request Copy(Request src)
         {
-            var r = this;
-            r.kind = model.kind;
-            r.SurnameNC = model.SurnameNC;
-            r.NameNC = model.NameNC;
-            r.StartDateNC = model.StartDateNC;
-            r.Id = model.Id;
-            r.SurnameNC = model.SurnameNC;
-            r.NameNC = model.NameNC;
-            r.StartDateNC = model.StartDateNC;
-            r.DepartmentNC = model.DepartmentNC;
-
-            return model;
+            var dst = this;
+            dst.kind = src.Kind;
+            dst.StartDate = src.StartDate;
+            dst.Id = src.Id;
+            dst.StartDate = src.StartDate;
+            Copy(src.PersonDepartment);
+            return src;
         }
-        public static implicit operator Request(AbstractNewRequestModel model)
+        public virtual PersonDepartment Copy(PersonDepartment src)
         {
-            var r = new Request
+            var dst = this;
+            Copy(src.Department);
+            Copy(src.Person);
+            return src;
+        }
+        public virtual Department Copy(Department src)
+        {
+            var dst = this;
+            dst.Department_Id = src.Id;
+            return src;
+        }
+        public virtual Person Copy(Person src)
+        {
+            var dst = this;
+            dst.FirstName = src.FirstName;
+            dst.LastName = src.LastName;
+            return src;
+        }
+        public virtual Request CopyTo(Request dst)
+        {
+            var src = this;
+            dst.Id = src.Department_Id;
+            CopyTo(dst.PersonDepartment);
+            return dst;
+        }
+        public virtual PersonDepartment CopyTo(PersonDepartment dst)
+        {
+            var src = this;
+            CopyTo(dst.Department);
+            CopyTo(dst.Person);
+            return dst;
+        }
+        public virtual Department CopyTo(Department dst)
+        {
+            var src = this;
+            dst.Id = src.Department_Id;
+            return dst;
+        }
+        public virtual Person CopyTo(Person dst)
+        {
+            var src = this;
+            dst.FirstName = src.FirstName;
+            dst.LastName = src.LastName;
+            return dst;
+        }
+        public static implicit operator Request(AbstractNewRequestModel src)
+        {
+            var dst = new Request
             {
-                kind = model.kind,
-                SurnameNC = model.SurnameNC,
-                NameNC = model.NameNC,
-                StartDateNC = model.StartDateNC,
+                Kind = src.kind,
+                
             };
-            r.Id = model.Id;
-            r.SurnameNC = model.SurnameNC;
-            r.NameNC = model.NameNC;
-            r.StartDateNC = model.StartDateNC;
-            r.DepartmentNC = model.DepartmentNC;
-            return r;
+            dst.Id = src.Id;
+            src.CopyTo(dst);
+            return dst;
         }
 
 
@@ -71,28 +108,26 @@ namespace Nespe.Models
 
         public bool retirement { get; set; }
 
-        public override Request Copy(Request model)
+        public override Request Copy(Request src)
         {
-            var r = this;
+            var dst = this;
 
-            r.Local = model.LocalNC;
-            r.Id = model.Id;
-            r.SurnameNC = model.SurnameNC;
-            r.NameNC = model.NameNC;
-            r.StartDateNC = model.StartDateNC;
-            r.DepartmentNC = model.DepartmentNC;
-            return base.Copy(model);
+            dst.Local = src.Local;
+            return base.Copy(src);
         }
-        public static implicit operator Request(DepartureNewRequestModel model){
-            var o = model as AbstractNewRequestModel;
-            Request r = o;
-            r.LocalNC = model.Local;
-            r.Id = model.Id;
-            r.SurnameNC = model.SurnameNC;
-            r.NameNC = model.NameNC;
-            r.StartDateNC = model.StartDateNC;
-            r.DepartmentNC = model.DepartmentNC;
-            return r;
+        public override Request CopyTo(Request dst)
+        {
+            var src = this;
+
+            dst.Local = src.Local;
+            return base.CopyTo(dst);
+        }
+        public static implicit operator Request(DepartureNewRequestModel src)
+        {
+            var o = src as AbstractNewRequestModel;
+            Request dst = o;
+            src.CopyTo(dst);
+            return dst;
         }
 
         public static implicit operator DepartureNewRequestModel(Request model)
@@ -107,7 +142,7 @@ namespace Nespe.Models
     {
 
         [Display(Name = "Fonction")]
-        public string FunctionNC { get; set; }
+        public string Function { get; set; }
 
         [Display(Name = "Supérieur hierarchique")]
         public string SuperiorNC { get; set; }
@@ -122,65 +157,65 @@ namespace Nespe.Models
         public bool nonSAPNC { get; set; }
 
         [Display(Name = "Local")]
-        public string LocalNC { get; set; }
+        public string Local { get; set; }
 
         [Display(Name = "Téléphone")]
-        public string PhoneNC { get; set; }
+        public string Phone { get; set; }
 
         [Display(Name = "Initiales")]
-        public string initialsNC { get; set; }
+        public string Initials { get; set; }
 
         [Display(Name = "Parrain")]
         public string Parrain { get; set; }
 
-        public override Request Copy(Request model) {
-            var r = this;
+
+        public override Request Copy(Request src) {
+            var dst = this;
             
-            r.FunctionNC = model.FunctionNC;
-            r.LocalNC = model.LocalNC;
-            r.FunctionNC = model.FunctionNC;
-            r.Id = model.Id;
-            r.SurnameNC = model.SurnameNC;
-            r.NameNC = model.NameNC;
-            r.DepartmentNC = model.DepartmentNC;
-            r.FunctionNC = model.FunctionNC;
-            r.SuperiorNC = model.SuperiorNC;
-            r.BusinessStreamNC = model.BusinessStreamNC;
-            r.StartDateNC = model.StartDateNC;
-            r.EmployeeNumberNC = model.EmployeeNumberNC;
-            r.nonSAPNC = model.nonSAPNC;
-            r.LocalNC = model.LocalNC;
-            r.PhoneNC = model.PhoneNC;
-            r.initialsNC = model.initialsNC;
-            //r.TransFrom = model.TransFrom;
-            //r.Kind = (short)model.kind;
-            r.Parrain = model.Parrain;
-            return base.Copy(model);
+            dst.Local = src.Local;
+            dst.Id = src.Id;
+            dst.SuperiorNC = src.Superior;
+            dst.BusinessStreamNC = src.BusinessStream;
+            dst.StartDate = src.StartDate;
+            dst.EmployeeNumberNC = src.EmployeeNumber;
+            dst.nonSAPNC = src.nonSAP;
+            dst.Local = src.Local;
+            //dst.TransFrom = dst.TransFrom;
+            //dst.Kind = (short)dst.Kind;
+            dst.Parrain = src.Parrain;
+            return base.Copy(src);
         }
-        public static implicit operator Request(ArrivalNewRequestModel model)
+        public override Person Copy(Person src)
         {
-            var o = model as AbstractNewRequestModel;
-            Request r = o;
-            r.FunctionNC = model.FunctionNC;
-            r.LocalNC = model.LocalNC;
-            r.FunctionNC = model.FunctionNC;
-            r.Id = model.Id;
-            r.SurnameNC = model.SurnameNC;
-            r.NameNC = model.NameNC;
-            r.DepartmentNC = model.DepartmentNC;
-            r.FunctionNC = model.FunctionNC;
-            r.SuperiorNC = model.SuperiorNC;
-            r.BusinessStreamNC = model.BusinessStreamNC;
-            r.StartDateNC = model.StartDateNC;
-            r.EmployeeNumberNC = model.EmployeeNumberNC;
-            r.nonSAPNC = model.nonSAPNC;
-            r.LocalNC = model.LocalNC;
-            r.PhoneNC = model.PhoneNC;
-            r.initialsNC = model.initialsNC;
-            //r.TransFrom = model.TransFrom;
-            //r.Kind = (short)model.kind;
-            r.Parrain = model.Parrain;
-            return r;
+            var dst = this;
+            dst.Phone = src.Phone;
+            dst.Initials = src.Initials;
+            return base.Copy(src);
+        }
+        public static implicit operator Request(ArrivalNewRequestModel src)
+        {
+            var o = src as AbstractNewRequestModel;
+            Request dst = o;
+            //dst.FunctionNC = src.Function;
+            //dst.LocalNC = src.Local;
+            //dst.FunctionNC = src.Function;
+            //dst.Id = src.Id;
+            //dst.SurnameNC = src.FirstName;
+            //dst.NameNC = src.LastName;
+            //dst.DepartmentNC = src.Department_Id;
+            //dst.FunctionNC = src.Function;
+            //dst.SuperiorNC = src.SuperiorNC;
+            //dst.BusinessStreamNC = src.BusinessStreamNC;
+            //dst.StartDateNC = src.StartDate;
+            //dst.EmployeeNumberNC = src.EmployeeNumberNC;
+            //dst.nonSAPNC = src.nonSAPNC;
+            //dst.LocalNC = src.Local;
+            //dst.PhoneNC = src.Phone;
+            //dst.initialsNC = src.Initials;
+            //dst.TransFrom = dst.TransFrom;
+            //dst.Kind = (short)dst.Kind;
+            dst.Parrain = src.Parrain;
+            return dst;
         }
 
         public static implicit operator ArrivalNewRequestModel(Request model)
