@@ -2,20 +2,24 @@
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Linq;
+//using System.Data.Linq.Mapping;
 using System.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace Nespe
 {
-    
+    [Table("tbl_request")]
     public class Request
     { 
         public Request()
         {
             StateMachine = new StateMachine(this);
         }
-        [Key()]
-        public int Id { get; set; }
+        [Key, Column]
+        public long Id { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public StateMachine StateMachine { get; private set; }
 
         [Required(ErrorMessage="Veuillez entrer le nom")]
@@ -83,60 +87,60 @@ namespace Nespe
 
 
 
-        public static implicit operator RequestEntity(Request model)
-        {
-            RequestEntity r = null;
-            using (var db = new NespeEntityContainer()) {
-                r = (from t in db.Requests where t.Id == model.Id select t).FirstOrDefault();
-                if (r == null) {
-                    r = db.Requests.CreateObject();
-                }
-            }
-            //public:b+{[^:b]+}:b+{[^:b]+}:b+.+
-            //r.\2=model.\2;
-            r.Id = model.Id;
-            r.SurnameNC = model.SurnameNC;
-            r.NameNC = model.NameNC;
-            r.DepartmentNC = model.DepartmentNC;
-            r.FunctionNC = model.FunctionNC;
-            r.SuperiorNC = model.SuperiorNC;
-            r.BusinessStreamNC = model.BusinessStreamNC;
-            r.StartDateNC = model.StartDateNC;
-            r.EmployeeNumberNC = model.EmployeeNumberNC;
-            r.nonSAPNC = model.nonSAPNC;
-            r.LocalNC = model.LocalNC;
-            r.PhoneNC = model.PhoneNC;
-            r.initialsNC = model.initialsNC;
-            r.TransFrom = model.TransFrom;
-            r.Kind = (short)model.kind;
-            r.Parrain = model.Parrain;
+        //public static implicit operator RequestEntity(Request model)
+        //{
+        //    RequestEntity r = null;
+        //    using (var db = new NespeEntityContainer()) {
+        //        r = (from t in db.Requests where t.Id == model.Id select t).FirstOrDefault();
+        //        if (r == null) {
+        //            r = db.Requests.CreateObject();
+        //        }
+        //    }
+        //    //public:b+{[^:b]+}:b+{[^:b]+}:b+.+
+        //    //r.\2=model.\2;
+        //    r.Id = model.Id;
+        //    r.SurnameNC = model.SurnameNC;
+        //    r.NameNC = model.NameNC;
+        //    r.DepartmentNC = model.DepartmentNC;
+        //    r.FunctionNC = model.FunctionNC;
+        //    r.SuperiorNC = model.SuperiorNC;
+        //    r.BusinessStreamNC = model.BusinessStreamNC;
+        //    r.StartDateNC = model.StartDateNC;
+        //    r.EmployeeNumberNC = model.EmployeeNumberNC;
+        //    r.nonSAPNC = model.nonSAPNC;
+        //    r.LocalNC = model.LocalNC;
+        //    r.PhoneNC = model.PhoneNC;
+        //    r.initialsNC = model.initialsNC;
+        //    r.TransFrom = model.TransFrom;
+        //    r.Kind = (short)model.kind;
+        //    r.Parrain = model.Parrain;
 
             
-            return r;
-        }
-        public static implicit operator Request(RequestEntity model)
-        {
-            Request r = new Request();
-            r.Id = model.Id;
-            r.SurnameNC = model.SurnameNC;
-            r.NameNC = model.NameNC;
-            r.DepartmentNC = model.DepartmentNC;
-            r.FunctionNC = model.FunctionNC;
-            r.SuperiorNC = model.SuperiorNC;
-            r.BusinessStreamNC = model.BusinessStreamNC;
-            r.StartDateNC = model.StartDateNC == null ? DateTime.Now : model.StartDateNC.Value;
-            r.EmployeeNumberNC = model.EmployeeNumberNC;
-            r.nonSAPNC = model.nonSAPNC == null ? true : model.nonSAPNC.Value;
-            r.LocalNC = model.LocalNC;
-            r.PhoneNC = model.PhoneNC;
-            r.initialsNC = model.initialsNC;
-            r.TransFrom = model.TransFrom;
-            r.kind = (RequestKindEnum)(model.Kind == null ? 0 : model.Kind);
-            r.Parrain = model.Parrain;
+        //    return r;
+        //}
+        //public static implicit operator Request(RequestEntity model)
+        //{
+        //    Request r = new Request();
+        //    r.Id = model.Id;
+        //    r.SurnameNC = model.SurnameNC;
+        //    r.NameNC = model.NameNC;
+        //    r.DepartmentNC = model.DepartmentNC;
+        //    r.FunctionNC = model.FunctionNC;
+        //    r.SuperiorNC = model.SuperiorNC;
+        //    r.BusinessStreamNC = model.BusinessStreamNC;
+        //    r.StartDateNC = model.StartDateNC == null ? DateTime.Now : model.StartDateNC.Value;
+        //    r.EmployeeNumberNC = model.EmployeeNumberNC;
+        //    r.nonSAPNC = model.nonSAPNC == null ? true : model.nonSAPNC.Value;
+        //    r.LocalNC = model.LocalNC;
+        //    r.PhoneNC = model.PhoneNC;
+        //    r.initialsNC = model.initialsNC;
+        //    r.TransFrom = model.TransFrom;
+        //    r.kind = (RequestKindEnum)(model.Kind == null ? 0 : model.Kind);
+        //    r.Parrain = model.Parrain;
 
 
-            return r;
-        }
+        //    return r;
+        //}
     }
 
     public enum RequestKindEnum {

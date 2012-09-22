@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server Compact Edition
 -- --------------------------------------------------
--- Date Created: 09/19/2012 22:02:41
--- Generated from EDMX file: C:\Users\RDAirasMa\Desktop\Nespe\Nespe\Nespe\NCOM.edmx
+-- Date Created: 09/22/2012 15:24:48
+-- Generated from EDMX file: D:\workspace\_NESPRESSO\_NESPE\Nespe\NCOM.edmx
 -- --------------------------------------------------
 
 
@@ -20,23 +20,47 @@ GO
 GO
     ALTER TABLE [FormulaireSet_TelephoneFormulaireEntity] DROP CONSTRAINT [FK_TelephoneFormulaireEntity_inherits_FormulaireEntity];
 GO
+    ALTER TABLE [FormulaireSet_RolesSAPFormulaireEntity] DROP CONSTRAINT [FK_RolesSAPFormulaireEntity_inherits_FormulaireEntity];
+GO
+    ALTER TABLE [FormulaireSet_PMOFormulaireEntity] DROP CONSTRAINT [FK_PMOFormulaireEntity_inherits_FormulaireEntity];
+GO
+    ALTER TABLE [FormulaireSet_MailCaseFormulaireEntity] DROP CONSTRAINT [FK_MailCaseFormulaireEntity_inherits_FormulaireEntity];
+GO
+    ALTER TABLE [FormulaireSet_ClothesFormulaireEntity] DROP CONSTRAINT [FK_ClothesFormulaireEntity_inherits_FormulaireEntity];
+GO
+    ALTER TABLE [FormulaireSet_LockerFormulaireEntity] DROP CONSTRAINT [FK_LockerFormulaireEntity_inherits_FormulaireEntity];
+GO
+    ALTER TABLE [FormulaireSet_IntroFormulaireEntity] DROP CONSTRAINT [FK_IntroFormulaireEntity_inherits_FormulaireEntity];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- NOTE: if the table does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
-    DROP TABLE [FormulaireSet_ITFormulaireEntity];
-GO
-    DROP TABLE [FormulaireSet_TelephoneFormulaireEntity];
 
+    DROP TABLE [Requests];
 GO
     DROP TABLE [RequestInfoTypeEntitySet];
 GO
-
     DROP TABLE [FormulaireSet];
 GO
-    DROP TABLE [Requests];
+    DROP TABLE [FormulaireSet_ITFormulaireEntity];
 GO
+    DROP TABLE [FormulaireSet_TelephoneFormulaireEntity];
+GO
+    DROP TABLE [FormulaireSet_RolesSAPFormulaireEntity];
+GO
+    DROP TABLE [FormulaireSet_PMOFormulaireEntity];
+GO
+    DROP TABLE [FormulaireSet_MailCaseFormulaireEntity];
+GO
+    DROP TABLE [FormulaireSet_ClothesFormulaireEntity];
+GO
+    DROP TABLE [FormulaireSet_LockerFormulaireEntity];
+GO
+    DROP TABLE [FormulaireSet_IntroFormulaireEntity];
+GO
+
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
@@ -80,6 +104,38 @@ CREATE TABLE [FormulaireSet] (
     [Status] real  NOT NULL,
     [Comment] nvarchar(4000)  NOT NULL,
     [Necessary] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- Creating table 'PersonSet'
+CREATE TABLE [PersonSet] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [FirstName] nvarchar(4000)  NOT NULL,
+    [LastName] nvarchar(4000)  NOT NULL,
+    [Phone] nvarchar(4000)  NOT NULL,
+    [EMail] nvarchar(4000)  NOT NULL,
+    [SID] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- Creating table 'DepartmentSet'
+CREATE TABLE [DepartmentSet] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [SID] nvarchar(4000)  NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL,
+    [Description] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- Creating table 'PersonDepartmentSet'
+CREATE TABLE [PersonDepartmentSet] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [Department_Id] bigint  NOT NULL,
+    [Person_Id] bigint  NOT NULL,
+    [Role] int  NOT NULL,
+    [Rank] bigint  NOT NULL,
+    [PersonId] bigint  NOT NULL,
+    [DepartmentId] bigint  NOT NULL
 );
 GO
 
@@ -196,6 +252,24 @@ ADD CONSTRAINT [PK_FormulaireSet]
     PRIMARY KEY ([Id] );
 GO
 
+-- Creating primary key on [Id] in table 'PersonSet'
+ALTER TABLE [PersonSet]
+ADD CONSTRAINT [PK_PersonSet]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'DepartmentSet'
+ALTER TABLE [DepartmentSet]
+ADD CONSTRAINT [PK_DepartmentSet]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'PersonDepartmentSet'
+ALTER TABLE [PersonDepartmentSet]
+ADD CONSTRAINT [PK_PersonDepartmentSet]
+    PRIMARY KEY ([Id] );
+GO
+
 -- Creating primary key on [Id] in table 'FormulaireSet_ITFormulaireEntity'
 ALTER TABLE [FormulaireSet_ITFormulaireEntity]
 ADD CONSTRAINT [PK_FormulaireSet_ITFormulaireEntity]
@@ -274,6 +348,34 @@ ADD CONSTRAINT [FK_RequestInfoTypeFormulaireEntity]
 CREATE INDEX [IX_FK_RequestInfoTypeFormulaireEntity]
 ON [FormulaireSet]
     ([RequestInfoTypeId]);
+GO
+
+-- Creating foreign key on [PersonId] in table 'PersonDepartmentSet'
+ALTER TABLE [PersonDepartmentSet]
+ADD CONSTRAINT [FK_PersonPersonDepartment]
+    FOREIGN KEY ([PersonId])
+    REFERENCES [PersonSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PersonPersonDepartment'
+CREATE INDEX [IX_FK_PersonPersonDepartment]
+ON [PersonDepartmentSet]
+    ([PersonId]);
+GO
+
+-- Creating foreign key on [DepartmentId] in table 'PersonDepartmentSet'
+ALTER TABLE [PersonDepartmentSet]
+ADD CONSTRAINT [FK_DepartmentPersonDepartment]
+    FOREIGN KEY ([DepartmentId])
+    REFERENCES [DepartmentSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DepartmentPersonDepartment'
+CREATE INDEX [IX_FK_DepartmentPersonDepartment]
+ON [PersonDepartmentSet]
+    ([DepartmentId]);
 GO
 
 -- Creating foreign key on [Id] in table 'FormulaireSet_ITFormulaireEntity'

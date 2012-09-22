@@ -151,6 +151,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\PersonDepartment.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\CurrentStatusModel.cs" />
     <Compile Include="Models\FormulaireModel.cs" />
     <Compile Include="Models\NewRequestModel.cs" />

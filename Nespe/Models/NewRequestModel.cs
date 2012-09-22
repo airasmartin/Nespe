@@ -8,7 +8,7 @@ namespace Nespe.Models
 {
     public class AbstractNewRequestModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         [Required(ErrorMessage = "Veuillez entrer le nom")]
         [Display(Name = "Prénom")]
         public string SurnameNC { get; set; }

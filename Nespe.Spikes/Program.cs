@@ -51,6 +51,7 @@ namespace Nespe.Spikes
             using (var cnn = new System.Data.SqlServerCe.SqlCeConnection(@"Data Source=..\..\..\Nespe\App_Data\ncom.sdf"))
             {
                 using (var db = new Nespe.Context.NespeDbContext(cnn, true)) {
+                    db.Database.CreateIfNotExists();
                     var q = (from t in db.RequestSet select t);
                     foreach (var dr in q) {
                         Console.WriteLine("{0}", dr.NameNC);

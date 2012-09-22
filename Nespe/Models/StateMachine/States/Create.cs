@@ -20,8 +20,8 @@ namespace Nespe
         {
             using (var db = new NespeEntityContainer())
             {
-                db.Requests.AddObject(request);
-                db.SaveChanges();
+                //db.Requests.AddObject(request);
+                //db.SaveChanges();
             }
         }
         public void SendEmail(Request request)

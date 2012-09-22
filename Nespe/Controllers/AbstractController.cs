@@ -33,28 +33,28 @@ namespace Nespe.Controllers
         {
             using (var db = new NespeEntityContainer())
             {
-                var o = (from t in db.Requests where t.NameNC == request.NameNC && t.SurnameNC == request.SurnameNC select t).FirstOrDefault();
-                if (o != null)
-                {
-                    request.Id = o.Id;
+                //var o = (from t in db.Requests where t.NameNC == request.NameNC && t.SurnameNC == request.SurnameNC select t).FirstOrDefault();
+                //if (o != null)
+                //{
+                //    request.Id = o.Id;
 
-                }
-                RequestEntity e = request;
-                if (e.Id <= 0)
-                {
-                    db.Requests.AddObject(request);
-                }
-                else
-                {
-                    try
-                    {
-                        db.Attach(e);
-                    }
-                    catch (Exception) { }
+                //}
+                //RequestEntity e = request;
+                //if (e.Id <= 0)
+                //{
+                //    db.Requests.AddObject(request);
+                //}
+                //else
+                //{
+                //    try
+                //    {
+                //        db.Attach(e);
+                //    }
+                //    catch (Exception) { }
 
-                }
+                //}
 
-                db.SaveChanges();
+                //db.SaveChanges();
             }
             
         }
@@ -63,15 +63,15 @@ namespace Nespe.Controllers
         {
             using (var db = new NespeEntityContainer())
             {
-                var q = (from t in db.Requests select t);
-                if (q.Count() > 0)
-                {
-                    rl.Clear();
-                    foreach (var dr in q)
-                    {
-                        rl.Add(dr);
-                    }
-                }
+                //var q = (from t in db.Requests select t);
+                //if (q.Count() > 0)
+                //{
+                //    rl.Clear();
+                //    foreach (var dr in q)
+                //    {
+                //        rl.Add(dr);
+                //    }
+                //}
             }
         }
     }
