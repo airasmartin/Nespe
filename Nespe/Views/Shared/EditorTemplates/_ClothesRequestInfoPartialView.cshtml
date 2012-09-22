@@ -1,0 +1,41 @@
+﻿@model Nespe.Models.ClothesRequestInfo
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+
+    <table class="Form">
+        <caption align ="left"><h5>Infos Chaussures de sécurité :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor(x => x.necessarySecu, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessarySecu, false, new { Checked = "checked" })Non-nécessaire</td>       
+        </tr>  
+        <tr>
+            <td></td>
+            <td>Taille</td>
+            <td></td>
+            <td>Taille</td>
+        </tr>    
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.secuSheoes)@Html.LabelFor(x => x.secuSheoes)</td>
+            <td>@Html.TextBoxFor(x => x.shoeSize)</td>
+            <td>@Html.CheckBoxFor(x => x.gloves)@Html.LabelFor(x => x.gloves)</td>
+            <td>@Html.TextBoxFor(x => x.glovesSize)</td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.winterCoat)@Html.LabelFor(x => x.winterCoat)</td>
+            <td>@Html.TextBoxFor(x => x.winterCoatSize)</td>
+            <td>@Html.CheckBoxFor(x => x.polar)@Html.LabelFor(x => x.polar)</td>
+            <td>@Html.TextBoxFor(x => x.polarSize)</td>
+
+        </tr>        
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.bardushClothes)@Html.LabelFor(x => x.polar)</td>
+            <td>@Html.TextBoxFor(x => x.polarSize)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.commentSecu)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentSecu, new { @class = "wide" })</td>
+        </tr>
+    </table>
+  

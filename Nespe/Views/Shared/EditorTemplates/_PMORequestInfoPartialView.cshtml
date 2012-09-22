@@ -1,0 +1,33 @@
+﻿@model Nespe.Models.PMORequestInfo
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+
+    <table class="Form">
+        <caption align ="left"><h5>Infos Project Management Office  :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor(x => x.necessaryPMO, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessaryPMO, false, new { Checked = "checked" })Non-nécessaire</td>       
+        </tr>   
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.dms)@Html.LabelFor(x => x.dms)</td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.cats)@Html.LabelFor(x => x.cats)</td>
+        </tr>  
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.npdi)@Html.LabelFor(x => x.npdi)</td>
+        </tr>              
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.nestms)@Html.LabelFor(x => x.nestms)</td>
+            <td>@Html.CheckBoxFor(x => x.projectManager)@Html.LabelFor(x => x.projectManager)</td>
+            <td>@Html.CheckBoxFor(x => x.ppLineManager)@Html.LabelFor(x => x.ppLineManager)</td>
+            <td>@Html.CheckBoxFor(x => x.ppOperator)@Html.LabelFor(x => x.ppOperator)</td>
+            <td>@Html.CheckBoxFor(x => x.labTech)@Html.LabelFor(x => x.labTech)</td>
+        </tr>  
+        <tr>
+            <td>@Html.LabelFor(x => x.commentPMO)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentPMO, new { @class = "wide" })</td>
+        </tr>
+    </table>

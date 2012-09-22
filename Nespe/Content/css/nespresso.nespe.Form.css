@@ -1,0 +1,29 @@
+﻿.Form
+{
+}
+fieldset table.Form caption, 
+fieldset table.Form caption h5, 
+fieldset.Form table caption, 
+fieldset.Form table caption h5,
+fieldset.Form table.Form caption, 
+fieldset.Form table.Form caption h5
+{
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    background-color:red;
+}
+fieldset table.Form caption, fieldset.Form table tbody
+{
+    padding: 5px;
+}
+fieldset.Form fieldset.Action
+{
+    padding: 5px;
+    text-align: center;
+}
+fieldset.Form fieldset.Action input[type="submit"]
+{
+    background-color:red;
+    text-align: center;
+}

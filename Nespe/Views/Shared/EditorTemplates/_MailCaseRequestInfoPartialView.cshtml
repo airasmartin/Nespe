@@ -1,0 +1,18 @@
+﻿@model Nespe.Models.MailCaseRequestInfo
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+
+    <table class="Form">
+        <caption align ="left"><h5>Infos Case courrier :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor(x => x.necessaryMailCase, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessaryMailCase, false, new { Checked = "checked" })Non-nécessaire</td>       
+        </tr>         
+        <tr>
+            <td>@Html.LabelFor(x => x.commentMailCase)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentMailCase, new { @class = "wide" })</td>
+        </tr>
+    </table>
+ 
