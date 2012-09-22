@@ -1,0 +1,10 @@
+﻿@model Nespe.Models.TransfertNewRequestModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using RequestKindEnum = Nespe.RequestKindEnum;
+   
+                    
+                <tr>
+                    <th>@Html.LabelFor(x => x.TransFrom)</th>
+                    <td>@Html.TextBoxFor(x => x.TransFrom)</td>
+                </tr>

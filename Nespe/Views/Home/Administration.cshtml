@@ -1,0 +1,77 @@
+﻿@model Nespe.Request
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+@{
+    ViewBag.Title = "Nespe - Administration";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Administration</h1>
+                
+            </hgroup>
+
+        </div>
+    </section>
+}
+
+
+<table>
+    <caption align=left><h5>Départements :</h5></caption>
+    <tr>
+        <th>@Html.LabelFor(x=>x.department)</th>
+        <th>@Html.LabelFor(x=>x.headDepartment)</th>
+        <th>@Html.LabelFor(x=>x.assistant1)</th>
+        <th>@Html.LabelFor(x=>x.assistant2)</th>
+        <th>@Html.LabelFor(x=>x.assistant3)</th>
+        <th></th>
+        <th>Nouveau</th>
+    </tr>
+    @foreach (var dr in Model.AdministrationRequestSet)
+    {
+    <tr>
+        <td>@dr.departement</td>
+        <td>@dr.headDepartment</td>
+        <td>@dr.assistant1</td>
+        <td>@dr.assistant2</td>
+        <td>@dr.assistant3</td>
+        <td>edit</td>
+        <td>delete</td>
+    </tr>
+    }
+</table>
+
+
+<form>
+    <table>
+        <caption>Edition du département @Html.DisplayFor(x=>x.department)</caption>
+        <tr>
+            <td>@Html.LabelFor(x=>x.headDepartment)</td>
+            <td>@Html.TextBoxFor(x=>x.headDepartment)</td>
+            <td><INPUT type=button name="Search" value="..."></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x=>x.assistant1)</td>
+            <td>@Html.TextBoxFor(x=>x.assistant1)</td>
+            <td><INPUT type=button name="Search" value="..."></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x=>x.assistant2)</td>
+            <td>@Html.TextBoxFor(x=>x.assistant2)</td>
+            <td><INPUT type=button name="Search" value="..."></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x=>x.assistant3)</td>
+            <td>@Html.TextBoxFor(x=>x.assistant3)</td>
+            <td><INPUT type=button name="Search" value="..."></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><INPUT type=button name="Save" value="Sauver"></td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,104 @@
+﻿
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+    
+    
+    <table border="0">
+        <caption align ="left"><h5>@NameNC @SurnameNC @EmployeeNumberNC @kind : :</h5></caption>
+        <tr>
+            <th colspan=7 align="center">Préparation du départ</th>
+        </tr>
+        <tr>
+            <th>Tâche</th>
+            <th>Infos tâche</th>
+            <th>Executée par :</th>
+            <th>Date</th>
+            <th>Etat</th>
+            <th>Finir</th>
+            <th>Commentaire</th>
+        </tr>
+        <tr>
+            <th>Faire note de retraite pour collab. PTC et STC</th>
+            <td>Demander dossier aux HR</td>
+            <td>@superieur / @Assistante</td>
+            <td>@DateCompletedNoteRetraite</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> Valider / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedNoteRetraiteComment)</td>
+        </tr>
+        <tr>
+            <th>Faire slide de transfert ou départ</th>
+            <td><a href="http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Départ-Transfert%20-%20dossier%20de%20préparation/Template%20Transfer%20Note%20(ver%20MAR2011).ppt">Template</a></td>
+            <td>@Assistante</td>
+            <td>@DateCompletedSlide</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> Valider / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedSlide)</td>
+        </tr>
+        <tr>
+            <th>Organiser RDV "retirement" chez M. Blattner</th>
+            <td>Voir avec Geneviève Hall</td>
+            <td>@Assistante</td>
+            <td>@DateCompletedRDV</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> Valider / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedRDV)</td>
+        </tr>
+        <tr>
+            <th>Faire "forcer" le prgr jubilaires pour cadeau si retraite anticipée</th>
+            <td>Contacter Caroline Jayet (7441) et lui demander de faire le nécessaire pour recevoir email pour cadeaux</td>
+            <td>@Assistante</td>
+            <td>@DateCompletedJubilaire</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> Valider / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedJubilaire)</td>
+        </tr>
+        <tr>
+            <th>Organiser apéro de départ</th>
+            <td>voir avec Tani Gossenbacher (7216)</td>
+            <td>@Assistante</td>
+            <td>@DateCompletedApero</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> Valider / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedApero)</td>
+        </tr>
+        <tr>
+            <th>Vérifier présence des chefs pour date apéritif départ</th>
+            <td>via agenda DH et TL </td>
+            <td>@Assistante</td>
+            <td>@DateCompletedPresentApero</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> Valider / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedPresentApero)</td>
+        </tr>
+        <tr>
+            <th>Faire slide invit. apéro et l'envoyer à Orbe all</th>
+            <td></td>
+            <td>@Assistante / @LeavingUser</td>
+            <td>@DateCompletedDepartureSlide</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> Valider / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedDepartureSlide)</td>
+        </tr>
+        <tr>
+            <th>Faire circuler cagnotte + carte</th>
+            <td></td>
+            <td>@Assistante</td>
+            <td>@DateCompletedCagnotte</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> Valider / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedCagnotte)</td>
+        </tr>
+         <tr>
+            <th>Archivage documents + Tri du N: et H: + Documentum</th>
+            <td><a href="http://intranet.nestle.com/nikitaTemplates/plugin_i/template_i1/Nikita_default.asp?ins%5Fidnt=A5EAEC031EFD4F41883B2585D8FD59CA&con%5Fins%5Fidnt=3DF29E4E%2D8175%2D4835%2D9277%2D5FFFBBFBE242&sit%5Fidnt=519B8DECC2A011D5A05A009027724FC4
+                ">procédure ici</a> En cas de questions, s'adresser à Magali Waelti</td>
+            <td>@LeavingUser</td>
+            <td>@DateCompletedNettoyage</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> Valider / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedNettoyage)</td>
+        </tr>
+    </table>
+    @*Bouton enregistre modifs*@

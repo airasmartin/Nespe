@@ -1,0 +1,45 @@
+﻿
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+    <table border="0">
+         <tr>
+            <th>Demande de matériel IT à récupérer</th>
+            <td>En cliquant sur le lien une demande sera faite automatiquement pour le jour après le départ</td>
+            <td>@Assistante</td>
+            <td>@DateCompletedRecupIT</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> <a href="creationXML recup">Faire Demande</a> / non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedRecupIT)</td>
+        </tr>
+         <tr>
+            <th>Rendre habits de travail</th>
+            <td>Habits à rentre à Marianne Emery (4320)</td>
+            <td>@LeavingUser</td>
+            <td>@DateCompletedGiveBackClohes</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> valider</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedGiveBackClothes)</td>
+        </tr>
+         <tr>
+            <th>Rangement Bureau</th>
+            <td>Laisse ta place de travail propre et vide tes tiroirs et armoires</td>
+            <td>@LeavingUser</td>
+            <td>@DateCompletedRangement</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> valider</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedRangement)</td>
+        </tr>
+        <tr>
+            <th>Activation Out of office </th>
+            <td></td>
+            <td>@LeavingUser</td>
+            <td>@DateCompletedOOO</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> valider</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedOOO)</td>
+        </tr>
+
+    </table>
+    @*Bouton enregistre modifs*@

@@ -1,0 +1,28 @@
+﻿@model Nespe.Models.ArrivalCompleterFormulaireModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+@{
+    ViewBag.Title = "Nespe - Accueil";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Accueil</h1>
+                
+            </hgroup>
+
+        </div>
+    </section>
+
+}
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_FormsToCompleteList", Model.RequestModel)
+    @Html.Partial("_ArrivalList", Model.RequestModel)
+    @Html.Partial("_TransfertsList", Model.RequestModel)
+    @Html.Partial("_DeparturesList", Model.RequestModel)
+}

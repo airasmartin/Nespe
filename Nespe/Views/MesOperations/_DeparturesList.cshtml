@@ -1,0 +1,31 @@
+﻿@model Nespe.Models.ArrivalEditFormulaireModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+    <table>
+        <caption align ="left"><h5>Départs :</h5></caption>
+        @if (Model.DepartureRequestSet == null)
+        {
+        <tr>
+            <td>Aucun pour le moment</td>
+        </tr>
+        }
+        @foreach (var dr in Model.DepartureRequestSet)
+        { 
+        <tr>
+            <td>@dr.SurnameNC @dr.NameNC</td>
+            <td>@String.Format("{0:d}", dr.StartDateNC)</td>
+            @if (dr.IsOverTime)
+            {
+            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
+            }
+            else
+            { 
+                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
+            }
+            <td><a href=Formulaire>edit</a></td>
+        </tr>     
+       
+        }
+    </table>

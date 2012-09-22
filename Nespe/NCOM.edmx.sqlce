@@ -1,0 +1,353 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 09/19/2012 22:02:41
+-- Generated from EDMX file: C:\Users\RDAirasMa\Desktop\Nespe\Nespe\Nespe\NCOM.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    ALTER TABLE [FormulaireSet] DROP CONSTRAINT [FK_RequestEntityFormulaireEntity];
+GO
+    ALTER TABLE [FormulaireSet] DROP CONSTRAINT [FK_RequestInfoTypeFormulaireEntity];
+GO
+    ALTER TABLE [FormulaireSet_ITFormulaireEntity] DROP CONSTRAINT [FK_ITFormulaireEntity_inherits_FormulaireEntity];
+GO
+    ALTER TABLE [FormulaireSet_TelephoneFormulaireEntity] DROP CONSTRAINT [FK_TelephoneFormulaireEntity_inherits_FormulaireEntity];
+GO
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+    DROP TABLE [FormulaireSet_ITFormulaireEntity];
+GO
+    DROP TABLE [FormulaireSet_TelephoneFormulaireEntity];
+
+GO
+    DROP TABLE [RequestInfoTypeEntitySet];
+GO
+
+    DROP TABLE [FormulaireSet];
+GO
+    DROP TABLE [Requests];
+GO
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Requests'
+CREATE TABLE [Requests] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [SurnameNC] nvarchar(4000)  NOT NULL,
+    [NameNC] nvarchar(4000)  NOT NULL,
+    [DepartmentNC] nvarchar(4000)  NOT NULL,
+    [FunctionNC] nvarchar(4000)  NULL,
+    [SuperiorNC] nvarchar(4000)  NULL,
+    [BusinessStreamNC] nvarchar(4000)  NULL,
+    [StartDateNC] datetime  NULL,
+    [EmployeeNumberNC] nvarchar(4000)  NOT NULL,
+    [nonSAPNC] bit  NULL,
+    [LocalNC] nvarchar(4000)  NULL,
+    [PhoneNC] nvarchar(4000)  NULL,
+    [initialsNC] nvarchar(4000)  NULL,
+    [TransFrom] nvarchar(4000)  NULL,
+    [Parrain] nvarchar(4000)  NULL,
+    [Kind] smallint  NULL
+);
+GO
+
+-- Creating table 'RequestInfoTypeEntitySet'
+CREATE TABLE [RequestInfoTypeEntitySet] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL,
+    [Description] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- Creating table 'FormulaireSet'
+CREATE TABLE [FormulaireSet] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [RequestId] int  NOT NULL,
+    [RequestInfoTypeId] bigint  NOT NULL,
+    [Executor] nvarchar(4000)  NOT NULL,
+    [Date] datetime  NOT NULL,
+    [Status] real  NOT NULL,
+    [Comment] nvarchar(4000)  NOT NULL,
+    [Necessary] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- Creating table 'FormulaireSet_ITFormulaireEntity'
+CREATE TABLE [FormulaireSet_ITFormulaireEntity] (
+    [Laptop] bit  NOT NULL,
+    [Docking] bit  NOT NULL,
+    [Keyboard] bit  NOT NULL,
+    [Desktop] bit  NOT NULL,
+    [Screen] bit  NOT NULL,
+    [Mouse] bit  NOT NULL,
+    [CommentIT] nvarchar(4000)  NOT NULL,
+    [Id] bigint  NOT NULL
+);
+GO
+
+-- Creating table 'FormulaireSet_TelephoneFormulaireEntity'
+CREATE TABLE [FormulaireSet_TelephoneFormulaireEntity] (
+    [FixPhone] bit  NOT NULL,
+    [Cordless] bit  NOT NULL,
+    [Mobile] bit  NOT NULL,
+    [Smartphone] bit  NOT NULL,
+    [HeadphoneForFix] bit  NOT NULL,
+    [HeadphoneForCordless] bit  NOT NULL,
+    [FreeHandsForFix] nvarchar(4000)  NOT NULL,
+    [FreeHandsForCordless] nvarchar(4000)  NOT NULL,
+    [CommentPhone] nvarchar(4000)  NOT NULL,
+    [Id] bigint  NOT NULL
+);
+GO
+
+-- Creating table 'FormulaireSet_RolesSAPFormulaireEntity'
+CREATE TABLE [FormulaireSet_RolesSAPFormulaireEntity] (
+    [PurchaseType] nvarchar(4000)  NOT NULL,
+    [PCard] bit  NOT NULL,
+    [CommentPhone] nvarchar(4000)  NOT NULL,
+    [Id] bigint  NOT NULL
+);
+GO
+
+-- Creating table 'FormulaireSet_PMOFormulaireEntity'
+CREATE TABLE [FormulaireSet_PMOFormulaireEntity] (
+    [DMS] bit  NOT NULL,
+    [CATS] bit  NOT NULL,
+    [NPDI] bit  NOT NULL,
+    [NESTMS] bit  NOT NULL,
+    [ProjectManager] bit  NOT NULL,
+    [PPLineManager] bit  NOT NULL,
+    [PpOperator] bit  NOT NULL,
+    [LabTech] bit  NOT NULL,
+    [CommentPMO] nvarchar(4000)  NOT NULL,
+    [Id] bigint  NOT NULL
+);
+GO
+
+-- Creating table 'FormulaireSet_MailCaseFormulaireEntity'
+CREATE TABLE [FormulaireSet_MailCaseFormulaireEntity] (
+    [CommentMailCase] nvarchar(4000)  NOT NULL,
+    [Id] bigint  NOT NULL
+);
+GO
+
+-- Creating table 'FormulaireSet_ClothesFormulaireEntity'
+CREATE TABLE [FormulaireSet_ClothesFormulaireEntity] (
+    [SecuShoes] bit  NOT NULL,
+    [ShoeSize] nvarchar(4000)  NOT NULL,
+    [Gloves] bit  NOT NULL,
+    [GlovesSize] nvarchar(4000)  NOT NULL,
+    [WinterCoat] bit  NOT NULL,
+    [WinterCoatSize] nvarchar(4000)  NOT NULL,
+    [Polar] bit  NOT NULL,
+    [PolarSize] nvarchar(4000)  NOT NULL,
+    [BarduschClothes] bit  NOT NULL,
+    [BarduschClothesSize] nvarchar(4000)  NOT NULL,
+    [CommentSecu] nvarchar(4000)  NOT NULL,
+    [Id] bigint  NOT NULL
+);
+GO
+
+-- Creating table 'FormulaireSet_LockerFormulaireEntity'
+CREATE TABLE [FormulaireSet_LockerFormulaireEntity] (
+    [CommentLocker] nvarchar(4000)  NOT NULL,
+    [Id] bigint  NOT NULL
+);
+GO
+
+-- Creating table 'FormulaireSet_IntroFormulaireEntity'
+CREATE TABLE [FormulaireSet_IntroFormulaireEntity] (
+    [IntroLanguage] nvarchar(4000)  NOT NULL,
+    [CommentIntro] nvarchar(4000)  NOT NULL,
+    [Id] bigint  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'Requests'
+ALTER TABLE [Requests]
+ADD CONSTRAINT [PK_Requests]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'RequestInfoTypeEntitySet'
+ALTER TABLE [RequestInfoTypeEntitySet]
+ADD CONSTRAINT [PK_RequestInfoTypeEntitySet]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'FormulaireSet'
+ALTER TABLE [FormulaireSet]
+ADD CONSTRAINT [PK_FormulaireSet]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'FormulaireSet_ITFormulaireEntity'
+ALTER TABLE [FormulaireSet_ITFormulaireEntity]
+ADD CONSTRAINT [PK_FormulaireSet_ITFormulaireEntity]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'FormulaireSet_TelephoneFormulaireEntity'
+ALTER TABLE [FormulaireSet_TelephoneFormulaireEntity]
+ADD CONSTRAINT [PK_FormulaireSet_TelephoneFormulaireEntity]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'FormulaireSet_RolesSAPFormulaireEntity'
+ALTER TABLE [FormulaireSet_RolesSAPFormulaireEntity]
+ADD CONSTRAINT [PK_FormulaireSet_RolesSAPFormulaireEntity]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'FormulaireSet_PMOFormulaireEntity'
+ALTER TABLE [FormulaireSet_PMOFormulaireEntity]
+ADD CONSTRAINT [PK_FormulaireSet_PMOFormulaireEntity]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'FormulaireSet_MailCaseFormulaireEntity'
+ALTER TABLE [FormulaireSet_MailCaseFormulaireEntity]
+ADD CONSTRAINT [PK_FormulaireSet_MailCaseFormulaireEntity]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'FormulaireSet_ClothesFormulaireEntity'
+ALTER TABLE [FormulaireSet_ClothesFormulaireEntity]
+ADD CONSTRAINT [PK_FormulaireSet_ClothesFormulaireEntity]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'FormulaireSet_LockerFormulaireEntity'
+ALTER TABLE [FormulaireSet_LockerFormulaireEntity]
+ADD CONSTRAINT [PK_FormulaireSet_LockerFormulaireEntity]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'FormulaireSet_IntroFormulaireEntity'
+ALTER TABLE [FormulaireSet_IntroFormulaireEntity]
+ADD CONSTRAINT [PK_FormulaireSet_IntroFormulaireEntity]
+    PRIMARY KEY ([Id] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [RequestId] in table 'FormulaireSet'
+ALTER TABLE [FormulaireSet]
+ADD CONSTRAINT [FK_RequestEntityFormulaireEntity]
+    FOREIGN KEY ([RequestId])
+    REFERENCES [Requests]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RequestEntityFormulaireEntity'
+CREATE INDEX [IX_FK_RequestEntityFormulaireEntity]
+ON [FormulaireSet]
+    ([RequestId]);
+GO
+
+-- Creating foreign key on [RequestInfoTypeId] in table 'FormulaireSet'
+ALTER TABLE [FormulaireSet]
+ADD CONSTRAINT [FK_RequestInfoTypeFormulaireEntity]
+    FOREIGN KEY ([RequestInfoTypeId])
+    REFERENCES [RequestInfoTypeEntitySet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RequestInfoTypeFormulaireEntity'
+CREATE INDEX [IX_FK_RequestInfoTypeFormulaireEntity]
+ON [FormulaireSet]
+    ([RequestInfoTypeId]);
+GO
+
+-- Creating foreign key on [Id] in table 'FormulaireSet_ITFormulaireEntity'
+ALTER TABLE [FormulaireSet_ITFormulaireEntity]
+ADD CONSTRAINT [FK_ITFormulaireEntity_inherits_FormulaireEntity]
+    FOREIGN KEY ([Id])
+    REFERENCES [FormulaireSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Id] in table 'FormulaireSet_TelephoneFormulaireEntity'
+ALTER TABLE [FormulaireSet_TelephoneFormulaireEntity]
+ADD CONSTRAINT [FK_TelephoneFormulaireEntity_inherits_FormulaireEntity]
+    FOREIGN KEY ([Id])
+    REFERENCES [FormulaireSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Id] in table 'FormulaireSet_RolesSAPFormulaireEntity'
+ALTER TABLE [FormulaireSet_RolesSAPFormulaireEntity]
+ADD CONSTRAINT [FK_RolesSAPFormulaireEntity_inherits_FormulaireEntity]
+    FOREIGN KEY ([Id])
+    REFERENCES [FormulaireSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Id] in table 'FormulaireSet_PMOFormulaireEntity'
+ALTER TABLE [FormulaireSet_PMOFormulaireEntity]
+ADD CONSTRAINT [FK_PMOFormulaireEntity_inherits_FormulaireEntity]
+    FOREIGN KEY ([Id])
+    REFERENCES [FormulaireSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Id] in table 'FormulaireSet_MailCaseFormulaireEntity'
+ALTER TABLE [FormulaireSet_MailCaseFormulaireEntity]
+ADD CONSTRAINT [FK_MailCaseFormulaireEntity_inherits_FormulaireEntity]
+    FOREIGN KEY ([Id])
+    REFERENCES [FormulaireSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Id] in table 'FormulaireSet_ClothesFormulaireEntity'
+ALTER TABLE [FormulaireSet_ClothesFormulaireEntity]
+ADD CONSTRAINT [FK_ClothesFormulaireEntity_inherits_FormulaireEntity]
+    FOREIGN KEY ([Id])
+    REFERENCES [FormulaireSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Id] in table 'FormulaireSet_LockerFormulaireEntity'
+ALTER TABLE [FormulaireSet_LockerFormulaireEntity]
+ADD CONSTRAINT [FK_LockerFormulaireEntity_inherits_FormulaireEntity]
+    FOREIGN KEY ([Id])
+    REFERENCES [FormulaireSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Id] in table 'FormulaireSet_IntroFormulaireEntity'
+ALTER TABLE [FormulaireSet_IntroFormulaireEntity]
+ADD CONSTRAINT [FK_IntroFormulaireEntity_inherits_FormulaireEntity]
+    FOREIGN KEY ([Id])
+    REFERENCES [FormulaireSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------

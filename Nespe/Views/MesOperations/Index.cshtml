@@ -1,0 +1,411 @@
+﻿@model Nespe.Models.CurrentStatusModel
+
+@using System.Linq;
+
+@{
+    ViewBag.Title = "Nespe - Mes Opérations";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Page personnelle de <span class="username">@User.Identity.Name</span></h1>
+                
+            </hgroup>
+
+        </div>
+    </section>
+}
+<h3>Mes opérations en cours :</h3>
+<table>
+        <caption align ="left"><h5>Formulaires à compléter :</h5></caption>
+        @foreach (var dr in Model.CompletionRequestSet)
+        { 
+        <tr>
+            <td>@dr.SurnameNC @dr.NameNC</td>
+            <td>@String.Format("{0:d}", dr.StartDateNC)</td>
+            @if (dr.IsOverTime)
+            {
+            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants</td>
+            }
+            else { 
+                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés</td>
+            }
+            <td>
+               
+                @Html.ActionLink("Compléter", "Completer", "MesOperations", new { Id = dr.Id }, new { @class="Action"}) 
+            </td>
+        </tr>     
+       
+      }
+    </table>
+
+
+    <table>
+        <caption align ="left"><h5>Arrivées :</h5></caption>
+        @if (Model.ArrivalRequestSet == null)
+        {
+        <tr>
+        <td>Aucun pour le moment</td>
+        </tr>
+            }
+            @foreach (var dr in Model.ArrivalRequestSet)
+            { 
+            <tr>
+                <td>@dr.SurnameNC @dr.NameNC</td>
+                <td>@String.Format("{0:d}", dr.StartDateNC)</td>
+                @if (dr.IsOverTime)
+                {
+                <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
+                }
+                else { 
+                    <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
+                }
+                <td><a href="Formulaire">edit</a></td>
+            </tr>     
+       
+   }
+    </table>
+
+    <table>
+        <caption align ="left"><h5>Transferts :</h5></caption>
+        @if (Model.TransfertRequestSet == null )
+        {
+        <tr>
+        <td>Aucun pour le moment</td>
+        </tr>
+            }
+@foreach (var dr in Model.TransfertRequestSet)
+{ 
+        <tr>
+            <td>@dr.SurnameNC @dr.NameNC</td>
+            <td>@String.Format("{0:d}", dr.StartDateNC)</td>
+            @if (dr.IsOverTime)
+            {
+            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
+            }
+            else { 
+                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
+            }
+            <td><a href=Formulaire>edit</a></td>
+        </tr>     
+       
+}
+    </table>
+    <table>
+        <caption align ="left"><h5>Départs :</h5></caption>
+        @if (Model.DepartureRequestSet == null)
+        {
+        <tr>
+            <td>Aucun pour le moment</td>
+        </tr>
+        }
+        @foreach (var dr in Model.DepartureRequestSet)
+        { 
+        <tr>
+            <td>@dr.SurnameNC @dr.NameNC</td>
+            <td>@String.Format("{0:d}", dr.StartDateNC)</td>
+            @if (dr.IsOverTime)
+            {
+            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
+            }
+            else
+            { 
+                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
+            }
+            <td><a href=Formulaire>edit</a></td>
+        </tr>     
+       
+        }
+    </table>
+        
+
+    <table border="0">
+        <caption align ="left"><h5>Martin Airas 10218741 Arrivée :</h5></caption>
+        <tr>
+            <th colspan=7 align="center">Préparation de l'arrivée du nouveau collaborateur</th>
+        </tr>
+        <tr>
+            <th>Tâche</th>
+            <th>Infos tâche</th>
+            <th>Executée par :</th>
+            <th>Date</th>
+            <th>Etat</th>
+            <th>Finir</th>
+            <th>Commentaire</th>
+        </tr>
+        <tr>
+            <th>Demande IT</th>
+            <td>Demade par le formulaire</td>
+            <td>"Assistante qui a rempli le form"</td>
+            <td>11/05/2013</td>
+            <td bgcolor="#ccffcc" >done</td>
+            <td></td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Installation matériel</th>
+            <td>"numéro ticket"</td>
+            <td>"Technicien en charge"</td>
+            <td></td>
+            <td bgcolor="#ff6666">en cours</td>
+            <td></td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Accès au N:</th>
+            <td>lien page N</td>
+            <td>"Assistante/DH"</td>
+            <td></td>
+            <td bgcolor="#ff6666">en cours</td>
+            <td>clôturer</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Téléphone</th>
+            <td>Demande par le formulaire</td>
+            <td>"Assistante qui a rempli le form"</td>
+            <td>10.06.2012 : 8:30</td>
+            <td bgcolor="#ccffcc">done</td>
+            <td></td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Rôles SAP</th>
+            <td>Demande par le formulaire</td>
+            <td>"Assistante qui a rempli le form"</td>
+            <td>10.06.2012 : 8:30</td>
+            <td bgcolor="#ccffcc">done</td>
+            <td></td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Project Management Office</th>
+            <td>Demande par le formulaire</td>
+            <td>"Assistante qui a rempli le form"</td>
+            <td>10.06.2012 : 8:30</td>
+            <td bgcolor="#ccffcc">done</td>
+            <td></td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Case courrier</th>
+            <td>Demande par le formulaire</td>
+            <td>"Assistante qui a rempli le form"</td>
+            <td>10.06.2012 : 8:30</td>
+            <td bgcolor="#ccffcc">done</td>
+            <td></td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Chaussures sécurité, blouse</th>
+            <td>Demande par le formulaire</td>
+            <td>"Assistante qui a rempli le form"</td>
+            <td>10.06.2012 : 8:30</td>
+            <td bgcolor="#66ccff">pas besoin</td>
+            <td></td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Programme Intro individualisé</th>
+            <td><a href="http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arriv%C3%A9e%20nouveaux%20collaborateurs%20-%20Dossier%20de%20pr%C3%A9paration/Intro%20programme%202012.xls" target="_blank">Template intro program</a></td>
+            <td>"Assistante"</td>
+            <td></td>
+            <td bgcolor="#ff6666">en cours</td>
+            <td>clôturer</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Annonce d'arrivée</th>
+            <td><a href="http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arriv%C3%A9e%20nouveaux%20collaborateurs%20-%20Dossier%20de%20pr%C3%A9paration/Template%20Arrival%20Note%20(ver.%20MAR2011).ppt" target="_blank">Template Annonce Newcomers</a></td>
+            <td>"Assistante"</td>
+            <td></td>
+            <td bgcolor="#ff6666">en cours</td>
+            <td>clôturer</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Organisation 1er repas</th>
+            <td><a href="http://thenest-eur-hq.nestle.com/RD/RD_RLOC/Europe/OrbePTC/documents/indexable/Facility%20Management/2009-11%20Process%20Complaints%20V2-091101.pdf">réservation</a> + inviter DH ou Groupe leader</td>
+            <td>"Assistante"</td>
+            <td></td>
+            <td bgcolor="#ff6666">en cours</td>
+            <td>clôturer</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Documents SHE</th>
+            <td>lien</td>
+            <td>"Assistante"</td>
+            <td></td>
+            <td bgcolor="#ff6666">en cours</td>
+            <td>clôturer</td>
+            <td><input type=text /></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th colspan=7 align=center>Le jour de l'entrée en Service</th>
+        </tr>
+        <tr>
+            <th >Tâche</th>
+            <th>Infos tâche</th>
+            <th>Responsable</th>
+            <th>Statut</th>
+            <th>Valid. Resp.</th>
+            <th>Valid NC</th>
+            <th>Commentaire</th>
+        </tr>
+        <tr>
+            <th>Accueil à la réception</th>
+            <td></td>
+            <td>"Assistante"/"Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Instructions SHE</th>
+            <td>liens sur vidéo</td>
+            <td>"Assistante"/"Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Présentation</th>
+            <td>Présentation au chef de département et aux collègues de travail</td>
+            <td>"Assistante"/"Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Précision sur les fonctions</th>
+            <td></td>
+            <td>DH/Parrain/sup.hiérarichque</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Loge sécurité pour établir le badge</th>
+            <td></td>
+            <td>"Assistante"/"Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Chercher équipement</th>
+            <td>Chaussures de sécurité, habits de travail, EPI</td>
+            <td>"Assistante"/"Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Présentation programme</th>
+            <td>Présenter le programme d'introduction au nouveau collaborateur</td>
+            <td>"Assistante"/"Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Explication organisation</th>
+            <td>Expliquer l'organigramme du département, du PTC, l'organisation des Business Streams</td>
+            <td>"Assistante"/"Parrain"/"DH"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Instructions Administratives</th>
+            <td>- Signatures <br />
+                - Création compte voyageur<br />
+                - Carte de crédit<br />
+                - Remboursement frais</td>
+            <td>"Assistante"/"Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Info: la vie du département</th>
+            <td>- Horarie de travail, badgeage, flextime (adapté aux besoins de la fonction, aux coutumes du département, aux attentes du DH<br />
+                - on dit "Bonjour"<br />
+                - Pauses<br />
+                - Confidentialité (SOP)</td>
+            <td>"Assistante"/"Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Informations de base</th>
+            <td>Relatives à la gestion de projet : <br />
+                - DMS<br />
+                - NPDI<br />
+                - Hydra<br />
+                - CATS </td>
+            <td>"Assistante"/"Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Utilisation des services</th>
+            <td>- Intranet<br />
+                - Courrier<br />
+                - Téléphone<br />
+                - E-mail<br />
+                - Fax<br />
+                - Cartes de visite<br />
+                - Demande de voyage<br />
+                - Location de voiture<br />
+                - Easy Mail<br />
+                - Confidentialité des données<br /></td>
+            <td>"Assistante"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Instructions de travail</th>
+            <td>- éttablissement des rapports<br />
+                - déviation téléphonique<br />
+                - utilisation Outlook (GAL, PST, OOO,etc.)</td>
+            <td>"Assistante"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+        <tr>
+            <th>Conseils pratiques</th>
+            <td>- architecture bâtiments, logistique<br />
+                - vestiaires<br />
+                - cafétéria<br />
+                - restaurant<br />
+                - CAN<br />
+                - tourniquet</td>
+            <td>"Assistante"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td><input type=text /></td>
+        </tr>
+    </table>

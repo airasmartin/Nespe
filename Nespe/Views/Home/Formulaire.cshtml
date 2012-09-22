@@ -1,0 +1,229 @@
+﻿@model Nespe.Request
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+@{
+    ViewBag.Title = "Nespe - Formulaire nouveau collaborateur";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Formulaire Nouveau collaborateur :</h1>
+                
+            </hgroup>
+
+        </div>
+    </section>
+}
+
+@using (Html.BeginForm())
+{
+    <table class="Form">
+        <caption align ="left"><h5>Infos de Base :</h5></caption>
+        <tr>
+            <td>@Html.LabelFor(x => x.NameNC)</td>
+            <td>@Html.TextBoxFor(x => x.NameNC)</td>
+            <td>@Html.LabelFor(x => x.SurnameNC)</td>
+            <td>@Html.TextBoxFor(x => x.SurnameNC)</td>
+        </tr>     
+        <tr>
+            <td>@Html.LabelFor(x => x.DepartmentNC)</td>
+            <td>@Html.TextBoxFor(x => x.DepartmentNC)</td>
+            <td>@Html.LabelFor(x => x.FunctionNC)</td>
+            <td>@Html.TextBoxFor(x => x.FunctionNC)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.SuperiorNC)</td>
+            <td>@Html.TextBoxFor(x => x.SuperiorNC)</td>
+            <td>@Html.LabelFor(x => x.BusinessStreamNC)</td>
+            <td>@Html.TextBoxFor(x => x.BusinessStreamNC)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.StartDateNC)</td>
+            <td>@Html.TextBoxFor(x => x.StartDateNC)</td>    
+            <td>@Html.LabelFor(x => x.EmployeeNumberNC)</td>
+            <td>@Html.TextBoxFor(x => x.EmployeeNumberNC)</td>  
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.LocalNC)</td>
+            <td>@Html.TextBoxFor(x => x.LocalNC)</td>
+            <td>@Html.LabelFor(x => x.PhoneNC)</td>
+            <td>@Html.TextBoxFor(x => x.PhoneNC)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.initialsNC)</td>
+            <td>@Html.TextBoxFor(x => x.initialsNC)</td>
+            <td>@Html.LabelFor(x => x.Parrain)</td>
+            <td>@Html.TextBoxFor(x => x.Parrain)</td>
+        </tr>
+        </table>
+
+    
+ 
+    <table class="Form">
+        <caption align ="left"><h5>Infos pour IT :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor( x => x.necessaryIT, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessaryIT, false, new { Checked = "checked" })Non-nécessaire</td>       
+        </tr>     
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.laptop)@Html.LabelFor(x => x.laptop)</td>
+            <td>@Html.CheckBoxFor( x=> x.docking)@Html.LabelFor(x => x.docking)</td>
+            <td>@Html.CheckBoxFor( x=> x.keyboard)@Html.LabelFor(x => x.keyboard)</td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.desktop)@Html.LabelFor(x => x.desktop)</td>
+            <td>@Html.CheckBoxFor( x=> x.screen)@Html.LabelFor(x => x.screen)</td>
+            <td>@Html.CheckBoxFor( x=> x.mouse)@Html.LabelFor(x => x.mouse)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.commentIT)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentIT, new { @class = "wide" })</td>
+        </tr>
+    </table class="Form">
+    <table>
+        <caption align ="left"><h5>Infos pour Téléphone :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor( x => x.necessaryPhone, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessaryPhone, false, new { Checked = "checked" })Non-nécessaire</td> >  
+        </tr>     
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.fixPhone)@Html.LabelFor(x => x.fixPhone)</td>
+            <td>@Html.CheckBoxFor( x=> x.cordless)@Html.LabelFor(x => x.cordless)</td>
+            <td>@Html.CheckBoxFor( x=> x.mobile)@Html.LabelFor(x => x.mobile)</td>
+            <td>@Html.CheckBoxFor( x=> x.smartphone)@Html.LabelFor(x => x.smartphone)</td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.headphoneForFix)@Html.LabelFor(x => x.headphoneForFix)</td>
+            <td>@Html.CheckBoxFor( x=> x.headphoneForCordless)@Html.LabelFor(x => x.headphoneForCordless)</td>      
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.freeHandsForFix)@Html.LabelFor(x => x.freeHandsForFix)</td>
+            <td>@Html.CheckBoxFor( x=> x.freeHandsForCordless)@Html.LabelFor(x => x.freeHandsForCordless)</td>
+        </tr>    
+        <tr>
+            <td>@Html.LabelFor(x => x.commentPhone)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentPhone, new { @class = "wide" })</td>
+        </tr>
+    </table>
+    <table class="Form">
+        <caption align ="left"><h5>Infos Rôles SAP  :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor( x => x.necessaryRole, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessaryRole, false, new { Checked = "checked" })Non-nécessaire</td> >   
+        </tr>     
+        <tr>
+            <td>@Html.RadioButtonFor( x=> x.purchaseType,"Requester") Purchase Requester</td>
+            <td>@Html.RadioButtonFor( x=> x.purchaseType,"Approver") Purchase Approver</td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.pCard)@Html.LabelFor(x => x.pCard)</td>
+        </tr>    
+        <tr>
+            <td>@Html.LabelFor(x => x.commentSAP)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentSAP, new { @class = "wide" })</td>
+        </tr>
+    </table>
+    <table class="Form">
+        <caption align ="left"><h5>Infos Project Management Office  :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor( x => x.necessaryPMO, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessaryPMO, false, new { Checked = "checked" })Non-nécessaire</td> >   
+        </tr>    
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.dms)@Html.LabelFor(x => x.dms)</td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.cats)@Html.LabelFor(x => x.cats)</td>
+        </tr>  
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.npdi)@Html.LabelFor(x => x.npdi)</td>
+        </tr>              
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.nestms)@Html.LabelFor(x => x.nestms)</td>
+            <td>@Html.CheckBoxFor( x=> x.projectManager)@Html.LabelFor(x => x.projectManager)</td>
+            <td>@Html.CheckBoxFor( x=> x.ppLineManager)@Html.LabelFor(x => x.ppLineManager)</td>
+            <td>@Html.CheckBoxFor( x=> x.ppOperator)@Html.LabelFor(x => x.ppOperator)</td>
+            <td>@Html.CheckBoxFor( x=> x.labTech)@Html.LabelFor(x => x.labTech)</td>
+        </tr>  
+        <tr>
+            <td>@Html.LabelFor(x => x.commentPMO)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentPMO, new { @class = "wide" })</td>
+        </tr>
+    </table>
+    <table class="Form">
+        <caption align ="left"><h5>Infos Case courrier :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor( x => x.necessaryMailCase, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessaryMailCase, false, new { Checked = "checked" })Non-nécessaire</td> >  
+        </tr>         
+        <tr>
+            <td>@Html.LabelFor(x => x.commentMailCase)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentMailCase, new { @class = "wide" })</td>
+        </tr>
+    </table>
+    <table class="Form">
+        <caption align ="left"><h5>Infos Chaussures de sécurité :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor( x => x.necessarySecu, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessarySecu, false, new { Checked = "checked" })Non-nécessaire</td> >  
+        </tr>
+        <tr>
+            <td></td>
+            <td>Taille</td>
+            <td></td>
+            <td>Taille</td>
+        </tr>    
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.secuSheoes)@Html.LabelFor(x => x.secuSheoes)</td>
+            <td>@Html.TextBoxFor( x=> x.shoeSize)</td>
+            <td>@Html.CheckBoxFor( x=> x.gloves)@Html.LabelFor(x => x.gloves)</td>
+            <td>@Html.TextBoxFor(x => x.glovesSize)</td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.winterCoat)@Html.LabelFor(x => x.winterCoat)</td>
+            <td>@Html.TextBoxFor(x => x.winterCoatSize)</td>
+            <td>@Html.CheckBoxFor( x=> x.polar)@Html.LabelFor(x => x.polar)</td>
+            <td>@Html.TextBoxFor(x => x.polarSize)</td>
+
+        </tr>        
+        <tr>
+            <td>@Html.CheckBoxFor( x=> x.bardushClothes)@Html.LabelFor(x => x.polar)</td>
+            <td>@Html.TextBoxFor(x => x.polarSize)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.commentSecu)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentSecu, new { @class = "wide" })</td>
+        </tr>
+    </table>
+    <table>
+        <caption align ="left"><h5>Infos Vestiaire casier :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor( x => x.necesaryLocker, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necesaryLocker, false, new { Checked = "checked" })Non-nécessaire</td> >  
+        </tr>         
+        <tr>
+            <td>@Html.LabelFor(x => x.commentLocker)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentLocker, new { @class = "wide" })</td>
+        </tr>
+    </table>
+        <table>
+        <caption align ="left"><h5>Iinvitation aux intros Dept :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor( x => x.necessaryIntro, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessaryIntro, false, new { Checked = "checked" })Non-nécessaire</td> >  
+        </tr>           
+        <tr>
+            <td>@Html.RadioButtonFor( x => x.introLanguage, "en") Anglais</td>
+            <td>@Html.RadioButtonFor( x => x.introLanguage, "fr") Français</td>
+        </tr>    
+        <tr>
+            <td>@Html.LabelFor(x => x.commentIntro)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentIntro, new { @class = "wide" })</td>
+        </tr>
+    </table>
+    <INPUT type=button name="submit" value="Envoyer">
+}

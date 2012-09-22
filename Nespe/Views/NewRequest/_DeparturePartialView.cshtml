@@ -1,0 +1,25 @@
+﻿@model Nespe.Models.DepartureNewRequestModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using RequestKindEnum = Nespe.RequestKindEnum;
+
+                <tr>
+                    <th>@Html.LabelFor(x => x.SurnameNC)</th>
+                    <td style="width:80%;">@Html.TextBoxFor(x => x.SurnameNC)<br />@Html.ValidationMessageFor(x => x.SurnameNC)</td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(x => x.NameNC)</th>
+                    <td>@Html.TextBoxFor(x => x.NameNC)<br />@Html.ValidationMessageFor(x => x.NameNC)</td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(x => x.DepartureDate)</th>
+                    <td>@Html.TextBoxFor(x => x.DepartureDate, new { @class = "dateField" })</td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(x => x.Local)</th>
+                    <td>@Html.TextBoxFor(x => x.Local)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.CheckBoxFor( x=> x.retirement) retraite</td>
+                </tr>

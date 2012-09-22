@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Nespe - Recherches";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Recherches</h1>
+                
+            </hgroup>
+
+        </div>
+    </section>
+}
+<form>
+    <table>
+        <tr>
+            <td>Recherche de : </td>
+            <td><input type="checkbox" name="ResearchType" value="Arrival" checked> Nouvelles Arrivées</td>
+            <td><input type="checkbox" name="ResearchType" value="Transferts" checked> Transferts</td>
+            <td><input type="checkbox" name="ResearchType" value="Departures" checked> Départs</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Du <input type=text name="fromDate"/></td>
+            <td>au <input type=text name="toDate"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Nom ou Prénom : <input type=text name=SearchName /></td>
+            <td>Département : <input type=text name=SearchDept /></td>
+            <td><input type=button value=Rechercher name="search"</td>
+        </tr>
+    </table>
+</form>
+
+    <table>
+        <caption align ="left">2012</h5></caption>
+        <tr>
+            <td><table>
+                <caption>Août</caption>
+                    <tr>
+                        <td>David Galloy</td>
+                        <td>25.08.2012</td>
+                        <td>MGS</td>
+                        <td>Arrivée</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>     
+        <tr>
+            <td><table>
+                <caption>Juillet</caption>
+                    <tr>
+                        <td>Pas d'activités en Juillet</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>  
+            <td><table>
+                <caption>Juin</caption>
+                    <tr>
+                        <td>Martin Airas</td>
+                        <td>12.06.2012</td>
+                        <td>MGS</td>
+                        <td>Arrivée</td>
+                    </tr>
+                    <tr>
+                        <td>Juan Penalva</td>
+                        <td>25.06.2012</td>
+                        <td>MGS</td>
+                        <td>transfert</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>    
+    </table>

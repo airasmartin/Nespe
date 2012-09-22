@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/themes/base/css", "~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+@*        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+*@  
+
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.6.2.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")"></script>
+        <script type="text/javascript">
+        <!--
+            $(function () {
+                //alert("hello0");
+                $("#datepicker").datepicker();
+                alert("hello1");
+                //$(".dateField").datepicker({ dateFormat: "yy/mm/dd", altFormat: "yy/mm/dd" });
+                $(".dateField").datepicker({ dateFormat: "yy/mm/dd", altFormat: "yy/mm/dd" });
+
+                alert("hello");
+            });
+
+        //-->
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("NESPE", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        Hello, <span class="username">@User.Identity.Name</span>!
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Mes opérations", "Index", "MesOperations")</li>
+                            <li>@Html.ActionLink("Recherches", "Recherches", "Home")</li>
+                            @*<li>@Html.ActionLink("NewRequest", "NewRequest", "Home")</li>*@
+                            <li>@Html.ActionLink("Nouvelle demande", "Arrival", "NewRequest")</li>
+                            <li>@Html.ActionLink("Administration","Administration","Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Nespe</p>
+                </div>
+
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

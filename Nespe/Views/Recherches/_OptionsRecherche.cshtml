@@ -1,0 +1,25 @@
+﻿@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+<form>
+    <table>
+        <tr>
+            <td>Recherche de : </td>
+            <td><input type="checkbox" name="ResearchType" value="Arrival" checked> Nouvelles Arrivées</td>
+            <td><input type="checkbox" name="ResearchType" value="Transferts" checked> Transferts</td>
+            <td><input type="checkbox" name="ResearchType" value="Departures" checked> Départs</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Du <input type=text name="fromDate"/></td>
+            <td>au <input type=text name="toDate"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Nom ou Prénom : <input type=text name=SearchName /></td>
+            <td>Département : <input type=text name=SearchDept /></td>
+            <td><input type=button value=Rechercher name="search"</td>
+        </tr>
+    </table>
+</form>

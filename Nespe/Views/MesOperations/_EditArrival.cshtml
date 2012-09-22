@@ -1,0 +1,172 @@
+﻿@model Nespe.Models.ArrivalEditFormulaireModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+    <table>
+        <tr>
+            <th colspan=7 align=center>Le jour de l'entrée en Service</th>
+        </tr>
+        <tr>
+            <th >Tâche</th>
+            <th>Infos tâche</th>
+            <th>Responsable</th>
+            <th>Statut</th>
+            <th>Valid. Resp.</th>
+            <th>Valid NC</th>
+            <th>Commentaire</th>
+        </tr>
+        <tr>
+            <th>Accueil à la réception</th>
+            <td></td>
+            <td>@Assistant/@Parrain</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editReceptionComment)</td>
+        </tr>
+        <tr>
+            <th>Instructions SHE</th>
+            <td>liens sur vidéo</td>
+            <td>@Assistant/@Parrain</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editInstructionSHEComment)</td>
+        </tr>
+        <tr>
+            <th>Présentation</th>
+            <td>Présentation au chef de département et aux collègues de travail</td>
+            <td>@Assistant/@Parrain</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editPresentationComment)</td>
+        </tr>
+        <tr>
+            <th>Précision sur les fonctions</th>
+            <td></td>
+            <td>@DH/@Parrain/@SUperiorNC</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editFunctionsComment)</td>
+        </tr>
+        <tr>
+            <th>Loge sécurité pour établir le badge</th>
+            <td></td>
+            <td>@Assistant/@Parrain"</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editBadgeComment)></td>
+        </tr>
+        <tr>
+            <th>Chercher équipement</th>
+            <td>Chaussures de sécurité, habits de travail, EPI</td>
+            <td>@Assistant/@Parrain</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editEquipmentComment)</td>
+        </tr>
+        <tr>
+            <th>Présentation programme</th>
+            <td>Présenter le programme d'introduction au nouveau collaborateur</td>
+            <td>@Assistant/@Parrain</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editProgramComment)</td>
+        </tr>
+        <tr>
+            <th>Explication organisation</th>
+            <td>Expliquer l'organigramme du département, du PTC, l'organisation des Business Streams</td>
+            <td>@Assistant/@Parrain/@DH</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editOrganisationComment)</td>
+        </tr>
+        <tr>
+            <th>Instructions Administratives</th>
+            <td>- Signatures <br />
+                - Création compte voyageur<br />
+                - Carte de crédit<br />
+                - Remboursement frais</td>
+            <td>@Assistant/@Parrain</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editAdministrationComment)</td>
+        </tr>
+        <tr>
+            <th>Info: la vie du département</th>
+            <td>- Horarie de travail, badgeage, flextime (adapté aux besoins de la fonction, aux coutumes du département, aux attentes du DH<br />
+                - on dit "Bonjour"<br />
+                - Pauses<br />
+                - Confidentialité (SOP)</td>
+            <td>@Assistant/@Parrain</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editLifeComment)</td>
+        </tr>
+        <tr>
+            <th>Informations de base</th>
+            <td>Relatives à la gestion de projet : <br />
+                - DMS<br />
+                - NPDI<br />
+                - Hydra<br />
+                - CATS </td>
+            <td>@Assistant/@Parrain</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editBaseInfoComment)</td>
+        </tr>
+        <tr>
+            <th>Utilisation des services</th>
+            <td>- Intranet<br />
+                - Courrier<br />
+                - Téléphone<br />
+                - E-mail<br />
+                - Fax<br />
+                - Cartes de visite<br />
+                - Demande de voyage<br />
+                - Location de voiture<br />
+                - Easy Mail<br />
+                - Confidentialité des données<br /></td>
+            <td>@Assistant</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editServicesComment)</td>
+        </tr>
+        <tr>
+            <th>Instructions de travail</th>
+            <td>- éttablissement des rapports<br />
+                - déviation téléphonique<br />
+                - utilisation Outlook (GAL, PST, OOO,etc.)</td>
+            <td>@Assistant</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editWorkInstructionsComment)</td>
+        </tr>
+        <tr>
+            <th>Conseils pratiques</th>
+            <td>- architecture bâtiments, logistique<br />
+                - vestiaires<br />
+                - cafétéria<br />
+                - restaurant<br />
+                - CAN<br />
+                - tourniquet</td>
+            <td>@Assistant</td>
+            <td bgcolor="#ff6666"></td>
+            <td>valid</td>
+            <td>valid</td>
+            <td>@Html.TextAreaFor(x => x.editTipsComment)</td>
+        </tr>
+    </table>
+    @*Bouton enregistre modifs*@

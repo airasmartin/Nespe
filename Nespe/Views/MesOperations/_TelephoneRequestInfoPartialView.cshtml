@@ -1,0 +1,32 @@
+﻿@model Nespe.Models.TelephoneRequestInfo
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+ 
+    <table class="Form">
+        <caption align ="left"><h5>Infos pour Téléphone :</h5></caption>
+        <tr>
+            <td>@Html.RadioButtonFor(x => x.necessaryPhone, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.necessaryPhone, false, new { Checked = "checked" })Non-nécessaire</td>       
+        </tr>    
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.fixPhone)@Html.LabelFor(x => x.fixPhone)</td>
+            <td>@Html.CheckBoxFor(x => x.cordless)@Html.LabelFor(x => x.cordless)</td>
+            <td>@Html.CheckBoxFor(x => x.mobile)@Html.LabelFor(x => x.mobile)</td>
+            <td>@Html.CheckBoxFor(x => x.smartphone)@Html.LabelFor(x => x.smartphone)</td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.headphoneForFix)@Html.LabelFor(x => x.headphoneForFix)</td>
+            <td>@Html.CheckBoxFor(x => x.headphoneForCordless)@Html.LabelFor(x => x.headphoneForCordless)</td>      
+        </tr>
+        <tr>
+            <td>@Html.CheckBoxFor(x => x.freeHandsForFix)@Html.LabelFor(x => x.freeHandsForFix)</td>
+            <td>@Html.CheckBoxFor(x => x.freeHandsForCordless)@Html.LabelFor(x => x.freeHandsForCordless)</td>
+        </tr>    
+        <tr>
+            <td>@Html.LabelFor(x => x.commentPhone)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.commentPhone, new { @class = "wide" })</td>
+        </tr>
+    </table>
+ 

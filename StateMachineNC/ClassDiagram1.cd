@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StateMachineNC.Program" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateMachineNC.RequestNC">
+    <Position X="2.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAEAAAAAAAAAAAAAAAAEAAIAAEAEAAAAAACAAAA=</HashCode>
+      <FileName>RequestNC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateMachineNC.StateRequestNC">
+    <Position X="5.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAEACAAAAAAAIAAAAAAEAAIAAEAAAAAAAACAAAA=</HashCode>
+      <FileName>StateRequestNC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateMachineNC.StateRequestNCWithdrawn">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAEAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAACAAAA=</HashCode>
+      <FileName>StateRequestNCWithdrawn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateMachineNC.StateRequestNCCreate">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAEAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAACAAAA=</HashCode>
+      <FileName>StateRequestNCCreate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateMachineNC.StateRequestNCFillForm">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAEAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAACAAAA=</HashCode>
+      <FileName>StateRequestNCFillForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateMachineNC.StateRequestNCArrival">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAEAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAACAAAA=</HashCode>
+      <FileName>StateRequestNCArrival.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateMachineNC.StateRequestNCClosed">
+    <Position X="9.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAEAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAACAAAA=</HashCode>
+      <FileName>StateRequestNCClosed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,64 @@
+﻿@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+    <table border="0">
+         <tr>
+            <th colspan ="7">Après Départ pour Assistante</th>
+        </tr>
+        <tr>
+            <th>supression accès informatiques</th>
+            <td><a href="création fichier XML supression accès">faire demande avec copie commentaire</a></td>
+            <td>@Assistante</td>
+            <td>@DateCompletedRemoveAccessIT</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedRemoveAccessIT)</td>
+        </tr>
+        <tr>
+            <th>supression accès DMS</th>
+            <td><a href="email de demande envoyé">faire demande avec copie commentaire</a></td>
+            <td>@Assistante</td>
+            <td>@DateCompletedRemoveAccessDMS</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedRemoveAccessDMS)</td>
+        </tr>
+        <tr>
+            <th>Mise à jour presentation département</th>
+            <td>mettre à jour l'intranet The Nest</a></td>
+            <td>@Assistante</td>
+            <td>@DateCompletedModifyTheNest</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedModifyTheNest)</td>
+        </tr>
+        <tr>
+            <th>Enlever nom de la liste téléphonique</th>
+            <td><a href="email de demande envoyé">faire demande avec copie commentaire</a></td>
+            <td>@Assistante</td>
+            <td>@DateCompletedRemovePhoneList</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedRemovePhoneList)</td>
+        </tr>
+        <tr>
+            <th>Enlever nom du casier courrier</th>
+            <td><a href="email de demande envoyé">faire demande avec copie commentaire</a></td>
+            <td>@Assistante</td>
+            <td>@DateCompletedRemoveMailCase</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedRemoveMailCase)</td>
+        </tr>
+        <tr>
+            <th>Mise à jour des noms sur la porte du bureau</th>
+            <td></td>
+            <td>@Assistante</td>
+            <td>@DateCompletedRemoveDoorName</td>
+            <td <td bgcolor="#ff6666"></td>
+            <td> non-nécessaire</td>
+            <td>@Html.TextAreaFor(x => x.editCompletedRemoveDoorName)</td>
+        </tr>
+   </table>
+   @*Bouton enregistre modifs*@

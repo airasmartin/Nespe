@@ -1,0 +1,35 @@
+﻿@model Nespe.Request
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+
+<form>
+    <table>
+        <caption>Edition du département @Html.DisplayFor(x=>x.department)</caption>
+        <tr>
+            <td>@Html.LabelFor(x=>x.headDepartment)</td>
+            <td>@Html.TextBoxFor(x=>x.headDepartment)</td>
+            <td><INPUT type=button name="Search" value="..."></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x=>x.assistant1)</td>
+            <td>@Html.TextBoxFor(x=>x.assistant1)</td>
+            <td><INPUT type=button name="Search" value="..."></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x=>x.assistant2)</td>
+            <td>@Html.TextBoxFor(x=>x.assistant2)</td>
+            <td><INPUT type=button name="Search" value="..."></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x=>x.assistant3)</td>
+            <td>@Html.TextBoxFor(x=>x.assistant3)</td>
+            <td><INPUT type=button name="Search" value="..."></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><INPUT type=button name="Save" value="Sauver"></td>
+        </tr>
+    </table>
+</form>

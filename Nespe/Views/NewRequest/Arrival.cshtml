@@ -1,0 +1,32 @@
+﻿@model Nespe.Models.ArrivalNewRequestModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Data;
+@using RequestKindEnum = Nespe.RequestKindEnum;
+@{
+    //WorkflowInvoker.Invoke(new Workflow1());
+    /*
+    var db = new NespeDbContext();
+    //db.Database.CreateIfNotExists();
+    var tc = db.RequestSet;
+    var dr = tc.Create();
+    dr.NameNC = "MArtin";
+    dr.SurnameNC = "Airas";
+    db.SaveChanges();
+     */
+        }
+    @Html.Partial("_TopPartialView")
+        <table class="Form">
+        @using (Html.BeginForm())
+        {
+            @Html.Partial("_ArrivalPartialView")
+        <tr>
+            <th colspan="2">
+                @Html.HiddenFor(requestType => requestType.kind)
+                <input type="submit" value="Soumettre Demande"/>
+            </th>
+        </tr>
+        }
+        
+        </table>
+@Html.Partial("_BottomPartialView")

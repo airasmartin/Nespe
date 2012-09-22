@@ -1,0 +1,73 @@
+﻿@model Nespe.Models.ArrivalCompleterFormulaireModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+@{
+    ViewBag.Title = "Nespe - Formulaire nouveau collaborateur";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Formulaire Nouveau collaborateur :Completer</h1>
+                
+            </hgroup>
+
+        </div>
+    </section>
+
+}
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_ArrivalRequestPartialView", Model.RequestModel)
+
+    
+
+if (Model.ITInfo != null)
+{ 
+    @Html.Partial("_ITRequestInfoPartialView", Model.ITInfo)
+}
+
+if (Model.TelephoneInfo != null)
+{ 
+    @Html.Partial("_TelephoneRequestInfoPartialView", Model.TelephoneInfo)
+}
+
+if (Model.RoleSAPInfo != null)
+{ 
+    @Html.Partial("_RolesSAPRequestInfoPartialView", Model.RoleSAPInfo)
+}
+
+if (Model.PMOInfo != null)
+{ 
+    @Html.Partial("_PMORequestInfoPartialView", Model.PMOInfo)
+}
+
+if (Model.MailCaseInfo != null)
+{ 
+    @Html.Partial("_MailCaseRequestInfoPartialView", Model.MailCaseInfo)
+}
+
+if (Model.ClothesInfo != null)
+{ 
+    @Html.Partial("_ClothesRequestInfoPartialView", Model.ClothesInfo)
+}
+
+if (Model.LockerInfo != null)
+{ 
+    @Html.Partial("_LockerRequestInfoPartialView", Model.LockerInfo)
+}
+
+if (Model.IntroInfo != null)
+{ 
+    @Html.Partial("_IntroRequestInfoPartialView", Model.IntroInfo)
+}
+
+
+ <fieldset>
+   <INPUT type=button name="submit" value="Envoyer">
+</fieldset>
+}
+

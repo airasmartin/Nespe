@@ -1,0 +1,49 @@
+﻿@model Nespe.Models.ArrivalEditFormulaireModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+@{
+    ViewBag.Title = "Nespe - Mes Opérations";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Mes Opérations</h1>
+                
+            </hgroup>
+
+        </div>
+    </section>
+
+}
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_FormsToCompleteList", Model.RequestModel)
+
+    
+
+if (Model.ITInfo != null)
+{ 
+    @Html.Partial("_ArrivalsList", Model.ITInfo)
+}
+
+if (Model.ITInfo != null)
+{ 
+    @Html.Partial("_TransfertsList", Model.ITInfo)
+}
+
+if (Model.ITInfo != null)
+{ 
+    @Html.Partial("_DeparturesList", Model.ITInfo)
+}
+if (Model.ITInfo != null)
+{ 
+    @Html.Partial("_EditBeforeArrival", Model.ITInfo)
+}
+if (Model.ITInfo != null)
+{ 
+    @Html.Partial("_EditArrival", Model.ITInfo)
+}
