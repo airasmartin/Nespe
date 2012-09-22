@@ -59,6 +59,13 @@ namespace Nespe
 
         public bool formCompleted { get; set; }
 
+
+
+        [Required(AllowEmptyStrings=true), Display(Name = "Active Directory Id:")]
+        public string ActiveDirectoryId { get; set; }
+
+        public bool HaveActiveDirectoryId { get { return !string.IsNullOrWhiteSpace(ActiveDirectoryId); } }
+
         // Jour depassé ?
         public TimeSpan ElapsedTime { get { return DateTime.Now.Subtract(StartDateNC); } }
         // Jour depassé ?

@@ -14,7 +14,7 @@ namespace StateMachineNC
             currentState = inStateRequestNC.FillForm;
             //sortie :  l'assistante a rempli le formulaire
             //          un fichier XML est déposé sur ARC pour créer le ticket à l'IT
-            //          un email est envoyé aux demandes nécessitant un email
+            //          un EMail est envoyé aux demandes nécessitant un EMail
             //          le statut des demandes faites passe au vert
             //          envoie un mail au parrain pour l'avertir de contacter l'assistante
             //          envoie un résumé des demandes au DH

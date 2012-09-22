@@ -164,6 +164,32 @@ namespace Nespe.Models
         [Display(Name = "Commentaires intro")]
         public string commentIntro { get; set; }
     }
+    public class Department
+    {
+        [Key()]
+        public long? Id { get; set; }
+        public string SID { get; set; }
+        public string Name { get; set; }
+        public string EMail { get; set; }
+        public string Phone { get; set; }
+    }
+    public class PersonDepartment
+    {
+        [Key()]
+        public long? Id { get; set; }
+        [Column(Name = "Rank")]
+        public long Rank { get; set; }
+        [Column(Name = "Department_Id")]
+        public long? Department_Id { get; set; }
+        [Column(Name = "Person_Id")]
+        public long? Person_Id { get; set; }
+        [Column(Name = "Role_Id")]
+        public PersonDepartmentRoleEnum Role_Id { get; set; }
+    }
+
+    public enum PersonDepartmentRoleEnum { 
+        Assistant, Backup, Head, Manager
+    }
     public class Person
     {
         [Key()]
@@ -171,8 +197,8 @@ namespace Nespe.Models
         public string SID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
+        public string EMail { get; set; }
+        public string Phone { get; set; }
     }
     public enum StatusRequestInfoEnum
     {

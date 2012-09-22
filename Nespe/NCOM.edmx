@@ -327,6 +327,17 @@
             <End Role="RequestInfoType" EntitySet="RequestInfoTypeEntitySet" />
             <End Role="FormulaireEntity" EntitySet="FormulaireSet" />
           </AssociationSet>
+          <EntitySet Name="PersonSet" EntityType="NCOM.Person" />
+          <EntitySet Name="DepartmentSet" EntityType="NCOM.Department" />
+          <EntitySet Name="PersonDepartmentSet" EntityType="NCOM.PersonDepartment" />
+          <AssociationSet Name="PersonDepartmentAssociation" Association="NCOM.PersonPersonDepartment">
+            <End Role="Person" EntitySet="PersonSet" />
+            <End Role="PersonDepartment" EntitySet="PersonDepartmentSet" />
+          </AssociationSet>
+          <AssociationSet Name="DepartmentPersonDepartment" Association="NCOM.DepartmentPersonDepartment">
+            <End Role="Department" EntitySet="DepartmentSet" />
+            <End Role="PersonDepartment" EntitySet="PersonDepartmentSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="RequestEntity">
           <Key>
@@ -455,6 +466,66 @@
           <Property Type="String" Name="IntroLanguage" Nullable="false" />
           <Property Type="String" Name="CommentIntro" Nullable="false" />
         </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" />
+          <Property Type="String" Name="EMail" Nullable="false" />
+          <Property Type="String" Name="SID" Nullable="false" />
+          <NavigationProperty Name="PersonDepartment" Relationship="NCOM.PersonPersonDepartment" FromRole="Person" ToRole="PersonDepartment" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="PersonDepartment" Relationship="NCOM.DepartmentPersonDepartment" FromRole="Department" ToRole="PersonDepartment" />
+        </EntityType>
+        <EntityType Name="PersonDepartment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Department_Id" Nullable="false" />
+          <Property Type="Int64" Name="Person_Id" Nullable="false" />
+          <Property Type="Int32" Name="Role" Nullable="false" />
+          <Property Type="Int64" Name="Rank" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="NCOM.PersonPersonDepartment" FromRole="PersonDepartment" ToRole="Person" />
+          <Property Type="Int64" Name="PersonId" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="NCOM.DepartmentPersonDepartment" FromRole="PersonDepartment" ToRole="Department" />
+          <Property Type="Int64" Name="DepartmentId" Nullable="false" />
+        </EntityType>
+        <Association Name="PersonPersonDepartment">
+          <End Type="NCOM.Person" Role="Person" Multiplicity="1" />
+          <End Type="NCOM.PersonDepartment" Role="PersonDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonDepartment">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DepartmentPersonDepartment">
+          <End Type="NCOM.Department" Role="Department" Multiplicity="1" />
+          <End Type="NCOM.PersonDepartment" Role="PersonDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonDepartment">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -617,11 +688,9 @@
           <ConnectorPoint PointX="8.375" PointY="4.3458968098958328" />
         </AssociationConnector>
         <AssociationConnector Association="NCOM.RequestInfoTypeFormulaireEntity">
-          <ConnectorPoint PointX="4.375" PointY="3.422841796875" />
-          <ConnectorPoint PointX="4.6875" PointY="3.422841796875" />
-          <ConnectorPoint PointX="4.6875" PointY="1.6875" />
-          <ConnectorPoint PointX="9.125" PointY="1.6875" />
-          <ConnectorPoint PointX="9.125" PointY="2.875" />
+          <ConnectorPoint PointX="3.96875" PointY="4.052958984375" />
+          <ConnectorPoint PointX="3.96875" PointY="5.4151822916666656" />
+          <ConnectorPoint PointX="8.375" PointY="5.4151822916666656" />
         </AssociationConnector>
         <EntityTypeShape EntityType="NCOM.ITFormulaireEntity" Width="1.5" PointX="10.75" PointY="0.5" Height="2.3648893229166665" />
         <InheritanceConnector EntityType="NCOM.ITFormulaireEntity" ManuallyRouted="false" >
@@ -709,6 +778,20 @@
           <ConnectorPoint PointX="13.75" PointY="7.2783821614583317" />
           <ConnectorPoint PointX="13.75" PointY="6.9033821614583326" />
         </InheritanceConnector>
+        <EntityTypeShape EntityType="NCOM.Person" Width="1.5" PointX="1.125" PointY="0.75" Height="1.9210009765625" />
+        <EntityTypeShape EntityType="NCOM.Department" Width="1.5" PointX="2.875" PointY="0.75" Height="1.592306315104167" />
+        <EntityTypeShape EntityType="NCOM.PersonDepartment" Width="1.5" PointX="0.875" PointY="4.25" Height="2.0853483072916665" />
+        <AssociationConnector Association="NCOM.PersonPersonDepartment">
+          <ConnectorPoint PointX="1.75" PointY="2.835348307291667" />
+          <ConnectorPoint PointX="1.75" PointY="4.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="NCOM.DepartmentPersonDepartment">
+          <ConnectorPoint PointX="2.875" PointY="1.6283268229166668" />
+          <ConnectorPoint PointX="2.6875" PointY="1.6283268229166668" />
+          <ConnectorPoint PointX="2.6875" PointY="2.897848307291667" />
+          <ConnectorPoint PointX="1.3515599999999999" PointY="2.897848307291667" />
+          <ConnectorPoint PointX="1.3515599999999999" PointY="4.25" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

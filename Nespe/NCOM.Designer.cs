@@ -20,6 +20,8 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("NCOM", "RequestEntityFormulaireEntity", "RequestEntity", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nespe.RequestEntity), "FormulaireEntity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nespe.FormulaireEntity), true)]
 [assembly: EdmRelationshipAttribute("NCOM", "RequestInfoTypeFormulaireEntity", "RequestInfoType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nespe.RequestInfoTypeEntity), "FormulaireEntity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nespe.FormulaireEntity), true)]
+[assembly: EdmRelationshipAttribute("NCOM", "PersonPersonDepartment", "Person", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nespe.Person), "PersonDepartment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nespe.PersonDepartment), true)]
+[assembly: EdmRelationshipAttribute("NCOM", "DepartmentPersonDepartment", "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nespe.Department), "PersonDepartment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nespe.PersonDepartment), true)]
 
 #endregion
 
@@ -118,6 +120,54 @@ namespace Nespe
             }
         }
         private ObjectSet<FormulaireEntity> _FormulaireSet;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Person> PersonSet
+        {
+            get
+            {
+                if ((_PersonSet == null))
+                {
+                    _PersonSet = base.CreateObjectSet<Person>("PersonSet");
+                }
+                return _PersonSet;
+            }
+        }
+        private ObjectSet<Person> _PersonSet;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Department> DepartmentSet
+        {
+            get
+            {
+                if ((_DepartmentSet == null))
+                {
+                    _DepartmentSet = base.CreateObjectSet<Department>("DepartmentSet");
+                }
+                return _DepartmentSet;
+            }
+        }
+        private ObjectSet<Department> _DepartmentSet;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<PersonDepartment> PersonDepartmentSet
+        {
+            get
+            {
+                if ((_PersonDepartmentSet == null))
+                {
+                    _PersonDepartmentSet = base.CreateObjectSet<PersonDepartment>("PersonDepartmentSet");
+                }
+                return _PersonDepartmentSet;
+            }
+        }
+        private ObjectSet<PersonDepartment> _PersonDepartmentSet;
 
         #endregion
         #region AddTo Methods
@@ -144,6 +194,30 @@ namespace Nespe
         public void AddToFormulaireSet(FormulaireEntity formulaireEntity)
         {
             base.AddObject("FormulaireSet", formulaireEntity);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PersonSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPersonSet(Person person)
+        {
+            base.AddObject("PersonSet", person);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the DepartmentSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToDepartmentSet(Department department)
+        {
+            base.AddObject("DepartmentSet", department);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PersonDepartmentSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPersonDepartmentSet(PersonDepartment personDepartment)
+        {
+            base.AddObject("PersonDepartmentSet", personDepartment);
         }
 
         #endregion
@@ -480,6 +554,164 @@ namespace Nespe
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NCOM", Name="Department")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Department : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Department object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="sID">Initial value of the SID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="description">Initial value of the Description property.</param>
+        public static Department CreateDepartment(global::System.Int64 id, global::System.String sID, global::System.String name, global::System.String description)
+        {
+            Department department = new Department();
+            department.Id = id;
+            department.SID = sID;
+            department.Name = name;
+            department.Description = description;
+            return department;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SID
+        {
+            get
+            {
+                return _SID;
+            }
+            set
+            {
+                OnSIDChanging(value);
+                ReportPropertyChanging("SID");
+                _SID = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SID");
+                OnSIDChanged();
+            }
+        }
+        private global::System.String _SID;
+        partial void OnSIDChanging(global::System.String value);
+        partial void OnSIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NCOM", "DepartmentPersonDepartment", "PersonDepartment")]
+        public EntityCollection<PersonDepartment> PersonDepartment
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PersonDepartment>("NCOM.DepartmentPersonDepartment", "PersonDepartment");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PersonDepartment>("NCOM.DepartmentPersonDepartment", "PersonDepartment", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -1258,6 +1490,506 @@ namespace Nespe
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NCOM", Name="Person")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Person : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Person object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="firstName">Initial value of the FirstName property.</param>
+        /// <param name="lastName">Initial value of the LastName property.</param>
+        /// <param name="phone">Initial value of the Phone property.</param>
+        /// <param name="eMail">Initial value of the EMail property.</param>
+        /// <param name="sID">Initial value of the SID property.</param>
+        public static Person CreatePerson(global::System.Int64 id, global::System.String firstName, global::System.String lastName, global::System.String phone, global::System.String eMail, global::System.String sID)
+        {
+            Person person = new Person();
+            person.Id = id;
+            person.FirstName = firstName;
+            person.LastName = lastName;
+            person.Phone = phone;
+            person.EMail = eMail;
+            person.SID = sID;
+            return person;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FirstName
+        {
+            get
+            {
+                return _FirstName;
+            }
+            set
+            {
+                OnFirstNameChanging(value);
+                ReportPropertyChanging("FirstName");
+                _FirstName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FirstName");
+                OnFirstNameChanged();
+            }
+        }
+        private global::System.String _FirstName;
+        partial void OnFirstNameChanging(global::System.String value);
+        partial void OnFirstNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LastName
+        {
+            get
+            {
+                return _LastName;
+            }
+            set
+            {
+                OnLastNameChanging(value);
+                ReportPropertyChanging("LastName");
+                _LastName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("LastName");
+                OnLastNameChanged();
+            }
+        }
+        private global::System.String _LastName;
+        partial void OnLastNameChanging(global::System.String value);
+        partial void OnLastNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Phone
+        {
+            get
+            {
+                return _Phone;
+            }
+            set
+            {
+                OnPhoneChanging(value);
+                ReportPropertyChanging("Phone");
+                _Phone = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Phone");
+                OnPhoneChanged();
+            }
+        }
+        private global::System.String _Phone;
+        partial void OnPhoneChanging(global::System.String value);
+        partial void OnPhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String EMail
+        {
+            get
+            {
+                return _EMail;
+            }
+            set
+            {
+                OnEMailChanging(value);
+                ReportPropertyChanging("EMail");
+                _EMail = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("EMail");
+                OnEMailChanged();
+            }
+        }
+        private global::System.String _EMail;
+        partial void OnEMailChanging(global::System.String value);
+        partial void OnEMailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SID
+        {
+            get
+            {
+                return _SID;
+            }
+            set
+            {
+                OnSIDChanging(value);
+                ReportPropertyChanging("SID");
+                _SID = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SID");
+                OnSIDChanged();
+            }
+        }
+        private global::System.String _SID;
+        partial void OnSIDChanging(global::System.String value);
+        partial void OnSIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NCOM", "PersonPersonDepartment", "PersonDepartment")]
+        public EntityCollection<PersonDepartment> PersonDepartment
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PersonDepartment>("NCOM.PersonPersonDepartment", "PersonDepartment");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PersonDepartment>("NCOM.PersonPersonDepartment", "PersonDepartment", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NCOM", Name="PersonDepartment")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PersonDepartment : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new PersonDepartment object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="department_Id">Initial value of the Department_Id property.</param>
+        /// <param name="person_Id">Initial value of the Person_Id property.</param>
+        /// <param name="role">Initial value of the Role property.</param>
+        /// <param name="rank">Initial value of the Rank property.</param>
+        /// <param name="personId">Initial value of the PersonId property.</param>
+        /// <param name="departmentId">Initial value of the DepartmentId property.</param>
+        public static PersonDepartment CreatePersonDepartment(global::System.Int64 id, global::System.Int64 department_Id, global::System.Int64 person_Id, global::System.Int32 role, global::System.Int64 rank, global::System.Int64 personId, global::System.Int64 departmentId)
+        {
+            PersonDepartment personDepartment = new PersonDepartment();
+            personDepartment.Id = id;
+            personDepartment.Department_Id = department_Id;
+            personDepartment.Person_Id = person_Id;
+            personDepartment.Role = role;
+            personDepartment.Rank = rank;
+            personDepartment.PersonId = personId;
+            personDepartment.DepartmentId = departmentId;
+            return personDepartment;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Department_Id
+        {
+            get
+            {
+                return _Department_Id;
+            }
+            set
+            {
+                OnDepartment_IdChanging(value);
+                ReportPropertyChanging("Department_Id");
+                _Department_Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Department_Id");
+                OnDepartment_IdChanged();
+            }
+        }
+        private global::System.Int64 _Department_Id;
+        partial void OnDepartment_IdChanging(global::System.Int64 value);
+        partial void OnDepartment_IdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Person_Id
+        {
+            get
+            {
+                return _Person_Id;
+            }
+            set
+            {
+                OnPerson_IdChanging(value);
+                ReportPropertyChanging("Person_Id");
+                _Person_Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Person_Id");
+                OnPerson_IdChanged();
+            }
+        }
+        private global::System.Int64 _Person_Id;
+        partial void OnPerson_IdChanging(global::System.Int64 value);
+        partial void OnPerson_IdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Role
+        {
+            get
+            {
+                return _Role;
+            }
+            set
+            {
+                OnRoleChanging(value);
+                ReportPropertyChanging("Role");
+                _Role = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Role");
+                OnRoleChanged();
+            }
+        }
+        private global::System.Int32 _Role;
+        partial void OnRoleChanging(global::System.Int32 value);
+        partial void OnRoleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Rank
+        {
+            get
+            {
+                return _Rank;
+            }
+            set
+            {
+                OnRankChanging(value);
+                ReportPropertyChanging("Rank");
+                _Rank = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Rank");
+                OnRankChanged();
+            }
+        }
+        private global::System.Int64 _Rank;
+        partial void OnRankChanging(global::System.Int64 value);
+        partial void OnRankChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 PersonId
+        {
+            get
+            {
+                return _PersonId;
+            }
+            set
+            {
+                OnPersonIdChanging(value);
+                ReportPropertyChanging("PersonId");
+                _PersonId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PersonId");
+                OnPersonIdChanged();
+            }
+        }
+        private global::System.Int64 _PersonId;
+        partial void OnPersonIdChanging(global::System.Int64 value);
+        partial void OnPersonIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 DepartmentId
+        {
+            get
+            {
+                return _DepartmentId;
+            }
+            set
+            {
+                OnDepartmentIdChanging(value);
+                ReportPropertyChanging("DepartmentId");
+                _DepartmentId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DepartmentId");
+                OnDepartmentIdChanged();
+            }
+        }
+        private global::System.Int64 _DepartmentId;
+        partial void OnDepartmentIdChanging(global::System.Int64 value);
+        partial void OnDepartmentIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NCOM", "PersonPersonDepartment", "Person")]
+        public Person Person
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Person>("NCOM.PersonPersonDepartment", "Person").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Person>("NCOM.PersonPersonDepartment", "Person").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Person> PersonReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Person>("NCOM.PersonPersonDepartment", "Person");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Person>("NCOM.PersonPersonDepartment", "Person", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NCOM", "DepartmentPersonDepartment", "Department")]
+        public Department Department
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Department>("NCOM.DepartmentPersonDepartment", "Department").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Department>("NCOM.DepartmentPersonDepartment", "Department").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Department> DepartmentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Department>("NCOM.DepartmentPersonDepartment", "Department");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Department>("NCOM.DepartmentPersonDepartment", "Department", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>

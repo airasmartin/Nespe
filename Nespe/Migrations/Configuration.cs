@@ -5,14 +5,14 @@ namespace Nespe.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Nespe.Data.NespeDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Nespe.Context.NespeDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Nespe.Data.NespeDbContext context)
+        protected override void Seed(Nespe.Context.NespeDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

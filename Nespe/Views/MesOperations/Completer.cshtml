@@ -18,56 +18,56 @@
     </section>
 
 }
-
 @using (Html.BeginForm())
 {
-    @Html.Partial("_ArrivalRequestPartialView", Model.RequestModel)
-
+    <fielset class="Form">
+    @Html.EditorFor(m => m.RequestModel, "_ArrivalRequestPartialView")
     
 
-if (Model.ITInfo != null)
-{ 
-    @Html.Partial("_ITRequestInfoPartialView", Model.ITInfo)
-}
+    @if (Model.ITInfo != null)
+    { 
+        @Html.EditorFor(m=>m.ITInfo, "_ITRequestInfoPartialView")
+    }
 
-if (Model.TelephoneInfo != null)
-{ 
-    @Html.Partial("_TelephoneRequestInfoPartialView", Model.TelephoneInfo)
-}
+    @if (Model.TelephoneInfo != null)
+    { 
+        @Html.EditorFor(m=>m.TelephoneInfo, "_TelephoneRequestInfoPartialView")
+    }
 
-if (Model.RoleSAPInfo != null)
-{ 
-    @Html.Partial("_RolesSAPRequestInfoPartialView", Model.RoleSAPInfo)
-}
+    @if (Model.RoleSAPInfo != null)
+    { 
+        @Html.EditorFor(m=>m.RoleSAPInfo, "_RolesSAPRequestInfoPartialView")
+    }
 
-if (Model.PMOInfo != null)
-{ 
-    @Html.Partial("_PMORequestInfoPartialView", Model.PMOInfo)
-}
+    @if (Model.PMOInfo != null)
+    { 
+        @Html.EditorFor(m=>m.PMOInfo, "_PMORequestInfoPartialView")
+    }
 
-if (Model.MailCaseInfo != null)
-{ 
-    @Html.Partial("_MailCaseRequestInfoPartialView", Model.MailCaseInfo)
-}
+    @if (Model.MailCaseInfo != null)
+    { 
+        @Html.EditorFor(m=>m.MailCaseInfo, "_MailCaseRequestInfoPartialView")
+    }
 
-if (Model.ClothesInfo != null)
-{ 
-    @Html.Partial("_ClothesRequestInfoPartialView", Model.ClothesInfo)
-}
+    @if (Model.ClothesInfo != null)
+    { 
+        @Html.EditorFor(m=>m.ClothesInfo, "_ClothesRequestInfoPartialView")
+    }
 
-if (Model.LockerInfo != null)
-{ 
-    @Html.Partial("_LockerRequestInfoPartialView", Model.LockerInfo)
-}
+    @if (Model.LockerInfo != null)
+    { 
+        @Html.EditorFor(m=>m.LockerInfo, "_LockerRequestInfoPartialView")
+    }
 
-if (Model.IntroInfo != null)
-{ 
-    @Html.Partial("_IntroRequestInfoPartialView", Model.IntroInfo)
-}
+    @if (Model.IntroInfo != null)
+    { 
+        @Html.EditorFor(m=>m.IntroInfo, "_IntroRequestInfoPartialView")
+    }
 
 
- <fieldset>
-   <INPUT type=button name="submit" value="Envoyer">
-</fieldset>
+    <fieldset class="Action">
+        <input type="submit" />
+    </fieldset>
+</fielset>
 }
 

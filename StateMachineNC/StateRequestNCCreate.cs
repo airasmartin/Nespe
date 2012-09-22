@@ -13,7 +13,7 @@ namespace StateMachineNC
             currentState = inStateRequestNC.Create;
             //entrée : les RH remplissent le premier formulaire
             //sortie :  la demande est crée et assignée à l'assistante 1
-            //          un email d'avertissement est envoyé à l'assitante 1 et 2
+            //          un EMail d'avertissement est envoyé à l'assitante 1 et 2
             //          l'etat passe à FillForm 
             
         }
