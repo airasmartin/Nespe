@@ -1,0 +1,24 @@
+﻿@model Nespe.Models.PersonModel
+
+@{
+    ViewBag.Title = "AddDepartment";
+}
+
+<h2>AddDepartment</h2>
+@using (Html.BeginForm())
+{
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <fieldset>   
+                @Html.DisplayFor(m => m, "PersonModel.Details")
+                </fieldset>
+             </td>
+            <td>
+                @Html.EditorFor(m => m.DepartmentModel.Selected)
+            </td>
+        </tr>
+    </tbody>
+</table>    
+}

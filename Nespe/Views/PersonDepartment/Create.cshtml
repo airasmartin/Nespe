@@ -1,0 +1,41 @@
+﻿@model Nespe.Models.PersonDepartmentModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <table>
+            <tbody>
+                <tr valign="top">
+                    <td valign="top">
+                    @Html.EditorFor(model => model.Selected)
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.Selected.Person)
+                    </td>
+                    <td>
+                    @Html.EditorFor(model => model.Selected.Department)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <input type="submit" value="Create" />
+            @Html.HiddenFor(model=>model.Selected.Id)
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

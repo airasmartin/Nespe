@@ -1,0 +1,64 @@
+﻿@model Nespe.Models.PersonModel
+@*
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+*@
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Person</legend>
+
+        @Html.HiddenFor(model => model.Selected.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.SID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Selected.SID)
+            @Html.ValidationMessageFor(model => model.Selected.SID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Selected.FirstName)
+            @Html.ValidationMessageFor(model => model.Selected.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Selected.LastName)
+            @Html.ValidationMessageFor(model => model.Selected.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.EMail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Selected.EMail)
+            @Html.ValidationMessageFor(model => model.Selected.EMail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.Phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Selected.Phone)
+            @Html.ValidationMessageFor(model => model.Selected.Phone)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+            @Html.HiddenFor(m=>m.Selected.Id)
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,25 @@
+﻿@model Nespe.Models.DepartmentModel
+    <table class="Grid">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>SID</th>
+                <th>Name</th>
+                <th class="Actions">@Html.ActionLink("Create", "Create")</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.SID</td>
+                <td>@item.Name</td>
+                <td class="Actions">
+                    [ @Html.ActionLink("Edit", "Edit", new { Id=item.Id}) ]
+                    [ @Html.ActionLink("Delete", "Delete", new { Id = item.Id }) ]
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>

@@ -17,17 +17,19 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 *@  
 
-        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.6.2-vsdoc.js")"></script>
+        
         @*
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.8.2-vsdoc.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.corner.js")"></script>
         
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate-vsdoc.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui-1.8.23.js")"></script>
         *@
-        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui-1.8.11.js")"></script>
+        
         <script type="text/javascript">
         <!--
-            $(function () {
+            /*$(function () {
                 //alert("hello0");
                 //$("#datepicker").datepicker();
                 //alert("hello1");
@@ -36,7 +38,7 @@
 
                 //alert("hello");
             });
-
+            */
         //-->
         </script>
     </head>
@@ -58,6 +60,8 @@
                             @*<li>@Html.ActionLink("NewRequest", "NewRequest", "Home")</li>*@
                             <li>@Html.ActionLink("Nouvelle demande", "Arrival", "NewRequest")</li>
                             <li>@Html.ActionLink("Administration","Administration","Home")</li>
+                            <li>@Html.ActionLink("Person", "Index", "Person")</li>
+                            <li>@Html.ActionLink("Department", "Index", "Department")</li>
                         </ul>
                     </nav>
                 </div>

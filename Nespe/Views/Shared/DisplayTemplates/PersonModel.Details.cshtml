@@ -1,0 +1,39 @@
+﻿@model Nespe.Models.PersonModel
+<fieldset class="Form">
+    <legend>Person</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.SID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.SID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.LastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.EMail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.EMail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Phone)
+    </div>
+</fieldset>

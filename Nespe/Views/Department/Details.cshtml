@@ -1,0 +1,13 @@
+﻿@model Nespe.Models.DepartmentModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@Html.DisplayFor(m => m, "DepartmentModel.Details")
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Selected.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,59 @@
+﻿@model Nespe.Models.PersonModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <fieldset>   
+                @Html.DisplayFor(m => m, "PersonModel.Details")
+                </fieldset>
+             </td>
+            <td>
+                        <table>
+
+                        @foreach (var item in Model.DepartmentModel)
+                        {
+                            <tr>
+                                <td nowrap="nowrap">
+                                    @Html.DisplayFor(modelItem => item.Department.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Department.EMail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Department.Phone)
+                                </td>
+                                <td nowrap="nowrap">
+                                @if (item.Id > 0)
+                                {
+                                    @Html.ActionLink("Delete", "Delete", "PersonDepartment", new { Id = item.Id }, new { }) <b>|</b>
+                                    @Html.ActionLink("Edit", "Edit", "PersonDepartment", new { Id = item.Id }, new { }) <b>|</b>
+                                    @Html.ActionLink("Details", "Details", "PersonDepartment", new { Id = item.Id }, new { }) <b>|</b>
+                                    
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Add", "Create", "PersonDepartment", new { Person_Id = item.Person.Id, Department_Id = item.Department.Id }, new { }) <b>|</b>
+                                }
+                                </td>
+                            </tr>
+                        }
+
+                        </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Selected.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

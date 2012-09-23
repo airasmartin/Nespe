@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Nespe.Models.PersonDepartment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Rank)
+        </th>
+        <th colspan="2">
+            @Html.DisplayNameFor(model => model.Department_Id)
+        </th>
+        <th colspan="3">
+            @Html.DisplayNameFor(model => model.Person_Id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rank)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department_Id)
+            @Html.ActionLink(item.Department==null || string.IsNullOrWhiteSpace(item.Department.Name) ? "?" : item.Department.Name, "Details", "Department", new { Id = item.Department_Id }, new { })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_Id)
+            @Html.ActionLink(item.Person == null || string.IsNullOrWhiteSpace(item.Person.FirstName) ? "?" : item.Person.FirstName, "Details", "Person", new { Id = item.Person_Id }, new { })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

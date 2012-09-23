@@ -1,0 +1,40 @@
+﻿@model Nespe.Models.PersonDepartment
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PersonDepartment</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Role)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Role)
+            @Html.ValidationMessageFor(model => model.Role)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rank)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Rank)
+            @Html.ValidationMessageFor(model => model.Rank)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Department_Id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Department_Id)
+            @Html.ValidationMessageFor(model => model.Department_Id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Person_Id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Person_Id)
+            @Html.ValidationMessageFor(model => model.Person_Id)
+        </div>
+    </fieldset>

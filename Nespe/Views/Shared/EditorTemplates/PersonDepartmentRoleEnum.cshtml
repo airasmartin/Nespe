@@ -1,0 +1,7 @@
+﻿@model Nespe.Models.PersonDepartmentRoleEnum
+@using Nespe.Models
+@using System.Web.Mvc;
+@{
+    var items = Enum.GetValues(typeof(PersonDepartmentRoleEnum));
+}
+@Html.DropDownListFor(model=>model, new SelectList(items, Model))
