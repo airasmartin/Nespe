@@ -161,10 +161,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\NespeObjectContext.cs" />
     <Compile Include="Context\NespeDataContext.cs" />
-    <Compile Include="Context\NespeObjectContext.edmx">
-      <DependentUpon>NespeObjectContext.cs</DependentUpon>
-    </Compile>
-	
     <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -328,6 +324,7 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="ClassDiagram1.cd" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -439,6 +436,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

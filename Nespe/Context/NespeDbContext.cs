@@ -7,7 +7,13 @@ using System.Data.Entity;
 using System.Data.Common;
 using Nespe.Models;
 using System.Data.EntityClient;
+using System.Data.Objects.DataClasses;
+//[assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
 
+//[assembly: EdmRelationshipAttribute("Nespe.Models", "PersonDepartmentPerson", "PersonDepartment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nespe.Models.PersonDepartment), "Person", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nespe.Models.Person), true)]
+//[assembly: EdmRelationshipAttribute("Nespe.Models", "PersonDepartmentDepartment", "PersonDepartment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nespe.Models.PersonDepartment), "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nespe.Models.Department), true)]
+#endregion
 namespace Nespe.Context
 {
     [DbModelBuilderVersion(DbModelBuilderVersion.V5_0_Net4)]
@@ -46,6 +52,7 @@ namespace Nespe.Context
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            
             //base.OnModelCreating(modelBuilder);
             //modelBuilder.Configurations.Add(new System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PersonDepartment> {  });
             //modelBuilder.Entity<PersonDepartment>().Property(p => p.RoleValue).HasColumnType("int").HasColumnName("Role");
@@ -61,6 +68,10 @@ namespace Nespe.Context
             //});
             
             modelBuilder.Entity<PersonDepartment>().HasKey(t => t.Id);
+            //modelBuilder.Entity<PersonDepartment>().HasOptional(t=>t.Person).WithOptionalDependent();
+            //modelBuilder.Entity<Person>().Has<PersonDepartment>(t=>t.).WithOptional(t=>t.Person);
+            //modelBuilder.Entity<PersonDepartment>().
+            
             //modelBuilder.Entity<PersonDepartment>().HasMany(t=>t.Person).
             //modelBuilder.Entity<PersonDepartment>().HasRequired<Person>(t => t.Person).WithMany().HasForeignKey(t=>t.Person_Id).WillCascadeOnDelete(false);
             //modelBuilder.Entity<PersonDepartment>().HasRequired<Person>(t => t.Person).WithRequiredDependent().Map(mc => { mc.MapKey("Person_Id").MapKey("Id").ToTable("tbl_person_department"); });

@@ -15,10 +15,10 @@ namespace Nespe.Models
 {
     [Table("tbl_person")]
     [System.Data.Linq.Mapping.Table(Name = "tbl_person")]
-    [EdmEntityTypeAttribute(NamespaceName = "Nespe.Models", Name = "Person")]
-    public class Person
+    //[EdmEntityTypeAttribute(NamespaceName = "Nespe.Models", Name = "Person")]
+    public partial class Person
     {
-        [Key, Column, EdmScalarProperty(EntityKeyProperty = true, IsNullable = false)]
+        [Key, Column]//, EdmScalarProperty(EntityKeyProperty = true, IsNullable = false)]
         [System.Data.Linq.Mapping.Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public long Id { get; set; }
 

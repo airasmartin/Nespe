@@ -145,8 +145,8 @@ namespace Nespe.Controllers
         [HttpGet]
         public ActionResult Edit(long Id)
         {
-            //using (var db = new NespeDbContext())
-            using (var db = new NespeObjectContext())
+            using (var db = new NespeDbContext())
+            //using (var db = new NespeObjectContext())
             {
                 var drc = db.PersonDepartmentSet;
                 var dr = Get(Id, db);

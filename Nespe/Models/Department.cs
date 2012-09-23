@@ -14,10 +14,10 @@ namespace Nespe.Models
 {
     [Table("tbl_department")]
     [System.Data.Linq.Mapping.Table(Name = "tbl_department")]
-    [EdmEntityTypeAttribute(NamespaceName = "Nespe.Models", Name = "Department")]
+    //[EdmEntityTypeAttribute(NamespaceName = "Nespe.Models", Name = "Department")]
     public class Department
     {
-        [Key, Column, EdmScalarProperty(EntityKeyProperty=true, IsNullable=false)]
+        [Key, Column]//, EdmScalarProperty(EntityKeyProperty = true, IsNullable = false)]
         [System.Data.Linq.Mapping.Column(IsPrimaryKey=true, IsDbGenerated=true)]
         public long Id { get; set; }
         [Column][System.Data.Linq.Mapping.Column]

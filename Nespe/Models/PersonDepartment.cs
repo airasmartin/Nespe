@@ -17,10 +17,10 @@ using System.Runtime.Serialization;
 namespace Nespe.Models
 {
     [Table("tbl_person_department")]
-    [EdmEntityTypeAttribute(NamespaceName = "Nespe.Models", Name = "PersonDepartment")]
+    //[EdmEntityTypeAttribute(NamespaceName = "Nespe.Models", Name = "PersonDepartment")]
     public class PersonDepartment
     {
-        [Key, Column, EdmScalarProperty(EntityKeyProperty = true, IsNullable = false)]
+        [Key, Column]//, EdmScalarProperty(EntityKeyProperty = true, IsNullable = false)]
         [System.Data.Linq.Mapping.Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public long Id { get; set; }
 
@@ -32,9 +32,9 @@ namespace Nespe.Models
         [System.Data.Linq.Mapping.Column]
         public long? Department_Id { get; set; }
 
-        [Column("Person_Id")]
-        [ForeignKey("Person")]
-        [System.Data.Linq.Mapping.Column]
+        //[Column("Person_Id")]
+        //[ForeignKey("Person")]
+        //[System.Data.Linq.Mapping.Column]
         public long? Person_Id { get; set; }
 
         //[Column("Role"), EnumDataType(typeof(PersonDepartmentRoleEnum))]
@@ -49,16 +49,17 @@ namespace Nespe.Models
 
         [Required(ErrorMessage = "Veuillez sélectionner un département")]
         [Display(Name = "Département")]
-        [ForeignKey("Department_Id")]
-        [System.Data.Linq.Mapping.Association(IsForeignKey = true, Storage = "Department_Id", ThisKey = "Department_Id", OtherKey = "Id")]
+        //[ForeignKey("Department_Id")]
+        //[System.Data.Linq.Mapping.Association(IsForeignKey = true, Storage = "Department_Id", ThisKey = "Department_Id", OtherKey = "Id")]
         public virtual Department Department { get; set; }
 
-        [Required(ErrorMessage = "Veuillez sélectionner une personne")]
-        [Display(Name = "Personne")]
-        [ForeignKey("Person_Id")]
-        [System.Data.Linq.Mapping.Association(IsForeignKey=true, Storage="Person_id", ThisKey="Person_id", OtherKey="Id")]
+        //[Required(ErrorMessage = "Veuillez sélectionner une personne")]
+        //[Display(Name = "Personne")]
+        //[ForeignKey("Person_Id")]
+        //[Column("Person_Id")]
+        [System.Data.Linq.Mapping.Association(IsForeignKey = true, Storage = "Person_Id", ThisKey = "Person_Id", OtherKey = "Id")]
         //[Association(IsForeignKey=true, ThisKey="Person_id", OtherKey="Id")]
-        //[Association("tbl_person", "Person_id", "Id")]
+        //[Association("PersonDepartmentPerson", "Person_id", "Id")]
         public virtual Person Person { get ; set; }
 
 
