@@ -161,6 +161,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\NespeObjectContext.cs" />
     <Compile Include="Context\NespeDataContext.cs" />
+    <Compile Include="Context\NespeObjectContext.edmx">
+      <DependentUpon>NespeObjectContext.cs</DependentUpon>
+    </Compile>
+	
     <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
