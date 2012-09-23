@@ -27,3 +27,8 @@ fieldset.Form fieldset.Action input[type="submit"]
     background-color:red;
     text-align: center;
 }
+
+fieldset.Form div.display-label
+{
+    font-weight: bold;
+}
