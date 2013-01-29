@@ -26,6 +26,8 @@ namespace Nespe.Models
         public string Name { get; set; }
         [Column][System.Data.Linq.Mapping.Column]
         public string Description { get; set; }
+        [Column][System.Data.Linq.Mapping.Column]
+        public string Entity { get; set; }
         [Column]
         [System.Data.Linq.Mapping.Column]
         public string EMail { get; set; }
@@ -33,16 +35,36 @@ namespace Nespe.Models
         [System.Data.Linq.Mapping.Column]
         public string Phone { get; set; }
 
+
+        [Column]
+        [System.Data.Linq.Mapping.Column]
+        public string Head { get; set; }
+        [Column]
+        [System.Data.Linq.Mapping.Column]
+        public string Assistant1 { get; set; }
+        [Column]
+        [System.Data.Linq.Mapping.Column]
+        public string Assistant2 { get; set; }
+        [Column]
+        [System.Data.Linq.Mapping.Column]
+        public string Assistant3 { get; set; }
+
         public Department Copy(Department src, bool copyId=false) {
             var dst=this;
             if (copyId) dst.Id = src.Id;
             dst.SID = src.SID;
             dst.Name = src.Name;
             dst.Description = src.Description;
+            dst.Entity = src.Entity;
             dst.EMail = src.EMail;
             dst.Phone = src.Phone;
+            dst.Head = src.Head;
+            dst.Assistant1 = src.Assistant1;
+            dst.Assistant2 = src.Assistant2;
+            dst.Assistant3 = src.Assistant3;
             return src;
         }
     }
 	
 }
+

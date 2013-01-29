@@ -20,54 +20,72 @@
 }
 @using (Html.BeginForm())
 {
-    <fielset class="Form">
-    @Html.EditorFor(m => m.RequestModel, "_ArrivalRequestPartialView")
-    
+    <fieldset class="Form">
+    @Html.EditorFor(m => m.RequestModel, "_ArrivalNewRequest.Completer")
+    @Html.ValidationSummary()
 
     @if (Model.ITInfo != null)
     { 
-        @Html.EditorFor(m=>m.ITInfo, "_ITRequestInfoPartialView")
+        @Html.HiddenFor(m=>m.ITInfo.Id)
+        @Html.HiddenFor(m => m.ITInfo.Request_Id)
+        @Html.EditorFor(m => m.ITInfo, "_ITRequestInfoPartialView")
     }
 
     @if (Model.TelephoneInfo != null)
     { 
-        @Html.EditorFor(m=>m.TelephoneInfo, "_TelephoneRequestInfoPartialView")
+        @Html.HiddenFor(m => m.TelephoneInfo.Id)
+        @Html.HiddenFor(m => m.TelephoneInfo.Request_Id)
+        @Html.EditorFor(m => m.TelephoneInfo, "_TelephoneRequestInfoPartialView")
     }
 
     @if (Model.RoleSAPInfo != null)
     { 
-        @Html.EditorFor(m=>m.RoleSAPInfo, "_RolesSAPRequestInfoPartialView")
+        @Html.HiddenFor(m => m.RoleSAPInfo.Id)
+        @Html.HiddenFor(m => m.RoleSAPInfo.Request_Id)
+        @Html.EditorFor(m => m.RoleSAPInfo, "_RolesSAPRequestInfoPartialView")
     }
 
     @if (Model.PMOInfo != null)
     { 
-        @Html.EditorFor(m=>m.PMOInfo, "_PMORequestInfoPartialView")
+        @Html.HiddenFor(m => m.PMOInfo.Id)
+        @Html.HiddenFor(m => m.PMOInfo.Request_Id)
+        @Html.EditorFor(m => m.PMOInfo, "_PMORequestInfoPartialView")
     }
 
     @if (Model.MailCaseInfo != null)
     { 
-        @Html.EditorFor(m=>m.MailCaseInfo, "_MailCaseRequestInfoPartialView")
+        @Html.HiddenFor(m => m.MailCaseInfo.Id)
+        @Html.HiddenFor(m => m.MailCaseInfo.Request_Id)
+        @Html.EditorFor(m => m.MailCaseInfo, "_MailCaseRequestInfoPartialView")
     }
 
     @if (Model.ClothesInfo != null)
     { 
-        @Html.EditorFor(m=>m.ClothesInfo, "_ClothesRequestInfoPartialView")
+        @Html.HiddenFor(m => m.ClothesInfo.Id)
+        @Html.HiddenFor(m => m.ClothesInfo.Request_Id)
+        @Html.EditorFor(m => m.ClothesInfo, "_ClothesRequestInfoPartialView")
     }
 
     @if (Model.LockerInfo != null)
     { 
-        @Html.EditorFor(m=>m.LockerInfo, "_LockerRequestInfoPartialView")
+        @Html.HiddenFor(m => m.LockerInfo.Id)
+        @Html.HiddenFor(m => m.LockerInfo.Request_Id)
+        @Html.EditorFor(m => m.LockerInfo, "_LockerRequestInfoPartialView")
     }
 
     @if (Model.IntroInfo != null)
     { 
-        @Html.EditorFor(m=>m.IntroInfo, "_IntroRequestInfoPartialView")
+        @Html.HiddenFor(m => m.IntroInfo.Id)
+        @Html.HiddenFor(m => m.IntroInfo.Request_Id)
+        @Html.EditorFor(m => m.IntroInfo, "_IntroRequestInfoPartialView")
     }
 
 
     <fieldset class="Action">
         <input type="submit" />
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.RequestModel.Id)
     </fieldset>
-</fielset>
+</fieldset>
 }
 

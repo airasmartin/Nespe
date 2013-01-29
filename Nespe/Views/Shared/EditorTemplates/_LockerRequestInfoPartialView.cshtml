@@ -7,12 +7,12 @@
     <table class="Form">
         <caption align ="left"><h5>Infos Vestiaire casier :</h5></caption>
         <tr>
-            <td>@Html.RadioButtonFor(x => x.necesaryLocker, true)Nécessaire</td>
-            <td>@Html.RadioButtonFor(x => x.necesaryLocker, false, new { Checked = "checked" })Non-nécessaire</td>       
+            <td>@Html.RadioButtonFor(x => x.IsRequired, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.IsRequired, false, new { Checked = "checked" })Non-nécessaire</td>       
         </tr>          
         <tr>
-            <td>@Html.LabelFor(x => x.commentLocker)</td>
-            <td colspan="2">@Html.TextAreaFor(x => x.commentLocker, new { @class = "wide" })</td>
+            <td>@Html.LabelFor(x => x.Comment)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.Comment, new { @class = "wide" })</td>
         </tr>
     </table>
 

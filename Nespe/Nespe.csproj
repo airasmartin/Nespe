@@ -47,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Afterthought">
-      <HintPath>..\packages\EntityFramework.Patterns.0.7\lib\net40\Afterthought.dll</HintPath>
+      <HintPath>..\packages\Afterthought.1.0.8\lib\Afterthought.dll</HintPath>
     </Reference>
-    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.1.3.42154\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
@@ -67,6 +67,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Outlook, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Web.Optimization">
+      <HintPath>..\packages\Microsoft.Web.Optimization.0.1\lib\net40\Microsoft.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -163,13 +166,24 @@
     <Compile Include="Context\NespeDataContext.cs" />
     <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\RequestTypeController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PersonDepartmentController.cs" />
+    <Compile Include="Controllers\RequestInfoController.cs" />
+    <Compile Include="Helpers\ActiveDirectoryHelper.cs" />
+    <Compile Include="Helpers\WebMailHelper.cs" />
     <Compile Include="Migrations\201209221529025_InitialCreate.cs" />
     <Compile Include="Migrations\201209221529025_InitialCreate.Designer.cs">
       <DependentUpon>201209221529025_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\AddRequestKind.cs" />
+    <Compile Include="Migrations\AddDepartmentNewFields.cs" />
+    <Compile Include="Migrations\AddRequestIsFinished.cs" />
+    <Compile Include="Models\RequestTypeModell.cs" />
+    <Compile Include="Models\RequestType.cs" />
+    <Compile Include="Models\RequestInfo.cs" />
+    <Compile Include="Models\RequestInfoModell.cs" />
     <Compile Include="Models\PersonDepartmentModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
@@ -211,8 +225,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ncom.sdf" />
-    <Content Include="App_Data\nespe-ncom.sdf" />
+    <Content Include="App_Data\nespe-ncom-0.sdf" />
+    <Content Include="App_Data\nespe-ncom-2.sdf" />
     <Content Include="App_Readme\EntityFramework.CodeFirst.TestHelpers.README.txt" />
+    <Content Include="Content\css\nespresso.nespe.ListView.css" />
     <Content Include="Content\css\nespresso.nespe.Form.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -270,6 +286,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="obj\Debug\Nespe.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Nespe.dll" />
+    <Content Include="obj\Debug\Nespe.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
     <Content Include="Scripts\jquery-1.8.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -286,6 +306,10 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Views\Shared\EditorTemplates\_ArrivalRequestPartialView.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_IntroRequestInfoPartialView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -325,6 +349,57 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="ClassDiagram1.cd" />
+    <Content Include="Views\Shared\DisplayTemplates\Request.Grid.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_ArrivalNewRequest.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_TransfertNewRequest.cshtml" />
+    <Content Include="Views\Shared\_PersonPartialView.cshtml" />
+    <Content Include="Views\Shared\_RolePartialView.cshtml" />
+    <Content Include="Views\Shared\_DepartmentPartialView.cshtml" />
+    <Content Include="Views\Shared\_LocationPartialView.cshtml" />
+    <Content Include="Views\RequestType\Index.cshtml" />
+    <Content Include="Views\RequestType\Create.cshtml" />
+    <Content Include="Views\RequestType\Edit.cshtml" />
+    <Content Include="Views\RequestType\Delete.cshtml" />
+    <Content Include="Views\RequestType\Details.cshtml" />
+    <Content Include="Views\RequestInfo\Index.cshtml" />
+    <Content Include="Views\RequestInfo\Delete.cshtml" />
+    <Content Include="Views\RequestInfo\Details.cshtml" />
+    <Content Include="Views\RequestInfo\Edit.cshtml" />
+    <Content Include="Views\RequestInfo\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RequestTypeId.DropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\MesOperations\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_RequestInfoEditor.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Request.Grid.ReadOnly.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_ArrivalNewRequest.Completer.cshtml" />
+    <Content Include="Views\Shared\_PersonPartialView.ReadOnly.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_DepartmentPartialView.ReadOnly.cshtml" />
+    <Content Include="Views\Shared\_RolePartialView.ReadOnly.cshtml" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Context\NespeDbContext.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Context\NespeDbContext.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Context\NespeDbContext.ssdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Context\NespeObjectContext.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Context\NespeObjectContext.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Context\NespeObjectContext.ssdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\NCOM.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\NCOM.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\NCOM.ssdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\NespeDbContext.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\NespeDbContext.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\NespeDbContext.ssdl" />
+    <None Include="obj\Debug\GenerateResource.read.1.tlog" />
+    <None Include="obj\Debug\GenerateResource.write.1.tlog" />
+    <Content Include="Views\Shared\_LocationPartialView.ReadOnly.cshtml" />
+    <Content Include="Views\MesOperations\CompleterDepart.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_ITRequestDepartureInfoPartialView.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_DeparturePartialView.completer.cshtml" />
+    <Content Include="Views\MesOperations\EditDepart.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_RequestInfoEditor.Table.Row.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_ExternalyManagedRequestInfoEditor.Table.Row.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -347,13 +422,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="readme.txt" />
-    <Content Include="Views\Home\MesOperations.cshtml" />
     <Content Include="Views\Home\Recherches.cshtml" />
     <Content Include="Views\Home\Administration.cshtml" />
-    <Content Include="Views\Home\Formulaire.cshtml" />
-    <Content Include="Views\Home\NewRequest.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
-    <Content Include="Views\NewRequest\Index.cshtml" />
     <Content Include="Views\NewRequest\Arrival.cshtml" />
     <Content Include="Views\NewRequest\_TopPartialView.cshtml" />
     <Content Include="Views\NewRequest\_BottomPartialView.cshtml" />
@@ -361,7 +432,7 @@
     <Content Include="Views\NewRequest\Transfert.cshtml" />
     <Content Include="Views\NewRequest\_TransfertPartialView.cshtml" />
     <Content Include="Views\NewRequest\Departure.cshtml" />
-    <Content Include="Views\NewRequest\_DeparturePartialView.cshtml" />
+    <Content Include="Views\Shared\_DeparturePartialView.cshtml" />
     <Content Include="Views\NewRequest\Confirmation.cshtml" />
     <Content Include="Views\MesOperations\Index.cshtml" />
     <Content Include="Views\MesOperations\Completer.cshtml" />
@@ -372,24 +443,15 @@
     <Content Include="Views\Shared\EditorTemplates\_MailCaseRequestInfoPartialView.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_ClothesRequestInfoPartialView.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_LockerRequestInfoPartialView.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\_IntroRequestInfoPartialView.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\_ArrivalRequestPartialView.cshtml" />
     <Content Include="Views\MesOperations\ArrivalEdit.cshtml" />
     <Content Include="Views\MesOperations\_EditBeforeArrival.cshtml" />
     <Content Include="Views\MesOperations\_EditArrival.cshtml" />
     <Content Include="Views\MesOperations\_FormsToCompleteList.cshtml" />
-    <Content Include="Views\MesOperations\_ArrivalsList.cshtml" />
-    <Content Include="Views\MesOperations\_TransfertsList.cshtml" />
-    <Content Include="Views\MesOperations\_DeparturesList.cshtml" />
     <Content Include="Views\MesOperations\_EditDeparture.cshtml" />
     <Content Include="Views\MesOperations\_EditAfterDeparture.cshtml" />
     <Content Include="Views\MesOperations\DepartureEdit.cshtml" />
     <Content Include="Views\MesOperations\_EditBeforeDeparture.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
-    <Content Include="Views\Index\_ArrivalsList.cshtml" />
-    <Content Include="Views\Index\_DeparturesList.cshtml" />
-    <Content Include="Views\Index\_FormsToCompleteList.cshtml" />
-    <Content Include="Views\Index\_TransfertsList.cshtml" />
     <Content Include="Views\Administration\Administration.cshtml" />
     <Content Include="Views\Administration\_ListDeparments.cshtml" />
     <Content Include="Views\Administration\_EditDepartments.cshtml" />
@@ -428,7 +490,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201209221529025_InitialCreate.resx">
       <DependentUpon>201209221529025_InitialCreate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\Nespe.Migrations.InitialCreate.resources" />
+    <EmbeddedResource Include="obj\Debug\Nespe.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -454,7 +519,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>18901</DevelopmentServerPort>
+          <DevelopmentServerPort>17365</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
@@ -468,8 +533,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>Afterthought.Amender "$(TargetPath)"
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

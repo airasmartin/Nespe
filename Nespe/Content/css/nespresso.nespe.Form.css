@@ -11,7 +11,21 @@ fieldset.Form table.Form caption h5
     text-align: left;
     font-size: large;
     font-weight: bold;
-    background-color:red;
+ border: 1px solid rgb(178, 178, 178);
+ -webkit-appearance: textfield;
+ -webkit-box-sizing: content-box;
+   -moz-box-sizing : content-box;
+        box-sizing : content-box;
+ -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+         border-radius: 3px;
+ -webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+    -moz-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+         box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+ -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+         transition: all 0.2s linear;
 }
 fieldset table.Form caption, fieldset.Form table tbody
 {
@@ -24,11 +38,50 @@ fieldset.Form fieldset.Action
 }
 fieldset.Form fieldset.Action input[type="submit"]
 {
-    background-color:red;
     text-align: center;
 }
 
 fieldset.Form div.display-label
 {
     font-weight: bold;
+}
+
+fieldset.Form table
+{
+}
+fieldset.Form table tbody tr td
+{
+    vertical-align:top;
+    text-align:left;
+    /*border: 1px solid black;*/
+}
+fieldset.Form table tbody tr td fieldset
+{
+    vertical-align:top;
+    text-align:left;
+    /*border: 1px solid black;*/
+}
+
+fieldset.Form table tbody tr td fieldset div[class="editor-field"] input[type="text"],
+fieldset.Form table tbody tr td fieldset div[class="editor-field"] input[type="datetime"],
+fieldset.Form table tbody tr td fieldset div[class="editor-field"] input[type="date"],
+fieldset.Form table tbody tr td fieldset div[class="editor-field"] input[type="time"],
+fieldset.Form table tbody tr td fieldset div[class="editor-field"] input[type="number"]
+{
+    border: 1px solid #e2e2e2;
+    color: #333;
+    font-size: 1.2em;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+    width: 300px;
+}
+fieldset.Form table tbody tr td fieldset div[class="editor-field"] input[type="optionbox"],
+fieldset.Form table tbody tr td fieldset div[class="editor-field"] input[type="checkbox"]
+{
+    border: 1px solid #e2e2e2;
+    color: #333;
+    font-size: 1.2em;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+
 }

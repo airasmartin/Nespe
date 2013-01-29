@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Configuration;
+using System.Xml.Linq;
 
 namespace Nespe.Spikes
 {
@@ -15,6 +16,107 @@ namespace Nespe.Spikes
             Spike3(args);
             Console.WriteLine("Press enter");
             Console.ReadLine();
+        }
+
+        public static int NumberOfWorksDays(int days)
+        {
+            decimal weeks = days / 7;
+            int r = (int)Math.Truncate(weeks) * 5;
+            r += days % 7;
+            return r;
+        }
+        static void Spike6(string[] args)
+        {
+            var model = new ArrivalCompleterFormulaireModel
+            {
+                RequestModel = new ArrivalNewRequestModel
+                {
+                    FirstName = "Komanda",
+                    LastName = "Phanzu",
+                }
+            };
+            Request request = model.RequestModel;
+            if (string.IsNullOrWhiteSpace(request.Person.EMail))
+                request.Person.EMail = string.Format("{0}.{1}@nestle.com", model.RequestModel.FirstName, model.RequestModel.LastName);
+            var title = string.Format("[NESPE] {0} Newcomer Initial", request.Id);
+            var message = @"Please install following Hardware for Joao Ramalho in office PK120
+  - Laptop
+  - Docking station
+  - Screen
+  - mouse
+  - keyboard
+  ";
+            var xdoc = new XDocument(
+                new XElement("Nestle_SM7",
+                    new XElement("documentReferences",
+                        new XElement("documentType", new XCData("CH LGO Request")),
+                        new XElement("sourceSystem", new XCData("ServiceDesk.xsn")),
+                        new XElement("sourceFQDN", new XCData("forms.hq.nestle.com")),
+                        new XElement("supportGroup", new XCData("CH_HERITAGE_VEV")),
+                        new XElement("supportContactTel", new XCData("+41 21 924-3456")),
+                        new XElement("supportContactEmail", new XCData("pascal.hungerbuhler@nestle.com"))
+                    ),
+                    new XElement("assignmentGroup", new XCData("CH_IT SUPPORT WKS_ORB INSTALLATION")),
+                    new XElement("primaryContactDetails",
+                        new XElement("contactName", new XCData(request.Person.EMail))
+                    ),
+                    new XElement("initiatorUserId", new XCData("RDAirasMa")),
+                    new XElement("title", new XCData(title)),
+                    new XElement("description", new XCData(message)),
+                    new XElement("impact", new XCData("4")),
+                    new XElement("severity", new XCData("4")),
+                    new XElement("callbackType", new XCData("Telephone")),
+                    new XElement("coreService", new XCData("BUSINESS TO EMPLOYEE (B2E)/WORKSTATION")),
+                    new XElement("category", new XCData("request")),
+                    new XElement("area", new XCData("request for change")),
+                    new XElement("subArea", new XCData("escalate cr")),
+                    new XElement("userEnvironment", new XCData("PRODUCTION")),
+                    new XElement("attachments"),
+                    new XElement("requestLeadTime", new XCData(NumberOfWorksDays(request.RemainingTime.Days).ToString()))
+                )
+             );
+            var filePath = "./NESPE-2012-001-000004.xml";
+            xdoc.Save(filePath);
+        }
+        static void Spike5(string[] args)
+        {
+            var xdoc = new XDocument(
+                new XElement("Nestle_SM7",
+                    new XElement("documentReferences",
+                        new XElement("documentType", new XCData("CH LGO Request")),
+                        new XElement("sourceSystem", new XCData("ServiceDesk.xsn")),
+                        new XElement("sourceFQDN", new XCData("forms.hq.nestle.com")),
+                        new XElement("supportGroup", new XCData("CH_HERITAGE_VEV")),
+                        new XElement("supportContactTel", new XCData("+41 21 924-3456")),
+                        new XElement("supportContactEmail", new XCData("pascal.hungerbuhler@nestle.com"))
+                    ),
+                    new XElement("assignmentGroup", new XCData("CH_IT SUPPORT WKS_ORB INSTALLATION")),
+                    new XElement("primaryContactDetails",
+                        new XElement("contactName", new XCData("MARCEL.OPPLIGER@NESTLE.COM"))
+                    ),
+                    new XElement("initiatorUserId", new XCData("RDAirasMa")),
+                    new XElement("title", new XCData("[NESPE] 000002 NewComer install")),
+                    new XElement("description", new XCData(@"Please install following Hardware for Joao Ramalho in office PK120
+  - Laptop
+  - Docking station
+  - Screen
+  - mouse
+  - keyboard
+  ")),
+                    new XElement("impact", new XCData("4")),
+                    new XElement("severity", new XCData("4")),
+                    new XElement("callbackType", new XCData("Telephone")),
+                    new XElement("coreService", new XCData("BUSINESS TO EMPLOYEE (B2E)/WORKSTATION")),
+                    new XElement("category", new XCData("request")),
+                    new XElement("area", new XCData("request for change")),
+                    new XElement("subArea", new XCData("escalate cr")),
+                    new XElement("userEnvironment", new XCData("PRODUCTION")),
+                    new XElement("attachments"),
+                    new XElement("requestLeadTime", new XCData("4"))
+                )
+             );
+            var filePath = "./NESPE-2012-001-000003.xml";
+            xdoc.Save(filePath);
         }
         static void Spike1(string[] args)
         {

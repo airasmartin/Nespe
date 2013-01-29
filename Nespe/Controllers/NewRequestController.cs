@@ -5,6 +5,9 @@ using System.Data.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Nespe.Models;
+using Nespe.Context;
+using Nespe.Helpers;
+using System.Data.Entity.Validation;
 //using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace Nespe.Controllers
@@ -13,17 +16,23 @@ namespace Nespe.Controllers
     {
 
        
-        //
+   
         // GET: /NewRequest/
         [HttpGet]
         public ActionResult Index()
         {
             return Arrival();
         }
-
+        private IQueryable<Department> listDepartment() { 
+            using(var db=new NespeDbContext()){
+                var r=(from t in db.DepartmentSet select t);
+                return r;
+            }
+        }
         [HttpGet]
         public ActionResult Arrival()
         {
+            
             ViewBag.Message = "Nouvelle demande";
             var model = new ArrivalNewRequestModel { kind = RequestKindEnum.Arrival, StartDate = DateTime.Now.AddMonths(2) };
             return View( model);
@@ -38,6 +47,7 @@ namespace Nespe.Controllers
         [HttpGet]
         public ActionResult Transfert()
         {
+            ViewBag.DepartmentList = listDepartment();
             ViewBag.Message = "Nouvelle demande";
             var model = new TransfertNewRequestModel { kind = RequestKindEnum.Transfert, StartDate = DateTime.Now.AddDays(15) };
 
@@ -53,60 +63,97 @@ namespace Nespe.Controllers
         [HttpPost]
         public ViewResult Arrival(ArrivalNewRequestModel model, FormCollection formCollection)
         {
-            if (ModelState.IsValid)
+            try
             {
                 //TO DO : Email guestResponse to ther part organizer
-                Request request=model;
-                
-                SaveToDb(request);
-                //RequestSet.Add(request);
-                return View("Confirmation", request);
+                Request request = model;
+                if (ModelState.IsValid)
+                {
+                    WebMailHelper.SendEmailCreation(request);
+                    SaveToDb(request);
+                    return View("Confirmation", request);
+                }
+                else
+                {
+                    //there is a validation error - redisplay the form
+                    return View(model);
+                }
             }
-            else
+            catch (DbEntityValidationException ex)
             {
-                //there is a validation error - redisplay the form
-                return View( model);
+                AddModelError(ex);
+                return View(model);
             }
-
 
         }
         [HttpPost]
         public ViewResult Departure(DepartureNewRequestModel model, FormCollection formCollection)
         {
-            if (ModelState.IsValid)
+
+            try
             {
-                //TO DO : Email guestResponse to ther part organizer
+
                 Request request = model;
-                SaveToDb(request);
-                return View("Confirmation", request);
+                if (ModelState.IsValid)
+                {
+                    //TO DO : Email guestResponse to ther part organizer
+
+                    if (request != null)
+                    {
+                        if(string.IsNullOrWhiteSpace(request.EmployeeNumber))
+                            request.EmployeeNumber = "NA";
+                        
+                    }
+
+                    SaveToDb(request);
+                    return View("Confirmation", request);
+                }
+                else
+                {
+                    //there is a validation error - redisplay the form
+                    return View(model);
+                }
             }
-            else
+            catch (DbEntityValidationException ex)
             {
-                //there is a validation error - redisplay the form
-                return View( model);
+                AddModelError(ex);
+                return View(model);
             }
         }
         [HttpPost]
         public ViewResult Transfert(TransfertNewRequestModel model, FormCollection formCollection)
         {
-            if (ModelState.IsValid)
+           
+            try
             {
-                //TO DO : Email guestResponse to ther part organizer
-                Request request = model;
-                SaveToDb(request);
-                return View("Confirmation", request);
+                if (ModelState.IsValid)
+                {
+                    Request request = model;
+                    //TO DO : Email guestResponse to ther part organizer
+                    var selected = model;
+                    WebMailHelper.SendEmailCreation(request);
+                    SaveToDb(selected);
+                    
+                    return View("Confirmation", request);
+                }
+                else
+                {
+                    //there is a validation error - redisplay the form
+                    return View(model);
+                }
             }
-            else
+            catch (DbEntityValidationException ex)
             {
-                //there is a validation error - redisplay the form
+                AddModelError(ex);
                 return View(model);
             }
         }
 
-        protected override void SaveToDb(Request request)
+        protected override Request SaveToDb(Request request)
         {
-            base.SaveToDb(request);
+            var r=base.SaveToDb(request);
             UpdateRequestList(RequestSet);
+            return r;
         }
         //void DemoSetInitialAddressList()
         //{

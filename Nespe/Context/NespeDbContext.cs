@@ -52,7 +52,6 @@ namespace Nespe.Context
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
             //base.OnModelCreating(modelBuilder);
             //modelBuilder.Configurations.Add(new System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PersonDepartment> {  });
             //modelBuilder.Entity<PersonDepartment>().Property(p => p.RoleValue).HasColumnType("int").HasColumnName("Role");
@@ -81,13 +80,27 @@ namespace Nespe.Context
             //modelBuilder.Entity<PersonDepartment>().Property<long>(t => t.Person.Id).HasColumnName("Person_id");
             
             //modelBuilder.Entity<PersonDepartment>().HasRequired<Person>(t=>t.Person).WithRequiredDependent().Map();
-            
+
             
         }
+
+        public DbSet<RequestInfo> RequestInfoSet { get; set; }
         public DbSet<Request> RequestSet { get; set; }
-        public DbSet<RequestTypeInfo> RequestInfoSet { get; set; }
+        public DbSet<RequestType> RequestTypeSet { get; set; }
         public DbSet<Person> PersonSet { get; set; }
         public DbSet<Department> DepartmentSet { get; set; }
         public DbSet<PersonDepartment> PersonDepartmentSet { get; set; }
+        public DbSet<Nespe.Models.IntroRequestInfo> IntroRequestSet { get; set; }
+        public DbSet<Nespe.Models.ClothesRequestInfo> ClothesRequestSet { get; set; }
+        public DbSet<Nespe.Models.ITRequestInfo> ITRequestSet { get; set; }
+        public DbSet<Nespe.Models.LockerRequestInfo> LockerRequestSet { get; set; }
+        public DbSet<Nespe.Models.MailCaseRequestInfo> MailCaseRequestSet { get; set; }
+        public DbSet<Nespe.Models.PMORequestInfo> PMORequestSet { get; set; }
+        public DbSet<Nespe.Models.RoleSAPRequestInfo> RoleSAPRequestSet { get; set; }
+        public DbSet<Nespe.Models.TelephoneRequestInfo> TelephoneRequestSet { get; set; }
+
+
+
+        public DbSet<ExternalyManagedRequestInfo> ExternalyManagedRequestSet { get; set; }
     }
 }

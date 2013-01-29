@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/themes/base/css", "~/Content/css")
         <link href="@Url.Content("~/Content/css/nespresso.nespe.Form.css")" rel="stylesheet" type="text/css"/>
+        <link href="@Url.Content("~/Content/css/nespresso.nespe.ListView.css")" rel="stylesheet" type="text/css"/>
+        
         @Scripts.Render("~/bundles/modernizr")
         
 
@@ -46,7 +48,7 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("NESPE", "Index", "Home")</p>
+                    <p class="site-title">@Html.ActionLink("NESPE", "Index", "MesOperations")</p>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -54,14 +56,16 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                            @*<li>@Html.ActionLink("Accueil", "Index", "Home")</li>*@
                             <li>@Html.ActionLink("Mes opérations", "Index", "MesOperations")</li>
                             <li>@Html.ActionLink("Recherches", "Recherches", "Home")</li>
                             @*<li>@Html.ActionLink("NewRequest", "NewRequest", "Home")</li>*@
                             <li>@Html.ActionLink("Nouvelle demande", "Arrival", "NewRequest")</li>
-                            <li>@Html.ActionLink("Administration","Administration","Home")</li>
-                            <li>@Html.ActionLink("Person", "Index", "Person")</li>
-                            <li>@Html.ActionLink("Department", "Index", "Department")</li>
+                            @*<li>@Html.ActionLink("Administration","Administration","Home")</li>*@
+@*                            <li>@Html.ActionLink("Person", "Index", "Person")</li>*@
+                            <li>@Html.ActionLink("Administration", "Index", "Department")</li>
+@*                            <li>@Html.ActionLink("RequestType", "Index", "RequestType")</li>
+                            <li>@Html.ActionLink("RequestInfo", "Index", "RequestInfo")</li>*@
                         </ul>
                     </nav>
                 </div>

@@ -5,6 +5,10 @@
                 <th>Id</th>
                 <th>SID</th>
                 <th>Name</th>
+                <th>Head</th>
+                <th>Assistant1</th>
+                <th>Assistant2</th>
+                <th>Assistant3</th>
                 <th class="Actions">@Html.ActionLink("Create", "Create")</th>
             </tr>
         </thead>
@@ -15,6 +19,10 @@
                 <td>@item.Id</td>
                 <td>@item.SID</td>
                 <td>@item.Name</td>
+                <td>@item.Head</td>
+                <td>@item.Assistant1</td>
+                <td>@item.Assistant2</td>
+                <td>@item.Assistant3</td>
                 <td class="Actions">
                     [ @Html.ActionLink("Edit", "Edit", new { Id=item.Id}) ]
                     [ @Html.ActionLink("Delete", "Delete", new { Id = item.Id }) ]

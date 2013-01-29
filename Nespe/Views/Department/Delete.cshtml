@@ -4,3 +4,10 @@
 }
 
 <h2>Delete</h2>
+
+<fieldset>
+    <legend>@ViewBag.Title</legend>
+    @Html.DisplayFor(m => m, "DepartmentModel.Details")
+</fieldset>
+
+@Html.DisplayFor(m=>m.Items, "DepartmentModel.List")

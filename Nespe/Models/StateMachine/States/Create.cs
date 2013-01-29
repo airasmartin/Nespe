@@ -2,6 +2,9 @@
 
 
 using Nespe.Models;
+using System.Web.Helpers;
+using System;
+
 namespace Nespe
 {
     
@@ -21,49 +24,23 @@ namespace Nespe
         {
             //using (var db = new NespeEntityContainer())
             //{
-            //    //db.Requests.AddObject(request);
+            //    //db.Requests.AddObject(selected);
             //    //db.SaveChanges();
             //}
         }
         public void SendEmail(Request request)
         {
-            //try {
-            //    WebMail.SmtpServer = "smtp.eur.nestle.com";
-            //    WebMail.SmtpPort = 25;
-            //    WebMail.EnableSsl = false;
-            //    WebMail.From = "martin.airas@rdor.nestle.com";
-
-            //    WebMail.Send("martin.airas@rdor.nestle.com", "[NESPE] Demande New comer",
-            //                    "Hello, "+
-            //                    "Le "+ StartDate + " tu auras dans ton département l'arrivée de" LastName + " " +FirstName +
-            //                    " au local " + localNC+"."
-            //                    "Afin que tout soit prêt lors de son arrivée, tu es priée de remplir le formulaire"+
-            //                    " que tu trouveras sur (lien page)"+
-            //                    "Merci d'avance");
+            var LastName = request.Person.LastName;
+            var FirstName = request.Person.FirstName;
+            var StartDate = request.StartDate;
+            var local = request.Local;
+            var eMail = request.Person.EMail;
             
-            //} catch (Exception ex) {
-            //    throw new Exception(@":<b>Sorry - we couldn't send the EMail to confirm your Request.</b>"); 
-            //}
+            //System.Web.Security.Membership.GetUser().
 
-            //            try {
-            //    WebMail.SmtpServer = "smtp.eur.nestle.com";
-            //    WebMail.SmtpPort = 25;
-            //    WebMail.EnableSsl = false;
-            //    WebMail.From = "martin.airas@rdor.nestle.com";
+            var ui = Nespe.Helpers.ActiveDirectoryHelper.GertUserInfo(System.Web.HttpContext.Current.User.Identity.Name);
+            var emailFrom = ui.EMail;
 
-            //    WebMail.Send("martin.airas@rdor.nestle.com", "[NESPE] Demande New comer",
-            //                    "Hello, "+
-            //                    "Le "+ StartDate + " tu auras dans ton département l'arrivée de" LastName + " " +FirstName +
-            //                    " au local " + localNC+"."
-            //                    "Afin que tout soit prêt et que son arrivée se fasse avec le meilleur accompagnement,"+
-            //                    " tu es prié de contacter"+ Assistante1 + "afin que vous vous répartissiez les tâches que" +
-            //                    "tu trouveras sur (lien page)"+
-            //                    "Merci d'avance");
-            
-            //} catch (Exception) {
-            //    @:<b>Sorry - we couldn't send the EMail to confirm your Request.</b> 
-            //}
-        
         }
         public override void StateEntry()
         {

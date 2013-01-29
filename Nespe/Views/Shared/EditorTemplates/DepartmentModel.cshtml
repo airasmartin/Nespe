@@ -29,11 +29,35 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Selected.Description)
+            @Html.LabelFor(model => model.Selected.Head)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Selected.Description)
-            @Html.ValidationMessageFor(model => model.Selected.Description)
+            @Html.EditorFor(model => model.Selected.Head)
+            @Html.ValidationMessageFor(model => model.Selected.Head)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.Assistant1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Selected.Assistant1)
+            @Html.ValidationMessageFor(model => model.Selected.Assistant1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.Assistant2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Selected.Assistant2)
+            @Html.ValidationMessageFor(model => model.Selected.Assistant2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.Assistant3)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Selected.Assistant3)
+            @Html.ValidationMessageFor(model => model.Selected.Assistant3)
         </div>
 
         <div class="editor-label">
@@ -50,6 +74,22 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Selected.Phone)
             @Html.ValidationMessageFor(model => model.Selected.Phone)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.Entity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Selected.Entity)
+            @Html.ValidationMessageFor(model => model.Selected.Entity)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Selected.Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Selected.Description, new { rows="10" , width="100%" })
+            @Html.ValidationMessageFor(model => model.Selected.Description)
         </div>
 
         <p>

@@ -1,22 +1,18 @@
 ﻿@model Nespe.Models.DepartureNewRequestModel
 @using System.ComponentModel.DataAnnotations;
 @using Nespe;
-@using RequestKindEnum = Nespe.RequestKindEnum;
+@using RequestKindEnum = Nespe.Models.RequestKindEnum;
     @Html.Partial("_TopPartialView")
-        <table class="Form">
         @using (Html.BeginForm())
         {
-
-
+            <fieldset class="Form">
+            <p class="Validation">@Html.ValidationSummary(false)</p>
+            @Html.HiddenFor(model => model.Id)
             @Html.Partial("_DeparturePartialView")
-        <tr>
-            <th colspan="2">
-                @Html.HiddenFor(requestType => requestType.kind)
-                <input type="submit" value="Soumettre Demande"/>
-            </th>
-        </tr>
+                <p>
+                    @Html.HiddenFor(requestType => requestType.kind)
+                    <input type="submit" value="Soumettre Demande"/>
+                </p>
+            </fieldset>
         }
-        
-        
-        </table>
 @Html.Partial("_BottomPartialView")

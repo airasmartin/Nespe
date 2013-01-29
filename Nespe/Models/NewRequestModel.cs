@@ -2,34 +2,47 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
+using System.Data.Linq;
 using System.ComponentModel.DataAnnotations;
 
 namespace Nespe.Models
 {
     public class AbstractNewRequestModel
     {
+        
         public long Id { get; set; }
-        [Required(ErrorMessage = "Veuillez entrer le nom")]
-        [Display(Name = "Prénom")]
-        public string FirstName { get; set; }
+        
+        [Required(ErrorMessage = "Veuillez entrer le prénom", AllowEmptyStrings=true)]
+        [Display(Name = "*Prénom")]
+        public virtual string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Veuillez entrer le prénom")]
-        [Display(Name = "Nom")]
-        public string LastName { get; set; }
+        [Required(ErrorMessage = "Veuillez entrer le nom", AllowEmptyStrings = true)]
+        [Display(Name = "*Nom")]
+        public virtual string LastName { get; set; }
+
+
+        //[Required(ErrorMessage = "Veuillez entrer l'Active Directory Id")]
+        [Display(Name = "Active Directory Id")]
+        public virtual string ActiveDirectoryId { get; set; }
 
         [Required(ErrorMessage = "Veuillez entrer la date d'arrivée du nouveau collaborateur")]
-        [Display(Name = "Date d'arrivée")]
-        public DateTime StartDate { get; set; }
+        [Display(Name = "*Date d'arrivée")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public virtual DateTime StartDate { get; set; }
 
         [Required(ErrorMessage = "Veuillez sélectionner un département")]
-        [Display(Name = "Département")]
-        public long Department_Id { get; set; }
+        [Display(Name = "*Département")]
+        public virtual long Department_Id { get; set; }
 
-        public RequestKindEnum kind { get; set; }
+        public virtual RequestKindEnum kind { get; set; }
 
         public virtual Request Copy(Request src)
         {
+            if (src == null)
+                return src;
             var dst = this;
+            dst.ActiveDirectoryId = src.ActiveDirectoryId;
             dst.kind = src.Kind;
             dst.StartDate = src.StartDate;
             dst.Id = src.Id;
@@ -39,6 +52,8 @@ namespace Nespe.Models
         }
         public virtual PersonDepartment Copy(PersonDepartment src)
         {
+            if (src == null)
+                return src;
             var dst = this;
             Copy(src.Department);
             Copy(src.Person);
@@ -46,12 +61,16 @@ namespace Nespe.Models
         }
         public virtual Department Copy(Department src)
         {
+            if (src == null)
+                return src;
             var dst = this;
             dst.Department_Id = src.Id;
             return src;
         }
         public virtual Person Copy(Person src)
         {
+            if (src == null)
+                return src;
             var dst = this;
             dst.FirstName = src.FirstName;
             dst.LastName = src.LastName;
@@ -59,8 +78,13 @@ namespace Nespe.Models
         }
         public virtual Request CopyTo(Request dst)
         {
+
             var src = this;
-            dst.Id = src.Department_Id;
+            dst.ActiveDirectoryId = src.ActiveDirectoryId;
+            dst.Kind = src.kind;
+            dst.StartDate = src.StartDate;
+            dst.Id = src.Id;
+            dst.StartDate = src.StartDate;
             CopyTo(dst.PersonDepartment);
             return dst;
         }
@@ -89,7 +113,8 @@ namespace Nespe.Models
             var dst = new Request
             {
                 Kind = src.kind,
-                
+                PersonDepartment = new PersonDepartment { Person = new Person { }, Department = new Department { } },
+
             };
             dst.Id = src.Id;
             src.CopyTo(dst);
@@ -101,10 +126,15 @@ namespace Nespe.Models
     }
     public class DepartureNewRequestModel : AbstractNewRequestModel
     {
-        [Required(ErrorMessage = "Veuillez entrer la date d'arrivée du nouveau collaborateur")]
-        public DateTime DepartureDate { get; set; }
+        [Display(Name = "Initiales")]
+        public string Initials { get; set; }
+
+        [Required(ErrorMessage = "Veuillez entrer la date de départ du collaborateur")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DepartureDate { get { return StartDate; } set { StartDate = value; } }
         [Required(ErrorMessage = "Veuillez entrer le local")]
         public string Local { get; set; }
+
 
         public bool retirement { get; set; }
 
@@ -118,10 +148,11 @@ namespace Nespe.Models
         public override Request CopyTo(Request dst)
         {
             var src = this;
-
+            dst.Kind = RequestKindEnum.Departure;
             dst.Local = src.Local;
             return base.CopyTo(dst);
         }
+
         public static implicit operator Request(DepartureNewRequestModel src)
         {
             var o = src as AbstractNewRequestModel;
@@ -145,16 +176,16 @@ namespace Nespe.Models
         public string Function { get; set; }
 
         [Display(Name = "Supérieur hierarchique")]
-        public string SuperiorNC { get; set; }
+        public string Superior { get; set; }
 
         [Display(Name = "Business Stream")]
-        public string BusinessStreamNC { get; set; }
+        public string BusinessStream { get; set; }
 
         [Required(ErrorMessage = "Veuillez entrer le numéro d'employé, s'il n'a pas de compte SAP, cochez la case 'Non-SAP'")]
-        [Display(Name = "Numéro d'employé")]
-        public string EmployeeNumberNC { get; set; }
+        [Display(Name = "*Numéro d'employé")]
+        public string EmployeeNumber { get; set; }
 
-        public bool nonSAPNC { get; set; }
+        public bool nonSAP { get; set; }
 
         [Display(Name = "Local")]
         public string Local { get; set; }
@@ -169,24 +200,68 @@ namespace Nespe.Models
         public string Parrain { get; set; }
 
 
-        public override Request Copy(Request src) {
-            var dst = this;
-            
+
+        public override Request CopyTo(Request dst)
+        {
+            var src = this;
+
             dst.Local = src.Local;
             dst.Id = src.Id;
-            dst.SuperiorNC = src.Superior;
-            dst.BusinessStreamNC = src.BusinessStream;
-            dst.StartDate = src.StartDate;
-            dst.EmployeeNumberNC = src.EmployeeNumber;
-            dst.nonSAPNC = src.nonSAP;
+            dst.Function = src.Function;
+            dst.Superior = src.Superior;
+            dst.BusinessStream = src.BusinessStream;
+            dst.Kind = RequestKindEnum.Arrival;
+            dst.EmployeeNumber = src.EmployeeNumber;
+
+            dst.nonSAP = src.nonSAP;
             dst.Local = src.Local;
-            //dst.TransFrom = dst.TransFrom;
-            //dst.Kind = (short)dst.Kind;
+            if(dst.PersonDepartment==null)
+                dst.PersonDepartment=new PersonDepartment{Person=new Person{}, Department=new Department{}};
+            if (dst.Person == null)
+                dst.Person = new Person { };
+            if (dst.Department == null)
+                dst.Department = new Department { };
+            dst.Person.Phone = src.Phone;
+            dst.Person.Initials = src.Initials;
+            dst.Department.Id = src.Department_Id;
+            dst.Parrain = src.Parrain;
+            dst.StartDate = src.StartDate;
+
+
+            return base.CopyTo(dst);
+        }
+
+        public override Request Copy(Request src) {
+            if (src == null)
+                return src;
+
+            var dst = this;
+            
+
+            dst.Local = src.Local;
+            dst.Id = src.Id;
+            dst.Function = src.Function;
+            dst.Superior = src.Superior;
+            dst.BusinessStream = src.BusinessStream;
+
+            dst.EmployeeNumber = src.EmployeeNumber;
+
+            dst.nonSAP = src.nonSAP;
+            if (src.Person != null)
+            {
+                dst.Phone = src.Person.Phone;
+                dst.Initials = src.Person.Initials;
+            }
+            dst.Parrain = src.Parrain;
+            dst.StartDate = src.StartDate;
+
             dst.Parrain = src.Parrain;
             return base.Copy(src);
         }
         public override Person Copy(Person src)
         {
+            if (src == null)
+                return src;
             var dst = this;
             dst.Phone = src.Phone;
             dst.Initials = src.Initials;
@@ -196,25 +271,7 @@ namespace Nespe.Models
         {
             var o = src as AbstractNewRequestModel;
             Request dst = o;
-            //dst.FunctionNC = src.Function;
-            //dst.LocalNC = src.Local;
-            //dst.FunctionNC = src.Function;
-            //dst.Id = src.Id;
-            //dst.SurnameNC = src.FirstName;
-            //dst.NameNC = src.LastName;
-            //dst.DepartmentNC = src.Department_Id;
-            //dst.FunctionNC = src.Function;
-            //dst.SuperiorNC = src.SuperiorNC;
-            //dst.BusinessStreamNC = src.BusinessStreamNC;
-            //dst.StartDateNC = src.StartDate;
-            //dst.EmployeeNumberNC = src.EmployeeNumberNC;
-            //dst.nonSAPNC = src.nonSAPNC;
-            //dst.LocalNC = src.Local;
-            //dst.PhoneNC = src.Phone;
-            //dst.initialsNC = src.Initials;
-            //dst.TransFrom = dst.TransFrom;
-            //dst.Kind = (short)dst.Kind;
-            dst.Parrain = src.Parrain;
+            src.CopyTo(dst);
             return dst;
         }
 
@@ -229,31 +286,48 @@ namespace Nespe.Models
     }
     public class TransfertNewRequestModel : ArrivalNewRequestModel
     {
+
         [Display(Name = "Transféré de")]
         public string TransFrom { get; set; }
 
 
-        public override Request Copy(Request model)
+        public override Request Copy(Request src)
         {
-            var r = this;
-
-            r.TransFrom = model.TransFrom;
-            return base.Copy(model);
+            var dst = this;
+            
+            dst.TransFrom = src.TransFrom;
+            return base.Copy(src);
         }
+        public override Request CopyTo(Request dst)
+        {
+            var src = this;
+            dst.Kind = RequestKindEnum.Transfert;
+            dst.TransFrom = src.TransFrom;
+            return base.CopyTo(dst);
+        }
+        public override Person CopyTo(Person dst)
+        {
+            
+            var src = this;
+            dst.Initials = src.Initials;
+            dst.Phone = src.Phone;
+            return base.CopyTo(dst);
+        }
+
         public static implicit operator Request(TransfertNewRequestModel model)
         {
-            var o = model as ArrivalNewRequestModel;
-            Request r = o;
-            r.TransFrom = model.TransFrom;
-            return r;
+            var src = model as ArrivalNewRequestModel;
+            Request dst = src;
+            dst.TransFrom = model.TransFrom;
+            return src.CopyTo(dst);
         }
 
-        public static implicit operator TransfertNewRequestModel(Request model)
+        public static implicit operator TransfertNewRequestModel(Request src)
         {
 
-            var r = new TransfertNewRequestModel();
-            r.Copy(model);
-            return r;
+            var dst = new TransfertNewRequestModel();
+            dst.Copy(src);
+            return dst;
         }
     }
 

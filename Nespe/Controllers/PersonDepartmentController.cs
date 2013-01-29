@@ -49,6 +49,11 @@ namespace Nespe.Controllers
             //return (from t in drc from p in db.PersonSet from d in db.DepartmentSet where d.Id == t.Department_Id && p.Id == t.Person_Id select (tl, pl, dl)=> t);
             return (from t in drc select t);
         }
+
+        private void Bind(PersonDepartment selected, NespeDbContext db) {
+            selected.Person = (from t in db.PersonSet where t.Id == selected.Person_Id select t).FirstOrDefault();
+            selected.Department = (from t in db.DepartmentSet where t.Id == selected.Department_Id select t).FirstOrDefault();
+        }
         #endregion//Index
         public static PersonDepartment Normalize(PersonDepartment t, Person p, Department d)
         {
@@ -156,17 +161,22 @@ namespace Nespe.Controllers
                     return RedirectToAction("Index");
                 }
                 var model = new PersonDepartmentModel { Selected = dr };
+                var selected = model.Selected;
+                Bind(selected, db);
                 return View(model);
             }
         }
         [HttpPost]
         public ActionResult Edit(PersonDepartmentModel model, FormCollection formCollection)
         {
-            if (ModelState.IsValid)
+            var selected = model.Selected;
+            using (var db = new NespeDbContext())
             {
-                using (var db = new NespeDbContext())
+                Bind(selected, db);
+
+                if (ModelState.IsValid)
                 {
-                    var selected = model.Selected;
+
                     var drc = db.PersonDepartmentSet;
                     //drc.Attach(model.Selected);
                     var dr = Get(model.Selected.Id, db);
@@ -179,9 +189,8 @@ namespace Nespe.Controllers
                         drc.Add(selected);
 
                     db.SaveChanges();
-
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
             }
             return View(model);
         }
@@ -193,9 +202,8 @@ namespace Nespe.Controllers
         public ActionResult Create(long Person_Id, long Department_Id)
         {
             var model = new PersonDepartmentModel { Selected = new PersonDepartment { Person_Id = Person_Id, Department_Id = Department_Id } };
-            using (var db = new NespeDbContext()) { 
-                model.Selected.Person=(from t in db.PersonSet where t.Id==Person_Id select t).FirstOrDefault();
-                model.Selected.Department = (from t in db.DepartmentSet where t.Id == Department_Id select t).FirstOrDefault();
+            using (var db = new NespeDbContext()) {
+                Bind(model.Selected, db);
             }
             return View(model);
         }
@@ -215,7 +223,8 @@ namespace Nespe.Controllers
                     }
                     else
                     {
-                        drc.Add(model.Selected);
+                        Bind(selected, db);
+                        drc.Add(selected);
                     }
                     db.SaveChanges();
                 }
@@ -241,7 +250,7 @@ namespace Nespe.Controllers
                     return RedirectToAction("Index");
                 }
                 var model = new PersonDepartmentModel { Selected = dr };
-                
+                Bind(model.Selected, db);
                 return View(model);
             }
 

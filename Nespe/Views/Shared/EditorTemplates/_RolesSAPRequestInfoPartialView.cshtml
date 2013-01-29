@@ -7,8 +7,8 @@
     <table class="Form">
         <caption align ="left"><h5>Infos Rôles SAP  :</h5></caption>
         <tr>
-            <td>@Html.RadioButtonFor(x => x.necessaryRole, true)Nécessaire</td>
-            <td>@Html.RadioButtonFor(x => x.necessaryRole, false, new { Checked = "checked" })Non-nécessaire</td>       
+            <td>@Html.RadioButtonFor(x => x.IsRequired, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.IsRequired, false, new { Checked = "checked" })Non-nécessaire</td>       
         </tr>    
         <tr>
             <td>@Html.RadioButtonFor(x => x.purchaseType, "Requester") Purchase Requester</td>
@@ -18,8 +18,8 @@
             <td>@Html.CheckBoxFor(x => x.pCard)@Html.LabelFor(x => x.pCard)</td>
         </tr>    
         <tr>
-            <td>@Html.LabelFor(x => x.commentSAP)</td>
-            <td colspan="2">@Html.TextAreaFor(x => x.commentSAP, new { @class = "wide" })</td>
+            <td>@Html.LabelFor(x => x.Comment)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.Comment, new { @class = "wide" })</td>
         </tr>
     </table>
 

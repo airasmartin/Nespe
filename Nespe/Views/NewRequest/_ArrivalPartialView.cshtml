@@ -1,56 +1,6 @@
 ﻿@model Nespe.Models.ArrivalNewRequestModel
 @using System.ComponentModel.DataAnnotations;
 @using Nespe;
-@using RequestKindEnum = Nespe.RequestKindEnum;
+@using RequestKindEnum = Nespe.Models.RequestKindEnum;
 
-                <tr>
-                    <th>@Html.LabelFor(x => x.SurnameNC)</th>
-                    <td style="width:80%;">@Html.TextBoxFor(x => x.SurnameNC)<br />@Html.ValidationMessageFor(x => x.SurnameNC)</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.NameNC)</th>
-                    <td>@Html.TextBoxFor(x => x.NameNC)<br />@Html.ValidationMessageFor(x => x.NameNC)</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.DepartmentNC)</th>
-                    <td>@Html.DropDownListFor(x => x.DepartmentNC, new[] {
-                    new SelectListItem() {Text= "Nom Dept 1", Value = "Dept1"},
-                    new SelectListItem() {Text= "Nom Dept 2", Value = "Dept2"}
-                            }, "Choisissez le dept")<br />@Html.ValidationMessageFor(x => x.DepartmentNC)</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.FunctionNC)</th>
-                    <td>@Html.TextBoxFor(x => x.FunctionNC)</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.SuperiorNC)</th>
-                    <td>@Html.TextBoxFor(x => x.SuperiorNC)</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.BusinessStreamNC)</th>
-                    <td>@Html.TextBoxFor(x => x.BusinessStreamNC)</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.StartDateNC)</th>
-                    <td>@Html.TextBoxFor(x => x.StartDateNC, new {@class="dateField"})</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.EmployeeNumberNC)</th>
-                    <td style="width:80%;" nowrap="nowrap">@Html.TextBoxFor(x => x.EmployeeNumberNC) &nbsp; @Html.CheckBoxFor(x => x.nonSAPNC) Non-Sap</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.LocalNC)</th>
-                    <td>@Html.TextBoxFor(x => x.LocalNC)</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.PhoneNC)</th>
-                    <td>@Html.TextBoxFor(x => x.PhoneNC)</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.initialsNC)</th>
-                    <td>@Html.TextBoxFor(x => x.initialsNC)</td>
-                </tr>
-                <tr>
-                    <th>@Html.LabelFor(x => x.Parrain)</th>
-                    <td>@Html.TextBoxFor(x => x.Parrain)</td>
-                </tr>
+@Html.EditorFor(m => m, "_ArrivalNewRequest")

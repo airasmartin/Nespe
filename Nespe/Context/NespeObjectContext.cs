@@ -65,7 +65,7 @@ namespace Nespe.Context
         #endregion
 
         public ObjectSet<Request> RequestSet { get; set; }
-        public ObjectSet<RequestTypeInfo> RequestInfoSet { get; set; }
+        public ObjectSet<RequestType> RequestInfoSet { get; set; }
         public ObjectSet<Person> PersonSet { get; set; }
         public ObjectSet<Department> DepartmentSet { get; set; }
         public ObjectSet<PersonDepartment> PersonDepartmentSet { get; set; }

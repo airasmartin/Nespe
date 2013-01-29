@@ -22,16 +22,16 @@ namespace Nespe.Models
         [Column]
         public long? PersonDepartment_Id { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        [NotMapped]
         public StateMachine StateMachine { get; private set; }
 
 
         [Display(Name = "PersonDepartment"), ForeignKey("PersonDepartment_Id")]
         public PersonDepartment PersonDepartment { get; set; }
         private PersonDepartment _PersonDepartment() { return PersonDepartment != null ? PersonDepartment : PersonDepartment = new PersonDepartment { }; }
-        [Display(Name = "Person"), NotMapped]
+        [Display(Name = "Employé"), NotMapped]
         public Person Person { get { return _PersonDepartment().Person; } set { _PersonDepartment().Person = value; } }
-        [Display(Name = "Department_Id"), NotMapped]
+        [Display(Name = "Department"), NotMapped]
         public Department Department { get { return _PersonDepartment().Department; } set { _PersonDepartment().Department = value; } }
 
 
@@ -54,16 +54,19 @@ namespace Nespe.Models
         public string Local { get; set; }
         
         public string TransFrom { get; set; }
-
-        public RequestKindEnum Kind { get; set; }
+        [NotMapped]
+        public RequestKindEnum Kind { get { return (RequestKindEnum)KindValue; } set { KindValue = (int) value; } }
+        [Column("Kind")]
+        public int KindValue { get; set; }
 
         public string Parrain { get; set; }
 
         public bool Completed { get; set; }
+        public bool IsFinished { get; set; }
 
 
 
-        [Required(AllowEmptyStrings=true), Display(Name = "Active Directory Id")]
+        [Display(Name = "User Id")]
         public string ActiveDirectoryId { get; set; }
 
         public bool HaveActiveDirectoryId { get { return !string.IsNullOrWhiteSpace(ActiveDirectoryId); } }
@@ -101,11 +104,11 @@ namespace Nespe.Models
         //    dst.LastName = dst.LastName;
         //    dst.Department_Id = dst.Department_Id;
         //    dst.Function = dst.Function;
-        //    dst.SuperiorNC = dst.SuperiorNC;
-        //    dst.BusinessStreamNC = dst.BusinessStreamNC;
+        //    dst.Superior = dst.Superior;
+        //    dst.BusinessStream = dst.BusinessStream;
         //    dst.StartDate = dst.StartDate;
-        //    dst.EmployeeNumberNC = dst.EmployeeNumberNC;
-        //    dst.nonSAPNC = dst.nonSAPNC;
+        //    dst.EmployeeNumber = dst.EmployeeNumber;
+        //    dst.nonSAP = dst.nonSAP;
         //    dst.Local = dst.Local;
         //    dst.Phone = dst.Phone;
         //    dst.Initials = dst.Initials;
@@ -124,11 +127,11 @@ namespace Nespe.Models
         //    dst.LastName = dst.LastName;
         //    dst.Department_Id = dst.Department_Id;
         //    dst.Function = dst.Function;
-        //    dst.SuperiorNC = dst.SuperiorNC;
-        //    dst.BusinessStreamNC = dst.BusinessStreamNC;
+        //    dst.Superior = dst.Superior;
+        //    dst.BusinessStream = dst.BusinessStream;
         //    dst.StartDate = dst.StartDate == null ? DateTime.Now : dst.StartDate.Value;
-        //    dst.EmployeeNumberNC = dst.EmployeeNumberNC;
-        //    dst.nonSAPNC = dst.nonSAPNC == null ? true : dst.nonSAPNC.Value;
+        //    dst.EmployeeNumber = dst.EmployeeNumber;
+        //    dst.nonSAP = dst.nonSAP == null ? true : dst.nonSAP.Value;
         //    dst.Local = dst.Local;
         //    dst.Phone = dst.Phone;
         //    dst.Initials = dst.Initials;
@@ -139,6 +142,28 @@ namespace Nespe.Models
 
         //    return dst;
         //}
+
+        public Request Copy(Request src, bool copyId = false)
+        {
+            var dst = this;
+            if (copyId) dst.Id = src.Id;
+            dst.Id = dst.Id;
+            dst.PersonDepartment = src.PersonDepartment;
+            dst.PersonDepartment_Id = src.PersonDepartment_Id;
+            dst.Function = src.Function;
+            dst.Superior = src.Superior;
+            dst.BusinessStream = src.BusinessStream;
+            dst.StartDate = src.StartDate;
+            dst.EmployeeNumber = src.EmployeeNumber;
+            dst.nonSAP = src.nonSAP;
+            dst.Local = src.Local;
+            dst.TransFrom = src.TransFrom;
+            dst.Kind = src.Kind;
+            dst.Parrain = src.Parrain;
+            return src;
+        }
+
+        public string Entity { get; set; }
     }
 
     public enum RequestKindEnum {

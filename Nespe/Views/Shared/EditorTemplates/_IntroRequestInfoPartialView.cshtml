@@ -7,16 +7,16 @@
     <table class="Form">
         <caption align ="left"><h5>Iinvitation aux intros Dept :</h5></caption>
         <tr>
-            <td>@Html.RadioButtonFor(x => x.necessaryIntro, true)Nécessaire</td>
-            <td>@Html.RadioButtonFor(x => x.necessaryIntro, false, new { Checked = "checked" })Non-nécessaire</td>       
+            <td>@Html.RadioButtonFor(x => x.IsRequired, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.IsRequired, false, new { Checked = "checked" })Non-nécessaire</td>       
         </tr>            
         <tr>
-            <td>@Html.RadioButtonFor(x => x.introLanguage, "en") Anglais</td>
-            <td>@Html.RadioButtonFor(x => x.introLanguage, "fr") Français</td>
+            <td>@Html.RadioButtonFor(x => x.introLanguage, "Anglais") Anglais</td>
+            <td>@Html.RadioButtonFor(x => x.introLanguage, "Français") Français</td>
         </tr>    
         <tr>
-            <td>@Html.LabelFor(x => x.commentIntro)</td>
-            <td colspan="2">@Html.TextAreaFor(x => x.commentIntro, new { @class = "wide" })</td>
+            <td>@Html.LabelFor(x => x.Comment)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.Comment, new { @class = "wide" })</td>
         </tr>
     </table>
  

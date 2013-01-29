@@ -17,110 +17,53 @@
     </section>
 }
 <h3>Mes opérations en cours :</h3>
-<table>
-        <caption align ="left"><h5>Formulaires à compléter :</h5></caption>
-        @foreach (var dr in Model.CompletionRequestSet)
-        { 
-        <tr>
-            <td>@dr.SurnameNC @dr.NameNC</td>
-            <td>@String.Format("{0:d}", dr.StartDateNC)</td>
-            @if (dr.IsOverTime)
-            {
-            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants</td>
-            }
-            else { 
-                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés</td>
-            }
-            <td>
-               
-                @Html.ActionLink("Compléter", "Completer", "MesOperations", new { Id = dr.Id }, new { @class="Action"}) 
-            </td>
-        </tr>     
-       
-      }
-    </table>
+    <fieldset class="ListView">
+        <legend>Formulaires à compléter :</legend>
+        @if (Model.CompletionRequestSet == null)
+        {
+            <p>Aucun pour le moment</p>
+        }
+        else
+        {
+            @Html.DisplayFor(m => m.CompletionRequestSet, "Request.Grid")
+        }
+    </fieldset>
 
-
-    <table>
-        <caption align ="left"><h5>Arrivées :</h5></caption>
+    <fieldset class="ListView">
+        <legend>Arrivées :</legend>
         @if (Model.ArrivalRequestSet == null)
         {
-        <tr>
-        <td>Aucun pour le moment</td>
-        </tr>
-            }
-            @foreach (var dr in Model.ArrivalRequestSet)
-            { 
-            <tr>
-                <td>@dr.SurnameNC @dr.NameNC</td>
-                <td>@String.Format("{0:d}", dr.StartDateNC)</td>
-                @if (dr.IsOverTime)
-                {
-                <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
-                }
-                else { 
-                    <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
-                }
-                <td><a href="Formulaire">edit</a></td>
-            </tr>     
-       
-   }
-    </table>
-
-    <table>
-        <caption align ="left"><h5>Transferts :</h5></caption>
-        @if (Model.TransfertRequestSet == null )
+            <p>Aucun pour le moment</p>
+        }
+        else
         {
-        <tr>
-        <td>Aucun pour le moment</td>
-        </tr>
-            }
-@foreach (var dr in Model.TransfertRequestSet)
-{ 
-        <tr>
-            <td>@dr.SurnameNC @dr.NameNC</td>
-            <td>@String.Format("{0:d}", dr.StartDateNC)</td>
-            @if (dr.IsOverTime)
-            {
-            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
-            }
-            else { 
-                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
-            }
-            <td><a href=Formulaire>edit</a></td>
-        </tr>     
-       
-}
-    </table>
-    <table>
-        <caption align ="left"><h5>Départs :</h5></caption>
+            @Html.DisplayFor(m => m.ArrivalRequestSet, "Request.Grid")
+        }
+    </fieldset>
+    <fieldset class="ListView">
+        <legend>Transferts :</legend>
+        @if (Model.TransfertRequestSet == null)
+        {
+            <p>Aucun pour le moment</p>
+        }
+        else
+        {
+            @Html.DisplayFor(m => m.TransfertRequestSet, "Request.Grid")
+        }
+    </fieldset>
+    <fieldset class="ListView">
+        <legend>Départs :</legend>
         @if (Model.DepartureRequestSet == null)
         {
-        <tr>
-            <td>Aucun pour le moment</td>
-        </tr>
+            <p>Aucun pour le moment</p>
         }
-        @foreach (var dr in Model.DepartureRequestSet)
-        { 
-        <tr>
-            <td>@dr.SurnameNC @dr.NameNC</td>
-            <td>@String.Format("{0:d}", dr.StartDateNC)</td>
-            @if (dr.IsOverTime)
-            {
-            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
-            }
-            else
-            { 
-                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
-            }
-            <td><a href=Formulaire>edit</a></td>
-        </tr>     
-       
+        else
+        {
+            @Html.DisplayFor(m => m.DepartureRequestSet, "Request.Grid")
         }
-    </table>
-        
-
-    <table border="0">
+    </fieldset>
+     
+ @*   <table border="0">
         <caption align ="left"><h5>Martin Airas 10218741 Arrivée :</h5></caption>
         <tr>
             <th colspan=7 align="center">Préparation de l'arrivée du nouveau collaborateur</th>
@@ -408,4 +351,4 @@
             <td>valid</td>
             <td><input type=text /></td>
         </tr>
-    </table>
+    </table>*@

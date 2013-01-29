@@ -5,4 +5,9 @@
 
 <h2>Edit</h2>
 
-@Html.EditorFor(m=>m)
+<fieldset>
+    <legend>@ViewBag.Title</legend>
+    @Html.EditorFor(m=>m)
+</fieldset>
+
+@Html.DisplayFor(m=>m.Items, "DepartmentModel.List")

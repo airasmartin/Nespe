@@ -5,21 +5,22 @@
     <table class="Form">
         <caption align ="left"><h5>Infos pour IT :</h5></caption>
         <tr>
-            <td>@Html.RadioButtonFor(x => x.necessaryIT, true)Nécessaire</td>
-            <td>@Html.RadioButtonFor(x => x.necessaryIT, false, new { Checked = "checked" })Non-nécessaire</td>       
+            <td>@Html.RadioButtonFor(x => x.IsRequired, true)Nécessaire</td>
+            <td>@Html.RadioButtonFor(x => x.IsRequired, false, new { Checked = "checked" })Non-nécessaire</td>       
         </tr>     
         <tr>
-            <td>@Html.CheckBoxFor(x => x.laptop)@Html.LabelFor(x => x.laptop)</td>
-            <td>@Html.CheckBoxFor(x => x.docking)@Html.LabelFor(x => x.docking)</td>
-            <td>@Html.CheckBoxFor(x => x.keyboard)@Html.LabelFor(x => x.keyboard)</td>
+            <td>@Html.CheckBoxFor(x => x.Laptop)@Html.LabelFor(x => x.Laptop)</td>
+            <td>@Html.CheckBoxFor(x => x.DockingStation)@Html.LabelFor(x => x.DockingStation)</td>
+            <td>@Html.CheckBoxFor(x => x.Keyboard)@Html.LabelFor(x => x.Keyboard)</td>
         </tr>
         <tr>
-            <td>@Html.CheckBoxFor(x => x.desktop)@Html.LabelFor(x => x.desktop)</td>
-            <td>@Html.CheckBoxFor(x => x.screen)@Html.LabelFor(x => x.screen)</td>
-            <td>@Html.CheckBoxFor(x => x.mouse)@Html.LabelFor(x => x.mouse)</td>
+            <td>@Html.CheckBoxFor(x => x.Desktop)@Html.LabelFor(x => x.Desktop)</td>
+            <td>@Html.CheckBoxFor(x => x.Screen)@Html.LabelFor(x => x.Screen)</td>
+            <td>@Html.CheckBoxFor(x => x.Mouse)@Html.LabelFor(x => x.Mouse)</td>
         </tr>
         <tr>
-            <td>@Html.LabelFor(x => x.commentIT)</td>
-            <td colspan="2">@Html.TextAreaFor(x => x.commentIT, new { @class = "wide" })</td>
+            <td>@Html.LabelFor(x => x.Comment)</td>
+            <td colspan="2">@Html.TextAreaFor(x => x.Comment, new { @class = "wide" })</td>
         </tr>
     </table>
+ 

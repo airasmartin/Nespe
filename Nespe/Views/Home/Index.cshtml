@@ -1,4 +1,5 @@
-﻿@using System.Linq;
+﻿@model Nespe.Models.CurrentStatusModel
+@using System.Linq;
 @{
     ViewBag.Title = "Nespe - Accueil";
 }
@@ -14,84 +15,40 @@
     </section>
 }
 <h3>Opérations en cours :</h3>
-    <table>
-        <caption align ="left"><h5>Arrivées :</h5></caption>
+    <fieldset class="ListView">
+        <legend>Arrivées :</legend>
         @if (Model.ArrivalRequestSet == null)
         {
-        <tr>
-        <td>Aucun pour le moment</td>
-        </tr>
-            }
-            @foreach (var dr in Model.ArrivalRequestSet)
-            { 
-            <tr>
-                <td>@dr.SurnameNC @dr.NameNC</td>
-                <td>@String.Format("{0:d}", dr.StartDateNC)</td>
-                @if (dr.IsOverTime)
-                {
-                <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
-                }
-                else { 
-                    <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
-                }
-                <td>@dr.DepartmentNC</td>
-            </tr>     
-       
-   }
-    </table>
-
-    <table>
-        <caption align ="left"><h5>Transferts :</h5></caption>
-        @if (Model.TransfertRequestSet == null )
+            <p>Aucun pour le moment</p>
+        }
+        else
         {
-        <tr>
-        <td>Aucun pour le moment</td>
-        </tr>
-       }
-       @foreach (var dr in Model.TransfertRequestSet)
-       { 
-        <tr>
-            <td>@dr.SurnameNC @dr.NameNC</td>
-            <td>@String.Format("{0:d}", dr.StartDateNC)</td>
-            @if (dr.IsOverTime)
-            {
-            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
-            }
-            else { 
-                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
-            }
-            <td>@dr.DepartmentNC</td>
-        </tr>     
-       
-      }
-    </table>
-
-    <table>
-        <caption align ="left"><h5>Départs :</h5></caption>
+            @Html.DisplayFor(m => m.ArrivalRequestSet, "Request.Grid.ReadOnly")
+        }
+    </fieldset>
+    <fieldset class="ListView">
+        <legend>Transferts :</legend>
+        @if (Model.TransfertRequestSet == null)
+        {
+            <p>Aucun pour le moment</p>
+        }
+        else
+        {
+            @Html.DisplayFor(m => m.TransfertRequestSet, "Request.Grid.ReadOnly")
+        }
+    </fieldset>
+    <fieldset class="ListView">
+        <legend>Départs :</legend>
         @if (Model.DepartureRequestSet == null)
         {
-        <tr>
-            <td>Aucun pour le moment</td>
-        </tr>
+            <p>Aucun pour le moment</p>
         }
-        @foreach (var dr in Model.DepartureRequestSet)
-        { 
-        <tr>
-            <td>@dr.SurnameNC @dr.NameNC</td>
-            <td>@String.Format("{0:d}", dr.StartDateNC)</td>
-            @if (dr.IsOverTime)
-            {
-            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants </td>
-            }
-            else
-            { 
-                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés </td>
-            }
-            <td>@dr.departmentNC</td>
-        </tr>     
-       
+        else
+        {
+            @Html.DisplayFor(m => m.DepartureRequestSet, "Request.Grid.ReadOnly")
         }
-    </table>
+    </fieldset>
+
 
 
 

@@ -38,6 +38,9 @@ namespace Nespe
             }
         }
 
+        public void Next(){
+            //State = State.Next();
+        }
         public IState   Created { get; private set; }
         public IState  FillForm { get; private set; }
         public IState   Arrival { get; private set; }

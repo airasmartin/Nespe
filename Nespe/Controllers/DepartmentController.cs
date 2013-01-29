@@ -26,7 +26,7 @@ namespace Nespe.Controllers
                 return View(model);
             }
 
-        } 
+        }
         #endregion//Index
 
         #region Delete
@@ -44,6 +44,7 @@ namespace Nespe.Controllers
                     return RedirectToAction("Index");
                 }
                 var model = new DepartmentModel { Selected = dr };
+                model.Items = (from t in drc select t).ToList();
                 return View(model);
             }
 
@@ -62,11 +63,12 @@ namespace Nespe.Controllers
                         base.ModelState.AddModelError("Action.Delete.Invalid.Id", "Invalid Id");
                         return RedirectToAction("Index");
                     }
+                    model.Items = (from t in drc select t).ToList();
                 }
                 return RedirectToAction("Index");
             }
             return View(model);
-        } 
+        }
         #endregion//Delete
 
         #region Details
@@ -84,6 +86,7 @@ namespace Nespe.Controllers
                     return RedirectToAction("Index");
                 }
                 var model = new DepartmentModel { Selected = dr };
+                model.Items = (from t in drc select t).ToList();
                 return View(model);
             }
 
@@ -103,8 +106,9 @@ namespace Nespe.Controllers
                         return RedirectToAction("Index");
                     }
                     model.Selected = dr;
+                    model.Items = (from t in drc select t).ToList();
                 }
-                
+
             }
             return View(model);
         }
@@ -124,6 +128,7 @@ namespace Nespe.Controllers
                     return RedirectToAction("Index");
                 }
                 var model = new DepartmentModel { Selected = dr };
+                model.Items = (from t in drc select t).ToList();
                 return View(model);
             }
         }
@@ -134,7 +139,7 @@ namespace Nespe.Controllers
             {
                 using (var db = new NespeDbContext())
                 {
-                    var selected=model.Selected;
+                    var selected = model.Selected;
                     var drc = db.DepartmentSet;
                     //drc.Attach(model.Selected);
                     var dr = (from t in drc where t.Id == model.Selected.Id select t).FirstOrDefault();
@@ -147,12 +152,18 @@ namespace Nespe.Controllers
                         drc.Add(selected);
 
                     db.SaveChanges();
-                    
+
                 }
                 return RedirectToAction("Index");
             }
-            return View(model);
-        } 
+            using (var db = new NespeDbContext())
+            {
+                var drc = db.DepartmentSet;
+                model.Items = (from t in drc select t).ToList();
+                return View(model);
+            }
+
+        }
         #endregion//Edit
 
         #region Create
@@ -160,8 +171,16 @@ namespace Nespe.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            var model = new DepartmentModel { Selected = new Department { } };
-            return View(model);
+            using (var db = new NespeDbContext())
+            {
+                var drc = db.DepartmentSet;
+                
+                var model = new DepartmentModel { Selected = new Department { }};
+                model.Items = (from t in drc select t).ToList();
+                return View(model);
+            }
+
+
         }
         [HttpPost]
         public ActionResult Create(DepartmentModel model, FormCollection formCollection)
@@ -181,11 +200,12 @@ namespace Nespe.Controllers
                         drc.Add(model.Selected);
                     }
                     db.SaveChanges();
+                    model.Items = (from t in drc select t).ToList();
                 }
                 return RedirectToAction("Index");
             }
             return View(model);
-        } 
+        }
         #endregion//Create
     }
 }
