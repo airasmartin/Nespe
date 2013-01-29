@@ -1,0 +1,57 @@
+﻿@model Nespe.Models.RequestInfoModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RequestInfo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Request_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Request_Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Type_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Type_Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Executor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Executor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Comment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Comment)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Selected.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

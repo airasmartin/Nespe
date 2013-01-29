@@ -1,0 +1,42 @@
+﻿@model Nespe.Models.ArrivalNewRequestModel
+@using Nespe.Context;
+@using System.Data;
+@using Nespe.Models;
+
+@{
+    //new SelectList(ViewBag.DepartmentList, "Id", "Name", Model.Department_Id)    
+    SelectList departmentList;
+    using (var db = new NespeDbContext())
+    {
+        var l = (from t in db.DepartmentSet select t).ToList();
+        departmentList = new SelectList(l, "Id", "Name",Model.Department_Id);
+        
+    }    
+}
+                <fieldset>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Department_Id)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.Department_Id, departmentList)
+@*                        @Html.EditorFor(model => model.Department_Id)
+                        @Html.ValidationMessageFor(model => model.Department_Id)*@
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Parrain)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Parrain)
+                        @Html.ValidationMessageFor(model => model.Parrain)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.StartDate)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.StartDate)
+                        @Html.ValidationMessageFor(model => model.StartDate)
+                    </div>
+        
+                </fieldset>

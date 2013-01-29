@@ -1,0 +1,101 @@
+﻿@model Nespe.Models.ArrivalEditFormulaireModel
+
+@{
+    ViewBag.Title = "Nespe - Editer demande";
+}
+
+<h2>@Model.RequestModel.FirstName&nbsp;@Model.RequestModel.LastName</h2>
+
+@using (Html.BeginForm()) { 
+       <table border="0">
+        <caption align ="left"><h5></h5></caption>
+        <tr>
+            <th colspan=7 align="center">Préparation de l'arrivée du nouveau collaborateur</th>
+        </tr>
+        <tr>
+            <th>Tâche</th>
+            <th>Infos tâche</th>
+            <th>Executée par :</th>
+            <th>Date</th>
+            <th>Etat</th>
+            <th>Finir</th>
+            <th>Commentaire</th>
+        </tr>
+
+    @Html.EditorFor(m => m.ITInfo, "_RequestInfoEditor.Table.Row")
+    @Html.EditorFor(m => m.TelephoneInfo, "_RequestInfoEditor.Table.Row")
+    @Html.EditorFor(m => m.LockerInfo, "_RequestInfoEditor.Table.Row")
+    @Html.EditorFor(m => m.MailCaseInfo, "_RequestInfoEditor.Table.Row")
+    @Html.EditorFor(m => m.PMOInfo, "_RequestInfoEditor.Table.Row")
+    @Html.EditorFor(m => m.RoleSAPInfo, "_RequestInfoEditor.Table.Row")
+    @Html.EditorFor(m => m.ClothesInfo, "_RequestInfoEditor.Table.Row")
+    @Html.EditorFor(m => m.IntroInfo, "_RequestInfoEditor.Table.Row")
+    @Html.EditorFor(m => m.ExternalyManagedInfoList, "_ExternalyManagedRequestInfoEditor.Table.Row")
+    </table>
+<fieldset>
+    <legend></legend>
+
+    @Html.HiddenFor(m => m.RequestModel.Id)
+    @Html.HiddenFor(m => m.RequestModel.Department_Id)
+    @Html.HiddenFor(m => m.RequestModel.ActiveDirectoryId)
+    @Html.HiddenFor(m => m.RequestModel.EmployeeNumber)
+    @Html.HiddenFor(m => m.RequestModel.Initials)
+    @Html.HiddenFor(m => m.RequestModel.kind)
+    @Html.HiddenFor(m => m.RequestModel.FirstName)
+    @Html.HiddenFor(m => m.RequestModel.LastName)
+    @Html.HiddenFor(m => m.RequestModel.Local)
+    @Html.HiddenFor(m => m.RequestModel.nonSAP)
+    @Html.HiddenFor(m => m.RequestModel.Parrain)
+    @Html.HiddenFor(m => m.RequestModel.Phone)
+    @Html.HiddenFor(m => m.RequestModel.StartDate)
+    @Html.HiddenFor(m => m.RequestModel.Superior)
+    @Html.HiddenFor(m => m.RequestModel.Function)
+@*    @Html.EditorFor(m => m.IntroInfo, "_RequestInfoEditor")
+    @Html.EditorFor(m => m.ITInfo, "_RequestInfoEditor")
+    @Html.EditorFor(m => m.LockerInfo, "_RequestInfoEditor")
+    @Html.EditorFor(m => m.MailCaseInfo, "_RequestInfoEditor")
+    @Html.EditorFor(m => m.PMOInfo, "_RequestInfoEditor")
+    @Html.EditorFor(m => m.RoleSAPInfo, "_RequestInfoEditor")
+    @Html.EditorFor(m => m.TelephoneInfo, "_RequestInfoEditor")
+    @Html.EditorFor(m => m.ClothesInfo, "_RequestInfoEditor")*@
+    <p width="100%" style="text-align: center;width:100%;color:red;padding:10px;"><input type="submit"/></p>
+</fieldset>
+}
+
+@*
+<table>
+
+@foreach (var item in Model.RequestInfoEnumerator())
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Request_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Executor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsRequired)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+</table>
+
+*@

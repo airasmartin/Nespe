@@ -1,0 +1,44 @@
+﻿@model Nespe.Models.ArrivalNewRequestModel
+@using Nespe.Context;
+@using System.Data;
+@using Nespe.Models;
+
+
+
+@{
+    Department department = null;
+    using (var db = new NespeDbContext())
+    {
+        department = (from t in db.DepartmentSet where t.Id == Model.Department_Id select t).FirstOrDefault();
+
+    }    
+}
+                <fieldset>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Department_Id)
+                    </div>
+                    <div class="editor-field">
+                        @Html.HiddenFor(model => model.Department_Id, new { @readonly = "readonly" })
+                        @Html.TextBox("department.Name", department.Name, new { @readonly = "readonly" })
+                        
+
+                        @Html.ValidationMessageFor(model => model.Department_Id)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Parrain)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Parrain, new { @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Parrain)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.StartDate)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.StartDate, new { @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.StartDate)
+                    </div>
+        
+                </fieldset>

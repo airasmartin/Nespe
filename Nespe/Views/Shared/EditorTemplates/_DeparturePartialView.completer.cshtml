@@ -1,0 +1,100 @@
+﻿@model Nespe.Models.DepartureNewRequestModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Context;
+@using System.Data;
+@using Nespe.Models;
+
+
+@using RequestKindEnum = Nespe.Models.RequestKindEnum;
+
+
+
+@{
+    Department department = null;
+    using (var db = new NespeDbContext())
+    {
+        department = (from t in db.DepartmentSet where t.Id == Model.Department_Id select t).FirstOrDefault();
+
+    }    
+}
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+              <fieldset>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ActiveDirectoryId)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ActiveDirectoryId, new { @readonly = "readonly"})
+                    @Html.ValidationMessageFor(model => model.ActiveDirectoryId)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Initials)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Initials, new { @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.Initials)
+                </div>
+                   <div class="editor-label">
+                    @Html.LabelFor(model => model.FirstName)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.FirstName, new { @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.LastName)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.LastName, new { @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+               </fieldset>
+            </td>
+            <td>
+                <fieldset>
+
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Department_Id)
+                    </div>
+                    <div class="editor-field">
+                        @Html.HiddenFor(model => model.Department_Id, new { @readonly = "readonly" })
+                        @Html.TextBox("department.Name", department.Name, new { @readonly = "readonly" })
+                        
+
+                        @Html.ValidationMessageFor(model => model.Department_Id)
+                    </div>
+
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.DepartureDate)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.DepartureDate, new { @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.DepartureDate)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Local)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Local)
+                        @Html.ValidationMessageFor(model => model.Local)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.retirement)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.retirement, new { @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.retirement)
+                    </div>
+              </fieldset>
+            </td>
+        </tr>
+    </tbody>
+</table>

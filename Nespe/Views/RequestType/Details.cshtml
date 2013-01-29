@@ -1,0 +1,29 @@
+﻿@model Nespe.Models.RequestTypeModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RequestType</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Selected.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

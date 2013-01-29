@@ -1,0 +1,43 @@
+﻿@model System.Collections.Generic.List< Nespe.Models.ExternalyManagedRequestInfo>
+@Html.ValidationSummary(true)
+@for (int i = 0; i < Model.Count; i++ )
+{
+    @Html.HiddenFor(m => m[i].Id)
+    @Html.HiddenFor(m => m[i].Request_Id)
+    @Html.HiddenFor(m => m[i].Type_Id)
+    @Html.HiddenFor(m => m[i].Name)
+    @Html.HiddenFor(m => m[i].IsValidated)
+    @Html.HiddenFor(m => m[i].Executor)
+    @Html.HiddenFor(m => m[i].Date)
+    @Html.HiddenFor(m => m[i].IsRequired)
+    @*Html.HiddenFor(m => m[i].Subjections)*@
+
+    if (Model[i].Id > 0)
+    {
+        <tr>
+            <th>@Html.DisplayFor(m => m[i].Name)</th>
+            <td><div>@Html.Raw(Model[i].Subjections)</div></td>        
+            <td>@Html.DisplayFor(m => m[i].Executor)</td>
+            <td>@Html.DisplayFor(m => m[i].Date, "{0:yyyy-MM-dd}")</td>
+            @if (Model[i].IsClosed)
+            {
+            <td bgcolor="#ccffcc" >done</td>
+            }
+            else if (Model[i].IsRequired == false)
+            {
+            <td bgcolor="#ccccff" >Not necessary</td>
+            }
+            else
+            {
+            <td bgcolor="#ffcccc" >uncompleted</td>
+            }
+            <td>
+            @if (Model[i].IsClosed == false && Model[i].IsRequired)
+            {
+                @Html.ActionLink("clôturer", "CloseInfo", "MesOperations", new { id = Model[i].Id, Request_Id = Model[i].Request_Id, InfoType = Model[i].GetType().Name }, new { }) 
+            }
+            </td>
+            <td>@Html.TextAreaFor(m => m[i].Comment)</td>
+        </tr>
+    }
+}

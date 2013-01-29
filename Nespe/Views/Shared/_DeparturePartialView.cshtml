@@ -1,0 +1,99 @@
+﻿@model Nespe.Models.DepartureNewRequestModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Context;
+@using System.Data;
+@using Nespe.Models;
+
+
+@using RequestKindEnum = Nespe.Models.RequestKindEnum;
+
+
+@{
+    //new SelectList(ViewBag.DepartmentList, "Id", "Name", Model.Department_Id)    
+    SelectList departmentList;
+    using (var db = new NespeDbContext())
+    {
+        var l = (from t in db.DepartmentSet select t).ToList();
+        departmentList = new SelectList(l, "Id", "Name",Model.Department_Id);
+        
+    }    
+}
+
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+              <fieldset>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ActiveDirectoryId)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ActiveDirectoryId)
+                    @Html.ValidationMessageFor(model => model.ActiveDirectoryId)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Initials)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Initials)
+                    @Html.ValidationMessageFor(model => model.Initials)
+                </div>
+                   <div class="editor-label">
+                    @Html.LabelFor(model => model.FirstName)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.FirstName)
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.LastName)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.LastName)
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+               </fieldset>
+            </td>
+            <td>
+                <fieldset>
+
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Department_Id)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.Department_Id, departmentList)
+                        @Html.ValidationMessageFor(model => model.Department_Id)
+                    </div>
+
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.DepartureDate)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.DepartureDate)
+                        @Html.ValidationMessageFor(model => model.DepartureDate)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Local)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Local)
+                        @Html.ValidationMessageFor(model => model.Local)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.retirement)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.retirement)
+                        @Html.ValidationMessageFor(model => model.retirement)
+                    </div>
+              </fieldset>
+            </td>
+        </tr>
+    </tbody>
+</table>

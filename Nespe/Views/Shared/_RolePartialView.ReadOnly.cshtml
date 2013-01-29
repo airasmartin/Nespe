@@ -1,0 +1,29 @@
+﻿@model Nespe.Models.ArrivalNewRequestModel
+
+                <fieldset>
+                    <legend></legend>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Function)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Function, new { @readonly = "readonly", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.Function)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Superior)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Superior, new { @readonly = "readonly", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.Superior)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.BusinessStream)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.BusinessStream, new { @readonly = "readonly", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.BusinessStream)
+                    </div>
+                </fieldset>

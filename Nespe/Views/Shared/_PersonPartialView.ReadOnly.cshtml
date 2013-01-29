@@ -1,0 +1,23 @@
+﻿@model Nespe.Models.ArrivalNewRequestModel
+              <fieldset>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Initials)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Initials, new { disabled = "disabled" })
+                </div>
+
+                   <div class="editor-label">
+                    @Html.LabelFor(model => model.FirstName)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.FirstName, new { disabled = "disabled" })
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.LastName)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.LastName, new { disabled = "disabled" })
+                </div>
+              </fieldset>

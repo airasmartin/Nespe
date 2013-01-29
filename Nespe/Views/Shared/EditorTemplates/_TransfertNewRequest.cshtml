@@ -1,0 +1,46 @@
+﻿@model Nespe.Models.TransfertNewRequestModel
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <fieldset>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.TransFrom)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.TransFrom)
+                        @Html.ValidationMessageFor(model => model.TransFrom)
+                    </div>
+                </fieldset>
+                @Html.Partial("_PersonPartialView")
+                @Html.Partial("_LocationPartialView")
+            </td>
+            <td>
+                @Html.Partial("_DepartmentPartialView")
+                <fieldset>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.EmployeeNumber)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.EmployeeNumber)
+                        @Html.ValidationMessageFor(model => model.EmployeeNumber)
+                    </div>
+
+                </fieldset>
+            </td>
+            <td>
+                @Html.Partial("_RolePartialView")
+                <fieldset>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.ActiveDirectoryId)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.ActiveDirectoryId)
+                        @Html.ValidationMessageFor(model => model.ActiveDirectoryId)
+                    </div>
+                </fieldset>
+            </td>
+        </tr>
+    </tbody>
+</table>    

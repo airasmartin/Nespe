@@ -1,0 +1,15 @@
+﻿@model System.Int64
+@using System.Data;
+@using System.Linq;
+@using Nespe.Context;
+
+@{
+    SelectList typeList;
+    using (var db = new NespeDbContext())
+    {
+        var l = (from t in db.RequestTypeSet select t).ToList();
+        typeList = new SelectList(l, "Id", "Name", Model);
+    }
+    
+}
+@Html.DropDownListFor(model => model, typeList)

@@ -1,0 +1,51 @@
+﻿@model Nespe.Models.DepartureCompleterFormulaireModel
+@using System.ComponentModel.DataAnnotations;
+@using Nespe;
+@using Nespe.Controllers;
+@{
+    ViewBag.Title = "Nespe - Formulaire depart collaborateur : Completer";
+}
+
+
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+                
+            </hgroup>
+
+        </div>
+    </section>
+
+}
+@using (Html.BeginForm())
+{
+    <fieldset class="Form">
+    @Html.EditorFor(m => m.RequestModel, "_DeparturePartialView.completer")
+    @Html.ValidationSummary()
+
+    @if (Model.ITInfo != null)
+    { 
+        @Html.HiddenFor(m=>m.ITInfo.Id)
+        @Html.HiddenFor(m => m.ITInfo.Request_Id)
+        @Html.EditorFor(m => m.ITInfo, "_ITRequestDepartureInfoPartialView")
+    }
+
+    @if (Model.TelephoneInfo != null)
+    { 
+        @Html.HiddenFor(m => m.TelephoneInfo.Id)
+        @Html.HiddenFor(m => m.TelephoneInfo.Request_Id)
+        @Html.EditorFor(m => m.TelephoneInfo, "_TelephoneRequestInfoPartialView")
+    }
+
+
+    <fieldset class="Action">
+        <input type="submit" />
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.RequestModel.Id)
+    </fieldset>
+</fieldset>
+}
+

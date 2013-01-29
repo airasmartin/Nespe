@@ -1,0 +1,60 @@
+﻿@model Nespe.Models.RequestInfoModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>RequestInfo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Request_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Request_Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Type_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Type_Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Executor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Executor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Selected.Comment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected.Comment)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

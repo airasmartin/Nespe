@@ -1,0 +1,19 @@
+﻿@model Nespe.Models.ArrivalNewRequestModel
+
+                <fieldset>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Local)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Local, new { @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Local)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Phone)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Phone, new { @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Phone)
+                    </div>
+                </fieldset>

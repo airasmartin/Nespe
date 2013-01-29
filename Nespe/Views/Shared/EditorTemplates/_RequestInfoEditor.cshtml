@@ -1,0 +1,78 @@
+﻿@model Nespe.Models.AbstractRequestInfo
+@Html.ValidationSummary(true)
+<fieldset>
+    <legend>AbstractRequestInfo</legend>
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Request_Id)
+    @Html.HiddenFor(model => model.Type_Id)
+    @Html.HiddenFor(model => model.Name)
+    <table class="ListView">
+        <caption>@Html.DisplayFor(model=>model.StaticName)</caption>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.DisplayFor(model=>model.StaticDescription)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.IsRequired)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.IsRequired)
+                        @Html.ValidationMessageFor(model => model.IsRequired)
+                    </div>
+                </td>
+                @*
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </td>
+                *@
+                <td>
+                    
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Executor)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DisplayFor(model => model.Executor)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Date)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DisplayFor(model => model.Date, "{0:yyyy-MM-dd}")
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Comment)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Comment)
+                        @Html.ValidationMessageFor(model => model.Comment)
+                    </div>
+                    
+                </td>
+                <td>
+                    @if (Model.IsClosed)
+                    {
+                        <b>Closed</b>
+                    }
+                    else { 
+                        @Html.CheckBoxFor(model=>model.IsValidated)
+                    }
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>

@@ -1,0 +1,41 @@
+﻿@model Nespe.Models.AbstractRequestInfo
+@Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Request_Id)
+    @Html.HiddenFor(model => model.Type_Id)
+    @Html.HiddenFor(model => model.Name)
+
+    @Html.HiddenFor(model => model.IsValidated)
+    @Html.HiddenFor(model => model.Executor)
+    @Html.HiddenFor(model => model.Date)
+    @Html.HiddenFor(model => model.IsRequired)
+
+    @if (Model.Id > 0)
+    {
+        <tr>
+            <th>@Html.DisplayFor(model => model.StaticName)</th>
+            <td>@Html.DisplayFor(model => model.StaticDescription)</td>        
+            <td>@Html.DisplayFor(model => model.Executor)</td>
+            <td>@Html.DisplayFor(model => model.Date, "{0:yyyy-MM-dd}")</td>
+            @if (Model.IsClosed)
+            {
+            <td bgcolor="#ccffcc" >done</td>
+            }
+            else if (Model.IsRequired == false)
+            {
+            <td bgcolor="#ccccff" >Not necessary</td>
+            }
+            else
+            {
+            <td bgcolor="#ffcccc" >uncompleted</td>
+            }
+            <td>
+            
+            @if (Model.IsClosed == false && Model.IsRequired)
+            {
+                @Html.ActionLink("clôturer", "CloseInfo", "MesOperations", new { id = Model.Id, Request_Id = Model.Request_Id, InfoType = Model.GetType().Name }, new { }) 
+            }
+            </td>
+            <td>@Html.TextAreaFor(model => model.Comment)</td>
+        </tr>
+    }

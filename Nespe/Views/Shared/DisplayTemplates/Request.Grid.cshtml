@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Nespe.Models.Request>
+
+@using Nespe.Models;
+
+@*
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+*@
+<table>
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Person)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ElapsedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.FirstName)&nbsp;@Html.DisplayFor(modelItem => item.Person.LastName)
+        </td>
+        <td>@String.Format("{0:d}", item.StartDate)</td>
+        @if (item.IsOverTime)
+        {
+            <td style="color:red;">@Math.Round(item.ElapsedTime.TotalDays, 0)&nbsp;jours dépassés</td>
+        }
+        else
+        { 
+            <td>@Math.Round(item.ElapsedTime.TotalDays * (-1), 0)&nbsp;jours restants</td>
+        }
+        <td>@Html.DisplayFor(modelItem => item.Department.Name)</td>
+        <td>
+
+        @if (item.Completed)
+        {
+            
+            
+            if (item.Kind == RequestKindEnum.Departure)
+            {
+                @Html.ActionLink("Edit", "EditDepart", "MesOperations", new { id = item.Id }, new { }) 
+            }
+            else
+            { 
+                @Html.ActionLink("Edit", "Edit", "MesOperations", new { id = item.Id }, new { }) 
+            }
+        }
+        else
+        {
+            if (item.Kind == RequestKindEnum.Departure)
+            {
+                @Html.ActionLink("Completer", "CompleterDepart", "MesOperations", new { id = item.Id }, new { })
+            }
+            else
+            { 
+                @Html.ActionLink("Completer", "Completer", "MesOperations", new { id = item.Id }, new { })
+            }
+        }
+        @Html.ActionLink("Finish", "FinishIt", "MesOperations", new { id = item.Id }, new { })                                                                                                    
+                                                                                                          
+        </td>
+    </tr>
+    
+}
+</tbody>
+</table>
