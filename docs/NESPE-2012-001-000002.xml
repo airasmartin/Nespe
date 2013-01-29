@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Nestle_SM7>
+  <documentReferences>
+    <documentType><![CDATA[CH LGO Request]]></documentType>
+    <sourceSystem><![CDATA[ServiceDesk.xsn]]></sourceSystem>
+    <sourceFQDN><![CDATA[forms.hq.nestle.com]]></sourceFQDN>
+    <supportGroup><![CDATA[CH_HERITAGE_VEV]]></supportGroup>
+    <supportContactTel><![CDATA[+41 21 924-3456]]></supportContactTel>
+    <supportContactEmail><![CDATA[pascal.hungerbuhler@nestle.com]]></supportContactEmail>
+  </documentReferences>
+  <assignmentGroup><![CDATA[CH_IT SUPPORT WKS_ORB INSTALLATION]]></assignmentGroup>
+  <primaryContactDetails>
+    <contactName><![CDATA[MARCEL.OPPLIGER@NESTLE.COM]]></contactName>
+  </primaryContactDetails>
+  <initiatorUserId><![CDATA[RDAirasMa]]></initiatorUserId>
+  <title><![CDATA[[NESPE] 000002 NewComer install]]></title>
+  <description><![CDATA[Please install following Hardware for Joao Ramalho in office PK120
+  - Laptop
+  - Docking station
+  - Screen
+  - mouse
+  - keyboard
+  ]]></description>
+  <impact><![CDATA[4]]></impact>
+  <severity><![CDATA[4]]></severity>
+  <callbackType><![CDATA[Telephone]]></callbackType>
+  <coreService><![CDATA[BUSINESS TO EMPLOYEE (B2E)/WORKSTATION]]></coreService>
+  <category><![CDATA[request]]></category>
+  <area><![CDATA[request for change]]></area>
+  <subArea><![CDATA[escalate cr]]></subArea>
+  <userEnvironment><![CDATA[PRODUCTION]]></userEnvironment>
+  <attachments />
+  <requestLeadTime><![CDATA[4]]></requestLeadTime>
+
+</Nestle_SM7>

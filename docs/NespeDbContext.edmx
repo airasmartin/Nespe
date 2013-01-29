@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Nespe.Entities.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="NespeEntitiesStoreContainer">
+          <EntitySet Name="tbl_department" EntityType="Nespe.Entities.Store.tbl_department" store:Type="Tables" />
+          <EntitySet Name="tbl_person" EntityType="Nespe.Entities.Store.tbl_person" store:Type="Tables" />
+          <EntitySet Name="tbl_person_department" EntityType="Nespe.Entities.Store.tbl_person_department" store:Type="Tables" />
+          <EntitySet Name="tbl_request" EntityType="Nespe.Entities.Store.tbl_request" store:Type="Tables" />
+          <EntitySet Name="tbl_requestTypeInfo" EntityType="Nespe.Entities.Store.tbl_requestTypeInfo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_tbl_person_department_dbo_tbl_department_Department_Id" Association="Nespe.Entities.Store.FK_dbo_tbl_person_department_dbo_tbl_department_Department_Id">
+            <End Role="tbl_department" EntitySet="tbl_department" />
+            <End Role="tbl_person_department" EntitySet="tbl_person_department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_tbl_person_department_dbo_tbl_person_Person_Id" Association="Nespe.Entities.Store.FK_dbo_tbl_person_department_dbo_tbl_person_Person_Id">
+            <End Role="tbl_person" EntitySet="tbl_person" />
+            <End Role="tbl_person_department" EntitySet="tbl_person_department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_tbl_request_dbo_tbl_person_department_PersonDepartment_Id" Association="Nespe.Entities.Store.FK_dbo_tbl_request_dbo_tbl_person_department_PersonDepartment_Id">
+            <End Role="tbl_person_department" EntitySet="tbl_person_department" />
+            <End Role="tbl_request" EntitySet="tbl_request" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SID" Type="nvarchar" />
+          <Property Name="Name" Type="nvarchar" />
+          <Property Name="Description" Type="nvarchar" />
+          <Property Name="EMail" Type="nvarchar" />
+          <Property Name="Phone" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="tbl_person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SID" Type="nvarchar" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" />
+          <Property Name="EMail" Type="nvarchar" />
+          <Property Name="Phone" Type="nvarchar" />
+          <Property Name="Initials" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="tbl_person_department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Rank" Type="bigint" Nullable="false" />
+          <Property Name="Department_Id" Type="bigint" Nullable="false" />
+          <Property Name="Person_Id" Type="bigint" Nullable="false" />
+          <Property Name="Role" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PersonDepartment_Id" Type="bigint" />
+          <Property Name="Function" Type="nvarchar" />
+          <Property Name="Superior" Type="nvarchar" />
+          <Property Name="BusinessStream" Type="nvarchar" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EmployeeNumber" Type="nvarchar" Nullable="false" />
+          <Property Name="nonSAP" Type="bit" Nullable="false" />
+          <Property Name="Local" Type="nvarchar" />
+          <Property Name="TransFrom" Type="nvarchar" />
+          <Property Name="Parrain" Type="nvarchar" />
+          <Property Name="Completed" Type="bit" Nullable="false" />
+          <Property Name="ActiveDirectoryId" Type="nvarchar" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_requestTypeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" />
+          <Property Name="Description" Type="nvarchar" />
+        </EntityType>
+        <Association Name="FK_dbo_tbl_person_department_dbo_tbl_department_Department_Id">
+          <End Role="tbl_department" Type="Nespe.Entities.Store.tbl_department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_person_department" Type="Nespe.Entities.Store.tbl_person_department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_person_department">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_tbl_person_department_dbo_tbl_person_Person_Id">
+          <End Role="tbl_person" Type="Nespe.Entities.Store.tbl_person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_person_department" Type="Nespe.Entities.Store.tbl_person_department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_person_department">
+              <PropertyRef Name="Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_tbl_request_dbo_tbl_person_department_PersonDepartment_Id">
+          <End Role="tbl_person_department" Type="Nespe.Entities.Store.tbl_person_department" Multiplicity="0..1" />
+          <End Role="tbl_request" Type="Nespe.Entities.Store.tbl_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_person_department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_request">
+              <PropertyRef Name="PersonDepartment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Nespe.Entities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NespeDbContextEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_department" EntityType="Nespe.Entities.Department" />
+          <EntitySet Name="tbl_person" EntityType="Nespe.Entities.Person" />
+          <EntitySet Name="tbl_person_department" EntityType="Nespe.Entities.PersonDepartment" />
+          <EntitySet Name="tbl_request" EntityType="Nespe.Entities.Request" />
+          <EntitySet Name="tbl_requestTypeInfo" EntityType="Nespe.Entities.RequestTypeInfo" />
+          <AssociationSet Name="FK_dbo_tbl_person_department_dbo_tbl_department_Department_Id" Association="Nespe.Entities.FK_dbo_tbl_person_department_dbo_tbl_department_Department_Id">
+            <End Role="tbl_department" EntitySet="tbl_department" />
+            <End Role="tbl_person_department" EntitySet="tbl_person_department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_tbl_person_department_dbo_tbl_person_Person_Id" Association="Nespe.Entities.FK_dbo_tbl_person_department_dbo_tbl_person_Person_Id">
+            <End Role="tbl_person" EntitySet="tbl_person" />
+            <End Role="tbl_person_department" EntitySet="tbl_person_department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_tbl_request_dbo_tbl_person_department_PersonDepartment_Id" Association="Nespe.Entities.FK_dbo_tbl_request_dbo_tbl_person_department_PersonDepartment_Id">
+            <End Role="tbl_person_department" EntitySet="tbl_person_department" />
+            <End Role="tbl_request" EntitySet="tbl_request" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SID" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="EMail" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SID" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="EMail" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Initials" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PersonDepartment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rank" Type="Int64" Nullable="false" />
+          <Property Name="Department_Id" Type="Int64" Nullable="false" />
+          <Property Name="Person_Id" Type="Int64" Nullable="false" />
+          <Property Name="Role" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Nespe.Entities.FK_dbo_tbl_person_department_dbo_tbl_department_Department_Id" FromRole="tbl_person_department" ToRole="tbl_department" />
+          <NavigationProperty Name="Person" Relationship="Nespe.Entities.FK_dbo_tbl_person_department_dbo_tbl_person_Person_Id" FromRole="tbl_person_department" ToRole="tbl_person" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonDepartment_Id" Type="Int64" />
+          <Property Name="Function" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Superior" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="BusinessStream" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EmployeeNumber" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="nonSAP" Type="Boolean" Nullable="false" />
+          <Property Name="Local" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="TransFrom" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Parrain" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Completed" Type="Boolean" Nullable="false" />
+          <Property Name="ActiveDirectoryId" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PersonDepartment" Relationship="Nespe.Entities.FK_dbo_tbl_request_dbo_tbl_person_department_PersonDepartment_Id" FromRole="tbl_request" ToRole="tbl_person_department" />
+        </EntityType>
+        <EntityType Name="RequestTypeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_dbo_tbl_person_department_dbo_tbl_department_Department_Id">
+          <End Role="tbl_department" Type="Nespe.Entities.Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_person_department" Type="Nespe.Entities.PersonDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_person_department">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_tbl_person_department_dbo_tbl_person_Person_Id">
+          <End Role="tbl_person" Type="Nespe.Entities.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_person_department" Type="Nespe.Entities.PersonDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_person_department">
+              <PropertyRef Name="Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_tbl_request_dbo_tbl_person_department_PersonDepartment_Id">
+          <End Role="tbl_person_department" Type="Nespe.Entities.PersonDepartment" Multiplicity="0..1" />
+          <End Role="tbl_request" Type="Nespe.Entities.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_person_department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_request">
+              <PropertyRef Name="PersonDepartment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NespeEntitiesStoreContainer" CdmEntityContainer="NespeDbContextEntities">
+          <EntitySetMapping Name="tbl_department"><EntityTypeMapping TypeName="Nespe.Entities.Department"><MappingFragment StoreEntitySet="tbl_department">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="SID" ColumnName="SID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="EMail" ColumnName="EMail" />
+            <ScalarProperty Name="Phone" ColumnName="Phone" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_person"><EntityTypeMapping TypeName="Nespe.Entities.Person"><MappingFragment StoreEntitySet="tbl_person">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="SID" ColumnName="SID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="EMail" ColumnName="EMail" />
+            <ScalarProperty Name="Phone" ColumnName="Phone" />
+            <ScalarProperty Name="Initials" ColumnName="Initials" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_person_department"><EntityTypeMapping TypeName="Nespe.Entities.PersonDepartment"><MappingFragment StoreEntitySet="tbl_person_department">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Rank" ColumnName="Rank" />
+            <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+            <ScalarProperty Name="Person_Id" ColumnName="Person_Id" />
+            <ScalarProperty Name="Role" ColumnName="Role" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_request"><EntityTypeMapping TypeName="Nespe.Entities.Request"><MappingFragment StoreEntitySet="tbl_request">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="PersonDepartment_Id" ColumnName="PersonDepartment_Id" />
+            <ScalarProperty Name="Function" ColumnName="Function" />
+            <ScalarProperty Name="Superior" ColumnName="Superior" />
+            <ScalarProperty Name="BusinessStream" ColumnName="BusinessStream" />
+            <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+            <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+            <ScalarProperty Name="nonSAP" ColumnName="nonSAP" />
+            <ScalarProperty Name="Local" ColumnName="Local" />
+            <ScalarProperty Name="TransFrom" ColumnName="TransFrom" />
+            <ScalarProperty Name="Parrain" ColumnName="Parrain" />
+            <ScalarProperty Name="Completed" ColumnName="Completed" />
+            <ScalarProperty Name="ActiveDirectoryId" ColumnName="ActiveDirectoryId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_requestTypeInfo"><EntityTypeMapping TypeName="Nespe.Entities.RequestTypeInfo"><MappingFragment StoreEntitySet="tbl_requestTypeInfo">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="NespeDbContext">
+        <EntityTypeShape EntityType="Nespe.Entities.Department" Width="1.5" PointX="0.75" PointY="1.5" Height="1.9210009765625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nespe.Entities.Person" Width="1.5" PointX="0.75" PointY="5.5" Height="2.0853483072916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nespe.Entities.PersonDepartment" Width="1.5" PointX="3" PointY="1.5" Height="2.0853483072916661" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nespe.Entities.Request" Width="2.625" PointX="5.875" PointY="1.125" Height="3.2357796223958322" IsExpanded="true" />
+        <EntityTypeShape EntityType="Nespe.Entities.RequestTypeInfo" Width="1.5" PointX="2.75" PointY="5.75" Height="1.4279589843749996" IsExpanded="true" />
+        <AssociationConnector Association="Nespe.Entities.FK_dbo_tbl_person_department_dbo_tbl_department_Department_Id" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.46050048828125" />
+          <ConnectorPoint PointX="3" PointY="2.46050048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Nespe.Entities.FK_dbo_tbl_person_department_dbo_tbl_person_Person_Id" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.4129036458333335" />
+          <ConnectorPoint PointX="4.40625" PointY="7.4129036458333335" />
+          <ConnectorPoint PointX="4.40625" PointY="3.5853483072916661" />
+        </AssociationConnector>
+        <AssociationConnector Association="Nespe.Entities.FK_dbo_tbl_request_dbo_tbl_person_department_PersonDepartment_Id" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.5426741536458328" />
+          <ConnectorPoint PointX="5.875" PointY="2.5426741536458328" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
