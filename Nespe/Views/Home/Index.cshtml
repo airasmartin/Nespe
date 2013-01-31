@@ -14,41 +14,10 @@
         </div>
     </section>
 }
-<h3>Opérations en cours :</h3>
-    <fieldset class="ListView">
-        <legend>Arrivées :</legend>
-        @if (Model.ArrivalRequestSet == null)
-        {
-            <p>Aucun pour le moment</p>
-        }
-        else
-        {
-            @Html.DisplayFor(m => m.ArrivalRequestSet, "Request.Grid.ReadOnly")
-        }
-    </fieldset>
-    <fieldset class="ListView">
-        <legend>Transferts :</legend>
-        @if (Model.TransfertRequestSet == null)
-        {
-            <p>Aucun pour le moment</p>
-        }
-        else
-        {
-            @Html.DisplayFor(m => m.TransfertRequestSet, "Request.Grid.ReadOnly")
-        }
-    </fieldset>
-    <fieldset class="ListView">
-        <legend>Départs :</legend>
-        @if (Model.DepartureRequestSet == null)
-        {
-            <p>Aucun pour le moment</p>
-        }
-        else
-        {
-            @Html.DisplayFor(m => m.DepartureRequestSet, "Request.Grid.ReadOnly")
-        }
-    </fieldset>
-
+<h3>Welcome To NESPE</h3>
+<p>
+This is you favorite web site about new nestle employee and friends ;-)
+</p>
 
 
 
