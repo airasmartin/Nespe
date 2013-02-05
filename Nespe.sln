@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe", "Nespe\Nespe.csproj", "{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe.Tests", "Nespe.Tests\Nespe.Tests.csproj", "{644AE658-19DB-43A9-AAF7-E63EC36CD513}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachineNC", "StateMachineNC\StateMachineNC.csproj", "{99B23687-5ADE-49ED-B1EB-3CBE7FC4EFED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe.Spikes", "Nespe.Spikes\Nespe.Spikes.csproj", "{EED96E94-D91D-4CE2-9615-105DA3EE919D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe-Application-Web", "Nespe-Application-Web\Nespe-Application-Web.csproj", "{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,16 +19,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|x86.ActiveCfg = Release|Any CPU
 		{644AE658-19DB-43A9-AAF7-E63EC36CD513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{644AE658-19DB-43A9-AAF7-E63EC36CD513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{644AE658-19DB-43A9-AAF7-E63EC36CD513}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -56,6 +46,16 @@ Global
 		{EED96E94-D91D-4CE2-9615-105DA3EE919D}.Release|Mixed Platforms.Build.0 = Release|x86
 		{EED96E94-D91D-4CE2-9615-105DA3EE919D}.Release|x86.ActiveCfg = Release|x86
 		{EED96E94-D91D-4CE2-9615-105DA3EE919D}.Release|x86.Build.0 = Release|x86
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
