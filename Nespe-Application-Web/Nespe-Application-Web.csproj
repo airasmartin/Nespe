@@ -298,9 +298,6 @@
     <Content Include="Scripts\jquery-1.8.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <Content Include="Scripts.DELETEME\jquery-1.8.2-vsdoc.js" />
-    <Content Include="Scripts.DELETEME\jquery-1.8.2.js" />
-    <Content Include="Scripts.DELETEME\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-1.9.0-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />
@@ -308,8 +305,6 @@
     <Content Include="Scripts\jquery-ui-1.10.0.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.23.js" />
     <Content Include="Scripts\jquery-ui-1.8.23.min.js" />
-    <Content Include="Scripts.DELETEME\jquery-ui-1.8.23.js" />
-    <Content Include="Scripts.DELETEME\jquery-ui-1.8.23.min.js" />
     <Content Include="Scripts\jquery.corner.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
