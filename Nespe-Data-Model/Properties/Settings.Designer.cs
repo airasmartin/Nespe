@@ -26,7 +26,7 @@ namespace Nespe.Data.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=D:\\workspace\\_NESPE\\Nespe\\data\\db_nespe.dbf.sdf")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=D:\\workspace\\_NESPE\\Nespe\\data\\db_nespe.sdf")]
         public string NespeDataContext {
             get {
                 return ((string)(this["NespeDataContext"]));

@@ -1,14 +1,14 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Nespe.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Nespe.Data.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="NespeDataContext" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=D:\workspace\_NESPE\Nespe\data\db_nespe.dbf.sdf&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=D:\workspace\_NESPE\Nespe\data\db_nespe.sdf&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;Microsoft.SqlServerCe.Client.3.5&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=D:\workspace\_NESPE\Nespe\data\db_nespe.dbf.sdf</Value>
+      <Value Profile="(Default)">Data Source=D:\workspace\_NESPE\Nespe\data\db_nespe.sdf</Value>
     </Setting>
   </Settings>
 </SettingsFile>
