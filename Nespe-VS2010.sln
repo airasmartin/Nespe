@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe.Tests", "Nespe.Tests\Nespe.Tests.csproj", "{644AE658-19DB-43A9-AAF7-E63EC36CD513}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe.Tests", "Nespe.Tests\Nespe.Tests-VS2010.csproj", "{644AE658-19DB-43A9-AAF7-E63EC36CD513}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachineNC", "StateMachineNC\StateMachineNC.csproj", "{99B23687-5ADE-49ED-B1EB-3CBE7FC4EFED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateMachineNC", "StateMachineNC\StateMachineNC-VS2010.csproj", "{99B23687-5ADE-49ED-B1EB-3CBE7FC4EFED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe.Spikes", "Nespe.Spikes\Nespe.Spikes.csproj", "{EED96E94-D91D-4CE2-9615-105DA3EE919D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe.Spikes", "Nespe.Spikes\Nespe.Spikes-VS2010.csproj", "{EED96E94-D91D-4CE2-9615-105DA3EE919D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe-Application-Web", "Nespe-Application-Web\Nespe-Application-Web.csproj", "{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe-Application-Web", "Nespe-Application-Web\Nespe-Application-Web-VS2010.csproj", "{DF6AE51F-5E94-4A6C-B3E6-7071D71139F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe-Data-Model", "Nespe-Data-Model\Nespe-Data-Model.csproj", "{1499DB8F-1990-4804-9F2C-84F20900A743}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nespe-Data-Model", "Nespe-Data-Model\Nespe-Data-Model-VS2010.csproj", "{1499DB8F-1990-4804-9F2C-84F20900A743}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{7D8D3352-58C6-4982-8065-7A8BC9596FB0}"
 EndProject
