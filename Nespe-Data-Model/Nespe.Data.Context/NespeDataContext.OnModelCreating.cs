@@ -31,7 +31,13 @@ namespace Nespe.Data.Context
             );
             modelBuilder.Entity<Department>().HasKey(t => t.Id).Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Department>().Property(t => t.Version).IsConcurrencyToken();
-            //modelBuilder.Entity<Department>().HasMany(t => t.PersonList).WithOptional(t => t.Department).WillCascadeOnDelete(true);
+            modelBuilder.Entity<Department>().Property(t => t.SID).HasMaxLength(256);
+            modelBuilder.Entity<Department>().Property(t => t.Name).HasMaxLength(512);
+            modelBuilder.Entity<Department>().Property(t => t.Description).IsMaxLength();
+            modelBuilder.Entity<Department>().Property(t => t.Phone).HasMaxLength(124);
+            modelBuilder.Entity<Department>().Property(t => t.EMail).HasMaxLength(512);
+            modelBuilder.Entity<Department>().Property(t => t.Entity).HasMaxLength(1024);
+            modelBuilder.Entity<Department>().HasMany(t => t.PersonList).WithRequired(t => t.Department);
 
             modelBuilder.Entity<Person>().Map(
                 m =>
@@ -42,19 +48,25 @@ namespace Nespe.Data.Context
             );
             modelBuilder.Entity<Person>().HasKey(t => t.Id).Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Person>().Property(t => t.Version).IsConcurrencyToken();
+            modelBuilder.Entity<Person>().Property(t => t.SID).HasMaxLength(256);
+            modelBuilder.Entity<Person>().Property(t => t.FirstName).HasMaxLength(256);
+            modelBuilder.Entity<Person>().Property(t => t.LastName).HasMaxLength(256);
+            modelBuilder.Entity<Person>().Property(t => t.Phone).HasMaxLength(124);
+            modelBuilder.Entity<Person>().Property(t => t.EMail).HasMaxLength(512);
 
             modelBuilder.Entity<PersonDepartment>().Map(
                 m =>
                 {
-                    m.Properties(t => new { t.Id, t.Version });
+                    m.Properties(t => new { t.Id, t.Version, t.RoleId });
                     m.ToTable(typeof(PersonDepartment).Name);
                 }
             );
             modelBuilder.Entity<PersonDepartment>().HasKey(t => t.Id).Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<PersonDepartment>().Property(t => t.Version).IsConcurrencyToken();
             modelBuilder.Entity<PersonDepartment>().Property(t => t.RoleId).HasColumnName("Role").HasColumnType("smallint");
+            modelBuilder.Entity<PersonDepartment>().Ignore(t => t.Role);
             modelBuilder.Entity<PersonDepartment>().HasRequired(t => t.Person).WithMany().Map(t => t.MapKey("Person_Id")).WillCascadeOnDelete(true);
-            modelBuilder.Entity<PersonDepartment>().HasRequired(t => t.Department).WithMany().Map(t => t.MapKey("Department_Id")).WillCascadeOnDelete(true);
+            modelBuilder.Entity<PersonDepartment>().HasRequired(t => t.Department).WithMany().Map(t => t.MapKey("Department_Id")).WillCascadeOnDelete(false);
 
         }
 

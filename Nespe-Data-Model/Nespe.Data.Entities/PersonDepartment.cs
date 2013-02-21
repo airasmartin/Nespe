@@ -13,6 +13,17 @@ namespace Nespe.Data.Entities
         public virtual short RoleId { get; set; }
         public virtual Person Person { get; set; }
         public virtual Department Department { get; set; }
+        public override string ToString()
+        {
+            return string.Concat(GetType().FullName,
+                "{", "Id=", Id,
+                ", Version=", Version,
+                ", Role=\"", Role, "\"",
+                ", RoleId=", RoleId,
+                ", Person=", Person,
+                ", Department=", Department,
+                "}");
+        }
         public static implicit operator Person(PersonDepartment me)
         {
             return me==null?null:me.Person;

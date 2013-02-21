@@ -18,6 +18,12 @@ namespace Nespe.Data.Context
             : base("name=NespeDataContext")
         {
         }
+
+        public NespeDataContext(DbConnection existingConnection, bool contextOwnsConnection)
+            : base(existingConnection, contextOwnsConnection)
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+        }
         public DbSet<Department> DepartmentSet { get; set; }
         public DbSet<Person> PersonSet { get; set; }
         public DbSet<PersonDepartment> PersonDepartmentSet { get; set; }
