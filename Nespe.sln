@@ -20,6 +20,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{52FE92
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Nespe-Web-Site", "Nespe-Web-Site\", "{662B5773-ACB5-4527-9967-375BD2788CB2}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/Nespe-Web-Site"
+		Debug.AspNetCompiler.PhysicalPath = "Nespe-Web-Site\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Nespe-Web-Site\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Nespe-Web-Site"
+		Release.AspNetCompiler.PhysicalPath = "Nespe-Web-Site\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Nespe-Web-Site\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "55813"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +98,16 @@ Global
 		{1499DB8F-1990-4804-9F2C-84F20900A743}.Release|Mixed Platforms.Build.0 = Release|x86
 		{1499DB8F-1990-4804-9F2C-84F20900A743}.Release|x86.ActiveCfg = Release|x86
 		{1499DB8F-1990-4804-9F2C-84F20900A743}.Release|x86.Build.0 = Release|x86
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{662B5773-ACB5-4527-9967-375BD2788CB2}.Release|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
