@@ -1,0 +1,79 @@
+﻿@model Nespe.Application.WebSite.Models.PersonItemModel
+
+@using Nespe.Models;
+@using Nespe.Application.WebSite.Models;
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Person</legend>
+
+        @Html.HiddenFor(model => model.ItemSelected.Id)
+
+@*        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.Version)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Version)
+            @Html.ValidationMessageFor(model => model.ItemSelected.Version)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.SID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.SID)
+            @Html.ValidationMessageFor(model => model.ItemSelected.SID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.FirstName)
+            @Html.ValidationMessageFor(model => model.ItemSelected.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.LastName)
+            @Html.ValidationMessageFor(model => model.ItemSelected.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.EMail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.EMail)
+            @Html.ValidationMessageFor(model => model.ItemSelected.EMail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.Phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Phone)
+            @Html.ValidationMessageFor(model => model.ItemSelected.Phone)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

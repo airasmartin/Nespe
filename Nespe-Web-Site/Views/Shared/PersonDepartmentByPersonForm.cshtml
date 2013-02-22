@@ -1,0 +1,39 @@
+﻿@model Nespe.Application.WebSite.Models.PersonDepartmentItemModel
+@using Nespe.Data.Entities;
+@using Nespe.Application.WebSite.Models;
+
+@using (Html.BeginForm("Create", "PersonDepartment"))
+{
+    //throw new Exception(Model.Args.ToString());
+    var pl = (IEnumerable<Person>)Model.Args;
+    //var q = (from t in pl.ItemList select new { Id=t.Id, Fullname=t.FullName });
+    var q = new List<Person> ();
+    foreach (var p in pl)
+    {
+        q.Add(p);
+    }
+    var personSelectList = new SelectList(q, "Id", "FullName");
+
+    <fieldset class="Form">
+        <legend>@Html.DisplayTextFor(model => model.ItemSelected.Person)</legend>
+        @Html.HiddenFor(m => Model.ItemSelected.Department.Id)
+
+        <div class="editor-label">
+            @Html.DisplayNameFor(model => model.ItemSelected.Person)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ItemSelected.Person.Id, personSelectList)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayNameFor(model => model.ItemSelected.Role)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Role)
+        </div>
+        <hr />
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+
+    </fieldset>
+}

@@ -1,0 +1,35 @@
+﻿@model Nespe.Application.WebSite.Models.PersonDepartmentListModel
+<table>
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemSelected.Role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemSelected.Department.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemSelected.Department.EMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemSelected.Department.Phone)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ItemList) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Role)</td>
+        <td>@Html.DisplayFor(modelItem => item.Department.Name)</td>
+        <td>@Html.DisplayFor(modelItem => item.Department.EMail)</td>
+        <td>@Html.DisplayFor(modelItem => item.Department.Phone)</td>
+        <th nowrap="nowrap">
+            @Html.ActionLink("Edit", "Edit", "PersonDepartment", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", "PersonDepartment", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", "PersonDepartment", new { id=item.Id })
+        </th>
+    </tr>
+}
+    </tbody>
+</table>

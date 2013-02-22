@@ -1,0 +1,90 @@
+﻿@model Nespe.Application.WebSite.Models.DepartmentItemModel
+@using Nespe.Application.WebSite.Models;
+@using Nespe.Data.Entities;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset class="Form">
+    <legend>Department</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ItemSelected.Version)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemSelected.Version)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ItemSelected.SID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemSelected.SID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ItemSelected.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemSelected.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ItemSelected.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemSelected.Description)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ItemSelected.Entity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemSelected.Entity)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ItemSelected.EMail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemSelected.EMail)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ItemSelected.Phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemSelected.Phone)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ItemSelected.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<hr />
+@using (Html.BeginForm("Create", "PersonDepartment"))
+{
+    var q = (from t in Model.AvailablePersonList select new { Id = t.Id, FirstName = t.FirstName, LastName = t.LastName });
+    var l = new List<Person>();
+    foreach (var p in q)
+    {
+        l.Add(new Person { Id=p.Id, FirstName=p.FirstName, LastName=p.LastName });
+    }
+    var personDepartmentModel = new PersonDepartmentItemModel
+    {
+        ItemSelected = new PersonDepartment
+        {
+            Department = Model.ItemSelected
+        },
+        Args=l
+    };
+    @Html.Partial("PersonDepartmentByPersonForm", personDepartmentModel)
+}
+
+<fieldset class="Grid">
+    <legend>@Html.DisplayTextFor(model => model.ItemSelected.PersonList)</legend>
+    @Html.Partial("PersonDepartmentByPersonGrid", new PersonDepartmentListModel { ItemSelected = new PersonDepartment { Department = Model.ItemSelected }, ItemList = Model.ItemSelected.PersonList.AsQueryable() })
+</fieldset>

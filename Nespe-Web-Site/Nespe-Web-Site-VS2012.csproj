@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2B2F7D96-2A3F-4844-A500-5750E7D35FFE}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nespe.Application.WebSite</RootNamespace>
+    <AssemblyName>Nespe-Web-Site</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AbstractController.cs" />
+    <Compile Include="Controllers\AbstractEntityController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PersonDepartmentController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonDepartmentModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Models\DepartmentModel.cs" />
+    <Compile Include="Models\AbstractModel.cs" />
+    <Compile Include="Models\AbstractItemModel.cs" />
+    <Compile Include="Models\AbstractListModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\Form.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\css\modern-responsive.css" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\css\modern.css" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\css\theme-dark.css" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\fonts\iconFont.svg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\fonts\license.txt" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\images\preloader-w8-cycle-black.gif" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\images\preloader-w8-cycle-white.gif" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\images\preloader-w8-line-black.gif" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\images\preloader-w8-line-white.gif" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\accordion.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\buttonset.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\carousel.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\dialog.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\dropdown.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\input-control.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\pagecontrol.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\rating.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\slider.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\start-menu.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\tile-drag.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\javascript\tile-slider.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\css\modern-responsive.css" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\css\modern.css" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\css\site.css" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\css\theme-dark.css" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\fonts\iconFont.svg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\fonts\license.txt" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\1.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\1005-BizSpark-261x230.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\2.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\3.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\4.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\5.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\armor.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\author.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-activity.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-alert.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-attention.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-available.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-away.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-busy.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-error.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-newMessage.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-paused.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-playing.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\bage-unavailable.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\Calendar128.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\Camera48.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\chrome.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\collapse24-black.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\collapse24.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\collapse32-black.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\collapse32.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\download-32.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\excel2013icon.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\expand24-black.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\expand24.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\expand32-black.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\expand32.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\firefox.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\fork-32.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\github.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\grid.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\icons-white.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\icons.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\ie.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\InternetExplorer128.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\lock-open.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\lock.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\logo-jetbrains.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\logo32.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\Mail128.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\Market128.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\michael.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\Music128.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\myface.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\onenote2013icon.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\opera.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\Picture128.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\preloader-w8-cycle-black.gif" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\preloader-w8-cycle-white.gif" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\preloader-w8-line-black.gif" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\preloader-w8-line-white.gif" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\pull24-dark.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\pull24.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\responsive.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\row24.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\Rss128.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\shield-user.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\simple.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\star32.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\stock-up.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\Video128.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\view-32.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\windows-8-metro.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\windows8_metro_green_1920_1080.jpg" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\word2013icon.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images\YouTube128.png" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\assets\github.info.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\assets\google-analytics.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\assets\jquery-1.8.2.min.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\assets\jquery-1.9.0.min.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\assets\jquery.mousewheel.min.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-apollo.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-clj.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-css.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-go.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-hs.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-lisp.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-lua.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-ml.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-n.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-proto.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-scala.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-sql.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-tex.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-vb.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-vhdl.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-wiki.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-xq.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\lang-yaml.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\prettify.css" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\google-code-prettify\prettify.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\accordion.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\buttonset.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\carousel.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\dialog.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\dropdown.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\input-control.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\pagecontrol.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\rating.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\slider.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\start-menu.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\tile-drag.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\modern\tile-slider.js" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\sharrre\jquery.sharrre-1.3.4.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="connectionStrings.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\themes\olton-Metro-UI-CSS\.gitignore" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\CHANGELOG.md" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\fonts\iconFont.eot" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\fonts\iconFont.ttf" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\fonts\iconFont.woff" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\accordion.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\bricks.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\buttons.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\cards.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\carousel.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\code.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\colors.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\dialog.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\forms.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\grid.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\hero.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\icons.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\images.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\layout.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\listview.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\menus.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\modern-responsive-max480.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\modern-responsive-max767.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\modern-responsive-max979.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\modern-responsive-min1200.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\modern-responsive.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\modern.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\notices.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\pagecontrol.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\progress.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\rating.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\reset.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\routines.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\sidebar.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\slider.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\tables.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\theme-dark.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\tiles.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\less\typography.less" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\LICENSE" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\.htaccess" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\accordion.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\adsense.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\buttons-set.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\buttons.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\cards.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\carousel.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\counter.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\dialog.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\fonts\iconFont.eot" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\fonts\iconFont.ttf" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\fonts\iconFont.woff" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\footer.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\forms.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\global.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\grid.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\header.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\icons.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\images.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\index.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\javascript.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\js\sharrre\sharrre.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\layout.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\listview.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\menus.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\navigation.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\notices.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\page-secondary.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\page.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\pagecontrol.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\progress.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\rating.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\responsive.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\sidebar.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\slider.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\sponsoring.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\tables.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\tiles.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\typography.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\version.phtml" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\public\windows8start.php" />
+    <Content Include="Content\themes\olton-Metro-UI-CSS\README.md" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="packages.config" />
+    <None Include="readme.txt" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
+    <Content Include="Views\Shared\PersonDepartmentByPersonGrid.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
+    <Content Include="Views\Shared\PersonDepartmentByPersonForm.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PersonDeparmentRoleEnum.cshtml" />
+    <Content Include="Views\PersonDepartment\Index.cshtml" />
+    <Content Include="Views\Person\Edit.cshtml" />
+    <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\Person\Details.cshtml" />
+    <Content Include="Views\Shared\PersonDepartmentByDepartmentForm.cshtml" />
+    <Content Include="Views\Shared\PersonDepartmentByDepartmentGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nespe-Data-Model\Nespe-Data-Model-VS2012.csproj">
+      <Project>{1499db8f-1990-4804-9f2c-84f20900a743}</Project>
+      <Name>Nespe-Data-Model-VS2012</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55813/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

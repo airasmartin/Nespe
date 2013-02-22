@@ -57,14 +57,15 @@ namespace Nespe.Data.Context
             modelBuilder.Entity<PersonDepartment>().Map(
                 m =>
                 {
-                    m.Properties(t => new { t.Id, t.Version, t.RoleId });
+                    m.Properties(t => new { t.Id, t.Version, t.Role });
                     m.ToTable(typeof(PersonDepartment).Name);
                 }
             );
             modelBuilder.Entity<PersonDepartment>().HasKey(t => t.Id).Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<PersonDepartment>().Property(t => t.Version).IsConcurrencyToken();
-            modelBuilder.Entity<PersonDepartment>().Property(t => t.RoleId).HasColumnName("Role").HasColumnType("smallint");
-            modelBuilder.Entity<PersonDepartment>().Ignore(t => t.Role);
+            //modelBuilder.Entity<PersonDepartment>().Property(t => t.RoleId).HasColumnName("Role").HasColumnType("smallint");
+            //modelBuilder.Entity<PersonDepartment>().Ignore(t => t.Role);
+            modelBuilder.Entity<PersonDepartment>().Property(t => t.Role).HasColumnName("Role").HasColumnType("smallint");
             modelBuilder.Entity<PersonDepartment>().HasRequired(t => t.Person).WithMany().Map(t => t.MapKey("Person_Id")).WillCascadeOnDelete(true);
             modelBuilder.Entity<PersonDepartment>().HasRequired(t => t.Department).WithMany().Map(t => t.MapKey("Department_Id")).WillCascadeOnDelete(false);
 

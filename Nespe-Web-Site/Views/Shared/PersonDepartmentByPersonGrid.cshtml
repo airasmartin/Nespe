@@ -1,0 +1,44 @@
+﻿@model Nespe.Application.WebSite.Models.PersonDepartmentListModel
+
+@{
+    ViewBag.Title = "PersonDepartmentByPersonGrid";
+}
+
+<table>
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemSelected.Role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemSelected.Person.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemSelected.Person.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemSelected.Person.EMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemSelected.Person.Phone)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ItemList) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Role)</td>
+        <td>@Html.DisplayFor(modelItem => item.Person.FirstName)</td>
+        <td>@Html.DisplayFor(modelItem => item.Person.LastName)</td>
+        <td>@Html.DisplayFor(modelItem => item.Person.EMail)</td>
+        <td>@Html.DisplayFor(modelItem => item.Person.Phone)</td>
+        <th nowrap="nowrap">
+            @Html.ActionLink("Edit", "Edit", "PersonDepartment", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", "PersonDepartment", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", "PersonDepartment", new { id=item.Id })
+        </th>
+    </tr>
+}
+    </tbody>
+</table>
