@@ -34,9 +34,9 @@
         <td>@Html.DisplayFor(modelItem => item.Person.EMail)</td>
         <td>@Html.DisplayFor(modelItem => item.Person.Phone)</td>
         <th nowrap="nowrap">
-            @Html.ActionLink("Edit", "Edit", "PersonDepartment", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", "PersonDepartment", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", "PersonDepartment", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", "PersonDepartment", new { id = item.Id }, new  { }) |
+            @Html.ActionLink("Details", "Details", "PersonDepartment", new { id=item.Id }, new  { }) |
+            @Html.ActionLink("Delete", "Delete", "PersonDepartment", new { id=item.Id }, new  { })
         </th>
     </tr>
 }
