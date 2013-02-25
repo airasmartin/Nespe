@@ -25,8 +25,8 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.ItemSelected.Department)
         </div>
-        <div class="editor-field">
-            @Html.DisplayFor(model => model.ItemSelected.Department.Name) @Html.ActionLink("[...]", "Details", "Department", new { id=Model.ItemSelected.Department.Id }, new  { })
+        <div class="editor-field">            
+            <a href="@Url.Action("Details", "Department", new { id=Model.ItemSelected.Department.Id })">@Html.DisplayFor(model => model.ItemSelected.Department.Name)</a>
             @Html.ValidationMessageFor(model => model.ItemSelected.Department)
         </div>
 
@@ -34,7 +34,7 @@
             @Html.LabelFor(model => model.ItemSelected.Person)
         </div>
         <div class="editor-field">
-            @Html.DisplayFor(model => model.ItemSelected.Person.FullName) @Html.ActionLink("[...]", "Details", "Person", new { id=Model.ItemSelected.Person.Id }, new  { })
+            <a href="@Url.Action("Details", "Person", new { id=Model.ItemSelected.Person.Id })">@Html.DisplayFor(model => model.ItemSelected.Person.FullName)</a>
             @Html.ValidationMessageFor(model => model.ItemSelected.Person)
         </div>
 

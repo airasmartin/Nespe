@@ -14,7 +14,9 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("Nespe", "Index", "Home")</p>
+                    <p class="site-title">
+                        <a href="@Url.Action("Index", "Home")"><img alt="Nespe" title="Nespe WebSite" src="@Url.Content("~/Content/themes/base/images/logo_nespe.png")" /></a>
+                    </p>
                 </div>
                 <div class="float-right">
                     <section id="login">
