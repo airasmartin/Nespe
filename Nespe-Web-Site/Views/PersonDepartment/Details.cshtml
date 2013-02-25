@@ -1,0 +1,22 @@
+﻿@model Nespe.Application.WebSite.Models.PersonDepartmentItemModel
+
+@{
+    ViewBag.Title = "Détails personne département";
+}
+
+<h2>Détails personne départment</h2>
+
+<fieldset>
+    <legend>PersonDepartment</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ItemSelected.Version)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemSelected.Version)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ItemSelected.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

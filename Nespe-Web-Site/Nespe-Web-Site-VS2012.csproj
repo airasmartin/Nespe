@@ -489,6 +489,9 @@
     <Content Include="Views\Person\Details.cshtml" />
     <Content Include="Views\Shared\PersonDepartmentByDepartmentForm.cshtml" />
     <Content Include="Views\Shared\PersonDepartmentByDepartmentGrid.cshtml" />
+    <Content Include="Views\Person\Create.cshtml" />
+    <Content Include="Views\PersonDepartment\Edit.cshtml" />
+    <Content Include="Views\PersonDepartment\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
