@@ -8,13 +8,19 @@
 
 <fieldset>
     <legend>PersonDepartment</legend>
+     @Html.HiddenFor(model => model.ItemSelected.Id)
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ItemSelected.Version)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ItemSelected.Version)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.ItemSelected.Role)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ItemSelected.Role)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayFor(model => model.ItemSelected.Department)
+        </div>
+
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ItemSelected.Id }) |
