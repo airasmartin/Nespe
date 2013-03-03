@@ -11,7 +11,7 @@
      @Html.HiddenFor(model => model.ItemSelected.Id)
 
         <div class="display-label">
-            @Html.DisplayNameFor(model => model.ItemSelected.Person.FullName)
+            @Html.DisplayNameFor(model => model.ItemSelected.Person)
         </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.ItemSelected.Person.FullName)
@@ -23,7 +23,7 @@
             @Html.DisplayFor(model => model.ItemSelected.Role)
         </div>
         <div class="display-label">
-            @Html.DisplayNameFor(model => model.ItemSelected.Department.Name)
+            @Html.DisplayNameFor(model => model.ItemSelected.Department)
         </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.ItemSelected.Department.Name)

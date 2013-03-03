@@ -64,26 +64,27 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.ItemSelected.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+@if (Model.AvailablePersonList != null && Model.AvailablePersonList.Count()>0){
 <hr />
-@using (Html.BeginForm("Create", "PersonDepartment"))
-{
-    var q = (from t in Model.AvailablePersonList select new { Id = t.Id, FirstName = t.FirstName, LastName = t.LastName });
-    var l = new List<Person>();
-    foreach (var p in q)
+    @using (Html.BeginForm("Create", "PersonDepartment"))
     {
-        l.Add(new Person { Id=p.Id, FirstName=p.FirstName, LastName=p.LastName });
-    }
-    var personDepartmentModel = new PersonDepartmentItemModel
-    {
-        ItemSelected = new PersonDepartment
+        var q = (from t in Model.AvailablePersonList select new { Id = t.Id, FirstName = t.FirstName, LastName = t.LastName });
+        var l = new List<Person>();
+        foreach (var p in q)
         {
-            Department = Model.ItemSelected
-        },
-        Args=l
-    };
-    @Html.Partial("PersonDepartmentByPersonForm", personDepartmentModel)
+            l.Add(new Person { Id=p.Id, FirstName=p.FirstName, LastName=p.LastName });
+        }
+        var personDepartmentModel = new PersonDepartmentItemModel
+        {
+            ItemSelected = new PersonDepartment
+            {
+                Department = Model.ItemSelected
+            },
+            Args=l
+        };
+        @Html.Partial("PersonDepartmentByPersonForm", personDepartmentModel)
+    }
 }
-
 <fieldset class="Grid">
     <legend>@Html.DisplayTextFor(model => model.ItemSelected.PersonList)</legend>
     @Html.Partial("PersonDepartmentByPersonGrid", new PersonDepartmentListModel { ItemSelected = new PersonDepartment { Department = Model.ItemSelected }, ItemList = Model.ItemSelected.PersonList.AsQueryable() })

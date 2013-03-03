@@ -60,8 +60,9 @@ namespace Nespe.Application.WebSite.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
+                this.ModelState.AddModelError("Creation", ex);
                 return View(model);
             }
         }

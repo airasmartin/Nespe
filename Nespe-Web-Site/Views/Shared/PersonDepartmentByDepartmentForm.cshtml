@@ -12,17 +12,17 @@
     {
         q.Add(p);
     }
-    var personSelectList = new SelectList(q, "Id", "Name");
+    var selectList = new SelectList(q, "Id", "Name");
 
     <fieldset class="Form">
-        <legend>@Html.DisplayTextFor(model => model.ItemSelected.Person)</legend>
-        @Html.HiddenFor(m => Model.ItemSelected.Department.Id)
+        <legend>@Html.DisplayTextFor(model => model.ItemSelected.Department)</legend>
+        @Html.HiddenFor(m => Model.ItemSelected.Person.Id)
 
         <div class="editor-label">
-            @Html.DisplayNameFor(model => model.ItemSelected.Person)
+            @Html.DisplayNameFor(model => model.ItemSelected.Department)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.ItemSelected.Person.Id, personSelectList)
+            @Html.DropDownListFor(model => model.ItemSelected.Department.Id, selectList)
         </div>
         <div class="editor-label">
             @Html.DisplayNameFor(model => model.ItemSelected.Role)

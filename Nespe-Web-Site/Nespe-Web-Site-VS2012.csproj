@@ -492,6 +492,7 @@
     <Content Include="Views\Person\Create.cshtml" />
     <Content Include="Views\PersonDepartment\Edit.cshtml" />
     <Content Include="Views\PersonDepartment\Details.cshtml" />
+    <Content Include="Views\PersonDepartment\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
