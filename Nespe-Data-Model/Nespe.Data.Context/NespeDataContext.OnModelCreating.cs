@@ -64,8 +64,60 @@ namespace Nespe.Data.Context
             //modelBuilder.Entity<PersonDepartment>().Property(t => t.RoleId).HasColumnName("Role").HasColumnType("smallint");
             //modelBuilder.Entity<PersonDepartment>().Ignore(t => t.Role);
             modelBuilder.Entity<PersonDepartment>().Property(t => t.Role).HasColumnName("Role").HasColumnType("smallint");
-            modelBuilder.Entity<PersonDepartment>().HasRequired(t => t.Person).WithMany().Map(t => t.MapKey("Person_Id")).WillCascadeOnDelete(true);
+            modelBuilder.Entity<PersonDepartment>().HasRequired(t => t.Person).WithMany().Map(t => t.MapKey("Person_Id")).WillCascadeOnDelete(false);
             modelBuilder.Entity<PersonDepartment>().HasRequired(t => t.Department).WithMany().Map(t => t.MapKey("Department_Id")).WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TaskRequest>().Map(
+                m =>
+                {
+                    m.Properties(t => new { t.Id, t.Version, t.Name, t.Status, t.TypeId, t.Rank, t.Date, t.Comment });
+                    m.ToTable(typeof(TaskRequest).Name);
+                    m.MapInheritedProperties();
+                }
+            );
+            
+            modelBuilder.Entity<TaskRequest>().HasKey(t => t.Id).Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<TaskRequest>().Property(t => t.Version).IsConcurrencyToken();
+            modelBuilder.Entity<TaskRequest>().Property(t => t.TypeId).HasColumnName("Type_Id");
+
+            modelBuilder.Entity<PersonTaskRequest>().Map(
+                m =>
+                {
+                    //m.Properties(t => new { t.Id, t.Version });
+                    m.ToTable(typeof(PersonTaskRequest).Name);
+                    //m.MapInheritedProperties();
+                }
+            );
+            modelBuilder.Entity<PersonTaskRequest>().HasRequired(t => t.Person).WithMany().Map(t => t.MapKey("Person_Id")).WillCascadeOnDelete(false);
+            modelBuilder.Entity<PersonTaskRequest>().HasRequired(t => t.Department).WithMany().Map(t => t.MapKey("Department_Id")).WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ArrivalPersonTaskRequest>().Map(
+                m =>
+                {
+                    m.Properties(t => new { t.StartDate, t.BusinessStream, t.EmployeeNumber, t.Function, t.Superior });
+                    m.ToTable(typeof(ArrivalPersonTaskRequest).Name);
+                    //m.MapInheritedProperties();
+                }
+            );
+
+            modelBuilder.Entity<TransfertPersonTaskRequest>().Map(
+                m =>
+                {
+                    m.Properties(t => new { t.TransFrom });
+                    m.ToTable(typeof(TransfertPersonTaskRequest).Name);
+                    //m.MapInheritedProperties();
+                }
+            );
+
+            modelBuilder.Entity<DeparturePersonTaskRequest>().Map(
+                m =>
+                {
+                    m.Properties(t => new { t.DepartureDate, t.Initials, t.Location, t.IsRetirement });
+                    m.ToTable(typeof(DeparturePersonTaskRequest).Name);
+                    //m.MapInheritedProperties();
+                }
+            );
+
 
         }
 

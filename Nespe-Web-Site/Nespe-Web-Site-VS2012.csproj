@@ -136,15 +136,23 @@
     <Compile Include="Controllers\PersonDepartmentController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaskRequestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201302252100346_InitialCreate.cs" />
+    <Compile Include="Migrations\201302252100346_InitialCreate.Designer.cs">
+      <DependentUpon>201302252100346_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\TaskRequestModel.cs" />
     <Compile Include="Models\PersonDepartmentModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
     <Compile Include="Models\AbstractModel.cs" />
     <Compile Include="Models\AbstractItemModel.cs" />
     <Compile Include="Models\AbstractListModel.cs" />
+    <Compile Include="Nespe.Data.Context\WebNespeDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -494,7 +502,11 @@
     <Content Include="Views\PersonDepartment\Details.cshtml" />
     <Content Include="Views\PersonDepartment\Create.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201302252100346_InitialCreate.resx">
+      <DependentUpon>201302252100346_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nespe-Data-Model\Nespe-Data-Model-VS2012.csproj">
       <Project>{1499db8f-1990-4804-9f2c-84f20900a743}</Project>
