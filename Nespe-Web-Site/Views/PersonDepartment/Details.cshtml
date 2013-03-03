@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.ItemSelected.Person)
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.ItemSelected.Person.FullName)
+            <a href="@Url.Action("Details", "Person", new { id=Model.ItemSelected.Person.Id })">@Html.DisplayFor(model => model.ItemSelected.Person.FullName)</a>
         </div>
             <div class="display-label">
             @Html.DisplayNameFor(model => model.ItemSelected.Role)
@@ -26,7 +26,7 @@
             @Html.DisplayNameFor(model => model.ItemSelected.Department)
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.ItemSelected.Department.Name)
+            <a href="@Url.Action("Details", "Department", new { id=Model.ItemSelected.Department.Id })">@Html.DisplayFor(model => model.ItemSelected.Department.Name)</a>
         </div>
 
 </fieldset>
