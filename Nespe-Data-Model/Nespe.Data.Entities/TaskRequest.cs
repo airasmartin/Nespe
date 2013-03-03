@@ -16,6 +16,9 @@ namespace Nespe.Data.Entities
         public virtual TaskRequestStatusEnum Status { get; set; }
         public virtual DateTime Date { get; set; }
         public virtual string Comment { get; set; }
+        public virtual string SapPositionID { get; set; }
+        public virtual string CostCenter { get; set; }
+        public virtual string Parrain { get; set; }
         public override string ToString()
         {
             return string.Concat(GetType().FullName,
@@ -26,6 +29,9 @@ namespace Nespe.Data.Entities
                 ", Status=\"", Status, "\"",
                 ", Date=\"", Date, "\"",
                 ", Comment=\"", Comment, "\"",
+                ", SapPositionID=\"", SapPositionID, "\"",
+                ", CostCenter=\"", CostCenter, "\"",
+                ", Parrain=\"", Parrain, "\"",
                 "}");
         }
     }

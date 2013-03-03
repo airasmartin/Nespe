@@ -58,6 +58,14 @@
             </div>
 
             <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Parrain)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Parrain)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Parrain)
+            </div>
+
+            <div class="editor-label">
                 @Html.LabelFor(model => model.ItemSelected.BusinessStream)
             </div>
             <div class="editor-field">
@@ -82,42 +90,47 @@
             </div>
 
             <div class="editor-label">
-                @Html.LabelFor(model => model.ItemSelected.Version)
+                @Html.LabelFor(model => model.ItemSelected.SapPositionID)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.ItemSelected.Version)
+                @Html.EditorFor(model => model.ItemSelected.SapPositionID)
+                @Html.ValidationMessageFor(model => model.ItemSelected.SapPositionID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.CostCenter)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.CostCenter)
+                @Html.ValidationMessageFor(model => model.ItemSelected.CostCenter)
+            </div>
+
+            <div class="editor-field">
+                @Html.HiddenFor(model => model.ItemSelected.Version)
                 @Html.ValidationMessageFor(model => model.ItemSelected.Version)
             </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.ItemSelected.Rank)
-            </div>
+
             <div class="editor-field">
-                @Html.EditorFor(model => model.ItemSelected.Rank)
+                @Html.HiddenFor(model => model.ItemSelected.Rank)
                 @Html.ValidationMessageFor(model => model.ItemSelected.Rank)
             </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.ItemSelected.TypeId)
-            </div>
+
             <div class="editor-field">
-                @Html.EditorFor(model => model.ItemSelected.TypeId)
+                @Html.HiddenFor(model => model.ItemSelected.TypeId)
                 @Html.ValidationMessageFor(model => model.ItemSelected.TypeId)
             </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.ItemSelected.Name)
-            </div>
+
             <div class="editor-field">
-                @Html.EditorFor(model => model.ItemSelected.Name)
+                @Html.HiddenFor(model => model.ItemSelected.Name)
                 @Html.ValidationMessageFor(model => model.ItemSelected.Name)
             </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.ItemSelected.Date)
-            </div>
+
             <div class="editor-field">
-                @Html.EditorFor(model => model.ItemSelected.Date)
+                @Html.HiddenFor(model => model.ItemSelected.Date)
                 @Html.ValidationMessageFor(model => model.ItemSelected.Date)
             </div>
 
@@ -125,7 +138,7 @@
                 @Html.LabelFor(model => model.ItemSelected.Comment)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.ItemSelected.Comment)
+                @Html.TextAreaFor(model => model.ItemSelected.Comment)
                 @Html.ValidationMessageFor(model => model.ItemSelected.Comment)
             </div>
         </fieldset>

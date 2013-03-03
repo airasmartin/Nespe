@@ -25,6 +25,13 @@ namespace Nespe.Data.Entities
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public virtual DateTime StartDate { get; set; }
 
-        
+        [Display(Name = "SAP PositionID")]
+        public string SapPositionID { get; set; }
+
+        [Display(Name = "Cost Center")]
+        public string CostCenter { get; set; }
+
+        [Display(Name = "Parrain")]
+        public string Parrain { get; set; }
     }
 }
