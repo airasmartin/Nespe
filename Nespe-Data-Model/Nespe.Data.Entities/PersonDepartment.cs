@@ -9,9 +9,9 @@ namespace Nespe.Data.Entities
     {
         public virtual long Id { get; set; }
         public virtual int? Version { get; set; }
-        //public virtual PersonDeparmentRoleEnum Role { get { return (PersonDeparmentRoleEnum)RoleId; } set { RoleId = (short) value; } }
+        //public virtual PersonDepartmentRoleEnum Role { get { return (PersonDepartmentRoleEnum)RoleId; } set { RoleId = (short) value; } }
         //public virtual short RoleId { get; set; }
-        public virtual PersonDeparmentRoleEnum Role { get; set; }
+        public virtual PersonDepartmentRoleEnum Role { get; set; }
         public virtual Person Person { get; set; }
         public virtual Department Department { get; set; }
         public override string ToString()
@@ -33,12 +33,12 @@ namespace Nespe.Data.Entities
         {
             return me == null ? null : me.Department;
         }
-        public static implicit operator PersonDeparmentRoleEnum(PersonDepartment me)
+        public static implicit operator PersonDepartmentRoleEnum(PersonDepartment me)
         {
-            return me == null ? PersonDeparmentRoleEnum.Undefined : me.Role;
+            return me == null ? PersonDepartmentRoleEnum.Undefined : me.Role;
         }
     }
-    public enum PersonDeparmentRoleEnum : short
+    public enum PersonDepartmentRoleEnum : short
     {
         Undefined, Assistant, Backup, Head, Manager
     }

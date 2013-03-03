@@ -8,10 +8,10 @@ using Nespe.Data.Entities;
 
 namespace Nespe.Application.WebSite.Controllers
 {
-    public class TaskRequestController : AbstractEntityController<TaskRequest, TaskRequestListModel, TaskRequestItemModel>
+    public class PersonTaskRequestController : AbstractEntityController<PersonTaskRequest, PersonTaskRequestListModel, PersonTaskRequestItemModel>
     {
         //
-        // GET: /TaskRequest/
+        // GET: /PersonTaskRequest/
 
         public ActionResult Index()
         {
@@ -21,7 +21,7 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // GET: /TaskRequest/Details/5
+        // GET: /PersonTaskRequest/Details/5
 
         public ActionResult Details(int id)
         {
@@ -34,7 +34,7 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // GET: /TaskRequest/Create
+        // GET: /PersonTaskRequest/Create
 
         public ActionResult Create()
         {
@@ -43,17 +43,17 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // POST: /TaskRequest/Create
+        // POST: /PersonTaskRequest/Create
 
         [HttpPost]
-        public ActionResult Create(TaskRequestItemModel model, FormCollection collection)
+        public ActionResult Create(PersonTaskRequestItemModel model, FormCollection collection)
         {
             try
             {
                 var selected = model.ItemSelected;
                 using (var db = CurrentDataContext())
                 {
-                    db.TaskRequestSet.Add(selected);
+                    db.PersonTaskRequestSet.Add(selected);
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -65,7 +65,7 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // GET: /TaskRequest/Edit/5
+        // GET: /PersonTaskRequest/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -75,17 +75,17 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // POST: /TaskRequest/Edit/5
+        // POST: /PersonTaskRequest/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, TaskRequestItemModel model, FormCollection collection)
+        public ActionResult Edit(int id, PersonTaskRequestItemModel model, FormCollection collection)
         {
             try
             {
                 var selected = model.ItemSelected;
                 using (var db = CurrentDataContext())
                 {
-                    selected = db.TaskRequestSet.Attach(selected);
+                    selected = db.PersonTaskRequestSet.Attach(selected);
                     db.Entry(selected).State = System.Data.EntityState.Modified;
                     db.ChangeTracker.DetectChanges();
                     db.SaveChanges();
@@ -99,7 +99,7 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // GET: /TaskRequest/Delete/5
+        // GET: /PersonTaskRequest/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -109,10 +109,10 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // POST: /TaskRequest/Delete/5
+        // POST: /PersonTaskRequest/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, TaskRequestItemModel model, FormCollection collection)
+        public ActionResult Delete(int id, PersonTaskRequestItemModel model, FormCollection collection)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace Nespe.Application.WebSite.Controllers
                 using (var db = CurrentDataContext())
                 {
                     var selected = FindById(id);
-                    selected = db.TaskRequestSet.Remove(selected);
+                    selected = db.PersonTaskRequestSet.Remove(selected);
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -131,22 +131,22 @@ namespace Nespe.Application.WebSite.Controllers
             }
         }
 
-        protected override TaskRequestListModel CreateListModel(ControllerActionEnum action = ControllerActionEnum.Unknown)
+        protected override PersonTaskRequestListModel CreateListModel(ControllerActionEnum action = ControllerActionEnum.Unknown)
         {
-            return new TaskRequestListModel { };
+            return new PersonTaskRequestListModel { };
         }
 
-        protected override TaskRequestItemModel CreateItemModel(ControllerActionEnum action = ControllerActionEnum.Unknown)
+        protected override PersonTaskRequestItemModel CreateItemModel(ControllerActionEnum action = ControllerActionEnum.Unknown)
         {
-            return new TaskRequestItemModel { };
+            return new PersonTaskRequestItemModel { };
         }
-        public override TaskRequest FindById(int id)
+        public override PersonTaskRequest FindById(int id)
         {
             return (from t in FindBy() where t.Id == id select t).FirstOrDefault();
         }
-        public override IQueryable<TaskRequest> FindBy()
+        public override IQueryable<PersonTaskRequest> FindBy()
         {
-            return (from t in CurrentDataContext().TaskRequestSet orderby t.Rank, t.Name select t);
+            return (from t in CurrentDataContext().PersonTaskRequestSet orderby t.Rank, t.Name select t);
         }
     }
 }

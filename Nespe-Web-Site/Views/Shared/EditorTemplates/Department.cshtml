@@ -1,0 +1,12 @@
+﻿@model Nespe.Data.Entities.Department
+@using Nespe.Data.Entities;
+@using Nespe.Application.WebSite.Models;
+@using Nespe.Data.Context;
+@using Nespe.Data.Entities;
+
+@{
+    var db = new WebNespeDataContext();
+    var q = (from t in db.DepartmentSet orderby t.Name select t);
+    var selectList = new SelectList(q, "Id", "Name", Model);
+}
+@Html.DropDownListFor(m=>m.Id, selectList)

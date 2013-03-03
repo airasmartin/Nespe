@@ -132,10 +132,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\AbstractEntityController.cs" />
+    <Compile Include="Controllers\ArrivalPersonTaskRequestController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PersonDepartmentController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PersonTaskRequestController.cs" />
     <Compile Include="Controllers\TaskRequestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -145,6 +147,8 @@
       <DependentUpon>201302252100346_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ArrivalPersonTaskRequestModel.cs" />
+    <Compile Include="Models\PersonTaskRequestModel.cs" />
     <Compile Include="Models\TaskRequestModel.cs" />
     <Compile Include="Models\PersonDepartmentModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
@@ -490,7 +494,7 @@
     <Content Include="Views\Shared\PersonDepartmentByPersonForm.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\PersonDeparmentRoleEnum.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PersonDepartmentRoleEnum.cshtml" />
     <Content Include="Views\PersonDepartment\Index.cshtml" />
     <Content Include="Views\Person\Edit.cshtml" />
     <Content Include="Views\Person\Index.cshtml" />
@@ -500,6 +504,13 @@
     <Content Include="Views\Person\Create.cshtml" />
     <Content Include="Views\PersonDepartment\Edit.cshtml" />
     <Content Include="Views\PersonDepartment\Details.cshtml" />
+<<<<<<< HEAD
+=======
+    <Content Include="Views\PersonDepartment\Create.cshtml" />
+    <Content Include="Views\ArrivalPersonTaskRequest\Index.cshtml" />
+    <Content Include="Views\ArrivalPersonTaskRequest\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Department.cshtml" />
+>>>>>>> 596117bb8a2775bced85f2ffb0989ddfbe857f13
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201302252100346_InitialCreate.resx">
@@ -511,6 +522,9 @@
       <Project>{1499db8f-1990-4804-9f2c-84f20900a743}</Project>
       <Name>Nespe-Data-Model-VS2012</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\PersonTaskRequest\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
