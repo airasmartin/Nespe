@@ -12,13 +12,6 @@
     <legend>Department</legend>
 
     <div class="display-label">
-        @Html.DisplayNameFor(model => model.ItemSelected.Version)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ItemSelected.Version)
-    </div>
-
-    <div class="display-label">
         @Html.DisplayNameFor(model => model.ItemSelected.SID)
     </div>
     <div class="display-field">
@@ -66,7 +59,7 @@
 </p>
 @if (Model.AvailablePersonList != null && Model.AvailablePersonList.Count()>0){
 <hr />
-    @using (Html.BeginForm("Create", "PersonDepartment"))
+    using (Html.BeginForm("Create", "PersonDepartment"))
     {
         var q = (from t in Model.AvailablePersonList select new { Id = t.Id, FirstName = t.FirstName, LastName = t.LastName });
         var l = new List<Person>();
