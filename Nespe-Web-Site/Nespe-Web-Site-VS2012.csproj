@@ -504,13 +504,10 @@
     <Content Include="Views\Person\Create.cshtml" />
     <Content Include="Views\PersonDepartment\Edit.cshtml" />
     <Content Include="Views\PersonDepartment\Details.cshtml" />
-<<<<<<< HEAD
-=======
     <Content Include="Views\PersonDepartment\Create.cshtml" />
     <Content Include="Views\ArrivalPersonTaskRequest\Index.cshtml" />
     <Content Include="Views\ArrivalPersonTaskRequest\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Department.cshtml" />
->>>>>>> 596117bb8a2775bced85f2ffb0989ddfbe857f13
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201302252100346_InitialCreate.resx">
