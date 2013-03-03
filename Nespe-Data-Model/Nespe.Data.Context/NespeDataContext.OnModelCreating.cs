@@ -25,7 +25,7 @@ namespace Nespe.Data.Context
             modelBuilder.Entity<Department>().Map(
                 m =>
                 {
-                    m.Properties(t => new { t.Id, t.Version/*, t.ParentId*/, t.Name, t.Description, t.SID, t.Phone, t.EMail, t.Entity });
+                    m.Properties(t => new { t.Id, t.Version/*, t.ParentId*/, t.Name, t.Description, t.SID, t.Entity });
                     m.ToTable(typeof(Department).Name);
                 }
             );
@@ -34,8 +34,6 @@ namespace Nespe.Data.Context
             modelBuilder.Entity<Department>().Property(t => t.SID).HasMaxLength(256);
             modelBuilder.Entity<Department>().Property(t => t.Name).HasMaxLength(512);
             modelBuilder.Entity<Department>().Property(t => t.Description).IsMaxLength();
-            modelBuilder.Entity<Department>().Property(t => t.Phone).HasMaxLength(124);
-            modelBuilder.Entity<Department>().Property(t => t.EMail).HasMaxLength(512);
             modelBuilder.Entity<Department>().Property(t => t.Entity).HasMaxLength(1024);
             modelBuilder.Entity<Department>().HasMany(t => t.PersonList).WithRequired(t => t.Department);
 

@@ -44,22 +44,6 @@
             @Html.ValidationMessageFor(model => model.ItemSelected.Entity)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ItemSelected.EMail)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ItemSelected.EMail)
-            @Html.ValidationMessageFor(model => model.ItemSelected.EMail)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ItemSelected.Phone)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ItemSelected.Phone)
-            @Html.ValidationMessageFor(model => model.ItemSelected.Phone)
-        </div>
-
         <p>
             <input type="submit" value="Create" />
         </p>
