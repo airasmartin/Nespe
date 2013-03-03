@@ -104,6 +104,11 @@
       <DependentUpon>NespeDataContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Nespe.Data.Context\NespeDataContext.cs" />
+    <Compile Include="Nespe.Data.Entities\ArrivalPersonTaskRequest.cs" />
+    <Compile Include="Nespe.Data.Entities\TransfertPersonTaskRequest.cs" />
+    <Compile Include="Nespe.Data.Entities\DeparturePersonTaskRequest.cs" />
+    <Compile Include="Nespe.Data.Entities\PersonTaskRequest.cs" />
+    <Compile Include="Nespe.Data.Entities\TaskRequest.cs" />
     <Compile Include="Nespe.Data.Entities\PersonDepartment.cs" />
     <Compile Include="Nespe.Data.Entities\Person.cs" />
     <Compile Include="Nespe.Data.Entities\Department.cs" />

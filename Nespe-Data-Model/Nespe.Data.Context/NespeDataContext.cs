@@ -27,6 +27,11 @@ namespace Nespe.Data.Context
         public DbSet<Department> DepartmentSet { get; set; }
         public DbSet<Person> PersonSet { get; set; }
         public DbSet<PersonDepartment> PersonDepartmentSet { get; set; }
+        public DbSet<TaskRequest> TaskRequestSet { get; set; }
+        public DbSet<PersonTaskRequest> PersonTaskRequestSet { get; set; }
+        public DbSet<ArrivalPersonTaskRequest> ArrivalPersonTaskRequestSet { get; set; }
+        public DbSet<DeparturePersonTaskRequest> DeparturePersonTaskRequestSet { get; set; }
+        public DbSet<TransfertPersonTaskRequest> TransfertPersonTaskRequestSet { get; set; }
         public static string ConnectionString { get { return Nespe.Data.Properties.Settings.Default.NespeDataContext; } }
         public static DbConnection CreateConnection() { return new OleDbConnection(ConnectionString); }
 
