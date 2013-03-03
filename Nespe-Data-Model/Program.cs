@@ -90,7 +90,7 @@ namespace Nespe.Models
                                 Person=new Person{
                                     FirstName="Martin", LastName="Airas"
                                 },
-                                Role=PersonDeparmentRoleEnum.Head
+                                Role=PersonDepartmentRoleEnum.Head
                             } 
                         }
                     }
@@ -98,7 +98,7 @@ namespace Nespe.Models
                 ctx.PersonDepartmentSet.Add(
                     new PersonDepartment
                     {
-                        Role = PersonDeparmentRoleEnum.Head,
+                        Role = PersonDepartmentRoleEnum.Head,
                         Person = new Person
                         {
                             FirstName = "Martin",

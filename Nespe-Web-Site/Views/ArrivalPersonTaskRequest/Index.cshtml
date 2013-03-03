@@ -1,0 +1,78 @@
+﻿@model Nespe.Application.WebSite.Models.ArrivalPersonTaskRequestListModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model=> model.ItemSelected.Person)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.ItemSelected.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.ItemSelected.Function)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.ItemSelected.Superior)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.ItemSelected.BusinessStream)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.ItemSelected.EmployeeNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.ItemSelected.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.ItemSelected.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ItemList) {
+    <tr>
+        <td>
+            @Html.DisplayFor(model =>item.Person.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.Department.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.Function)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.Superior)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.BusinessStream)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.EmployeeNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

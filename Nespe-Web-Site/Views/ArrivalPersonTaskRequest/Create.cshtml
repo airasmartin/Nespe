@@ -1,0 +1,144 @@
+﻿@model Nespe.Application.WebSite.Models.ArrivalPersonTaskRequestItemModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ArrivalPersonTaskRequest</legend>
+        <fieldset>
+            <legend>@Html.LabelFor(model => model.ItemSelected.Person)</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Person.FirstName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Person.FirstName)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Person.FirstName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Person.LastName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Person.LastName)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Person.LastName)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>@Html.LabelFor(model => model.ItemSelected.Department)</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Department)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Department)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Department)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>ArrivalRequest</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Function)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Function)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Function)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Superior)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Superior)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Superior)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.BusinessStream)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.BusinessStream)
+                @Html.ValidationMessageFor(model => model.ItemSelected.BusinessStream)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.EmployeeNumber)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.EmployeeNumber)
+                @Html.ValidationMessageFor(model => model.ItemSelected.EmployeeNumber)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.StartDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.StartDate)
+                @Html.ValidationMessageFor(model => model.ItemSelected.StartDate)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Version)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Version)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Version)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Rank)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Rank)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Rank)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.TypeId)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.TypeId)
+                @Html.ValidationMessageFor(model => model.ItemSelected.TypeId)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Name)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Name)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Date)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Date)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Date)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Comment)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Comment)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Comment)
+            </div>
+        </fieldset>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
