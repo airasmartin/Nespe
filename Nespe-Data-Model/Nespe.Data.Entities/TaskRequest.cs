@@ -18,7 +18,7 @@ namespace Nespe.Data.Entities
         public virtual string Comment { get; set; }
         public virtual string SapPositionID { get; set; }
         public virtual string CostCenter { get; set; }
-        public virtual string Parrain { get; set; }
+        //public virtual string Parrain { get; set; }
         public override string ToString()
         {
             return string.Concat(GetType().FullName,
@@ -31,7 +31,7 @@ namespace Nespe.Data.Entities
                 ", Comment=\"", Comment, "\"",
                 ", SapPositionID=\"", SapPositionID, "\"",
                 ", CostCenter=\"", CostCenter, "\"",
-                ", Parrain=\"", Parrain, "\"",
+                //", Parrain=\"", Parrain, "\"",
                 "}");
         }
     }
