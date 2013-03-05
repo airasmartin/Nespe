@@ -8,7 +8,9 @@ namespace Nespe.Data.Entities
 {
     public class PersonTaskRequest:TaskRequest
     {
+        [Required]
         public virtual Person Person { get; set; }
+        [Required]
         public virtual Department Department { get; set; }
 
         public override string ToString()

@@ -9,86 +9,82 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.Person)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.Department)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.Function)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.Superior)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.BusinessStream)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.EmployeeNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.SapPositionID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=> model.ItemSelected.CostCenter)
-        </th>
+<table width="100%">
+    <thead>
+        <tr>
+            <th nowrap="nowrap">
+                @Html.DisplayNameFor(model => model.ItemSelected.Person)
+            </th>
+            <th nowrap="nowrap">
+                @Html.DisplayNameFor(model => model.ItemSelected.Department)
+            </th>
+            <th nowrap="nowrap">
+                @Html.DisplayNameFor(model => model.ItemSelected.Function)
+            </th>
+            <th nowrap="nowrap">
+                @Html.DisplayNameFor(model => model.ItemSelected.Superior)
+            </th>
+            <th nowrap="nowrap">
+                @Html.DisplayNameFor(model => model.ItemSelected.BusinessStream)
+            </th>
+            <th nowrap="nowrap">
+                @Html.DisplayNameFor(model => model.ItemSelected.EmployeeNumber)
+            </th>
+            <th nowrap="nowrap" style="max-width:60px">
+                @Html.DisplayNameFor(model => model.ItemSelected.StartDate)
+            </th>
+            <th nowrap="nowrap">
+                @Html.DisplayNameFor(model => model.ItemSelected.SapPositionID)
+            </th>
+            <th nowrap="nowrap">
+                @Html.DisplayNameFor(model => model.ItemSelected.CostCenter)
+            </th>
 
 
 
-        <th></th>
-    </tr>
+            <th nowrap="nowrap"></th>
+        </tr>
+    </thead>
+    <tbody>
 
-@foreach (var item in Model.ItemList) {
-    <tr>
-        <td>
-            @Html.DisplayFor(model =>item.Person.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.Department.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.Function)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.Superior)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.BusinessStream)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.EmployeeNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.SapPositionID)
-        </td>
-        <td>
-            @Html.DisplayFor(model =>item.CostCenter)
-        </td>
-     
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model.ItemList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Person.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Department.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Function)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Superior)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.BusinessStream)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.EmployeeNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.SapPositionID)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.CostCenter)
+                </td>
+
+                <td nowrap="nowrap">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

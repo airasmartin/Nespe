@@ -1,0 +1,138 @@
+﻿@model Nespe.Application.WebSite.Models.ArrivalPersonTaskRequestItemModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+    @Html.ValidationSummary(true)
+    </fieldset>
+    <fieldset>
+        <legend>ArrivalPersonTaskRequest</legend>
+        <fieldset>
+            <legend>@Html.LabelFor(model => model.ItemSelected.Person)</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Person.FirstName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Person.FirstName)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Person.FirstName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Person.LastName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Person.LastName)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Person.LastName)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>@Html.LabelFor(model => model.ItemSelected.Department)</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Department)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Department)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Department)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Arrival Details</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Function)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Function)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Function)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Superior)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Superior)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Superior)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.BusinessStream)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.BusinessStream)
+                @Html.ValidationMessageFor(model => model.ItemSelected.BusinessStream)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.EmployeeNumber)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.EmployeeNumber)
+                @Html.ValidationMessageFor(model => model.ItemSelected.EmployeeNumber)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.StartDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.StartDate)
+                @Html.ValidationMessageFor(model => model.ItemSelected.StartDate)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.SapPositionID)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.SapPositionID)
+                @Html.ValidationMessageFor(model => model.ItemSelected.SapPositionID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.CostCenter)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.CostCenter)
+                @Html.ValidationMessageFor(model => model.ItemSelected.CostCenter)
+            </div>
+
+            
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ItemSelected.Name)
+                @Html.ValidationMessageFor(model => model.ItemSelected.Name)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ItemSelected.Comment)
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.ItemSelected.Comment, new { rows=10 })
+                @Html.ValidationMessageFor(model => model.ItemSelected.Comment)
+            </div>
+        </fieldset>
+        <p>
+            @Html.HiddenFor(model => model.ItemSelected.Person.Id)
+            @Html.HiddenFor(model => model.ItemSelected.Date)
+            @Html.HiddenFor(model => model.ItemSelected.Version)
+            @Html.HiddenFor(model => model.ItemSelected.Rank)
+            @Html.HiddenFor(model => model.ItemSelected.TypeId)
+            @Html.HiddenFor(model => model.ItemSelected.Status)
+            @Html.HiddenFor(model => model.ItemSelected.Id)
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

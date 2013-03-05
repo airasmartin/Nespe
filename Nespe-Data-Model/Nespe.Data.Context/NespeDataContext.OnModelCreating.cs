@@ -70,7 +70,7 @@ namespace Nespe.Data.Context
             modelBuilder.Entity<TaskRequest>().Map(
                 m =>
                 {
-                    m.Properties(t => new { t.Id, t.Version, t.Name, t.Status, t.TypeId, t.Rank, t.Date, t.Comment });
+                    m.Properties(t => new { t.Id, t.Version, t.Name, t.Status, t.TypeId, t.Rank, t.Date, t.Comment, t.CostCenter, t.SapPositionID });
                     m.ToTable(typeof(TaskRequest).Name);
                     m.MapInheritedProperties();
                 }
@@ -79,6 +79,8 @@ namespace Nespe.Data.Context
             modelBuilder.Entity<TaskRequest>().HasKey(t => t.Id).Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<TaskRequest>().Property(t => t.Version).IsConcurrencyToken();
             modelBuilder.Entity<TaskRequest>().Property(t => t.TypeId).HasColumnName("Type_Id");
+            modelBuilder.Entity<TaskRequest>().Property(t => t.CostCenter).HasColumnName("Cost_Center");
+            modelBuilder.Entity<TaskRequest>().Property(t => t.SapPositionID).HasColumnName("Sap_Position_ID");
 
             modelBuilder.Entity<PersonTaskRequest>().Map(
                 m =>

@@ -7,6 +7,7 @@
 @{
     var db = new WebNespeDataContext();
     var q = (from t in db.DepartmentSet orderby t.Name select t);
-    var selectList = new SelectList(q, "Id", "Name", Model);
+    var selectList = new SelectList(q, "Id", "Name", Model.Id);
+    
 }
 @Html.DropDownListFor(m=>m.Id, selectList)

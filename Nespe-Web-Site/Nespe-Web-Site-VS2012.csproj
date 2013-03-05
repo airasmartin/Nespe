@@ -508,6 +508,7 @@
     <Content Include="Views\ArrivalPersonTaskRequest\Index.cshtml" />
     <Content Include="Views\ArrivalPersonTaskRequest\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Department.cshtml" />
+    <Content Include="Views\ArrivalPersonTaskRequest\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201302252100346_InitialCreate.resx">
