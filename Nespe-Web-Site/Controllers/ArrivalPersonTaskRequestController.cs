@@ -51,18 +51,23 @@ namespace Nespe.Application.WebSite.Controllers
         {
             try
             {
-                var selected = model.ItemSelected;
-                using (var db = CurrentDataContext())
+                if (base.ModelState.IsValid)
                 {
-                    db.ArrivalPersonTaskRequestSet.Add(selected);
-                    db.SaveChanges();
+                    var selected = model.ItemSelected;
+                    using (var db = CurrentDataContext())
+                    {
+                        selected.Department = (from t in db.DepartmentSet where t.Id == selected.Department.Id select t).First();
+                        db.ArrivalPersonTaskRequestSet.Add(selected);
+                        db.SaveChanges();
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View(model);
+                base.ModelState.AddModelError("Edit", ex);
             }
+            return View(model);
         }
 
         //
@@ -83,20 +88,25 @@ namespace Nespe.Application.WebSite.Controllers
         {
             try
             {
-                var selected = model.ItemSelected;
-                using (var db = CurrentDataContext())
+                if (base.ModelState.IsValid)
                 {
-                    selected = db.ArrivalPersonTaskRequestSet.Attach(selected);
-                    db.Entry(selected).State = System.Data.EntityState.Modified;
-                    db.ChangeTracker.DetectChanges();
-                    db.SaveChanges();
+                    var selected = model.ItemSelected;
+                    using (var db = CurrentDataContext())
+                    {
+                        selected = db.ArrivalPersonTaskRequestSet.Attach(selected);
+                        selected.Department = (from t in db.DepartmentSet where t.Id == selected.Department.Id select t).First();
+                        db.Entry(selected).State = System.Data.EntityState.Modified;
+                        //db.ChangeTracker.DetectChanges();
+                        db.SaveChanges();
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
-                return View(model);
+                base.ModelState.AddModelError("Edit", ex);
             }
+            return View(model);
         }
 
         //
