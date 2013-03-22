@@ -1,6 +1,6 @@
 ﻿@model Nespe.Data.Entities.PersonDepartmentRoleEnum
 @using Nespe.Data.Entities;
 @{
-    var selectList = new SelectList(Enum.GetValues(typeof(PersonDeparmentRoleEnum)), Model);
+    var selectList = new SelectList(Enum.GetValues(typeof(Nespe.Data.Entities.PersonDepartmentRoleEnum)), Model);
 }
 @Html.DropDownListFor(m=>m, selectList)
