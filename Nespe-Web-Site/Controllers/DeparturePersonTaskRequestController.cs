@@ -9,10 +9,10 @@ using Nespe.Data.Entities;
 
 namespace Nespe.Application.WebSite.Controllers
 {
-    public class ArrivalPersonTaskRequestController : AbstractPersonTaskRequestController<ArrivalPersonTaskRequest, ArrivalPersonTaskRequestListModel, ArrivalPersonTaskRequestItemModel>
+    public class DeparturePersonTaskRequestController : AbstractPersonTaskRequestController<DeparturePersonTaskRequest, DeparturePersonTaskRequestListModel, DeparturePersonTaskRequestItemModel>
     {
         //
-        // GET: /ArrivalPersonTaskRequest/
+        // GET: /DeparturePersonTaskRequest/
 
         public ActionResult Index()
         {
@@ -22,7 +22,7 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // GET: /ArrivalPersonTaskRequest/Details/5
+        // GET: /DeparturePersonTaskRequest/Details/5
 
         public ActionResult Details(int id)
         {
@@ -35,7 +35,7 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // GET: /ArrivalPersonTaskRequest/Create
+        // GET: /DeparturePersonTaskRequest/Create
 
         public ActionResult Create()
         {
@@ -44,10 +44,10 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // POST: /ArrivalPersonTaskRequest/Create
+        // POST: /DeparturePersonTaskRequest/Create
 
         [HttpPost]
-        public ActionResult Create(ArrivalPersonTaskRequestItemModel model, FormCollection collection)
+        public ActionResult Create(DeparturePersonTaskRequestItemModel model, FormCollection collection)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace Nespe.Application.WebSite.Controllers
                     using (var db = CurrentDataContext())
                     {
                         selected.Department = (from t in db.DepartmentSet where t.Id == selected.Department.Id select t).First();
-                        db.ArrivalPersonTaskRequestSet.Add(selected);
+                        db.DeparturePersonTaskRequestSet.Add(selected);
                         db.SaveChanges();
                     }
                     return RedirectToAction("Index");
@@ -71,7 +71,7 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // GET: /ArrivalPersonTaskRequest/Edit/5
+        // GET: /DeparturePersonTaskRequest/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -81,10 +81,10 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // POST: /ArrivalPersonTaskRequest/Edit/5
+        // POST: /DeparturePersonTaskRequest/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, ArrivalPersonTaskRequestItemModel model, FormCollection collection)
+        public ActionResult Edit(int id, DeparturePersonTaskRequestItemModel model, FormCollection collection)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace Nespe.Application.WebSite.Controllers
                     var selected = model.ItemSelected;
                     using (var db = CurrentDataContext())
                     {
-                        selected = db.ArrivalPersonTaskRequestSet.Attach(selected);
+                        selected = db.DeparturePersonTaskRequestSet.Attach(selected);
                         selected.Department = (from t in db.DepartmentSet where t.Id == selected.Department.Id select t).First();
                         db.Entry(selected).State = System.Data.EntityState.Modified;
                         //db.ChangeTracker.DetectChanges();
@@ -110,7 +110,7 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // GET: /ArrivalPersonTaskRequest/Delete/5
+        // GET: /DeparturePersonTaskRequest/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -120,10 +120,10 @@ namespace Nespe.Application.WebSite.Controllers
         }
 
         //
-        // POST: /ArrivalPersonTaskRequest/Delete/5
+        // POST: /DeparturePersonTaskRequest/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, ArrivalPersonTaskRequestItemModel model, FormCollection collection)
+        public ActionResult Delete(int id, DeparturePersonTaskRequestItemModel model, FormCollection collection)
         {
             try
             {
@@ -131,7 +131,7 @@ namespace Nespe.Application.WebSite.Controllers
                 using (var db = CurrentDataContext())
                 {
                     var selected = FindById(id);
-                    selected = db.ArrivalPersonTaskRequestSet.Remove(selected);
+                    selected = db.DeparturePersonTaskRequestSet.Remove(selected);
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -142,33 +142,33 @@ namespace Nespe.Application.WebSite.Controllers
             }
         }
 
-        protected override ArrivalPersonTaskRequestListModel CreateListModel(ControllerActionEnum action = ControllerActionEnum.Unknown)
+        protected override DeparturePersonTaskRequestListModel CreateListModel(ControllerActionEnum action = ControllerActionEnum.Unknown)
         {
-            return new ArrivalPersonTaskRequestListModel { };
+            return new DeparturePersonTaskRequestListModel { };
         }
 
-        protected override ArrivalPersonTaskRequestItemModel CreateItemModel(ControllerActionEnum action = ControllerActionEnum.Unknown)
+        protected override DeparturePersonTaskRequestItemModel CreateItemModel(ControllerActionEnum action = ControllerActionEnum.Unknown)
         {
             
-            return new ArrivalPersonTaskRequestItemModel
+            return new DeparturePersonTaskRequestItemModel
             {
-                ItemSelected = new ArrivalPersonTaskRequest
+                ItemSelected = new DeparturePersonTaskRequest
                 {
                     Person = new Person { },
                     Department = new Department { },
                     Date= System.DateTime.Now,
-                    StartDate = System.DateTime.Now.AddDays(30),
+                    DepartureDate = System.DateTime.Now.AddDays(30),
                 }
                 
             };
         }
-        public override ArrivalPersonTaskRequest FindById(int id)
+        public override DeparturePersonTaskRequest FindById(int id)
         {
             return (from t in FindBy() where t.Id == id select t).FirstOrDefault();
         }
-        public override IQueryable<ArrivalPersonTaskRequest> FindBy()
+        public override IQueryable<DeparturePersonTaskRequest> FindBy()
         {
-            return (from t in CurrentDataContext().ArrivalPersonTaskRequestSet orderby t.Rank, t.Name select t);
+            return (from t in CurrentDataContext().DeparturePersonTaskRequestSet orderby t.Rank, t.Name select t);
         }
     }
 }

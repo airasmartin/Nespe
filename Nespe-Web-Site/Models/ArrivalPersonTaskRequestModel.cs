@@ -6,10 +6,10 @@ using Nespe.Data.Entities;
 
 namespace Nespe.Application.WebSite.Models
 {
-    public class ArrivalPersonTaskRequestListModel : AbstractListModel<ArrivalPersonTaskRequest>
+    public class ArrivalPersonTaskRequestListModel : AbstractPersonTaskRequestListModel<ArrivalPersonTaskRequest>
     {
     }
-    public class ArrivalPersonTaskRequestItemModel : AbstractItemModel<ArrivalPersonTaskRequest>
+    public class ArrivalPersonTaskRequestItemModel : AbstractPersonTaskRequestItemModel<ArrivalPersonTaskRequest>
     {
         public virtual IQueryable<Department> DepartmentList { get; set; }
     }

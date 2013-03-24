@@ -19,10 +19,23 @@ namespace Nespe.Models
             //Spike_InitialContext(args);
             //Spike_NespeDataContext_Department_List(args);
             //Spike_NespeDataContext_Person_List(args);
-            Spike_NespeDataContext_PersonDepartment_List(args);
+            //Spike_NespeDataContext_PersonDepartment_List(args);
+            Spike_NespeDataContext_PersonTaskRequest_List(args);
             Console.WriteLine("Press ENTER...");
             Console.ReadLine();
             
+        }
+
+        private static void Spike_NespeDataContext_PersonTaskRequest_List(string[] args)
+        {
+            using (var ctx = new Nespe.Data.Context.NespeDataContext())
+            {
+                foreach (var dp in ctx.PersonTaskRequestSet)
+                {
+                    Console.WriteLine(dp);
+                };
+
+            }
         }
 
         private static void Spike_NespeDataContext_PersonDepartment_List(string[] args)

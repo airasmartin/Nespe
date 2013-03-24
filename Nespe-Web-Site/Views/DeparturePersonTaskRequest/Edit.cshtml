@@ -1,0 +1,125 @@
+﻿@model Nespe.Application.WebSite.Models.DeparturePersonTaskRequestItemModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DeparturePersonTaskRequest</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.Initials)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Initials)
+            @Html.ValidationMessageFor(model => model.ItemSelected.Initials)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.DepartureDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.DepartureDate)
+            @Html.ValidationMessageFor(model => model.ItemSelected.DepartureDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.Location)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Location)
+            @Html.ValidationMessageFor(model => model.ItemSelected.Location)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.IsRetirement)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.IsRetirement)
+            @Html.ValidationMessageFor(model => model.ItemSelected.IsRetirement)
+        </div>
+
+        @Html.HiddenFor(model => model.ItemSelected.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.Version)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Version)
+            @Html.ValidationMessageFor(model => model.ItemSelected.Version)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.Rank)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Rank)
+            @Html.ValidationMessageFor(model => model.ItemSelected.Rank)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.TypeId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.TypeId)
+            @Html.ValidationMessageFor(model => model.ItemSelected.TypeId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Name)
+            @Html.ValidationMessageFor(model => model.ItemSelected.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Date)
+            @Html.ValidationMessageFor(model => model.ItemSelected.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.Comment)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.Comment)
+            @Html.ValidationMessageFor(model => model.ItemSelected.Comment)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.SapPositionID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.SapPositionID)
+            @Html.ValidationMessageFor(model => model.ItemSelected.SapPositionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemSelected.CostCenter)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemSelected.CostCenter)
+            @Html.ValidationMessageFor(model => model.ItemSelected.CostCenter)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
