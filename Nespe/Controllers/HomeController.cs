@@ -20,7 +20,7 @@ namespace Nespe.Controllers
 
         public ActionResult MesOperations()
         {
-            ViewBag.Message = "Mes Opérations";
+            ViewBag.Message = "My requests";
             UpdateRequestList(RequestSet);
             var model = new CurrentStatusModel { RequestSet = RequestSet.AsQueryable() };
             return View(model);
@@ -28,7 +28,7 @@ namespace Nespe.Controllers
 
         public ActionResult Recherches()
         {
-            ViewBag.Message = "Recherches";
+            ViewBag.Message = "Search";
 
             UpdateRequestList(RequestSet);
             var model = new CurrentStatusModel { RequestSet = RequestSet.AsQueryable() };
@@ -57,7 +57,7 @@ namespace Nespe.Controllers
         }
         public ActionResult Formulaire()
         {
-            ViewBag.Message = "Formulaire";
+            ViewBag.Message = "Form";
 
             return View();
         }

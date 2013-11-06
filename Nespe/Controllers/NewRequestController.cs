@@ -33,14 +33,14 @@ namespace Nespe.Controllers
         public ActionResult Arrival()
         {
             
-            ViewBag.Message = "Nouvelle demande";
+            ViewBag.Message = "New Request";
             var model = new ArrivalNewRequestModel { kind = RequestKindEnum.Arrival, StartDate = DateTime.Now.AddMonths(2) };
             return View( model);
         }
         [HttpGet]
         public ActionResult Departure()
         {
-            ViewBag.Message = "Nouvelle demande";
+            ViewBag.Message = "New Request";
             var model = new DepartureNewRequestModel { kind = RequestKindEnum.Departure, DepartureDate=DateTime.Now.AddMonths(1) };
             return View(model);
         }
@@ -48,7 +48,7 @@ namespace Nespe.Controllers
         public ActionResult Transfert()
         {
             ViewBag.DepartmentList = listDepartment();
-            ViewBag.Message = "Nouvelle demande";
+            ViewBag.Message = "New Request";
             var model = new TransfertNewRequestModel { kind = RequestKindEnum.Transfert, StartDate = DateTime.Now.AddDays(15) };
 
             return View(model);

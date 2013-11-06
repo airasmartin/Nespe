@@ -1,7 +1,7 @@
 ﻿@model Nespe.Models.DepartureEditFormulaireModel
 
 @{
-    ViewBag.Title = "Nespe - Editer départ";
+    ViewBag.Title = "Nespe - Edit departure";
 }
 
 <h2>@Model.RequestModel.FirstName&nbsp;@Model.RequestModel.LastName</h2>
@@ -13,13 +13,13 @@
             <th colspan=7 align="center">Préparation de l'arrivée du nouveau collaborateur</th>
         </tr>
         <tr>
-            <th>Tâche</th>
-            <th>Infos tâche</th>
-            <th>Executée par :</th>
+            <th>Task</th>
+            <th>Info task</th>
+            <th>Executed by :</th>
             <th>Date</th>
-            <th>Etat</th>
-            <th>Finir</th>
-            <th>Commentaire</th>
+            <th>State</th>
+            <th>Finish</th>
+            <th>Comment</th>
         </tr>
 
     @Html.EditorFor(m => m.IntroInfo, "_RequestInfoEditor.Table.Row")

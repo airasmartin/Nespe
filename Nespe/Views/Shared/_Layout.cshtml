@@ -51,7 +51,9 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("NESPE", "Index", "MesOperations")</p>
+                    <p class="site-title">
+                        <a href="@Url.Action("Index", "Home")"><img alt=""Nespe" title="Nespe Website" height="60" src="@Url.Content("~/Content/themes/base/images/logo_Nestle.png")" /></a>
+                    </p>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -59,11 +61,11 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Mes opérations", "Index", "MesOperations")</li>
-                            <li>@Html.ActionLink("Recherches", "Recherches", "Home")</li>
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("My requests", "Index", "MesOperations")</li>
+                            <li>@Html.ActionLink("Search", "Recherches", "Home")</li>
                             @*<li>@Html.ActionLink("NewRequest", "NewRequest", "Home")</li>*@
-                            <li>@Html.ActionLink("Nouvelle demande", "Arrival", "NewRequest")</li>
+                            <li>@Html.ActionLink("New Request", "Arrival", "NewRequest")</li>
                             @*<li>@Html.ActionLink("Administration","Administration","Home")</li>*@
 @*                            <li>@Html.ActionLink("Person", "Index", "Person")</li>*@
                             <li>@Html.ActionLink("Administration", "Index", "Department")</li>

@@ -29,26 +29,26 @@ namespace Nespe.Models
         [Display(Name = "PersonDepartment"), ForeignKey("PersonDepartment_Id")]
         public PersonDepartment PersonDepartment { get; set; }
         private PersonDepartment _PersonDepartment() { return PersonDepartment != null ? PersonDepartment : PersonDepartment = new PersonDepartment { }; }
-        [Display(Name = "Employé"), NotMapped]
+        [Display(Name = "Employee"), NotMapped]
         public Person Person { get { return _PersonDepartment().Person; } set { _PersonDepartment().Person = value; } }
         [Display(Name = "Department"), NotMapped]
         public Department Department { get { return _PersonDepartment().Department; } set { _PersonDepartment().Department = value; } }
 
 
-        [Display(Name = "Fonction")]
+        [Display(Name = "Function")]
         public string Function { get; set; }
         
         public string Superior { get; set; }
         
         public string BusinessStream { get; set; }
 
-        [Required(ErrorMessage = "Veuillez entrer la date d'arrivée du nouveau collaborateur")]
+        [Required(ErrorMessage = "Please enter the arrival date of the newcomer")]
         public DateTime StartDate { get; set; }
 
-        [Required(ErrorMessage = "Veuillez entrer le numéro d'employé, s'il n'a pas de compte SAP, cochez la case 'Non-SAP'")]
+        [Required(ErrorMessage = "Please enter the employee number, if he don't have, put a tick on 'no-SAP'")]
         public string EmployeeNumber { get; set; }
         
-        [Display(Name="A un code SAP")]
+        [Display(Name="no-SAP")]
         public bool nonSAP { get; set; }
         
         public string Local { get; set; }

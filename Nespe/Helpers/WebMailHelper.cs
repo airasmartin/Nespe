@@ -89,18 +89,18 @@ namespace Nespe.Helpers
 
 
                 var title = string.Format("[NESPE] {0} Newcomer Initial", request.Id);
-                var message = "Bonjour, <br>" +
-                                "Le " + @String.Format("{0:d}", StartDate) + " nous accueillerons " + LastName + " " + FirstName +
-                                " au local " + local + ".<br><br>" +
-                                "Pour cette date, nous aurons besoin de : <br>" +
-                                ((info.Laptop == true) ? " - un laptop <br>" : "" )+
-                                ((info.DockingStation == true) ? " - une docking station <br>" : "" )+
-                                ((info.Keyboard == true) ? " - un clavier <br>" : "" )+
-                                ((info.Desktop == true) ? " - un desktop <br>" : "" )+
-                                ((info.Screen == true) ? " - un écran <br>" : "") +
-                                ((info.Mouse == true) ? " - une souris <br>" : "" )+
-                                " <br>Commentaire : " + info.Comment + 
-                                "<br><br> Merci";
+                var message = "Hello" +
+                                "The " + @String.Format("{0:d}", StartDate) + " we'll receive " + LastName + " " + FirstName +
+                                " in room " + local + " " +
+                                "For this date, we will need :" +
+                                ((info.Laptop == true) ? " - a laptop" : "" )+
+                                ((info.DockingStation == true) ? " - a docking station " : "" )+
+                                ((info.Keyboard == true) ? " - a keyboard " : "" )+
+                                ((info.Desktop == true) ? " - a desktop " : "" )+
+                                ((info.Screen == true) ? " - a screen " : "") +
+                                ((info.Mouse == true) ? " - une souris " : "" )+
+                                " Comment : " + info.Comment + 
+                                "Thank you";
 			
                            
                 var xdoc = new XDocument(
@@ -123,7 +123,7 @@ namespace Nespe.Helpers
                         new XElement("impact", new XCData("4")),
                         new XElement("severity", new XCData("4")),
                         new XElement("callbackType", new XCData("Telephone")),
-                        new XElement("coreService", new XCData("BUSINESS TO EMPLOYEE (B2E)/WORKSTATION/LAPTOP")),
+                        new XElement("coreService", new XCData("PRODUCTIVITY & COLLABORATION/WORKSTATION/LAPTOP")),
                         new XElement("category", new XCData("request")),
                         new XElement("area", new XCData("request for change")),
                         new XElement("subArea", new XCData("escalate cr")),
@@ -168,20 +168,20 @@ namespace Nespe.Helpers
                 try {
                     
                     
-					var subject="[NESPE] Demande télépone New comer";
-                    var message = " Bonjour, <br>" +
-                                 "Le " + @String.Format("{0:d}", StartDate) + " nous accueillerons " + LastName + " " + FirstName +
-                                 " au local " + local + ".<br><br>" +
-                                 "Pour cette date, nous aurons besoin de : <br>" +
-                                 ((info.fixPhone == true) ? " - un téléphone fixe <br>" : "" )+
-                                 ((info.cordless == true) ? " - un Cordless <br>" : "" )+
-                                 ((info.mobile == true) ? " - un téléphone mobile <br>" : "" )+
-                                 ((info.smartphone == true) ? " - un Smartphone <br>" : "" )+
-                                 ((info.headphoneForFix == true) ? " - un casque pour téléphone fixe <br>" : "") +
-                                 ((info.freeHandsForFix == true) ? " - un casque pour fixe <br>" : "" )+
-                                 ((info.freeHandsForCordless == true) ? " - un kit mains libres pour Cordless <br>" : "" )+
-                                 " <br>Commentaire : " + info.Comment + 
-                                 "<br><br> Merci";
+					var subject="[NESPE] Telephone request for newcomer";
+                    var message = " Hello, <br>" +
+                                 "The " + @String.Format("{0:d}", StartDate) + " we receive " + LastName + " " + FirstName +
+                                 " in room " + local + ".<br><br>" +
+                                 "For this date, we will need : <br>" +
+                                 ((info.fixPhone == true) ? " - a fix phone <br>" : "" )+
+                                 ((info.cordless == true) ? " - a Cordless <br>" : "" )+
+                                 ((info.mobile == true) ? " - a mobile phone <br>" : "" )+
+                                 ((info.smartphone == true) ? " - a Smartphone <br>" : "" )+
+                                 ((info.headphoneForFix == true) ? " - a headset for fix phone <br>" : "") +
+                                 ((info.freeHandsForFix == true) ? " - a free hands for fix phone <br>" : "" )+
+                                 ((info.freeHandsForCordless == true) ? " - a free hands for cordless <br>" : "" )+
+                                 " <br>Comment : " + info.Comment + 
+                                 "<br><br> Thank you";
 					SendEMail(to, message, subject, from);
             
                 } catch (Exception) {
@@ -206,16 +206,16 @@ namespace Nespe.Helpers
 			var to="martin.airas@rdor.nestle.com";
                 try {
                     
-                    var subject="[NESPE] Demande Roles SAP New comer";
-					var message="Salut, <br>"+
-                                 "Le " + @String.Format("{0:d}", StartDate) + " nous accueillerons " + LastName + " " + FirstName +
-                                 " en qualité de " + function + " au département "+ department +". <br><br>" +
-                                 LastName + " " + FirstName + " , numéro d'employé "+ EmployeeNumber + " aura besoin de <br>" +
-                                 ((info.purchaseType == PurchaseTypeRoleSAPEnum.Approver) ? " - Rôle purchase Approver <br>" : "") +
-                                 ((info.purchaseType == PurchaseTypeRoleSAPEnum.Requester) ? " - Rôle purchase Requester <br>" : "") + 
-                                 ((info.pCard == true) ? "  - une pCard <br>" : "") +
-                                 " Commentaire : "+ info.Comment +
-                                 "<br> Merci";
+                    var subject="[NESPE] Request SAP Roles";
+					var message="Hello, <br>"+
+                                 "The " + @String.Format("{0:d}", StartDate) + " we'll receive " + LastName + " " + FirstName +
+                                 " in quality of " + function + " in department "+ department +". <br><br>" +
+                                 LastName + " " + FirstName + " , employee number : "+ EmployeeNumber + " will need <br>" +
+                                 ((info.purchaseType == PurchaseTypeRoleSAPEnum.Approver) ? " - Role of purchase Approver <br>" : "") +
+                                 ((info.purchaseType == PurchaseTypeRoleSAPEnum.Requester) ? " - Role of purchase Requester <br>" : "") + 
+                                 ((info.pCard == true) ? "  - a pCard <br>" : "") +
+                                 " Comment : "+ info.Comment +
+                                 "<br> Thank you";
 					SendEMail(to, message, subject, from);
             
                 } catch (Exception) {
@@ -237,7 +237,6 @@ namespace Nespe.Helpers
             var department = request.Department;
             var EmployeeNumber = request.EmployeeNumber;
             var superior = request.Superior;
-            var transfertFrom = request.TransFrom;
             var BusinessStream = request.BusinessStream;
             var SID = request.Person.SID;
             var Entity = request.Department.Entity;
@@ -247,30 +246,29 @@ namespace Nespe.Helpers
 
                
 
-                    var subject = "[NESPE] Demande PMO New comer";
-                    var message = " Salut, <br>"+
-                                 "Le " + @String.Format("{0:d}", StartDate) + " nous accueillerons " + LastName + " " + FirstName +
-                                 " en qualité de " + function + " au département "+ department +". <br>" +
-                                 "<br> Informations nécessaires : <br>" +
+                    var subject = "[NESPE] Request of PMO";
+                    var message = " Hello, <br>"+
+                                 "The " + @String.Format("{0:d}", StartDate) + " we'll receive " + LastName + " " + FirstName +
+                                 " in quality of " + function + " in department "+ department +". <br>" +
+                                 "<br> Necessary informations : <br>" +
                                  "First Name : " + FirstName +
                                  "<br> Name : " + LastName +
                                  "<br> Employee Number : " + EmployeeNumber +
                                  "<br> Entity : " + Entity +
                                  "<br> Arrival Date : " + @String.Format("{0:d}", StartDate) +
-                                 "<br> Transfert from : " + transfertFrom +
                                  "<br>Function : " + function +
                                  "<br>Business Stream : " + BusinessStream +
                                  "<br>Alias : " + SID + "<br> <br><br>" +
-                                  LastName + " " + FirstName + " aura besoin de : <br>" +
+                                  LastName + " " + FirstName + " will need : <br>" +
                                  ((info.dms == true) ? " DMS <br>" : "" )+ 
                                  ((info.cats == true) ? " CATS <br>" : "") + 
                                  ((info.npdi == true) ? " NPDI <br>" : "") +
-                                 ((info.projectManager == true) ? "NESTMS en tant que Project Manager <br>" : "" )+
-                                 ((info.ppOperator == true) ? "NESTMS en tant que Pilot Plant operator <br>" : "" )+
-                                 ((info.ppLineManager == true) ? "NESTMS en tant que Pilot Plant line Manager <br>" : "" )+
-                                 ((info.labTech == true) ? "NESTMS en tant que Lab technician <br>" : "" )+
-                                 "<br> Commentaire : "+ info.Comment +
-                                 "<br> Merci";
+                                 ((info.projectManager == true) ? "NESTMS as Project Manager <br>" : "" )+
+                                 ((info.ppOperator == true) ? "NESTMS as Pilot Plant operator <br>" : "" )+
+                                 ((info.ppLineManager == true) ? "NESTMS as Pilot Plant line Manager <br>" : "" )+
+                                 ((info.labTech == true) ? "NESTMS as Lab technician <br>" : "" )+
+                                 "<br> Comment : "+ info.Comment +
+                                 "<br> Thank you";
 					SendEMail(to, message, subject, from);
             
                 } catch (Exception) {
@@ -291,13 +289,13 @@ namespace Nespe.Helpers
                 try {
 
 
-                    var subject = "[NESPE] Demande Case courrier New comer";
-                    var message = "Salut Martine, <br>"+
-                                 "Le " + @String.Format("{0:d}", StartDate) + " nous accueillerons " + LastName + " " + FirstName +
-                                 " en qualité de " + function + " au département "+ department +". <br>" +
-                                 LastName + " " + FirstName + " aura besoin d'une case courrier, peux-tu faire le nécessaire <br>" +
-                                 " Commentaire :"+ info.Comment +
-                                   "<br> Merci";
+                    var subject = "[NESPE] Request of mail case";
+                    var message = "Hello, <br>"+
+                                 "The " + @String.Format("{0:d}", StartDate) + " we will receive " + LastName + " " + FirstName +
+                                 " in quality of " + function + " in department "+ department +". <br>" +
+                                 LastName + " " + FirstName + " will need a mail case, can you please do the necessary <br>" +
+                                 " Comment :"+ info.Comment +
+                                   "<br> Thank you";
 					SendEMail(to, message, subject, from);
             
                 } catch (Exception) {
@@ -317,22 +315,22 @@ namespace Nespe.Helpers
 			var to="martin.airas@rdor.nestle.com";
                 try {
 
-                    var subject = "[NESPE] Demande Equipement de travail New comer";
-                    var message = "Bonjour, <br>"+
-                                 "Le " + @String.Format("{0:d}", StartDate) + " nous accueillerons " + LastName + " " + FirstName +
-                                 " en qualité de " + function + " au département "+ department +"qui fait partie du"+ "entity" +". <br>" +
-                                 LastName + " " + FirstName + " aura besoin de <br>" +
-                                 ((info.secuShoes == true) ? " - Chaussures de sécurité <br>" : "") +
-                                 ((info.shoeSize >0) ? "" : "en taille : " + info.shoeSize + "<br>" ) +
-                                 ((info.gloves == true) ? " - Gants " : "" )+
-                                 ((info.glovesSize == null) ? "" : "en taille : " + info.glovesSize + "<br>") +
-                                 ((info.winterCoat == true) ? " - Veste d'hiver " : "") +
-                                 ((info.winterCoatSize == null) ? "" : "en taille : " + info.winterCoatSize + "<br>") +
-                                 ((info.polar == true) ? " - Polaire " : "") +
-                                 ((info.polarSize == null) ? "" : "en taille : " + info.polarSize + "<br>") +
-                                 ((info.bardushClothes == true) ? " - Vêtement de travail Bardusch " : "") +
-                                 ((info.bardusClothesSize == null) ? "" : "en taille : " + info.bardusClothesSize + "<br>") +
-                                 "Autres et Commentaire :"+ info.Comment;
+                    var subject = "[NESPE] Request of work equipment";
+                    var message = "Hello, <br>"+
+                                 "The " + @String.Format("{0:d}", StartDate) + " we will receive " + LastName + " " + FirstName +
+                                 " in quality of " + function + " in department "+ department +"which is part of"+ "entity" +". <br>" +
+                                 LastName + " " + FirstName + " will need :<br>" +
+                                 ((info.secuShoes == true) ? " - Security shoes <br>" : "") +
+                                 ((info.shoeSize >0) ? "" : "in size : " + info.shoeSize + "<br>" ) +
+                                 ((info.gloves == true) ? " - Gloves " : "" )+
+                                 ((info.glovesSize == null) ? "" : "in size : " + info.glovesSize + "<br>") +
+                                 ((info.winterCoat == true) ? " - winter coat " : "") +
+                                 ((info.winterCoatSize == null) ? "" : "in size : " + info.winterCoatSize + "<br>") +
+                                 ((info.polar == true) ? " - Polar " : "") +
+                                 ((info.polarSize == null) ? "" : "in size : " + info.polarSize + "<br>") +
+                                 ((info.bardushClothes == true) ? " - Bardush clothes " : "") +
+                                 ((info.bardusClothesSize == null) ? "" : "in size : " + info.bardusClothesSize + "<br>") +
+                                 "Other comments :"+ info.Comment;
 			    SendEMail(to, message, subject, from);
             
                 } catch (Exception) {
@@ -353,13 +351,13 @@ namespace Nespe.Helpers
 			var to="martin.airas@rdor.nestle.com";
                 try {
 
-                    var subject ="[NESPE] Demande Casier New comer";
-                    var message ="Bonjour,<br> "+
-                                 "Le " + @String.Format("{0:d}", StartDate) + " nous accueillerons " + LastName + " " + FirstName +
-                                 " en qualité de " + function + " au département "+ department +" au local"+ local +". <br><br>" +
-                                 LastName + " " + FirstName + " aura besoin d 'un casier <br>" +
-                                 "Commentaire : "+ info.Comment +
-                                 "<br> merci de faire le nécessaire";
+                    var subject ="[NESPE] Locker Request";
+                    var message ="Hello,<br> "+
+                                 "The " + @String.Format("{0:d}", StartDate) + " we will receive " + LastName + " " + FirstName +
+                                 " in quality of " + function + " in department "+ department +" in room"+ local +". <br><br>" +
+                                 LastName + " " + FirstName + " will need a locker <br>" +
+                                 "Comment : "+ info.Comment +
+                                 "<br> Thanks to do the necessary";
 			    SendEMail(to, message, subject, from);
             
                 } catch (Exception) {
@@ -385,13 +383,13 @@ namespace Nespe.Helpers
 			var to="martin.airas@rdor.nestle.com";
                 try {
 
-                    var subject ="[NESPE] Demande Introduction New comer";
-                    var message ="Bonjour, "+
-                                 "Le " + @String.Format("{0:d}", StartDate) + " nous accueillerons " + LastName + " " + FirstName +
-                                 " en qualité de " + function + " au département "+ department +". <br><br>" +
-                                 " Afin de lui présenter votre département, veuillez le contacter en " + info.introLanguage + "<br>" +
-                                 "Commentaire : "+ info.Comment +
-                                 "<br>merci";
+                    var subject ="[NESPE] Request newcomer introduction";
+                    var message ="Hello, "+
+                                 "The " + @String.Format("{0:d}", StartDate) + " we will receive " + LastName + " " + FirstName +
+                                 " in quality of " + function + " in department "+ department +". <br><br>" +
+                                 " To present your department please contact the newcommer speaking in " + info.introLanguage + "<br>" +
+                                 "Comment : "+ info.Comment +
+                                 "<br>thank you";
                     SendEMail(to, message, subject, from);
 
                 }
@@ -406,31 +404,30 @@ namespace Nespe.Helpers
         var LastName = request.Person.LastName;
         var FirstName = request.Person.FirstName;
         var StartDate = request.StartDate;
+        var function = request.Function;
         var local = request.Local;
         var eMail=request.Person.EMail;
         var from = "martin.airas@rdor.nestle.com";
 	    var to="martin.airas@rdor.nestle.com";
           try {      
 
-				var subjectAssistant="[NESPE] Demande New comer";
+				var subjectAssistant="[NESPE] Request Newcomer";
 				var messageAssistant="Hello,<br> "+
-                                "Le " + @String.Format("{0:d}", StartDate) + " tu auras dans ton département l'arrivée de " + LastName + " " + FirstName +
-                                " au local " + local+". <br><br>" +
-                                "Afin que tout soit prêt lors de son arrivée, tu es priée de remplir le formulaire"+
-                                " que tu trouveras sur (lien page)<br>"+
-                                "<br>Merci d'avance";
+                                "The " + @String.Format("{0:d}", StartDate) + " you will receive a new employee at your department : " + LastName + " " + FirstName +
+                                " in room " + local+". <br><br>" +
+                                "To be sure that everything will be ready when newcomer arrives, please complete the form you'll find in that link (link) <br>"+
+                                "<br>Thank you";
 
                     SendEMail(to, messageAssistant, subjectAssistant,from);
                     
-                    var subjectParrain = "[NESPE] Demande New comer Parrain";
-                    var messageParrain = "Hello, <br>"+
-                                "Le " + @String.Format("{0:d}", StartDate) + " tu auras dans ton département l'arrivée de " + LastName + " " + FirstName +
-                                " au local " + local + ".<br><br>"+
-                                "Afin que tout soit prêt et que son arrivée se fasse avec le meilleur accompagnement,"+
-                                " tu es prié de contacter"+ "Assistante" + "afin que vous vous répartissiez les tâches que" +
-                                "tu trouveras sur (lien page) <br>" + 
-                                "<br>Merci d'avance";
-                    SendEMail(to, messageParrain, subjectParrain,from);
+                    var subjectChefDept = "[NESPE] Newcomer Request";
+                    var messageChefDept = "Hello, <br>"+
+                                "<br>The " + @String.Format("{0:d}", StartDate) + " you will have a newcomer in your department : " + LastName + " " + FirstName +
+                                " in quality of "+ function +" in room " + local + ".<br><br>"+
+                                "You will receive a copy of the diferents requests of material that will be done by the assistants of your department"+
+                                "you can follow at every moment the status of the arrival preparation in this page (link)"+
+                                "<br><br>Best regards";
+                    SendEMail(to, messageChefDept, subjectChefDept,from);
                 }
                 catch (Exception)
                 {

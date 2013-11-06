@@ -17,7 +17,7 @@ namespace Nespe.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Message = "Mes Opérations";
+            ViewBag.Message = "My requests";
             UpdateRequestList(RequestSet);
             var model = new CurrentStatusModel { RequestSet = RequestSet.AsQueryable() };
             return View("Index", model);
@@ -67,7 +67,7 @@ namespace Nespe.Controllers
         [HttpGet]
         public ActionResult Completer(long id)
         {
-            ViewBag.Message = "Mes Opérations";
+            ViewBag.Message = "My requests";
             UpdateRequestList(RequestSet);
             using (var db = new NespeDbContext())
             {
@@ -89,7 +89,7 @@ namespace Nespe.Controllers
                     
                 };
                 if (string.IsNullOrWhiteSpace(model.ITInfo.Name))
-                    model.ITInfo.Name = "mon ticket !!!";
+                    model.ITInfo.Name = "My ticket";
                 if (!string.IsNullOrWhiteSpace(model.ITInfo.Name))
                     model.ITInfo.StaticDescription = model.ITInfo.Name;
                 return View(model);
@@ -199,7 +199,7 @@ namespace Nespe.Controllers
         [HttpGet]
         public ActionResult CompleterDepart(long id)
         {
-            ViewBag.Message = "Mes Opérations";
+            ViewBag.Message = "My requests";
             UpdateRequestList(RequestSet);
             using (var db = new NespeDbContext())
             {
@@ -220,7 +220,7 @@ namespace Nespe.Controllers
                     IntroInfo = GetByRequestId(id, db.IntroRequestSet, new IntroRequestInfo { Request_Id = id, Date = dateCompleted }),
                 };
                 if (string.IsNullOrWhiteSpace(model.ITInfo.Name))
-                    model.ITInfo.Name = "mon ticket !!!";
+                    model.ITInfo.Name = "My ticket";
                 if (!string.IsNullOrWhiteSpace(model.ITInfo.Name))
                     model.ITInfo.StaticDescription = model.ITInfo.Name;
 
@@ -375,7 +375,7 @@ namespace Nespe.Controllers
         [HttpGet]
         public ActionResult Edit(long id)
         {
-            ViewBag.Message = "Mes Opérations";
+            ViewBag.Message = "My requests";
             UpdateRequestList(RequestSet);
             using (var db = new NespeDbContext())
             {
@@ -397,7 +397,7 @@ namespace Nespe.Controllers
                 };
 
                 if (string.IsNullOrWhiteSpace(model.ITInfo.Name))
-                    model.ITInfo.Name = "mon ticket !!!";
+                    model.ITInfo.Name = "My ticket";
                 if (!string.IsNullOrWhiteSpace(model.ITInfo.Name))
                     model.ITInfo.StaticDescription = model.ITInfo.Name;
                 model.ExternalyManagedInfoList = FillByRequestId(id, db.ExternalyManagedRequestSet, model.ExternalyManagedInfoList);
@@ -522,7 +522,7 @@ namespace Nespe.Controllers
         [HttpGet]
         public ActionResult EditDepart(long id)
         {
-            ViewBag.Message = "Mes Opérations";
+            ViewBag.Message = "My requests";
             UpdateRequestList(RequestSet);
             using (var db = new NespeDbContext())
             {
@@ -543,7 +543,7 @@ namespace Nespe.Controllers
                     IntroInfo = GetByRequestId(id, db.IntroRequestSet, new IntroRequestInfo { Request_Id = id, Date = dateCompleted }),
                 };
                 if (string.IsNullOrWhiteSpace(model.ITInfo.Name))
-                    model.ITInfo.Name = "mon ticket !!!";
+                    model.ITInfo.Name = "My ticket";
                 if (!string.IsNullOrWhiteSpace(model.ITInfo.Name))
                     model.ITInfo.StaticDescription = model.ITInfo.Name;
                 model.ExternalyManagedInfoList = FillByRequestId(id, db.ExternalyManagedRequestSet, model.ExternalyManagedInfoList);

@@ -5,10 +5,10 @@
 
 
     <table class="Form">
-        <caption align ="left"><h5>Infos Case courrier :</h5></caption>
+        <caption align ="left"><h5>Mail case :</h5></caption>
         <tr>
-            <td>@Html.RadioButtonFor(x => x.IsRequired, true)Nécessaire</td>
-            <td>@Html.RadioButtonFor(x => x.IsRequired, false, new { Checked = "checked" })Non-nécessaire</td>       
+            <td>@Html.RadioButtonFor(x => x.IsRequired, true)Necessary</td>
+            <td>@Html.RadioButtonFor(x => x.IsRequired, false, new { Checked = "checked" })Not necessary</td>       
         </tr>         
         <tr>
             <td>@Html.LabelFor(x => x.Comment)</td>

@@ -4,7 +4,7 @@
 @using Nespe.Controllers;
 
 <table>
-        <caption align ="left"><h5>Formulaires à compléter :</h5></caption>
+        <caption align ="left"><h5>Forms to complete :</h5></caption>
         @foreach (var dr in Model.CompletionRequestSet)
         { 
         <tr>
@@ -12,14 +12,14 @@
             <td>@String.Format("{0:d}", dr.StartDateNC)</td>
             @if (dr.IsOverTime)
             {
-            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) jours restants</td>
+            <td>@Math.Round(dr.ElapsedTime.TotalDays,0) days to date</td>
             }
             else { 
-                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  jours dépassés</td>
+                <td style="color:red;">@Math.Round(dr.ElapsedTime.TotalDays*(-1),0)  days late</td>
             }
             <td>
                
-                @Html.ActionLink("Compléter", "Completer", "MesOperations", new { Id = dr.Id }, new { @class="Action"}) 
+                @Html.ActionLink("Complete", "Completer", "MesOperations", new { Id = dr.Id }, new { @class="Action"}) 
             </td>
         </tr>     
        

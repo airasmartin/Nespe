@@ -10,17 +10,17 @@
             <th colspan=7 align="center">Préparation de l'arrivée du nouveau collaborateur</th>
         </tr>
         <tr>
-            <th>Tâche</th>
-            <th>Infos tâche</th>
-            <th>Executée par :</th>
+            <th>Task</th>
+            <th>Info task</th>
+            <th>Executed by :</th>
             <th>Date</th>
-            <th>Etat</th>
-            <th>Finir</th>
-            <th>Commentaire</th>
+            <th>State</th>
+            <th>Finish</th>
+            <th>Comment</th>
         </tr>
         <tr>
-            <th>Demande IT</th>
-            <td>Demade par le formulaire</td>
+            <th>IT Hardware</th>
+            <td>Requested by Form</td>
             <td>@Assistant</td>
             <td>@dateCompleted</td>
             <td bgcolor="#ccffcc" >done</td>
@@ -29,25 +29,25 @@
         </tr>
         <tr>
             <th>Installation matériel</th>
-            <td>"numéro ticket"</td>
-            <td>"Technicien en charge"</td>
+            <td>"Ticket number"</td>
+            <td>"Attributed technician"</td>
             <td></td>
             <td bgcolor="#ff6666">en cours</td>
             <td></td>
             <td>@Html.TextAreaFor(x => x.editITHardwareComment)</td>
         </tr>
         <tr>
-            <th>Accès au N:</th>
-            <td>lien page N</td>
+            <th>N: Access</th>
+            <td>link to N access page</td>
             <td>@Assistant or @HeadDepartment</td>
             <td></td>
-            <td bgcolor="#ff6666">en cours</td>
-            <td>clôturer</td>
+            <td bgcolor="#ff6666">in progress</td>
+            <td>Close</td>
             <td>@Html.TextAreaFor(x => x.editNComment)</td>
         </tr>
         <tr>
-            <th>Téléphone</th>
-            <td>Demande par le formulaire</td>
+            <th>Telephone</th>
+            <td>Requested by Form</td>
             <td>@Assistant</td>
             <td>@dateCompleted</td>
             <td bgcolor="#ccffcc">done</td>
@@ -55,8 +55,8 @@
             <td>@Html.TextAreaFor(x => x.editPhoneComment)</td>
         </tr>
         <tr>
-            <th>Rôles SAP</th>
-            <td>Demande par le formulaire</td>
+            <th>SAP Roles</th>
+            <td>Requested by Form</td>
             <td>@Assistant</td>
             <td>@dateCompleted</td>
             <td bgcolor="#ccffcc">done</td>
@@ -65,7 +65,7 @@
         </tr>
         <tr>
             <th>Project Management Office</th>
-            <td>Demande par le formulaire</td>
+            <td>Requested by Form</td>
             <td>@Assistant</td>
             <td>@dateCompleted</td>
             <td bgcolor="#ccffcc">done</td>
@@ -73,8 +73,8 @@
             <td>@Html.TextAreaFor(x => x.editPMOComment)</td>
         </tr>
         <tr>
-            <th>Case courrier</th>
-            <td>Demande par le formulaire</td>
+            <th>Mail case</th>
+            <td>Requested by Form</td>
             <td>@Assistant</td>
             <td>@dateCompleted</td>
             <td bgcolor="#ccffcc">done</td>
@@ -82,75 +82,75 @@
             <td>@Html.TextAreaFor(x => x.editMailCaseComment)</td>
         </tr>
         <tr>
-            <th>Chaussures sécurité, blouse</th>
-            <td>Demande par le formulaire</td>
+            <th>Work clothes</th>
+            <td>Requested by Form</td>
             <td>@Assistant</td>
             <td>@dateCompleted</td>
-            <td bgcolor="#66ccff">pas besoin</td>
+            <td bgcolor="#66ccff">Not necessary</td>
             <td></td>
             <td>@Html.TextAreaFor(x => x.editClothesComment)</td>
         </tr>
         <tr>
-            <th>Programme Intro individualisé</th>
+            <th>Personnalized introduction program</th>
             <td><a href="http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arriv%C3%A9e%20nouveaux%20collaborateurs%20-%20Dossier%20de%20pr%C3%A9paration/Intro%20programme%202012.xls" target="_blank">Template intro program</a></td>
             <td>@Assistant</td>
             <td></td>
-            <td bgcolor="#ff6666">en cours</td>
+            <td bgcolor="#ff6666">in progress</td>
             <td>clôturer</td>
             <td>@Html.TextAreaFor(x => x.editIntroProgComment)</td>
         </tr>
         <tr>
-            <th>Annonce d'arrivée</th>
+            <th>Arrival announcement</th>
             <td><a href="http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arriv%C3%A9e%20nouveaux%20collaborateurs%20-%20Dossier%20de%20pr%C3%A9paration/Template%20Arrival%20Note%20(ver.%20MAR2011).ppt" target="_blank">Template Annonce Newcomers</a></td>
             <td>@Assistant</td>
             <td></td>
-            <td bgcolor="#ff6666">en cours</td>
-            <td>clôturer</td>
+            <td bgcolor="#ff6666">in progress</td>
+            <td>close</td>
             <td>@Html.TextAreaFor(x => x.editAnnouncementComment)</td>
         </tr>
         <tr>
-            <th>Organisation 1er repas</th>
+            <th>Organisation of first meal</th>
             <td><a href="http://thenest-eur-hq.nestle.com/RD/RD_RLOC/Europe/OrbePTC/documents/indexable/Facility%20Management/2009-11%20Process%20Complaints%20V2-091101.pdf">réservation</a> + inviter DH ou Groupe leader</td>
             <td>@Assistant</td>
             <td></td>
-            <td bgcolor="#ff6666">en cours</td>
-            <td>clôturer</td>
+            <td bgcolor="#ff6666">in progress</td>
+            <td>close</td>
             <td>@Html.TextAreaFor(x => x.editFirstMealComment)</td>
         </tr>
         <tr>
-            <th>Documents SHE</th>
+            <th>SHE Documents</th>
             <td>lien</td>
             <td>@Assistant</td>
             <td></td>
-            <td bgcolor="#ff6666">en cours</td>
-            <td>clôturer</td>
+            <td bgcolor="#ff6666">in progress</td>
+            <td>close</td>
             <td>@Html.TextAreaFor(x => x.editSHEComment)</td>
         </tr>
         <tr>
-            <th>Etiquette porte bureau</th>
+            <th>Office's door sticker</th>
             <td></td>
             <td>@Assistant</td>
             <td></td>
-            <td bgcolor="#ff6666">en cours</td>
-            <td>clôturer / non-nécessaire</td>
+            <td bgcolor="#ff6666">in progress</td>
+            <td>close / not necessary</td>
             <td>@Html.TextAreaFor(x => x.editDoorComment)</td>
         </tr>
         <tr>
-            <th>Commander cartes de visite</th>
-            <td><a href="mailto:andréanne.dolci-rey@rdor.nestle.com?Subject=Commande%20cartes%20de%20visite">cliquer ici pour faire la demande</a></td>
+            <th>Business Cards request</th>
+            <td><a href="mailto:andréanne.dolci-rey@rdor.nestle.com?Subject=Commande%20cartes%20de%20visite">clique here t</a></td>
             <td>@Assistant</td>
             <td></td>
-            <td bgcolor="#ff6666">en cours</td>
-            <td>clôturer / non-nécessaire</td>
+            <td bgcolor="#ff6666">in progress</td>
+            <td>close / not necessary</td>
             <td>@Html.TextAreaFor(x => x.editDoorComment)</td>
         </tr>
         <tr>
-            <th>Mise à jour des listes de distribution</th>
+            <th>Update distribution's list</th>
             <td></td>
             <td>@Assistant</td>
             <td></td>
-            <td bgcolor="#ff6666">en cours</td>
-            <td>clôturer / non-nécessaire</td>
+            <td bgcolor="#ff6666">in progress</td>
+            <td>close / not necessary</td>
             <td>@Html.TextAreaFor(x => x.editDoorComment)</td>
         </tr>
     </table>

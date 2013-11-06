@@ -34,11 +34,11 @@
         <td>@String.Format("{0:d}", item.StartDate)</td>
         @if (item.IsOverTime)
         {
-            <td style="color:red;">@Math.Round(item.ElapsedTime.TotalDays, 0)&nbsp;jours dépassés</td>
+            <td style="color:red;">@Math.Round(item.ElapsedTime.TotalDays, 0)&nbsp;days late</td>
         }
         else
         { 
-            <td>@Math.Round(item.ElapsedTime.TotalDays * (-1), 0)&nbsp;jours restants</td>
+            <td>@Math.Round(item.ElapsedTime.TotalDays * (-1), 0)&nbsp;days to date</td>
         }
         <td>@Html.DisplayFor(modelItem => item.Department.Name)</td>
         <td>
@@ -60,11 +60,11 @@
         {
             if (item.Kind == RequestKindEnum.Departure)
             {
-                @Html.ActionLink("Completer", "CompleterDepart", "MesOperations", new { id = item.Id }, new { })
+                @Html.ActionLink("Complete", "CompleterDepart", "MesOperations", new { id = item.Id }, new { })
             }
             else
             { 
-                @Html.ActionLink("Completer", "Completer", "MesOperations", new { id = item.Id }, new { })
+                @Html.ActionLink("Complete", "Completer", "MesOperations", new { id = item.Id }, new { })
             }
         }
         @Html.ActionLink("Finish", "FinishIt", "MesOperations", new { id = item.Id }, new { })                                                                                                    

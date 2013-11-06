@@ -31,11 +31,11 @@
         <td>@String.Format("{0:d}", item.StartDate)</td>
         @if (item.IsOverTime)
         {
-            <td style="color:red;">@Math.Round(item.ElapsedTime.TotalDays, 0)&nbsp;jours dépassés</td>
+            <td style="color:red;">@Math.Round(item.ElapsedTime.TotalDays, 0)&nbsp; days late</td>
         }
         else
         { 
-            <td>@Math.Round(item.ElapsedTime.TotalDays * (-1), 0)&nbsp;jours restants</td>
+            <td>@Math.Round(item.ElapsedTime.TotalDays * (-1), 0)&nbsp; days to date</td>
         }
         <td>@Html.DisplayFor(modelItem => item.Department.Name)</td>
     </tr>

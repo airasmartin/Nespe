@@ -27,13 +27,13 @@ namespace Nespe.Models
         public string SID { get; set; }
         [Column]
         [System.Data.Linq.Mapping.Column]
-        [Required(ErrorMessage = "Veuillez entrer le prénom")]
-        [Display(Name = "Prénom")]
+        [Required(ErrorMessage = "Please enter the first name")]
+        [Display(Name = "First name")]
         public string FirstName { get; set; }
         [Column]
         [System.Data.Linq.Mapping.Column]
-        [Required(ErrorMessage = "Veuillez entrer le nom")]
-        [Display(Name = "Nom")]
+        [Required(ErrorMessage = "please enter the name")]
+        [Display(Name = "name")]
         public string LastName { get; set; }
         [Column]
         [System.Data.Linq.Mapping.Column]

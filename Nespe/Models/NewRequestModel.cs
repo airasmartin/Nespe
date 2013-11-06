@@ -13,12 +13,12 @@ namespace Nespe.Models
         
         public long Id { get; set; }
         
-        [Required(ErrorMessage = "Veuillez entrer le prénom", AllowEmptyStrings=true)]
-        [Display(Name = "*Prénom")]
+        [Required(ErrorMessage = "Please enter the first name", AllowEmptyStrings=true)]
+        [Display(Name = "*First name")]
         public virtual string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Veuillez entrer le nom", AllowEmptyStrings = true)]
-        [Display(Name = "*Nom")]
+        [Required(ErrorMessage = "Please enter the name", AllowEmptyStrings = true)]
+        [Display(Name = "*Name")]
         public virtual string LastName { get; set; }
 
 
@@ -26,13 +26,13 @@ namespace Nespe.Models
         [Display(Name = "Active Directory Id")]
         public virtual string ActiveDirectoryId { get; set; }
 
-        [Required(ErrorMessage = "Veuillez entrer la date d'arrivée du nouveau collaborateur")]
-        [Display(Name = "*Date d'arrivée")]
+        [Required(ErrorMessage = "Please enter the date of arrival for the newcomer")]
+        [Display(Name = "*Date of arrival")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public virtual DateTime StartDate { get; set; }
 
-        [Required(ErrorMessage = "Veuillez sélectionner un département")]
-        [Display(Name = "*Département")]
+        [Required(ErrorMessage = "Please select a department")]
+        [Display(Name = "*Department")]
         public virtual long Department_Id { get; set; }
 
         public virtual RequestKindEnum kind { get; set; }
@@ -126,13 +126,13 @@ namespace Nespe.Models
     }
     public class DepartureNewRequestModel : AbstractNewRequestModel
     {
-        [Display(Name = "Initiales")]
+        [Display(Name = "Initials")]
         public string Initials { get; set; }
 
-        [Required(ErrorMessage = "Veuillez entrer la date de départ du collaborateur")]
+        [Required(ErrorMessage = "Please enter the date of departure of the employee")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DepartureDate { get { return StartDate; } set { StartDate = value; } }
-        [Required(ErrorMessage = "Veuillez entrer le local")]
+        [Required(ErrorMessage = "Please enter the Room")]
         public string Local { get; set; }
 
 
@@ -172,31 +172,31 @@ namespace Nespe.Models
     public class ArrivalNewRequestModel : AbstractNewRequestModel
     {
 
-        [Display(Name = "Fonction")]
+        [Display(Name = "Function")]
         public string Function { get; set; }
 
-        [Display(Name = "Supérieur hierarchique")]
+        [Display(Name = "Hierarchical superior")]
         public string Superior { get; set; }
 
         [Display(Name = "Business Stream")]
         public string BusinessStream { get; set; }
 
-        [Required(ErrorMessage = "Veuillez entrer le numéro d'employé, s'il n'a pas de compte SAP, cochez la case 'Non-SAP'")]
-        [Display(Name = "*Numéro d'employé")]
+        [Required(ErrorMessage = "Please enter the SAP employee number, if he don't has pleas tick 'No-Sap'")]
+        [Display(Name = "*Employee number")]
         public string EmployeeNumber { get; set; }
 
         public bool nonSAP { get; set; }
 
-        [Display(Name = "Local")]
+        [Display(Name = "Room")]
         public string Local { get; set; }
 
-        [Display(Name = "Téléphone")]
+        [Display(Name = "Telephone")]
         public string Phone { get; set; }
 
-        [Display(Name = "Initiales")]
+        [Display(Name = "Initials")]
         public string Initials { get; set; }
 
-        [Display(Name = "Parrain")]
+        [Display(Name = "Godfather")]
         public string Parrain { get; set; }
 
 
@@ -287,7 +287,7 @@ namespace Nespe.Models
     public class TransfertNewRequestModel : ArrivalNewRequestModel
     {
 
-        [Display(Name = "Transféré de")]
+        [Display(Name = "Transfered from")]
         public string TransFrom { get; set; }
 
 

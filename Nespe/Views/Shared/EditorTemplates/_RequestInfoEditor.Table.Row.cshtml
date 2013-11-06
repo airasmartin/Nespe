@@ -33,7 +33,7 @@
             
             @if (Model.IsClosed == false && Model.IsRequired)
             {
-                @Html.ActionLink("clôturer", "CloseInfo", "MesOperations", new { id = Model.Id, Request_Id = Model.Request_Id, InfoType = Model.GetType().Name }, new { }) 
+                @Html.ActionLink("Close", "CloseInfo", "MesOperations", new { id = Model.Id, Request_Id = Model.Request_Id, InfoType = Model.GetType().Name }, new { }) 
             }
             </td>
             <td>@Html.TextAreaFor(model => model.Comment)</td>

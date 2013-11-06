@@ -5,10 +5,10 @@
 
 
     <table class="Form">
-        <caption align ="left"><h5>Infos Rôles SAP  :</h5></caption>
+        <caption align ="left"><h5>SAP Roles  :</h5></caption>
         <tr>
-            <td>@Html.RadioButtonFor(x => x.IsRequired, true)Nécessaire</td>
-            <td>@Html.RadioButtonFor(x => x.IsRequired, false, new { Checked = "checked" })Non-nécessaire</td>       
+            <td>@Html.RadioButtonFor(x => x.IsRequired, true)Necessary</td>
+            <td>@Html.RadioButtonFor(x => x.IsRequired, false, new { Checked = "checked" })Not necessary</td>       
         </tr>    
         <tr>
             <td>@Html.RadioButtonFor(x => x.purchaseType, "Requester") Purchase Requester</td>

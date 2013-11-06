@@ -21,15 +21,15 @@ namespace Nespe.Controllers
 
     public class AdminDepartments
     {
-        [Display(Name = "Département")]
+        [Display(Name = "Department")]
         public string department { get; set; }
-        [Display(Name = "Chef de département")]
+        [Display(Name = "Department's head")]
         public string headDepartment { get; set; }
-        [Display(Name = "Assistante 1")]
+        [Display(Name = "Assistant 1")]
         public string assistant1 { get; set; }
-        [Display(Name = "Assistante 2")]
+        [Display(Name = "Assistant 2")]
         public string assistant2 { get; set; }
-        [Display(Name = "Assistante 3")]
+        [Display(Name = "Assistant 3")]
         public string assistant3 { get; set; }
     }
 }

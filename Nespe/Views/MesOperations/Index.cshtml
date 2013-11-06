@@ -3,25 +3,25 @@
 @using System.Linq;
 
 @{
-    ViewBag.Title = "Nespe - Mes Opérations";
+    ViewBag.Title = "Nespe - My requests";
 }
 @section featured {
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
-                <h1>Page personnelle de <span class="username">@User.Identity.Name</span></h1>
+                <h1>Personal page <span class="username">@User.Identity.Name</span></h1>
                 
             </hgroup>
 
         </div>
     </section>
 }
-<h3>Mes opérations en cours :</h3>
+<h3>My requests to do :</h3>
     <fieldset class="ListView">
-        <legend>Formulaires à compléter :</legend>
+        <legend>Forms to complete :</legend>
         @if (Model.CompletionRequestSet == null)
         {
-            <p>Aucun pour le moment</p>
+            <p>Actually empty</p>
         }
         else
         {
@@ -30,10 +30,10 @@
     </fieldset>
 
     <fieldset class="ListView">
-        <legend>Arrivées :</legend>
+        <legend>Arrivals :</legend>
         @if (Model.ArrivalRequestSet == null)
         {
-            <p>Aucun pour le moment</p>
+            <p>Actually empty</p>
         }
         else
         {
@@ -44,7 +44,7 @@
         <legend>Transferts :</legend>
         @if (Model.TransfertRequestSet == null)
         {
-            <p>Aucun pour le moment</p>
+            <p>Actually empty</p>
         }
         else
         {
@@ -52,10 +52,10 @@
         }
     </fieldset>
     <fieldset class="ListView">
-        <legend>Départs :</legend>
+        <legend>Departures :</legend>
         @if (Model.DepartureRequestSet == null)
         {
-            <p>Aucun pour le moment</p>
+            <p>Actually empty</p>
         }
         else
         {

@@ -37,7 +37,7 @@ namespace Nespe.Models
         public bool IsClosed { get { return Date != null && Date.Subtract(DateTime.MinValue).Ticks > 100 && !string.IsNullOrWhiteSpace(Executor); } }
         [NotMapped]
         public bool IsValidated { get; set; }
-        [Display(Name = "Commentaires:")]
+        [Display(Name = "Comment:")]
         public string Comment { get; set; }
         public bool IsRequired { get; set; }
         public virtual T Copy<T>(T src, bool copyId = false) where T : AbstractRequestInfo
@@ -67,7 +67,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "Matériel IT" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "IT Hardware" : base.StaticName;
             }
             set
             {
@@ -78,20 +78,20 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Demadé par le formulaire" : base.StaticDescription;
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
         [Display(Name = "Laptop")]
         public bool Laptop { get; set; }
         [Display(Name = "Docking Station")]
         public bool DockingStation { get; set; }
-        [Display(Name = "Clavier")]
+        [Display(Name = "Keyboard")]
         public bool Keyboard { get; set; }
         [Display(Name = "Desktop")]
         public bool Desktop { get; set; }
-        [Display(Name = "Ecran")]
+        [Display(Name = "Screen")]
         public bool Screen { get; set; }
-        [Display(Name = "Souris")]
+        [Display(Name = "Mouse")]
         public bool Mouse { get; set; }
         public virtual ITRequestInfo Copy(ITRequestInfo src, bool copyId = false)
         {
@@ -113,7 +113,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "Téléphone" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "Telephone" : base.StaticName;
             }
             set
             {
@@ -124,7 +124,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Demandé par le formulaire" : base.StaticDescription;
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
         public bool fixPhone { get; set; }
@@ -134,13 +134,13 @@ namespace Nespe.Models
         public bool mobile { get; set; }
         [Display(Name = "Smartphone")]
         public bool smartphone { get; set; }
-        [Display(Name = "Casque pour téléphone fixe")]
+        [Display(Name = "Headset for fix phone")]
         public bool headphoneForFix { get; set; }
-        [Display(Name = "Casque pour Cordless")]
+        [Display(Name = "Headset for Cordless")]
         public bool headphoneForCordless { get; set; }
-        [Display(Name = "Kit mains libres pour fixe")]
+        [Display(Name = "Free hands for fix")]
         public bool freeHandsForFix { get; set; }
-        [Display(Name = "Kit mains libres pour Cordless")]
+        [Display(Name = "Free hands for Cordless")]
         public bool freeHandsForCordless { get; set; }
         public virtual TelephoneRequestInfo Copy(TelephoneRequestInfo src, bool copyId = false)
         {
@@ -163,7 +163,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "Rôles SAP" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "SAP Roles" : base.StaticName;
             }
             set
             {
@@ -174,7 +174,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Demandé par le formulaire" : base.StaticDescription;
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
         [Display(Name = "Purchase type")]
@@ -211,7 +211,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Demandé par le formulaire" : base.StaticDescription;
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
         [Display(Name = "DMS")]
@@ -251,7 +251,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "Case courrier" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "Mail case" : base.StaticName;
             }
             set
             {
@@ -262,7 +262,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Demandé par le formulaire" : base.StaticDescription;
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requestd by Form" : base.StaticDescription;
             }
         }
     }
@@ -273,7 +273,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "Habits de travail" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "Work clothes" : base.StaticName;
             }
             set
             {
@@ -284,22 +284,22 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Demandé par le formulaire" : base.StaticDescription;
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
-        [Display(Name = "Chaussures de sécurité")]
+        [Display(Name = "Security shoes")]
         public bool secuShoes { get; set; }
         public double shoeSize { get; set; }
-        [Display(Name = "Gants")]
+        [Display(Name = "Gloves")]
         public bool gloves { get; set; }
         public string glovesSize { get; set; }
-        [Display(Name = "Veste d'hiver")]
+        [Display(Name = "Winter coat")]
         public bool winterCoat { get; set; }
         public string winterCoatSize { get; set; }
-        [Display(Name = "Polaire")]
+        [Display(Name = "Polar")]
         public bool polar { get; set; }
         public string polarSize { get; set; }
-        [Display(Name = "Vêtements de travail Bardusch")]
+        [Display(Name = "Bardusch Clothes")]
         public bool bardushClothes { get; set; }
         public string bardusClothesSize { get; set; }
         public virtual ClothesRequestInfo Copy(ClothesRequestInfo src, bool copyId = false)
@@ -325,7 +325,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "Vestiaire, casier" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "Locker" : base.StaticName;
             }
             set
             {
@@ -336,7 +336,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Demandé par le formulaire" : base.StaticDescription;
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
     }
@@ -358,7 +358,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Demandé par le formulaire" : base.StaticDescription;
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
         public string introLanguage { get; set; }
@@ -378,7 +378,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "Programme Intro individualisé" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "Individualised introduction program" : base.StaticName;
             }
             set
             {
@@ -437,10 +437,10 @@ namespace Nespe.Models
                 ExternalyManagedInfoList = new List<ExternalyManagedRequestInfo>();
 
             //Edit départ
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Rendre habits de travail", Subjections = @"Habits à rentre à Marianne Emery (4320)" });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Rangement Bureau", Subjections = @"Laisse ta place de travail propre et vide tes tiroirs et armoires" });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Activation Out of office", Subjections = @" " });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Mise à jour presentation dépt", Subjections = @"mettre à jour l'intranet The Nest" });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Give back work clothes", Subjections = @"Work clothes to give back to Marianne Emery (4320)" });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Tidy up Office", Subjections = @"Let your workplace clean and empty the drawers and wardrobes" });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Activate Out of office", Subjections = @" " });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Update department presetation", Subjections = @"Update intranet, the Nest" });
         }
         public void BeforeInCommingInitializeExternalyManagedInfoList()
         {
@@ -448,26 +448,26 @@ namespace Nespe.Models
                 ExternalyManagedInfoList = new List<ExternalyManagedRequestInfo>();
 
             //Edit Arrivée transferts
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Accès au N:", Subjections = @" " });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "N: Access", Subjections = @" " });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
                 IsRequired = true,
-                Name = "Programme Intro individualisé",
+                Name = "Personalized introduction program",
                 Subjections = @"<a href='http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arriv%C3%A9e%20nouveaux%20collaborateurs%20-%20Dossier%20de%20pr%C3%A9paration/Intro%20programme%202012.xls'>Template intro program</a>"
             });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
                 IsRequired = true,
-                Name = "Annonce d'arrivée",
+                Name = "Arrival announcement",
                 Subjections = @"<a href='http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arriv%C3%A9e%20nouveaux%20collaborateurs%20-%20Dossier%20de%20pr%C3%A9paration/Template%20Arrival%20Note%20(ver.%20MAR2011).ppt'>Template Annonce Newcomers</a>"
             });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
                 IsRequired = true,
-                Name = "Organisation 1er repas",
+                Name = "First meal organisation",
                 Subjections = @"<a href='http://thenest-eur-hq.nestle.com/RD/RD_RLOC/Europe/OrbePTC/documents/indexable/Facility%20Management/2009-11%20Process%20Complaints%20V2-091101.pdf'>réservation</a> + inviter DH ou Groupe leader"
             });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Préparation documents SHE:", Subjections = @" " });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "SHE documents preparation:", Subjections = @" " });
 
         }
         public void AfterInCommingInitializeExternalyManagedInfoList()
@@ -476,47 +476,47 @@ namespace Nespe.Models
                 ExternalyManagedInfoList = new List<ExternalyManagedRequestInfo>();
 
             //Edit Arrivée transferts check-list part
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired=true, Name = "Accueil à la réception", Subjections = @" " });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Instructions SHE", Subjections = @" liens sur vidéo" });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Présentation", Subjections = @"Présentation au chef de département et aux collègues de travail" });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Précision sur les fonctions", Subjections = @" " });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Loge sécurité pour établir le badge", Subjections = @" " });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Chercher équipement", Subjections = @"Chaussures de sécurité, habits de travail, EPI" });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Présentation programme", Subjections = @"Présenter le programme d'introduction au nouveau collaborateur" });
-            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Explication organisation", Subjections = @"Expliquer l'organigramme du département, du PTC, l'organisation des Business Streams" });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired=true, Name = "Receive at reception", Subjections = @" " });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "SHE Instructions", Subjections = @" link on video" });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Presentation", Subjections = @"Presentations to department's Head and to work collegues" });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Precision on functions", Subjections = @" " });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Badge creation at Securitas Room", Subjections = @" " });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Find equipment", Subjections = @"Work shoes, work clothes" });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Program presentation", Subjections = @"Present the introduction program to the newcomer" });
+            ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "Explain organisation", Subjections = @"Explain departments organigram, of PTC and organisation of Business Streams" });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {IsRequired = true,
-                Name = "Instructions Administratives",
+                Name = "Administratives instructions",
                 Subjections = @"
                <pre>
                 <ul>
                 <li>Signatures </li>
-                <li>Création compte voyageur</li>
-                <li>Carte de crédit</li>
-                <li>Remboursement frais</li> 
+                <li>Traveling account creation</li>
+                <li>Credit card</li>
+                <li>Reimbursement</li> 
                 </ul>
                 <pre>"
             });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
                 IsRequired = true,
-                Name = "Info: la vie du département",
+                Name = "Info: Department's life",
                 Subjections = @" 
                <pre>
                 <ul>
-                <li>Horarie de travail</li>
-                <li>badgeage</li>
+                <li>Work Schedule</li>
+                <li>badging</li>
                 <li>flextime</li> 
-                <li>on dit Bonjour</li>
-                <li>Pauses</li>
-                <li>Confidentialité (SOP)</li>
+                <li>We say 'Bonjour'</li>
+                <li>Breaks</li>
+                <li>Confidentiality (SOP)</li>
                 </ul>
                 <pre>"
             });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
                 IsRequired = true,
-                Name = "Informations de base relatives à la gestion de projet",
+                Name = "Project management's informations",
                 Subjections = @"
             <pre>
                 <ul>
@@ -530,51 +530,50 @@ namespace Nespe.Models
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
                 IsRequired = true,
-                Name = "Utilisation des services",
+                Name = "Services's usage",
 
                 Subjections = @"
                 <pre>
                 <ul>
                 <li>Intranet</li>
-                <li>Courrier</li>
-                <li>Téléphone</li>
+                <li>Mail</li>
+                <li>Telephone</li>
                 <li>E-mail</li>
                 <li>Fax</li>
-                <li>Cartes de visite</li>
-                <li>Demande de voyage</li>
-                <li>Location de voiture</li>
+                <li>Business card</li>
+                <li>Travel request</li>
+                <li>Car location</li>
                 <li>Easy Mail</li>
-                <li>Confidentialité des données</li>
+                <li>Data confidentiality</li>
                 </ul>
                 <pre>"
             });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
                 IsRequired = true,
-                Name = "Instructions de travail",
+                Name = "Work instructions",
                 Subjections = @"
                 <pre>
                 <ul> 
-                <li>établissement des rapports</li>
-                <li>déviation téléphonique</li>
-                <li>utilisation Outlook (GAL, PST, OOO,etc.)</li>
+                <li>reporting</li>
+                <li>deviation phone</li>
+                <li>Outlook Usage(GAL, PST, OOO,etc.)</li>
                 </ul>
                 <pre>"
             });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
                 IsRequired = true,
-                Name = "Conseils pratiques",
+                Name = "Practical tips",
                 Subjections = @" 
             <pre>
             <ul>
-                <li>architecture bâtiments, logistique</li>
-                <li>vestiaires</li>
-                <li>cafétéria</li>
+                <li>Buildings architecture, logistics</li>
+                <li>changing room</li>
+                <li>cafeteria</li>
                 <li>restaurant</li>
                 <li>CAN</li>
-                <li>tourniquet</li>
-                <li>Assistante</li>
+                <li>Assistant</li>
             </ul>
             <pre>"
             });
