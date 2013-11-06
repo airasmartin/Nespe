@@ -35,6 +35,8 @@ namespace Nespe.Models
         public Department Department { get { return _PersonDepartment().Department; } set { _PersonDepartment().Department = value; } }
 
 
+
+
         [Display(Name = "Function")]
         public string Function { get; set; }
         

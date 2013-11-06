@@ -163,7 +163,7 @@ namespace Nespe.Helpers
             var SID = request.Person.SID;
             var transfertFrom = request.TransFrom;
             var BusinessStream = request.BusinessStream;
-			var from = "martin.airas@rdor.nestle.com";
+			var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
                     
@@ -178,6 +178,7 @@ namespace Nespe.Helpers
                                  ((info.mobile == true) ? " - a mobile phone <br>" : "" )+
                                  ((info.smartphone == true) ? " - a Smartphone <br>" : "" )+
                                  ((info.headphoneForFix == true) ? " - a headset for fix phone <br>" : "") +
+                                 ((info.headphoneForCordless == true) ? " - a headset for Cordless <br>" : "") +
                                  ((info.freeHandsForFix == true) ? " - a free hands for fix phone <br>" : "" )+
                                  ((info.freeHandsForCordless == true) ? " - a free hands for cordless <br>" : "" )+
                                  " <br>Comment : " + info.Comment + 
@@ -202,7 +203,7 @@ namespace Nespe.Helpers
             var superior = request.Superior;
             var transfertFrom = request.TransFrom;
             var BusinessStream = request.BusinessStream;
-			var from = "martin.airas@rdor.nestle.com";
+            var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
                     
@@ -240,7 +241,7 @@ namespace Nespe.Helpers
             var BusinessStream = request.BusinessStream;
             var SID = request.Person.SID;
             var Entity = request.Department.Entity;
-			var from = "martin.airas@rdor.nestle.com";
+            var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
 
@@ -284,7 +285,7 @@ namespace Nespe.Helpers
             var FirstName = request.Person.FirstName;
             var function = request.Function;
             var department = request.Department;
-			var from = "martin.airas@rdor.nestle.com";
+            var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
 
@@ -311,7 +312,7 @@ namespace Nespe.Helpers
             var FirstName = request.Person.FirstName;
             var function = request.Function;
             var department = request.Department;
-			var from = "martin.airas@rdor.nestle.com";
+            var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
 
@@ -347,7 +348,7 @@ namespace Nespe.Helpers
             var function = request.Function;
             var department = request.Department;
             var local = request.Local;
-			var from = "martin.airas@rdor.nestle.com";
+            var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
 
@@ -379,7 +380,7 @@ namespace Nespe.Helpers
             var transfertFrom = request.TransFrom;
             var BusinessStream = request.BusinessStream;
             var SID = request.Person.SID;
-			var from = "martin.airas@rdor.nestle.com";
+            var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
 
@@ -407,7 +408,7 @@ namespace Nespe.Helpers
         var function = request.Function;
         var local = request.Local;
         var eMail=request.Person.EMail;
-        var from = "martin.airas@rdor.nestle.com";
+        var from = "ORR.Nespe@rdor.nestle.com";
 	    var to="martin.airas@rdor.nestle.com";
           try {      
 

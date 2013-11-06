@@ -34,7 +34,7 @@ namespace Nespe.Controllers
         {
             
             ViewBag.Message = "New Request";
-            var model = new ArrivalNewRequestModel { kind = RequestKindEnum.Arrival, StartDate = DateTime.Now.AddMonths(2) };
+            var model = new ArrivalNewRequestModel { kind = RequestKindEnum.Arrival, StartDate = DateTime.Now.AddMonths(1) };
             return View( model);
         }
         [HttpGet]
