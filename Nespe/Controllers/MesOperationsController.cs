@@ -116,29 +116,29 @@ namespace Nespe.Controllers
             using (var db = new NespeDbContext())
             {
 
-                //request.PersonDepartment = (from t in db.PersonDepartmentSet from r in db.RequestSet where r.PersonDepartment_Id != null && r.Id == request.Id && t.Id == r.PersonDepartment_Id select t).FirstOrDefault();
-                //var personDepartment = request.PersonDepartment;
-                //if (request.PersonDepartment != null)
-                //{
-                //    request.PersonDepartment.Person = (from t in db.PersonSet where request.PersonDepartment.Person_Id != null && t.Id == request.PersonDepartment.Person_Id select t).FirstOrDefault();
-                //    request.PersonDepartment.Department = (from t in db.DepartmentSet where request.PersonDepartment.Person_Id != null && t.Id == request.PersonDepartment.Department_Id select t).FirstOrDefault();
-                //    request.PersonDepartment_Id = request.PersonDepartment.Id;
+                request.PersonDepartment = (from t in db.PersonDepartmentSet from r in db.RequestSet where r.PersonDepartment_Id != null && r.Id == request.Id && t.Id == r.PersonDepartment_Id select t).FirstOrDefault();
+                var personDepartment = request.PersonDepartment;
+                if (request.PersonDepartment != null)
+                {
+                    request.PersonDepartment.Person = (from t in db.PersonSet where request.PersonDepartment.Person_Id != null && t.Id == request.PersonDepartment.Person_Id select t).FirstOrDefault();
+                    request.PersonDepartment.Department = (from t in db.DepartmentSet where request.PersonDepartment.Person_Id != null && t.Id == request.PersonDepartment.Department_Id select t).FirstOrDefault();
+                    request.PersonDepartment_Id = request.PersonDepartment.Id;
 
-                //}
-                //var person = request.Person;
+                }
+                var person = request.Person;
 
-                //if (person != null)
-                //{
-                //    request.PersonDepartment.Person_Id = person.Id;
-                //    model.RequestModel.Initials = person.Initials;
-                //    model.RequestModel.FirstName = person.FirstName;
-                //    model.RequestModel.LastName = person.LastName;
-                //}
-                //var department = request.Department;
-                //if (department != null)
-                //{
-                //    request.PersonDepartment.Department_Id = department.Id;
-                //}
+                if (person != null)
+                {
+                    request.PersonDepartment.Person_Id = person.Id;
+                    model.RequestModel.Initials = person.Initials;
+                    model.RequestModel.FirstName = person.FirstName;
+                    model.RequestModel.LastName = person.LastName;
+                }
+                var department = request.Department;
+                if (department != null)
+                {
+                    request.PersonDepartment.Department_Id = department.Id;
+                }
 
                 //ValidateModel(model);
                 /// TODO Just temporary operation
