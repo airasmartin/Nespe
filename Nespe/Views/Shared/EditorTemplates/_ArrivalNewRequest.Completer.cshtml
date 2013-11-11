@@ -5,27 +5,27 @@
 
         <tr>
             <td>
-                @Html.Partial("_PersonPartialView.ReadOnly")
-                @Html.Partial("_LocationPartialView.ReadOnly")
+                @Html.Partial("_PersonPartialView")
+                @Html.Partial("_LocationPartialView")
             </td>
             <td>
-                @Html.Partial("_DepartmentPartialView.ReadOnly")
+                @Html.Partial("_DepartmentPartialView")
                 <div class="editor-label">
                     @Html.LabelFor(model => model.ActiveDirectoryId)
                 </div>
                 <div class="editor-field">
-                    @Html.TextBoxFor(model => model.ActiveDirectoryId, new { @readonly = "readonly" })
+                    @Html.TextBoxFor(model => model.ActiveDirectoryId)
                     @Html.ValidationMessageFor(model => model.ActiveDirectoryId)
                 </div>
             </td>
             <td>
-                @Html.Partial("_RolePartialView.ReadOnly")
+                @Html.Partial("_RolePartialView")
                 <fieldset>
                     <div class="editor-label">
                         @Html.LabelFor(model => model.EmployeeNumber)
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(model => model.EmployeeNumber, new { @readonly = "readonly"})
+                        @Html.TextBoxFor(model => model.EmployeeNumber)
                         @Html.ValidationMessageFor(model => model.EmployeeNumber)
                     </div>
 
@@ -33,7 +33,7 @@
                         @Html.LabelFor(model => model.nonSAP)
                     </div>
                     <div class="editor-field">
-                        @Html.EditorFor(model => model.nonSAP, new { @readonly = "readonly"})
+                        @Html.EditorFor(model => model.nonSAP)
                         @Html.ValidationMessageFor(model => model.nonSAP)
                     </div>
                 </fieldset>

@@ -33,7 +33,7 @@ namespace Nespe.Models
         [Column]
         [System.Data.Linq.Mapping.Column]
         [Required(ErrorMessage = "please enter the name")]
-        [Display(Name = "name")]
+        [Display(Name = "Last name")]
         public string LastName { get; set; }
         [Column]
         [System.Data.Linq.Mapping.Column]

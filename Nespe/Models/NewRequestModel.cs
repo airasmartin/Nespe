@@ -35,6 +35,7 @@ namespace Nespe.Models
         [Display(Name = "*Department")]
         public virtual long Department_Id { get; set; }
 
+
         public virtual RequestKindEnum kind { get; set; }
 
         public virtual Request Copy(Request src)
@@ -80,11 +81,10 @@ namespace Nespe.Models
         {
 
             var src = this;
-            dst.ActiveDirectoryId = src.ActiveDirectoryId;
             dst.Kind = src.kind;
             dst.StartDate = src.StartDate;
             dst.Id = src.Id;
-            dst.StartDate = src.StartDate;
+
             CopyTo(dst.PersonDepartment);
             return dst;
         }
@@ -178,11 +178,14 @@ namespace Nespe.Models
         [Display(Name = "Hierarchical superior")]
         public string Superior { get; set; }
 
+        [Display(Name = "Alias")]
+        public string ActiveDirectoryId { get; set; }
+
         [Display(Name = "Business Stream")]
         public string BusinessStream { get; set; }
 
-        [Required(ErrorMessage = "Please enter the SAP employee number, if he don't has pleas tick 'No-Sap'")]
-        [Display(Name = "*Employee number")]
+        //[Required(ErrorMessage = "Please enter the SAP employee number, if he don't has pleas tick 'No-Sap'")]
+        [Display(Name = "Employee number")]
         public string EmployeeNumber { get; set; }
 
         public bool nonSAP { get; set; }
@@ -226,6 +229,7 @@ namespace Nespe.Models
             dst.Department.Id = src.Department_Id;
             dst.Parrain = src.Parrain;
             dst.StartDate = src.StartDate;
+            dst.ActiveDirectoryId = src.ActiveDirectoryId;
 
 
             return base.CopyTo(dst);
@@ -242,6 +246,7 @@ namespace Nespe.Models
             dst.Id = src.Id;
             dst.Function = src.Function;
             dst.Superior = src.Superior;
+            dst.ActiveDirectoryId = src.ActiveDirectoryId;
             dst.BusinessStream = src.BusinessStream;
 
             dst.EmployeeNumber = src.EmployeeNumber;

@@ -75,7 +75,7 @@ namespace Nespe.Helpers
             var FirstName = request.Person.FirstName;
             var local = request.Local;
             var function = request.Function;
-            var department = request.Department;
+            var department = request.Department.Name;
             var EmployeeNumber = request.EmployeeNumber;
             var superior = request.Superior;
             var SID = request.Person.SID;
@@ -157,7 +157,7 @@ namespace Nespe.Helpers
             var FirstName = request.Person.FirstName;
             var local = request.Local;
             var function = request.Function;
-            var department = request.Department;
+            var department = request.Department.Name;
             var EmployeeNumber = request.EmployeeNumber;
             var superior = request.Superior;
             var SID = request.Person.SID;
@@ -198,7 +198,7 @@ namespace Nespe.Helpers
             var LastName = request.Person.LastName;
             var FirstName = request.Person.FirstName;
             var function = request.Function;
-            var department = request.Department;
+            var department = request.Department.Name;
             var EmployeeNumber = request.EmployeeNumber;
             var superior = request.Superior;
             var transfertFrom = request.TransFrom;
@@ -235,11 +235,11 @@ namespace Nespe.Helpers
             var LastName = request.Person.LastName;
             var FirstName = request.Person.FirstName;
             var function = request.Function;
-            var department = request.Department;
+            var department = request.Department.Name;
             var EmployeeNumber = request.EmployeeNumber;
             var superior = request.Superior;
             var BusinessStream = request.BusinessStream;
-            var SID = request.Person.SID;
+            var SID = request.ActiveDirectoryId;
             var Entity = request.Department.Entity;
             var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
@@ -284,7 +284,7 @@ namespace Nespe.Helpers
             var LastName = request.Person.LastName;
             var FirstName = request.Person.FirstName;
             var function = request.Function;
-            var department = request.Department;
+            var department = request.Department.Name;
             var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
@@ -311,7 +311,7 @@ namespace Nespe.Helpers
             var LastName = request.Person.LastName;
             var FirstName = request.Person.FirstName;
             var function = request.Function;
-            var department = request.Department;
+            var department = request.Department.Name;
             var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
@@ -346,7 +346,7 @@ namespace Nespe.Helpers
             var LastName = request.Person.LastName;
             var FirstName = request.Person.FirstName;
             var function = request.Function;
-            var department = request.Department;
+            var department = request.Department.Name;
             var local = request.Local;
             var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
@@ -373,7 +373,7 @@ namespace Nespe.Helpers
             var LastName = request.Person.LastName;
             var FirstName = request.Person.FirstName;
             var function = request.Function;
-            var department = request.Department;
+            var department = request.Department.Name;
             var local = request.Local;
             var EmployeeNumber = request.EmployeeNumber;
             var superior = request.Superior;

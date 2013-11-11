@@ -47,7 +47,7 @@ namespace Nespe.Models
         [Required(ErrorMessage = "Please enter the arrival date of the newcomer")]
         public DateTime StartDate { get; set; }
 
-        [Required(ErrorMessage = "Please enter the employee number, if he don't have, put a tick on 'no-SAP'")]
+        //[Required(ErrorMessage = "Please enter the employee number, if he don't have, put a tick on 'no-SAP'")]
         public string EmployeeNumber { get; set; }
         
         [Display(Name="no-SAP")]
@@ -157,6 +157,7 @@ namespace Nespe.Models
             dst.BusinessStream = src.BusinessStream;
             dst.StartDate = src.StartDate;
             dst.EmployeeNumber = src.EmployeeNumber;
+            dst.ActiveDirectoryId = src.ActiveDirectoryId;
             dst.nonSAP = src.nonSAP;
             dst.Local = src.Local;
             dst.TransFrom = src.TransFrom;
