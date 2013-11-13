@@ -163,6 +163,8 @@ namespace Nespe.Helpers
             var SID = request.Person.SID;
             var transfertFrom = request.TransFrom;
             var BusinessStream = request.BusinessStream;
+            var modelID = request.PersonDepartment.Id;
+            var link = "http://localhost:17365/MesOperations/CloseInfo/" + modelID + "?Request_Id=" + request.Id + "&InfoType=TelephoneRequestInfo";
 			var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
@@ -181,7 +183,8 @@ namespace Nespe.Helpers
                                  ((info.headphoneForCordless == true) ? " - a headset for Cordless <br>" : "") +
                                  ((info.freeHandsForFix == true) ? " - a free hands for fix phone <br>" : "" )+
                                  ((info.freeHandsForCordless == true) ? " - a free hands for cordless <br>" : "" )+
-                                 " <br>Comment : " + info.Comment + 
+                                 " <br>Comment : " + info.Comment +
+                                 "<br>Once it's done please click <a href=" + link + "> Done</a>" +
                                  "<br><br> Thank you";
 					SendEMail(to, message, subject, from);
             
@@ -203,6 +206,8 @@ namespace Nespe.Helpers
             var superior = request.Superior;
             var transfertFrom = request.TransFrom;
             var BusinessStream = request.BusinessStream;
+            var modelID = request.PersonDepartment.Id;
+            var link = "http://localhost:17365/MesOperations/CloseInfo/" + modelID + "?Request_Id=" + request.Id + "&InfoType=RoleSAPRequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
@@ -216,6 +221,7 @@ namespace Nespe.Helpers
                                  ((info.purchaseType == PurchaseTypeRoleSAPEnum.Requester) ? " - Role of purchase Requester <br>" : "") + 
                                  ((info.pCard == true) ? "  - a pCard <br>" : "") +
                                  " Comment : "+ info.Comment +
+                                 "<br>Once it's done please click <a href=" + link + "> Done</a>" +
                                  "<br> Thank you";
 					SendEMail(to, message, subject, from);
             
@@ -241,8 +247,8 @@ namespace Nespe.Helpers
             var BusinessStream = request.BusinessStream;
             var SID = request.ActiveDirectoryId;
             var Entity = request.Department.Entity;
-            var moins = request.Id - 10;
-            var link = "http://localhost:17365/MesOperations/CloseInfo/"+moins+"?Request_Id=" + request.Id + "&InfoType=PMORequestInfo";
+            var modelID = request.PersonDepartment.Id;
+            var link = "http://localhost:17365/MesOperations/CloseInfo/"+modelID+"?Request_Id=" + request.Id + "&InfoType=PMORequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
@@ -288,6 +294,8 @@ namespace Nespe.Helpers
             var FirstName = request.Person.FirstName;
             var function = request.Function;
             var department = request.Department.Name;
+            var modelID = request.PersonDepartment.Id;
+            var link = "http://localhost:17365/MesOperations/CloseInfo/" + modelID + "?Request_Id=" + request.Id + "&InfoType=MailCaseRequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
@@ -299,6 +307,7 @@ namespace Nespe.Helpers
                                  " in quality of " + function + " in department "+ department +". <br>" +
                                  LastName + " " + FirstName + " will need a mail case, can you please do the necessary <br>" +
                                  " Comment :"+ info.Comment +
+                                 "<br>Once it's done please click <a href=" + link + "> Done</a>" +
                                    "<br> Thank you";
 					SendEMail(to, message, subject, from);
             
@@ -351,6 +360,8 @@ namespace Nespe.Helpers
             var function = request.Function;
             var department = request.Department.Name;
             var local = request.Local;
+            var modelID = request.PersonDepartment.Id;
+            var link = "http://localhost:17365/MesOperations/CloseInfo/" + modelID + "?Request_Id=" + request.Id + "&InfoType=LockerRequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
@@ -361,7 +372,8 @@ namespace Nespe.Helpers
                                  " in quality of " + function + " in department "+ department +" in room"+ local +". <br><br>" +
                                  LastName + " " + FirstName + " will need a locker <br>" +
                                  "Comment : "+ info.Comment +
-                                 "<br> Thanks to do the necessary";
+                                 "<br>Once it's done please click <a href=" + link + "> Done</a>" +
+                                 "<br> Thank you";
 			    SendEMail(to, message, subject, from);
             
                 } catch (Exception) {
