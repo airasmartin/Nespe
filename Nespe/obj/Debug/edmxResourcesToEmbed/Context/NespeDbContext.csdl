@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Nespe.Models" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="NespeDbContext" annotation:LazyLoadingEnabled="true" cg:TypeAccess="Public">
+    <EntitySet Name="PersonSet" EntityType="Nespe.Models.Person" />
+    <EntitySet Name="DepartmentSet" EntityType="Nespe.Models.Department" />
+    <EntitySet Name="PersonDepartmentSet" EntityType="Nespe.Models.PersonDepartment" />
+    <AssociationSet Name="PersonDepartmentPerson" Association="Nespe.Models.PersonDepartmentPerson">
+      <End Role="PersonDepartment" EntitySet="PersonDepartmentSet" />
+      <End Role="Person" EntitySet="PersonSet" />
+    </AssociationSet>
+    <AssociationSet Name="PersonDepartmentDepartment" Association="Nespe.Models.PersonDepartmentDepartment">
+      <End Role="PersonDepartment" EntitySet="PersonDepartmentSet" />
+      <End Role="Department" EntitySet="DepartmentSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FirstName" Nullable="true" />
+    <Property Type="String" Name="LastName" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PersonDepartment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Person_Id" Nullable="false" />
+    <Property Type="Int64" Name="Department_Id" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="Nespe.Models.PersonDepartmentPerson" FromRole="PersonDepartment" ToRole="Person" />
+    <NavigationProperty Name="Department" Relationship="Nespe.Models.PersonDepartmentDepartment" FromRole="PersonDepartment" ToRole="Department" />
+  </EntityType>
+  <Association Name="PersonDepartmentPerson">
+    <End Type="Nespe.Models.PersonDepartment" Role="PersonDepartment" Multiplicity="*" />
+    <End Type="Nespe.Models.Person" Role="Person" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonDepartment">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonDepartmentDepartment">
+    <End Type="Nespe.Models.PersonDepartment" Role="PersonDepartment" Multiplicity="*" />
+    <End Type="Nespe.Models.Department" Role="Department" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonDepartment">
+        <PropertyRef Name="Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
