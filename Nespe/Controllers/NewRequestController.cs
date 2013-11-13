@@ -66,11 +66,29 @@ namespace Nespe.Controllers
             try
             {
                 //TO DO : Email guestResponse to ther part organizer
+                //Request request = model;
                 Request request = model;
+
                 if (ModelState.IsValid)
                 {
-                    WebMailHelper.SendEmailCreation(request);
                     SaveToDb(request);
+                    using (var db = new NespeDbContext())
+                    {
+
+                        request.PersonDepartment = (from t in db.PersonDepartmentSet from r in db.RequestSet where r.PersonDepartment_Id != null && r.Id == request.Id && t.Id == r.PersonDepartment_Id select t).FirstOrDefault();
+                        var personDepartment = request.PersonDepartment;
+                        if (request.PersonDepartment != null)
+                        {
+                            request.PersonDepartment.Person = (from t in db.PersonSet where request.PersonDepartment.Person_Id != null && t.Id == request.PersonDepartment.Person_Id select t).FirstOrDefault();
+                            request.PersonDepartment.Department = (from t in db.DepartmentSet where request.PersonDepartment.Person_Id != null && t.Id == request.PersonDepartment.Department_Id select t).FirstOrDefault();
+                            request.PersonDepartment_Id = request.PersonDepartment.Id;
+
+                        }
+                        var person = request.Person;
+                    }
+
+                    WebMailHelper.SendEmailCreation(request);
+                    
                     return View("Confirmation", request);
                 }
                 else
@@ -94,6 +112,8 @@ namespace Nespe.Controllers
             {
 
                 Request request = model;
+
+
                 if (ModelState.IsValid)
                 {
                     //TO DO : Email guestResponse to ther part organizer

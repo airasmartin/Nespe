@@ -598,7 +598,7 @@ namespace Nespe.Models
 				RoleSAPInfo,
 				PMOInfo,
 				MailCaseInfo,
-				ClothesInfo,
+                ClothesInfo,
 				LockerInfo,
 			};
             for (int i = 0; i < items.Length; i++)

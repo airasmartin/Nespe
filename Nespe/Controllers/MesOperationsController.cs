@@ -647,9 +647,9 @@ namespace Nespe.Controllers
                     AbstractRequestInfo o = null;// type.GetConstructor(new Type[] { }).Invoke(new object[] { });
                     if (type == typeof(ClothesRequestInfo))
                     {
-                        o = ( from t in db.ClothesRequestSet where t.Id==id select t).FirstOrDefault();
+                        o = (from t in db.ClothesRequestSet where t.Id == id select t).FirstOrDefault();
                     }
-                    else if (type == typeof(ExternalyManagedRequestInfo))
+                    if (type == typeof(ExternalyManagedRequestInfo))
                     {
                         o = (from t in db.ExternalyManagedRequestSet where t.Id == id select t).FirstOrDefault();
                     }

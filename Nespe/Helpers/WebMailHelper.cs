@@ -241,12 +241,14 @@ namespace Nespe.Helpers
             var BusinessStream = request.BusinessStream;
             var SID = request.ActiveDirectoryId;
             var Entity = request.Department.Entity;
+            var moins = request.Id - 10;
+            var link = "http://localhost:17365/MesOperations/CloseInfo/"+moins+"?Request_Id=" + request.Id + "&InfoType=PMORequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
 			var to="martin.airas@rdor.nestle.com";
                 try {
 
                
-
+                    
                     var subject = "[NESPE] Request of PMO";
                     var message = " Hello, <br>"+
                                  "The " + @String.Format("{0:d}", StartDate) + " we'll receive " + LastName + " " + FirstName +
@@ -269,6 +271,7 @@ namespace Nespe.Helpers
                                  ((info.ppLineManager == true) ? "NESTMS as Pilot Plant line Manager <br>" : "" )+
                                  ((info.labTech == true) ? "NESTMS as Lab technician <br>" : "" )+
                                  "<br> Comment : "+ info.Comment +
+                                 "<br>Once it's done please click <a href=" + link + "> Done</a>" +
                                  "<br> Thank you";
 					SendEMail(to, message, subject, from);
             
@@ -408,6 +411,10 @@ namespace Nespe.Helpers
         var function = request.Function;
         var local = request.Local;
         var eMail=request.Person.EMail;
+        var assistant1 = request.Department.Assistant1;
+        var assistant2 = request.Department.Assistant2;
+        var assistant3 = request.Department.Assistant3;
+        var chef = request.Department.Head;
         var from = "ORR.Nespe@rdor.nestle.com";
 	    var to="martin.airas@rdor.nestle.com";
           try {      
@@ -419,7 +426,15 @@ namespace Nespe.Helpers
                                 "To be sure that everything will be ready when newcomer arrives, please complete the form you'll find in that link (link) <br>"+
                                 "<br>Thank you";
 
-                    SendEMail(to, messageAssistant, subjectAssistant,from);
+                    SendEMail(assistant1, messageAssistant, subjectAssistant,from);
+                if (assistant2 != null)
+                {
+                    SendEMail(assistant2, messageAssistant, subjectAssistant, from);
+                }
+                if (assistant3 != null)
+                {
+                    SendEMail(assistant3, messageAssistant, subjectAssistant, from);
+                }
                     
                     var subjectChefDept = "[NESPE] Newcomer Request";
                     var messageChefDept = "Hello, <br>"+
@@ -428,7 +443,7 @@ namespace Nespe.Helpers
                                 "You will receive a copy of the diferents requests of material that will be done by the assistants of your department"+
                                 "you can follow at every moment the status of the arrival preparation in this page (link)"+
                                 "<br><br>Best regards";
-                    SendEMail(to, messageChefDept, subjectChefDept,from);
+                    SendEMail(chef, messageChefDept, subjectChefDept,from);
                 }
                 catch (Exception)
                 {
