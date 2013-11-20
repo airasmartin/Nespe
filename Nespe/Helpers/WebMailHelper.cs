@@ -39,7 +39,7 @@ namespace Nespe.Helpers
             {
                 WebClient wc = new WebClient();
                 //wc.Credentials = System.Net.CredentialCache.DefaultCredentials;
-                wc.Credentials = new System.Net.NetworkCredential("RDAirasMa", "sariam63", "Nestle");
+                wc.Credentials = new System.Net.NetworkCredential("xxxxx", "xxxxxx", "Nestle");
 
                 var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\RequestInfo.ValideIt." + DateTime.Now.ToString("yyymmddHHMMss") + ".xml";
                 wc.DownloadFile(url, fn);
