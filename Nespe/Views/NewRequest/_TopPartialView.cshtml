@@ -20,8 +20,8 @@
 
     <h3>Type de demande :</h3>
     @Html.RadioButtonFor(requestType => requestType.kind, RequestKindEnum.Arrival)@Html.ActionLink("New comer ", "Arrival")
-    @Html.RadioButtonFor(requestType => requestType.kind, RequestKindEnum.Transfert)@Html.ActionLink("Transfert", "Transfert")
-    @Html.RadioButtonFor(requestType => requestType.kind, RequestKindEnum.Departure)@Html.ActionLink("Departure", "Departure")
+@*    @Html.RadioButtonFor(requestType => requestType.kind, RequestKindEnum.Transfert)@Html.ActionLink("Transfert", "Transfert")
+    @Html.RadioButtonFor(requestType => requestType.kind, RequestKindEnum.Departure)@Html.ActionLink("Departure", "Departure")*@
     <h3>Informations nouvelle demande :@Model.kind  <i>@Html.DisplayTextFor(x=>x.kind)</i></h3>
         @if (this.IsPost)
         {

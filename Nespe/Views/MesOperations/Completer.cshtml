@@ -58,13 +58,14 @@
         @Html.HiddenFor(m => m.MailCaseInfo.Request_Id)
         @Html.EditorFor(m => m.MailCaseInfo, "_MailCaseRequestInfoPartialView")
     }
-
+    <div style="display:none">
     @if (Model.ClothesInfo != null)
     { 
         @Html.HiddenFor(m => m.ClothesInfo.Id)
         @Html.HiddenFor(m => m.ClothesInfo.Request_Id)
         @Html.EditorFor(m => m.ClothesInfo, "_ClothesRequestInfoPartialView")
     }
+    </div>
 
     @if (Model.LockerInfo != null)
     { 

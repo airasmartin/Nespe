@@ -26,7 +26,7 @@ namespace Nespe.Models
         [Display(Name = "Active Directory Id")]
         public virtual string ActiveDirectoryId { get; set; }
 
-        [Required(ErrorMessage = "Please enter the date of arrival for the newcomer")]
+        //[Required(ErrorMessage = "Please enter the date of arrival for the newcomer")]
         [Display(Name = "*Date of arrival")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public virtual DateTime StartDate { get; set; }
@@ -47,7 +47,7 @@ namespace Nespe.Models
             dst.kind = src.Kind;
             dst.StartDate = src.StartDate;
             dst.Id = src.Id;
-            dst.StartDate = src.StartDate;
+
             Copy(src.PersonDepartment);
             return src;
         }

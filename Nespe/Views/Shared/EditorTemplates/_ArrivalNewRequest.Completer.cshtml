@@ -1,10 +1,10 @@
 ﻿@model Nespe.Models.ArrivalNewRequestModel
-
 <table>
     <tbody>
 
         <tr>
             <td>
+
                 @Html.Partial("_PersonPartialView")
                 @Html.Partial("_LocationPartialView")
             </td>
@@ -35,6 +35,8 @@
                     <div class="editor-field">
                         @Html.EditorFor(model => model.nonSAP)
                         @Html.ValidationMessageFor(model => model.nonSAP)
+                        
+                        <input type="submit" onclick="onArrivalNewRequestSaveChanges(this);" value="Save changes!!" />
                     </div>
                 </fieldset>
             </td>
@@ -53,5 +55,12 @@
         </tr>
     </tbody>
 </table>    
-    
-        
+ <script >
+     function onArrivalNewRequestSaveChanges(me) {
+        // alert(me.form.action);
+         me.form.action = '@Url.Action("ArrivalNewRequestSaveChanges")    ';
+        // alert(me.form.action);
+         return false;
+         //return true;
+     }
+ </script>
