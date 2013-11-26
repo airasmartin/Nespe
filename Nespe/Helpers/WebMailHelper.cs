@@ -37,12 +37,12 @@ namespace Nespe.Helpers
         {
             try
             {
-                WebClient wc = new WebClient();
+                //WebClient wc = new WebClient();
                 //wc.Credentials = System.Net.CredentialCache.DefaultCredentials;
-                wc.Credentials = new System.Net.NetworkCredential("xxxxx", "xxxxxx", "Nestle");
 
-                var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\RequestInfo.ValideIt." + DateTime.Now.ToString("yyymmddHHMMss") + ".xml";
-                wc.DownloadFile(url, fn);
+                //var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\RequestInfo.ValideIt." + DateTime.Now.ToString("yyymmddHHMMss") + ".xml";
+                //wc.DownloadFile(url, fn);
+                var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\SM Ticket Detail List.xml";
 
                 XPathDocument doc = new XPathDocument(fn);
                 XPathNavigator nav = doc.CreateNavigator();
@@ -308,7 +308,7 @@ namespace Nespe.Helpers
             var modelID = request.PersonDepartment.Id;
             var link = "http://CH12-0AZ7C45/NESPE/MesOperations/CloseInfo/" + modelID + "?Request_Id=" + request.Id + "&InfoType=MailCaseRequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
-			var to="martin.airas@rdor.nestle.com";
+            var to = "martine.joliclerc@rdor.nestle.com";
                 try {
 
 
@@ -356,6 +356,7 @@ namespace Nespe.Helpers
                                  ((info.bardushClothes == true) ? " - Bardush clothes " : "") +
                                  ((info.bardusClothesSize == null) ? "" : "in size : " + info.bardusClothesSize + "<br>") +
                                  "Other comments :"+ info.Comment;
+                                
 			    SendEMail(to, message, subject, from);
             
                 } catch (Exception) {
@@ -371,11 +372,12 @@ namespace Nespe.Helpers
             var FirstName = request.Person.FirstName;
             var function = request.Function;
             var department = request.Department.Name;
+            var assistant = request.Department.Assistant1;
             var local = request.Local;
             var modelID = request.PersonDepartment.Id;
             var link = "http://CH12-0AZ7C45/NESPE/MesOperations/CloseInfo/" + modelID + "?Request_Id=" + request.Id + "&InfoType=LockerRequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
-			var to="martin.airas@rdor.nestle.com";
+            var to = "NBSFM.ServiceCenter-CH@nestle.com";
                 try {
 
                     var subject ="[NESPE] Locker Request";
@@ -385,6 +387,7 @@ namespace Nespe.Helpers
                                  LastName + " " + FirstName + " will need a locker <br>" +
                                  "Comment : "+ info.Comment +
                                  "<br>Once it's done please click <a href=" + link + "> Done</a>" +
+                                 "<br> In case of questions, you can contact : " + assistant +
                                  "<br> Thank you";
 			    SendEMail(to, message, subject, from);
             
@@ -401,6 +404,7 @@ namespace Nespe.Helpers
             var FirstName = request.Person.FirstName;
             var function = request.Function;
             var department = request.Department.Name;
+            var assistant = request.Department.Assistant1;
             var local = request.Local;
             var EmployeeNumber = request.EmployeeNumber;
             var superior = request.Superior;
@@ -408,7 +412,7 @@ namespace Nespe.Helpers
             var BusinessStream = request.BusinessStream;
             var SID = request.Person.SID;
             var from = "ORR.Nespe@rdor.nestle.com";
-			var to="martin.airas@rdor.nestle.com";
+			var to="RDORRAssistants@mail.nestle.local";
                 try {
 
                     var subject ="[NESPE] Request newcomer introduction";
@@ -417,6 +421,7 @@ namespace Nespe.Helpers
                                  " in quality of " + function + " in department "+ department +". <br><br>" +
                                  " To present your department please contact the newcommer speaking in " + info.introLanguage + "<br>" +
                                  "Comment : "+ info.Comment +
+                                 "<br> In case of questions, you can contact : " + assistant +
                                  "<br>thank you";
                     SendEMail(to, message, subject, from);
 
