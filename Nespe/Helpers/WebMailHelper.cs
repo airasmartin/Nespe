@@ -78,6 +78,7 @@ namespace Nespe.Helpers
             var local = request.Local;
             var function = request.Function;
             var department = request.Department.Name;
+            var assistant = request.Department.Assistant1;
             var EmployeeNumber = request.EmployeeNumber;
             var superior = request.Superior;
             var SID = request.Person.SID;
@@ -101,7 +102,8 @@ namespace Nespe.Helpers
                                 ((info.Desktop == true) ? " - a desktop " : "" )+
                                 ((info.Screen == true) ? " - a screen " : "") +
                                 ((info.Mouse == true) ? " - une souris " : "" )+
-                                " Comment : " + info.Comment + 
+                                ". In case of questions, you can contact : " + assistant +
+                                ". Comment : " + info.Comment + 
                                 "Thank you";
 			
                            
