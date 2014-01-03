@@ -23,17 +23,17 @@ namespace Nespe.Helpers
             return r;
         }
         //
-        public static bool ValidateIt(AbstractRequestInfo infoRequest)
+        public static bool ValidateIt(AbstractRequestInfo infoRequest, string transferFilePath)
         {
 
-            return ValidateIt(infoRequest, Nespe.Properties.Settings.Default.IT_VALIDATION_URL);
+            return ValidateIt(infoRequest, Nespe.Properties.Settings.Default.IT_VALIDATION_URL, transferFilePath);
         }
-        public static bool ValidateIt(AbstractRequestInfo infoRequest, string url) 
+        public static bool ValidateIt(AbstractRequestInfo infoRequest, string url, string transferFilePath)
         {
             var title = string.Format("[NESPE] {0} Newcomer Initial", infoRequest.Request_Id);
-            return ValidateIt(infoRequest, url, title);
+            return ValidateIt(infoRequest, url, title, transferFilePath);
         }
-        public static bool ValidateIt(AbstractRequestInfo infoRequest, string url, string title)
+        public static bool ValidateIt(AbstractRequestInfo infoRequest, string url, string title, string transferFilePath)
         {
             try
             {
@@ -42,7 +42,8 @@ namespace Nespe.Helpers
 
                 //var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\RequestInfo.ValideIt." + DateTime.Now.ToString("yyymmddHHMMss") + ".xml";
                 //wc.DownloadFile(url, fn);
-                var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\SM Ticket Detail List.xml";
+               // var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\SM Ticket Detail List.xml";
+                var fn = transferFilePath;// "TransferIt"+ @"\SM Ticket Detail List.xml";
 
                 XPathDocument doc = new XPathDocument(fn);
                 XPathNavigator nav = doc.CreateNavigator();

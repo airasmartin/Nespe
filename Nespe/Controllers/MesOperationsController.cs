@@ -501,7 +501,7 @@ namespace Nespe.Controllers
                     var IntroInfo = GetByRequestId(id, db.IntroRequestSet, model.IntroInfo);
                     var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
 
-                    WebMailHelper.ValidateIt(ITInfo);
+                    WebMailHelper.ValidateIt(ITInfo, Server.MapPath("TransferIt"+ @"\SM Ticket Detail List.xml"));
                     foreach (var o in a)
                     {
                         o.Date = DateTime.Now;
@@ -640,7 +640,7 @@ namespace Nespe.Controllers
                     var LockerInfo = GetByRequestId(id, db.LockerRequestSet, model.LockerInfo);
                     var IntroInfo = GetByRequestId(id, db.IntroRequestSet, model.IntroInfo);
                     var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
-                    WebMailHelper.ValidateIt(ITInfo);
+                    WebMailHelper.ValidateIt(ITInfo, Server.MapPath("TransferIt" + @"\SM Ticket Detail List.xml"));
                     foreach (var o in a)
                     {
                         o.Date = DateTime.Now;
