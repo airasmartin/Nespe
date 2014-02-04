@@ -37,13 +37,13 @@ namespace Nespe.Helpers
         {
             try
             {
-                //WebClient wc = new WebClient();
-                //wc.Credentials = System.Net.CredentialCache.DefaultCredentials;
+                WebClient wc = new WebClient();
+                wc.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
-                //var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\RequestInfo.ValideIt." + DateTime.Now.ToString("yyymmddHHMMss") + ".xml";
-                //wc.DownloadFile(url, fn);
-               // var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\SM Ticket Detail List.xml";
-                var fn = transferFilePath;// "TransferIt"+ @"\SM Ticket Detail List.xml";
+                var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\RequestInfo.ValideIt." + DateTime.Now.ToString("yyymmddHHMMss") + ".xml";
+                wc.DownloadFile(url, fn);
+                //var fn = Nespe.Properties.Settings.Default.IT_VALIDATION_TEMP_FOLDER + "\\SM Ticket Detail List.xml";
+                //var fn = transferFilePath; "TransferIt"+ @"\SM Ticket Detail List.xml";
 
                 XPathDocument doc = new XPathDocument(fn);
                 XPathNavigator nav = doc.CreateNavigator();
@@ -102,7 +102,7 @@ namespace Nespe.Helpers
                                 ((info.Keyboard == true) ? " - a keyboard " : "" )+
                                 ((info.Desktop == true) ? " - a desktop " : "" )+
                                 ((info.Screen == true) ? " - a screen " : "") +
-                                ((info.Mouse == true) ? " - une souris " : "" )+
+                                ((info.Mouse == true) ? " - a mouse " : "" )+
                                 ". In case of questions, you can contact : " + assistant +
                                 ". Comment : " + info.Comment + 
                                 "Thank you";
@@ -218,7 +218,7 @@ namespace Nespe.Helpers
             var modelID = request.PersonDepartment.Id;
             var link = "http://CH12-0AZ7C45/NESPE/MesOperations/CloseInfo/" + modelID + "?Request_Id=" + request.Id + "&InfoType=RoleSAPRequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
-			var to="Edem.Atchou@rdor.nestle.com";
+			var to="ORR.Finance@rd.nestle.com";
                 try {
                     
                     var subject="[NESPE] Request SAP Roles";
@@ -261,8 +261,9 @@ namespace Nespe.Helpers
             var modelID = request.PersonDepartment.Id;
             var link = "http://CH12-0AZ7C45/NESPE/MesOperations/CloseInfo/" + modelID + "?Request_Id=" + request.Id + "&InfoType=PMORequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
-			//var to="ORR.PMO@rdor.nestle.com";
-            var to = "Martin.Airas@rdor.nestle.com";
+			var to="ORR.PMO@rdor.nestle.com";
+            //var to = "Martin.Airas@rdor.nestle.com";
+            
                 try {
 
                
@@ -309,6 +310,7 @@ namespace Nespe.Helpers
             var department = request.Department.Name;
             var assistant = request.Department.Assistant1;
             var modelID = request.PersonDepartment.Id;
+            var office = request.Local;
             var link = "http://CH12-0AZ7C45/NESPE/MesOperations/CloseInfo/" + modelID + "?Request_Id=" + request.Id + "&InfoType=MailCaseRequestInfo";
             var from = "ORR.Nespe@rdor.nestle.com";
             var to = "martine.joliclerc@rdor.nestle.com";
@@ -318,7 +320,7 @@ namespace Nespe.Helpers
                     var subject = "[NESPE] Request of mail case";
                     var message = "Hello, <br>"+
                                  "The " + @String.Format("{0:d}", StartDate) + " we will receive " + LastName + " " + FirstName +
-                                 " in quality of " + function + " in department "+ department +". <br>" +
+                                 " in quality of " + function + " in department "+ department +" in office "+ office+". <br>" +
                                  LastName + " " + FirstName + " will need a mail case, can you please do the necessary <br>" +
                                  " Comment :"+ info.Comment +
                                  "<br> In case of questions, you can contact : " + assistant +
@@ -340,7 +342,7 @@ namespace Nespe.Helpers
             var function = request.Function;
             var department = request.Department.Name;
             var from = "ORR.Nespe@rdor.nestle.com";
-			var to="martin.airas@rdor.nestle.com";
+            var to = "NBSFM.ServiceCenter-CH@nestle.com";
                 try {
 
                     var subject = "[NESPE] Request of work equipment";
@@ -434,6 +436,87 @@ namespace Nespe.Helpers
                     throw new Exception(@":<b>Sorry - we couldn't send the EMail to confirm your Request.</b>");
                 }			
         }
+
+        public static void SendSummarize(this Request request, ITRequestInfo infoIT, TelephoneRequestInfo infoTel, RoleSAPRequestInfo infoSAP, PMORequestInfo infoPMO, MailCaseRequestInfo infoMail, ClothesRequestInfo infoClothes, LockerRequestInfo infoLocker, IntroRequestInfo infoIntro)
+        {
+            var LastName = request.Person.LastName;
+            var FirstName = request.Person.FirstName;
+            var StartDate = request.StartDate;
+            var function = request.Function;
+            var local = request.Local;
+            var eMail = request.Person.EMail;
+            var assistant1 = request.Department.Assistant1;
+            var assistant2 = request.Department.Assistant2;
+            var assistant3 = request.Department.Assistant3;
+            var chef = request.Department.Head;
+            var link = "http://CH12-0AZ7C45/NESPE/MesOperations";
+            var from = "ORR.Nespe@rdor.nestle.com";
+            //var to="martin.airas@rdor.nestle.com";
+
+            try
+            {
+
+                var subject = "[NESPE] Request Newcomer";
+                var message = "Hello,<br> " +
+                                "For the arrival of " + FirstName + " " + LastName + " the following things have been requested :<br>" +
+                                ((infoIT.IsRequired == true) ? "For the IT : <br>" +
+                                ((infoIT.Laptop == true) ? " - a laptop <br>" : "") +
+                                ((infoIT.DockingStation == true) ? " - a docking station <br>" : "") +
+                                ((infoIT.Keyboard == true) ? " - a keyboard <br>" : "") +
+                                ((infoIT.Desktop == true) ? " - a desktop <br>" : "") +
+                                ((infoIT.Screen == true) ? " - a screen <br>" : "") +
+                                ((infoIT.Mouse == true) ? " - a mouse <br>" : "") +
+                                "Comment : " + infoIT.Comment + "<br><br>" : "") +
+                                ((infoTel.IsRequired == true) ? " For Phones : <br>" +
+                                ((infoTel.fixPhone == true) ? " - a fix phone <br>" : "") +
+                                ((infoTel.cordless == true) ? " - a Cordless <br>" : "") +
+                                ((infoTel.mobile == true) ? " - a mobile phone <br>" : "") +
+                                ((infoTel.smartphone == true) ? " - a Smartphone <br>" : "") +
+                                ((infoTel.headphoneForFix == true) ? " - a headset for fix phone <br>" : "") +
+                                ((infoTel.headphoneForCordless == true) ? " - a headset for Cordless <br>" : "") +
+                                ((infoTel.freeHandsForFix == true) ? " - a free hands for fix phone <br>" : "") +
+                                ((infoTel.freeHandsForCordless == true) ? " - a free hands for cordless <br>" : "") +
+                                "Comment : " + infoTel.Comment + "<br><br>" : "") +
+                                ((infoSAP.IsRequired == true) ? "For SAP request <br>" +
+                                ((infoSAP.purchaseType == PurchaseTypeRoleSAPEnum.Approver) ? " - Role of purchase Approver <br>" : "") +
+                                ((infoSAP.purchaseType == PurchaseTypeRoleSAPEnum.Requester) ? " - Role of purchase Requester <br>" : "") +
+                                ((infoSAP.pCard == true) ? "  - a pCard <br>" : "") +
+                                "Comment : " + infoSAP.Comment + "<br><br>" : "") +
+                                ((infoPMO.IsRequired == true) ? "For PMO request : <br>" +
+                                ((infoPMO.dms == true) ? " DMS <br>" : "") +
+                                ((infoPMO.cats == true) ? " CATS <br>" : "") +
+                                ((infoPMO.npdi == true) ? " NPDI <br>" : "") +
+                                ((infoPMO.projectManager == true) ? "NESTMS as Project Manager <br>" : "") +
+                                ((infoPMO.ppOperator == true) ? "NESTMS as Pilot Plant operator <br>" : "") +
+                                ((infoPMO.ppLineManager == true) ? "NESTMS as Pilot Plant line Manager <br>" : "") +
+                                ((infoPMO.labTech == true) ? "NESTMS as Lab technician <br>" : "") +
+                                "<br> Comment : " + infoPMO.Comment + "<br><br>" : "") +
+                                ((infoMail.IsRequired == true) ? "For mail case : a mail case<br>" +
+                                " Comment :" + infoMail.Comment + "<br><br>" : "") +
+                                ((infoLocker.IsRequired == true) ? "For the locker : a locker <br>" +
+                                " Comment :" + infoLocker.Comment + "<br><br>" : "") +
+                                "You always can follow the arrival in the dashboard on" + link;
+                               
+
+
+                SendEMail(assistant1, message, subject, from);
+                SendEMail(chef, message, subject, from);
+                if (assistant2 != null)
+                {
+                    SendEMail(assistant2, message, subject, from);
+                }
+                if (assistant3 != null)
+                {
+                    SendEMail(assistant3, message, subject, from);
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception(@":<b>Sorry - we couldn't send the EMail to confirm your Request.</b>");
+            }
+
+        }
+
         public static void SendEmailCreation(Request request)
         {
             
@@ -449,7 +532,7 @@ namespace Nespe.Helpers
         var chef = request.Department.Head;
         var link = "http://CH12-0AZ7C45/NESPE/MesOperations";
         var from = "ORR.Nespe@rdor.nestle.com";
-	    var to="martin.airas@rdor.nestle.com";
+	    //var to="martin.airas@rdor.nestle.com";
           try {      
 
 				var subjectAssistant="[NESPE] Request Newcomer";
@@ -494,7 +577,7 @@ namespace Nespe.Helpers
 					from = ui.EMail;
             }
 			if (string.IsNullOrWhiteSpace(from))
-				from="martin.airas@rdor.nestle.com";
+                from = "ORR.Nespe@rdor.nestle.com";
         
             WebMail.SmtpServer = "smtp.eur.nestle.com";
             WebMail.SmtpPort = 25;

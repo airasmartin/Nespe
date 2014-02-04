@@ -465,7 +465,7 @@ namespace Nespe.Models
             {
                 IsRequired = true,
                 Name = "First meal organisation",
-                Subjections = @"<a href='http://thenest-eur-hq.nestle.com/RD/RD_RLOC/Europe/OrbePTC/documents/indexable/Facility%20Management/2009-11%20Process%20Complaints%20V2-091101.pdf'>réservation</a> + inviter DH ou Groupe leader"
+                Subjections = "reservation + inviter DH ou Groupe leader"
             });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo { IsRequired = true, Name = "SHE documents preparation:", Subjections = @" " });
 

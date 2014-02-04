@@ -230,7 +230,8 @@ namespace Nespe.Controllers
                     request.SendInfo(model.IntroInfo);
                     SaveToDb(db.RoleSAPRequestSet, model.RoleSAPInfo, db);
                     request.SendInfo(model.RoleSAPInfo);
-					
+                    request.SendSummarize(model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo);
+
                     db.SaveChanges();
 
                     //WebMailHelper.SendEMail(model.RequestModel);
@@ -524,7 +525,7 @@ namespace Nespe.Controllers
 						}
 					}
 					
-                    WebMailHelper.ValidateIt(model.ITInfo, Nespe.Properties.Settings.Default.IT_VALIDATION_URL, string.Format("[NESPE] {0} Newcomer Initial", model.ITInfo.Request_Id));
+                    WebMailHelper.ValidateIt(model.ITInfo, Nespe.Properties.Settings.Default.IT_VALIDATION_URL, string.Format("[NESPE] {0} Newcomer Arrival", model.ITInfo.Request_Id));
                     AbstractRequestInfo.Copy(ITInfo, model.ITInfo, true);
                     AbstractRequestInfo.Copy(TelephoneInfo, model.TelephoneInfo, true);
                     AbstractRequestInfo.Copy(RoleSAPInfo, model.RoleSAPInfo, true);
