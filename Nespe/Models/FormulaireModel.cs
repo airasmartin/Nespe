@@ -244,6 +244,138 @@ namespace Nespe.Models
             return base.Copy(src, copyId);
         }
     }
+    [Table("PMOCatsInfo")]
+    public class PMOCatsRequestInfo : AbstractRequestInfo
+    {
+        public override string StaticName
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMOCats" : base.StaticName;
+            }
+            set
+            {
+                base.StaticName = value;
+            }
+        }
+        public override string StaticDescription
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
+            }
+        }
+        [Display(Name = "CATS")]
+        public bool cats { get; set; }
+ 
+        public virtual PMOCatsRequestInfo Copy(PMOCatsRequestInfo src, bool copyId = false)
+        {
+            var dst = this;
+
+            dst.cats = src.cats;
+
+            return base.Copy(src, copyId);
+        }
+    }
+    [Table("PMODMSInfo")]
+    public class PMODMSRequestInfo : AbstractRequestInfo
+    {
+        public override string StaticName
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMODMS" : base.StaticName;
+            }
+            set
+            {
+                base.StaticName = value;
+            }
+        }
+        public override string StaticDescription
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
+            }
+        }
+        [Display(Name = "DMS")]
+        public bool dms { get; set; }
+
+        public virtual PMODMSRequestInfo Copy(PMODMSRequestInfo src, bool copyId = false)
+        {
+            var dst = this;
+
+            dst.dms = src.dms;
+
+            return base.Copy(src, copyId);
+        }
+    }
+    [Table("PMONPDIInfo")]
+    public class PMONPDIRequestInfo : AbstractRequestInfo
+    {
+        public override string StaticName
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMONPDI" : base.StaticName;
+            }
+            set
+            {
+                base.StaticName = value;
+            }
+        }
+        public override string StaticDescription
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
+            }
+        }
+        [Display(Name = "NPDI")]
+        public bool npdi { get; set; }
+
+        public virtual PMONPDIRequestInfo Copy(PMONPDIRequestInfo src, bool copyId = false)
+        {
+            var dst = this;
+
+            dst.npdi = src.npdi;
+
+            return base.Copy(src, copyId);
+        }
+    }
+    [Table("PMONESTMSInfo")]
+    public class PMONESTMSRequestInfo : AbstractRequestInfo
+    {
+        public override string StaticName
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMONESTMS" : base.StaticName;
+            }
+            set
+            {
+                base.StaticName = value;
+            }
+        }
+        public override string StaticDescription
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
+            }
+        }
+        [Display(Name = "NESTMS")]
+        public bool nestms { get; set; }
+
+        public virtual PMONESTMSRequestInfo Copy(PMONESTMSRequestInfo src, bool copyId = false)
+        {
+            var dst = this;
+
+            dst.nestms = src.nestms;
+
+            return base.Copy(src, copyId);
+        }
+    }
     [Table("MailCaseRequestInfo")]
     public class MailCaseRequestInfo : AbstractRequestInfo
     {
@@ -424,6 +556,10 @@ namespace Nespe.Models
         public TelephoneRequestInfo TelephoneInfo { get; set; }
         public RoleSAPRequestInfo RoleSAPInfo { get; set; }
         public PMORequestInfo PMOInfo { get; set; }
+        public PMOCatsRequestInfo PMOCatsInfo { get; set; }
+        public PMODMSRequestInfo PMODMSInfo { get; set; }
+        public PMONPDIRequestInfo PMONPDIInfo { get; set; }
+        public PMONESTMSRequestInfo PMONESTMSInfo { get; set; }
         public MailCaseRequestInfo MailCaseInfo { get; set; }
         public ClothesRequestInfo ClothesInfo { get; set; }
         public LockerRequestInfo LockerInfo { get; set; }
@@ -597,6 +733,10 @@ namespace Nespe.Models
 				TelephoneInfo,
 				RoleSAPInfo,
 				PMOInfo,
+                PMOCatsInfo,
+                PMODMSInfo,
+                PMONPDIInfo,
+                PMONESTMSInfo,
 				MailCaseInfo,
                 ClothesInfo,
 				LockerInfo,

@@ -96,6 +96,10 @@ namespace Nespe.Context
         public DbSet<Nespe.Models.LockerRequestInfo> LockerRequestSet { get; set; }
         public DbSet<Nespe.Models.MailCaseRequestInfo> MailCaseRequestSet { get; set; }
         public DbSet<Nespe.Models.PMORequestInfo> PMORequestSet { get; set; }
+        public DbSet<Nespe.Models.PMOCatsRequestInfo> PMOCatsSet { get; set; }
+        public DbSet<Nespe.Models.PMODMSRequestInfo> PMODMSSet { get; set; }
+        public DbSet<Nespe.Models.PMONPDIRequestInfo> PMONPDISet { get; set; }
+        public DbSet<Nespe.Models.PMONESTMSRequestInfo> PMONESTMSSet { get; set; }
         public DbSet<Nespe.Models.RoleSAPRequestInfo> RoleSAPRequestSet { get; set; }
         public DbSet<Nespe.Models.TelephoneRequestInfo> TelephoneRequestSet { get; set; }
 

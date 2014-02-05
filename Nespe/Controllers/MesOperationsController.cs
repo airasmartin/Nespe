@@ -81,7 +81,11 @@ namespace Nespe.Controllers
                     ITInfo = GetByRequestId(id, db.ITRequestSet, new ITRequestInfo { Request_Id = id, Date = dateCompleted }),
                     TelephoneInfo = GetByRequestId(id, db.TelephoneRequestSet, new TelephoneRequestInfo { Request_Id = id, Date = dateCompleted }),
                     RoleSAPInfo = GetByRequestId(id, db.RoleSAPRequestSet, new RoleSAPRequestInfo { Request_Id = id, Date = dateCompleted }),
-                    PMOInfo = GetByRequestId(id, db.PMORequestSet, new PMORequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMOInfo = GetByRequestId(id, db.PMORequestSet, new PMORequestInfo {Request_Id =id, Date =dateCompleted}),
+                    PMOCatsInfo = GetByRequestId(id, db.PMOCatsSet, new PMOCatsRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMODMSInfo = GetByRequestId(id, db.PMODMSSet, new PMODMSRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMONPDIInfo = GetByRequestId(id, db.PMONPDISet, new PMONPDIRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMONESTMSInfo = GetByRequestId(id, db.PMONESTMSSet, new PMONESTMSRequestInfo { Request_Id = id, Date = dateCompleted }),
                     MailCaseInfo = GetByRequestId(id, db.MailCaseRequestSet, new MailCaseRequestInfo { Request_Id = id, Date = dateCompleted }),
                     ClothesInfo = GetByRequestId(id, db.ClothesRequestSet, new ClothesRequestInfo { Request_Id = id, Date = dateCompleted }),
                     LockerInfo = GetByRequestId(id, db.LockerRequestSet, new LockerRequestInfo { Request_Id = id, Date = dateCompleted }),
@@ -161,7 +165,7 @@ namespace Nespe.Controllers
             if (model != null)
             {
                 model.dateCompleted = DateTime.Now;
-                var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
+                var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.PMOCatsInfo, model.PMODMSInfo, model.PMONPDIInfo, model.PMONESTMSInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
                 foreach (var o in a)
                 {
                     o.Request_Id = model.RequestModel.Id;
@@ -214,12 +218,27 @@ namespace Nespe.Controllers
                         //model.RequestModel = currentRequest;
                     }
 
+                    
+
+                    model.PMOCatsInfo.IsRequired = model.PMOInfo.cats;
+                    model.PMODMSInfo.IsRequired = model.PMOInfo.dms;
+                    model.PMONPDIInfo.IsRequired = model.PMOInfo.npdi;
+                    model.PMONESTMSInfo.IsRequired = model.PMOInfo.nestms;
+                    
+
+                    
+
+
                     SaveToDb(db.ITRequestSet, model.ITInfo, db);
                     request.SendInfo(model.ITInfo);
                     SaveToDb(db.TelephoneRequestSet, model.TelephoneInfo, db);
                     request.SendInfo(model.TelephoneInfo);
                     SaveToDb(db.PMORequestSet, model.PMOInfo, db);
                     request.SendInfo(model.PMOInfo);
+                    SaveToDb(db.PMOCatsSet, model.PMOCatsInfo, db);
+                    SaveToDb(db.PMODMSSet, model.PMODMSInfo, db);
+                    SaveToDb(db.PMONPDISet, model.PMONPDIInfo, db);
+                    SaveToDb(db.PMONESTMSSet, model.PMONESTMSInfo, db);
                     SaveToDb(db.MailCaseRequestSet, model.MailCaseInfo, db);
                     request.SendInfo(model.MailCaseInfo);
                     SaveToDb(db.ClothesRequestSet, model.ClothesInfo, db);
@@ -272,6 +291,10 @@ namespace Nespe.Controllers
                     TelephoneInfo = GetByRequestId(id, db.TelephoneRequestSet, new TelephoneRequestInfo { Request_Id = id, Date = dateCompleted }),
                     RoleSAPInfo = GetByRequestId(id, db.RoleSAPRequestSet, new RoleSAPRequestInfo { Request_Id = id, Date = dateCompleted }),
                     PMOInfo = GetByRequestId(id, db.PMORequestSet, new PMORequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMOCatsInfo = GetByRequestId(id, db.PMOCatsSet, new PMOCatsRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMODMSInfo = GetByRequestId(id, db.PMODMSSet, new PMODMSRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMONPDIInfo = GetByRequestId(id, db.PMONPDISet, new PMONPDIRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMONESTMSInfo = GetByRequestId(id, db.PMONESTMSSet, new PMONESTMSRequestInfo { Request_Id = id, Date = dateCompleted }),
                     MailCaseInfo = GetByRequestId(id, db.MailCaseRequestSet, new MailCaseRequestInfo { Request_Id = id, Date = dateCompleted }),
                     ClothesInfo = GetByRequestId(id, db.ClothesRequestSet, new ClothesRequestInfo { Request_Id = id, Date = dateCompleted }),
                     LockerInfo = GetByRequestId(id, db.LockerRequestSet, new LockerRequestInfo { Request_Id = id, Date = dateCompleted }),
@@ -295,7 +318,7 @@ namespace Nespe.Controllers
             if (model != null)
             {
                 model.dateCompleted = DateTime.Now;
-                var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
+                var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.PMOCatsInfo, model.PMODMSInfo, model.PMONPDIInfo, model.PMONESTMSInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
                 foreach (var o in a)
                 {
                     if (o == null)
@@ -360,6 +383,22 @@ namespace Nespe.Controllers
                     {
                         SaveToDb(db.PMORequestSet, model.PMOInfo, db);
                         request.SendInfo(model.PMOInfo);
+                    }
+                    if (model.PMOCatsInfo != null)
+                    {
+                        SaveToDb(db.PMOCatsSet, model.PMOCatsInfo, db);
+                    }
+                    if (model.PMODMSInfo != null)
+                    {
+                        SaveToDb(db.PMODMSSet, model.PMODMSInfo, db);
+                    }
+                    if (model.PMONPDIInfo != null)
+                    {
+                        SaveToDb(db.PMONPDISet, model.PMONPDIInfo, db);
+                    }
+                    if (model.PMONESTMSInfo != null)
+                    {
+                        SaveToDb(db.PMONESTMSSet, model.PMONESTMSInfo, db);
                     }
                     if (model.MailCaseInfo != null)
                     {
@@ -448,6 +487,10 @@ namespace Nespe.Controllers
                     TelephoneInfo = GetByRequestId(id, db.TelephoneRequestSet, new TelephoneRequestInfo { Request_Id = id, Date = dateCompleted }),
                     RoleSAPInfo = GetByRequestId(id, db.RoleSAPRequestSet, new RoleSAPRequestInfo { Request_Id = id, Date = dateCompleted }),
                     PMOInfo = GetByRequestId(id, db.PMORequestSet, new PMORequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMOCatsInfo = GetByRequestId(id, db.PMOCatsSet, new PMOCatsRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMODMSInfo = GetByRequestId(id, db.PMODMSSet, new PMODMSRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMONPDIInfo = GetByRequestId(id, db.PMONPDISet, new PMONPDIRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMONESTMSInfo = GetByRequestId(id, db.PMONESTMSSet, new PMONESTMSRequestInfo { Request_Id = id, Date = dateCompleted }),
                     MailCaseInfo = GetByRequestId(id, db.MailCaseRequestSet, new MailCaseRequestInfo { Request_Id = id, Date = dateCompleted }),
                     ClothesInfo = GetByRequestId(id, db.ClothesRequestSet, new ClothesRequestInfo { Request_Id = id, Date = dateCompleted }),
                     LockerInfo = GetByRequestId(id, db.LockerRequestSet, new LockerRequestInfo { Request_Id = id, Date = dateCompleted }),
@@ -496,11 +539,15 @@ namespace Nespe.Controllers
                     var TelephoneInfo = GetByRequestId(id, db.TelephoneRequestSet, model.TelephoneInfo);
                     var RoleSAPInfo = GetByRequestId(id, db.RoleSAPRequestSet, model.RoleSAPInfo);
                     var PMOInfo = GetByRequestId(id, db.PMORequestSet, model.PMOInfo);
+                    var PMOCats = GetByRequestId(id, db.PMOCatsSet, model.PMOCatsInfo);
+                    var PMODMS = GetByRequestId(id, db.PMODMSSet, model.PMODMSInfo);
+                    var PMONPDI = GetByRequestId(id, db.PMONPDISet, model.PMONPDIInfo);
+                    var PMONESTMS = GetByRequestId(id, db.PMONESTMSSet, model.PMONESTMSInfo);
                     var MailCaseInfo = GetByRequestId(id, db.MailCaseRequestSet, model.MailCaseInfo);
                     var ClothesInfo = GetByRequestId(id, db.ClothesRequestSet, model.ClothesInfo);
                     var LockerInfo = GetByRequestId(id, db.LockerRequestSet, model.LockerInfo);
                     var IntroInfo = GetByRequestId(id, db.IntroRequestSet, model.IntroInfo);
-                    var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
+                    var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.PMOCatsInfo, model.PMODMSInfo, model.PMONPDIInfo, model.PMONESTMSInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
 
                     WebMailHelper.ValidateIt(ITInfo, Server.MapPath("TransferIt"+ @"\SM Ticket Detail List.xml"));
                     foreach (var o in a)
@@ -530,6 +577,10 @@ namespace Nespe.Controllers
                     AbstractRequestInfo.Copy(TelephoneInfo, model.TelephoneInfo, true);
                     AbstractRequestInfo.Copy(RoleSAPInfo, model.RoleSAPInfo, true);
                     AbstractRequestInfo.Copy(PMOInfo, model.PMOInfo, true);
+                    AbstractRequestInfo.Copy(PMOCats, model.PMOCatsInfo, true);
+                    AbstractRequestInfo.Copy(PMODMS, model.PMODMSInfo, true);
+                    AbstractRequestInfo.Copy(PMONPDI, model.PMONPDIInfo, true);
+                    AbstractRequestInfo.Copy(PMONESTMS, model.PMONESTMSInfo, true);
                     AbstractRequestInfo.Copy(MailCaseInfo, model.MailCaseInfo, true);
                     AbstractRequestInfo.Copy(ClothesInfo, model.ClothesInfo, true);
                     AbstractRequestInfo.Copy(LockerInfo, model.LockerInfo, true);
@@ -595,6 +646,10 @@ namespace Nespe.Controllers
                     TelephoneInfo = GetByRequestId(id, db.TelephoneRequestSet, new TelephoneRequestInfo { Request_Id = id, Date = dateCompleted }),
                     RoleSAPInfo = GetByRequestId(id, db.RoleSAPRequestSet, new RoleSAPRequestInfo { Request_Id = id, Date = dateCompleted }),
                     PMOInfo = GetByRequestId(id, db.PMORequestSet, new PMORequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMOCatsInfo = GetByRequestId(id, db.PMOCatsSet, new PMOCatsRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMODMSInfo = GetByRequestId(id, db.PMODMSSet, new PMODMSRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMONPDIInfo = GetByRequestId(id, db.PMONPDISet, new PMONPDIRequestInfo { Request_Id = id, Date = dateCompleted }),
+                    PMONESTMSInfo = GetByRequestId(id, db.PMONESTMSSet, new PMONESTMSRequestInfo { Request_Id = id, Date = dateCompleted }),
                     MailCaseInfo = GetByRequestId(id, db.MailCaseRequestSet, new MailCaseRequestInfo { Request_Id = id, Date = dateCompleted }),
                     ClothesInfo = GetByRequestId(id, db.ClothesRequestSet, new ClothesRequestInfo { Request_Id = id, Date = dateCompleted }),
                     LockerInfo = GetByRequestId(id, db.LockerRequestSet, new LockerRequestInfo { Request_Id = id, Date = dateCompleted }),
@@ -636,11 +691,15 @@ namespace Nespe.Controllers
                     var TelephoneInfo = GetByRequestId(id, db.TelephoneRequestSet, model.TelephoneInfo);
                     var RoleSAPInfo = GetByRequestId(id, db.RoleSAPRequestSet, model.RoleSAPInfo);
                     var PMOInfo = GetByRequestId(id, db.PMORequestSet, model.PMOInfo);
+                    var PMOCatsInfo = GetByRequestId(id, db.PMOCatsSet, model.PMOCatsInfo);
+                    var PMODMSInfo = GetByRequestId(id, db.PMODMSSet, model.PMODMSInfo);
+                    var PMONPDIInfo = GetByRequestId(id, db.PMONPDISet, model.PMONPDIInfo);
+                    var PMONESTMSInfo = GetByRequestId(id, db.PMONESTMSSet, model.PMONESTMSInfo);
                     var MailCaseInfo = GetByRequestId(id, db.MailCaseRequestSet, model.MailCaseInfo);
                     var ClothesInfo = GetByRequestId(id, db.ClothesRequestSet, model.ClothesInfo);
                     var LockerInfo = GetByRequestId(id, db.LockerRequestSet, model.LockerInfo);
                     var IntroInfo = GetByRequestId(id, db.IntroRequestSet, model.IntroInfo);
-                    var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
+                    var a = new AbstractRequestInfo[] { model.ITInfo, model.TelephoneInfo, model.RoleSAPInfo, model.PMOInfo, model.PMOCatsInfo, model.PMODMSInfo, model.PMONPDIInfo, model.PMONESTMSInfo, model.MailCaseInfo, model.ClothesInfo, model.LockerInfo, model.IntroInfo };
                     WebMailHelper.ValidateIt(ITInfo, Server.MapPath("TransferIt" + @"\SM Ticket Detail List.xml"));
                     foreach (var o in a)
                     {
@@ -651,11 +710,15 @@ namespace Nespe.Controllers
                         
 
                     }
-                    WebMailHelper.ValidateIt(model.ITInfo, Nespe.Properties.Settings.Default.IT_VALIDATION_URL, string.Format("[NESPE] {0} Newcomer Initial", model.ITInfo.Request_Id));
+                    WebMailHelper.ValidateIt(model.ITInfo, Nespe.Properties.Settings.Default.IT_VALIDATION_URL, string.Format("[NESPE] {0} Newcomer", model.ITInfo.Request_Id));
                     AbstractRequestInfo.Copy(ITInfo, model.ITInfo, true);
                     AbstractRequestInfo.Copy(TelephoneInfo, model.TelephoneInfo, true);
                     AbstractRequestInfo.Copy(RoleSAPInfo, model.RoleSAPInfo, true);
-                    AbstractRequestInfo.Copy(PMOInfo, model.PMOInfo, true);
+                    AbstractRequestInfo.Copy(PMOInfo, model.PMOInfo, true); 
+                    AbstractRequestInfo.Copy(PMOCatsInfo, model.PMOCatsInfo, true);
+                    AbstractRequestInfo.Copy(PMODMSInfo, model.PMODMSInfo, true);
+                    AbstractRequestInfo.Copy(PMONPDIInfo, model.PMONPDIInfo, true);
+                    AbstractRequestInfo.Copy(PMONESTMSInfo, model.PMONESTMSInfo, true);
                     AbstractRequestInfo.Copy(MailCaseInfo, model.MailCaseInfo, true);
                     AbstractRequestInfo.Copy(ClothesInfo, model.ClothesInfo, true);
                     AbstractRequestInfo.Copy(LockerInfo, model.LockerInfo, true);
@@ -718,6 +781,10 @@ namespace Nespe.Controllers
                     else if (type == typeof(TelephoneRequestInfo)) { o = (from t in db.TelephoneRequestSet where t.Id == id select t).FirstOrDefault(); }
                     else if (type == typeof(RoleSAPRequestInfo)) { o = (from t in db.RoleSAPRequestSet where t.Id == id select t).FirstOrDefault(); }
                     else if (type == typeof(PMORequestInfo)) { o = (from t in db.PMORequestSet where t.Id == id select t).FirstOrDefault(); }
+                    else if (type == typeof(PMOCatsRequestInfo)) { o = (from t in db.PMOCatsSet where t.Id == id select t).FirstOrDefault(); }
+                    else if (type == typeof(PMODMSRequestInfo)) { o = (from t in db.PMODMSSet where t.Id == id select t).FirstOrDefault(); }
+                    else if (type == typeof(PMONPDIRequestInfo)) { o = (from t in db.PMONPDISet where t.Id == id select t).FirstOrDefault(); }
+                    else if (type == typeof(PMONESTMSRequestInfo)) { o = (from t in db.PMONESTMSSet where t.Id == id select t).FirstOrDefault(); }
                     else if (type == typeof(MailCaseRequestInfo)) { o = (from t in db.MailCaseRequestSet where t.Id == id select t).FirstOrDefault(); }
                     else if (type == typeof(LockerRequestInfo)) { o = (from t in db.LockerRequestSet where t.Id == id select t).FirstOrDefault(); }
                     else if (type == typeof(IntroRequestInfo)) { o = (from t in db.IntroRequestSet where t.Id == id select t).FirstOrDefault(); }
