@@ -251,7 +251,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMOCats" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMO : Cats" : base.StaticName;
             }
             set
             {
@@ -265,15 +265,12 @@ namespace Nespe.Models
                 return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
-        [Display(Name = "CATS")]
+        [Display(Name = "PMO : CATS")]
         public bool cats { get; set; }
- 
         public virtual PMOCatsRequestInfo Copy(PMOCatsRequestInfo src, bool copyId = false)
         {
             var dst = this;
-
             dst.cats = src.cats;
-
             return base.Copy(src, copyId);
         }
     }
@@ -284,7 +281,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMODMS" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMO : DMS" : base.StaticName;
             }
             set
             {
@@ -298,15 +295,12 @@ namespace Nespe.Models
                 return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
-        [Display(Name = "DMS")]
+        [Display(Name = "PMO : DMS")]
         public bool dms { get; set; }
-
         public virtual PMODMSRequestInfo Copy(PMODMSRequestInfo src, bool copyId = false)
         {
             var dst = this;
-
             dst.dms = src.dms;
-
             return base.Copy(src, copyId);
         }
     }
@@ -317,7 +311,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMONPDI" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMO : NPDI" : base.StaticName;
             }
             set
             {
@@ -331,15 +325,12 @@ namespace Nespe.Models
                 return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
-        [Display(Name = "NPDI")]
+        [Display(Name = "PMO : NPDI")]
         public bool npdi { get; set; }
-
         public virtual PMONPDIRequestInfo Copy(PMONPDIRequestInfo src, bool copyId = false)
         {
             var dst = this;
-
             dst.npdi = src.npdi;
-
             return base.Copy(src, copyId);
         }
     }
@@ -350,7 +341,7 @@ namespace Nespe.Models
         {
             get
             {
-                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMONESTMS" : base.StaticName;
+                return string.IsNullOrWhiteSpace(base.StaticName) ? "PMO : NESTMS" : base.StaticName;
             }
             set
             {
@@ -364,15 +355,13 @@ namespace Nespe.Models
                 return string.IsNullOrWhiteSpace(base.StaticDescription) ? "Requested by Form" : base.StaticDescription;
             }
         }
-        [Display(Name = "NESTMS")]
+        [Display(Name = "PMO : NESTMS")]
         public bool nestms { get; set; }
 
         public virtual PMONESTMSRequestInfo Copy(PMONESTMSRequestInfo src, bool copyId = false)
         {
             var dst = this;
-
             dst.nestms = src.nestms;
-
             return base.Copy(src, copyId);
         }
     }

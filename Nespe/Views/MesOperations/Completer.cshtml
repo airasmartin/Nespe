@@ -52,6 +52,30 @@
         @Html.EditorFor(m => m.PMOInfo, "_PMORequestInfoPartialView")
     }
 
+    @if (Model.PMOCatsInfo != null)
+    {
+        @Html.HiddenFor(m => m.PMOCatsInfo.Id)
+        @Html.HiddenFor(m => m.PMOCatsInfo.Request_Id)
+    }
+        
+    @if (Model.PMODMSInfo != null)
+    {
+        @Html.HiddenFor(m => m.PMODMSInfo.Id)
+        @Html.HiddenFor(m => m.PMODMSInfo.Request_Id)
+    } 
+
+    @if (Model.PMONPDIInfo != null)
+    {
+        @Html.HiddenFor(m => m.PMONPDIInfo.Id)
+        @Html.HiddenFor(m => m.PMONPDIInfo.Request_Id)
+    }   
+                    
+    @if (Model.PMONESTMSInfo != null)
+    {
+        @Html.HiddenFor(m => m.PMONESTMSInfo.Id)
+        @Html.HiddenFor(m => m.PMONESTMSInfo.Request_Id)
+    }
+
     @if (Model.MailCaseInfo != null)
     { 
         @Html.HiddenFor(m => m.MailCaseInfo.Id)

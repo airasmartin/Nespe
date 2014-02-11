@@ -495,7 +495,7 @@ namespace Nespe.Helpers
                                 " Comment :" + infoMail.Comment + "<br><br>" : "") +
                                 ((infoLocker.IsRequired == true) ? "For the locker : a locker <br>" +
                                 " Comment :" + infoLocker.Comment + "<br><br>" : "") +
-                                "You always can follow the arrival in the dashboard on" + link;
+                                "You always can follow the arrival in the dashboard on <a href=" + link + "> Done</a>";
                                
 
 
