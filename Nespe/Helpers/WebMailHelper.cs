@@ -120,9 +120,9 @@ namespace Nespe.Helpers
                         ),
                         new XElement("assignmentGroup", new XCData("CH_IT SUPPORT WKS_ORB INSTALLATION")),
                         new XElement("primaryContactDetails",
-                            new XElement("contactName", new XCData(string.IsNullOrWhiteSpace(request.Person.EMail) ? "MARTIN.AIRAS@RDOR.NESTLE.COM" : request.Person.EMail))
+                            new XElement("contactName", new XCData(string.IsNullOrWhiteSpace(request.Person.EMail) ? "JUAN.PENALVA@RDOR.NESTLE.COM" : request.Person.EMail))
                         ),
-                        new XElement("initiatorUserId", new XCData("RDAirasMa")),
+                        new XElement("initiatorUserId", new XCData("RDPenalvJu")),
                         new XElement("title", new XCData(title)),
                         new XElement("description", new XCData(message)),
                         new XElement("impact", new XCData("4")),

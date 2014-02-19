@@ -578,13 +578,13 @@ namespace Nespe.Models
             {
                 IsRequired = true,
                 Name = "Personalized introduction program",
-                Subjections = @"<a href='http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arriv%C3%A9e%20nouveaux%20collaborateurs%20-%20Dossier%20de%20pr%C3%A9paration/Intro%20programme%202012.xls'>Template intro program</a>"
+                Subjections = @"<a href='http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arrivée%20nouveaux%20collaborateurs%20-%20Dossier%20de%20préparation/Intro%20programme%202014.xls'>Template intro program</a>"
             });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
                 IsRequired = true,
                 Name = "Arrival announcement",
-                Subjections = @"<a href='http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arriv%C3%A9e%20nouveaux%20collaborateurs%20-%20Dossier%20de%20pr%C3%A9paration/Template%20Arrival%20Note%20(ver.%20MAR2011).ppt'>Template Annonce Newcomers</a>"
+                Subjections = @"<a href='http://teamroom.eur.nestle.com/RD_DMS/AssistantsPTCOrbe/Personal%20Newcomers/Arrivée%20nouveaux%20collaborateurs%20-%20Dossier%20de%20préparation/2014_PTC_Arr_Template.pptx'>Template Annonce Newcomers</a>"
             });
             ExternalyManagedInfoList.Add(new ExternalyManagedRequestInfo
             {
