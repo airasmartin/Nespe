@@ -54,6 +54,7 @@
             else
             { 
                 @Html.ActionLink("Edit", "Edit", "MesOperations", new { id = item.Id }, new { }) 
+                @Html.ActionLink("Finish", "FinishIt", "MesOperations", new { id = item.Id }, new { })    
             }
         }
         else
@@ -67,7 +68,7 @@
                 @Html.ActionLink("Complete", "Completer", "MesOperations", new { id = item.Id }, new { })
             }
         }
-        @Html.ActionLink("Finish", "FinishIt", "MesOperations", new { id = item.Id }, new { })                                                                                                    
+                                                                                                        
                                                                                                           
         </td>
     </tr>

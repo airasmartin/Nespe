@@ -30,7 +30,7 @@ namespace Nespe.Helpers
         }
         public static bool ValidateIt(AbstractRequestInfo infoRequest, string url, string transferFilePath)
         {
-            var title = string.Format("[NESPE] {0} Newcomer Initial", infoRequest.Request_Id);
+            var title = string.Format("[NESPE] {0} Newcomer", infoRequest.Request_Id);
             return ValidateIt(infoRequest, url, title, transferFilePath);
         }
         public static bool ValidateIt(AbstractRequestInfo infoRequest, string url, string title, string transferFilePath)
@@ -51,7 +51,7 @@ namespace Nespe.Helpers
                 nsmgr.AddNamespace("n", "SM_x0020_Ticket_x0020_Detail_x0020_List");
 
 
-                var el = nav.SelectSingleNode(string.Format("/n:Report/n:tblMain/n:Detail_Collection/n:Detail[@txtTitle='{0}']", title), nsmgr);
+                var el = nav.SelectSingleNode(string.Format("/n:Report/n:tblMain/n:Detail_Collection/n:Detail[@txtTitle='{0}*']", title), nsmgr);
                 if (el == null || !el.HasAttributes)
                     return false;
                 var txtID = el.GetAttribute("txtID", "");
@@ -92,7 +92,7 @@ namespace Nespe.Helpers
             {
 
 
-                var title = string.Format("[NESPE] {0} Newcomer Initial", request.Id);
+                var title = string.Format("[NESPE] {0} Newcomer {1} {2} {3}", request.Id, request.Person.LastName, request.Person.FirstName,request.StartDate);
                 var message = "Hello" +
                                 "The " + @String.Format("{0:d}", StartDate) + " we'll receive " + LastName + " " + FirstName +
                                 " in room " + local + " " +
@@ -424,7 +424,7 @@ namespace Nespe.Helpers
                     var message ="Hello, "+
                                  "The " + @String.Format("{0:d}", StartDate) + " we will receive " + LastName + " " + FirstName +
                                  " in quality of " + function + " in department "+ department +". <br><br>" +
-                                 " To present your department please contact the newcommer speaking in " + info.introLanguage + "<br>" +
+                                 " To present your department please contact the newcomer speaking in " + ((info.introLanguage == "Anglais") ? " English" : " French") + "<br>" +
                                  "Comment : "+ info.Comment +
                                  "<br> In case of questions, you can contact : " + assistant +
                                  "<br>thank you";
